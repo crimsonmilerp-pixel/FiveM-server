@@ -1,0 +1,14 @@
+{
+  "_note": "Text players see for rp_welcome. Edit the words on the right only and keep every %s (the game fills in the Discord link). \\n\\n = new paragraph, **text** = bold.",
+  "welcome": {
+    "title": "Welcome to the city",
+    "description": "We're still building. Join our Discord to follow along:\n\n**%s**\n\nType **/discord** to copy the link.",
+    "description_no_link": "We're still building. Thanks for being here early."
+  },
+  "discord": {
+    "title": "Discord link copied",
+    "copied": "%s is on your clipboard. Paste it into your browser or Discord.",
+    "no_link": "No Discord link has been set yet.",
+    "help": "Copy our Discord invite link"
+  }
+}
