@@ -4,6 +4,25 @@
 
 ---
 
+## ▶ Where we left off (end of Oct 26, 2026 session)
+
+**Live on the server:** Qbox, MariaDB 12.3.3, Vinny's permanent admin, secrets moved into `secrets.cfg`, unemployed paycheck off, Qbox ads removed, Discord link set (`setr qbx:discordLink`), **rp_goals** (tested), and **rp_welcome** (welcome pop-up and `/discord`; tip line made bold).
+
+**Next session, in order:**
+1. **LB Phone:** Vinny buys it (lifetime, lbscripts.com, on his own Cfx.re account) and downloads it from portal.cfx.re → Assets. Claude walks through the install: run its SQL in HeidiSQL, set up the config, remove npwd, qbx_npwd, and the npwd apps along with their `characterDataTables` entries, and set up Fivemanage for photos.
+2. **Play-through checklist:** Claude writes it, and Vinny rates each included system as keep, tweak, or replace.
+3. **Then:** Pillar C (clothing and weapon blacklist), then Phase 1 (vehicle balance, fuel, tutorial, jobs).
+
+**Loose ends:**
+- James's `fivem:` ID goes into `permissions.cfg`.
+- Set the server name in the Cfx.re Portal.
+- Liam rewrites `rp_goals` and `rp_welcome` `locales/en.json`.
+- Sync the repo's `docs/design-bible.md` with this project copy on the next code drop.
+
+**Working style:** plain English, and every change ends with a short WinSCP upload checklist (double-click path → drag → Yes → which restart). Claude writes directly into `C:\Users\mrgri\FiveM\server` (connected folder).
+
+---
+
 ## 0. Team
 
 | Person | Role |
@@ -24,6 +43,8 @@
 | 2026-10-26 | **Claude sessions are Vinny's only.** Vinny and Claude do the build together, with every step explained in plain English. | Claude accounts can't be shared. James keeps his co-owner server access. |
 | 2026-10-26 | **Community Discord: discord.gg/ZjadxPYdYZ** (permanent invite). Used in the chat welcome and `qbx:discordLink`. | Qbox's built-in Discord status is off until we make our own Discord app with our art and a "Join our Discord" button. |
 | 2026-10-26 | **Goal system:** a required goal right after character creation, with no rewards or milestones, view-only for staff, changeable once every 7 days. Public server for now; a Discord-application whitelist comes later. | It gives every player a reason to move, and keeping it simple keeps it low-friction while we build a player base. |
+| 2026-10-26 | **Phone: LB Phone (lifetime license, official store lbscripts.com only)**, replacing the free npwd | The most widely recommended FiveM phone, with Qbox support (auto-detected), strong performance reports, and a custom-app API with a React/TS template for our goals, opportunities, and loan apps. Escrowed, so we can't edit its code, only its config, open files, and exports. Needs MariaDB 10.11+ (we have 12.3.3) and an upload service such as Fivemanage for photos. Bought on Vinny's Cfx.re account. |
+| 2026-10-27 | **Economy (RP-first): real-world prices; pay = real wage × 30 per hour worked (a regular player works ~⅓ of playtime); only rent and loans are weekly bills (paused if inactive); small bills dropped; luxury upkeep on cars over $100k and homes over $750k; cheap food and slower hunger; crime ~2.5× legal with a 30% laundering cut; start with $500 cash + $2,500 bank** | Roleplay over grind. Quick real-world math. The rich pay to stay rich. See section 7 and `docs/economy.xlsx`. |
 | 2026-10-26 | **All player-facing text lives in config or locale files, not hard-coded** | Liam can write and edit dialogue and UI text without touching code. |
 
 ## 0.2 Shared server and co-owner access
@@ -169,6 +190,17 @@ Every feature we build has to support at least one of these.
 | Taxes + treasury | **Custom** | |
 | Quotas (legal and criminal) | **Custom** | |
 
+### 5.1 Rules for buying premium scripts
+1. **Play-through first.** Only buy to fill a gap we've confirmed in-game, not to replace something that already works well enough.
+2. **Buy the "hubs" before building on them.** The phone, MDT/dispatch, and housing are where our custom features plug in (goals and opportunities apps, warrants and evidence, loans and foreclosure). Pick each hub before starting the feature that depends on it.
+3. **Never buy our identity.** Goals, the NPC police and heat system, quotas, taxes, loans, warrants, and evidence get built by us.
+4. **It must say Qbox (or ox) support,** not just QBCore. ox_inventory and ox_target compatibility are required.
+5. **Prefer open source, or an "open source" version of the script.** Most paid FiveM scripts are *escrowed* (locked code). We can only change their settings and use the hooks they offer, and Claude can't read or fix the locked parts.
+6. **Must have documented exports/events** (and for the phone, a custom-app API), so our code can talk to it.
+7. **Buy with Vinny's Cfx.re account.** Escrowed scripts only run on a server whose license key belongs to the account that bought them.
+8. **Check before buying:** recent updates, an active Discord, a preview video, the performance cost (resmon), and the refund policy.
+9. **Log every purchase** (name, price, version, escrowed or open, date) in `docs/purchases.md`.
+
 ---
 
 ## 6. Roadmap
@@ -187,7 +219,8 @@ Size key: S = days, M = 1–2 weeks, L = several weeks, XL = a month or more (pa
 9. ✅ Vinny installed GitHub Desktop, VS Code, and WinSCP, downloaded the server to `C:\Users\mrgri\FiveM\server`, and connected the folder to Claude.
 10. ✅ Claude added the starter kit and moved the database string into `secrets.cfg`, and the server runs from it. The repo is published to GitHub as **private**: 3,955 files, no secrets, no nested `.git` folders.
 11. ✅ Unemployed paycheck turned off (`qbx_core/shared/jobs.lua`, logged in `docs/core-changes.md`). The Qbox console banner, chat ad, and Discord link are removed. ⏳ Next: set the server name in the Cfx.re Portal (required since Oct 21, 2026), then the clothing and weapon blacklists.
-12. ⏳ **Custom #1: `rp_goals`** is written (v1.0.0) and waiting for Vinny to upload and test it. It uses placeholder text that Liam can rewrite in `locales/en.json`.
+12. ✅ **Custom #1: `rp_goals`** v1.0.0 is live and tested: goal at creation, reminder on spawn, `/goal`, and `/goals`. It uses placeholder text that Liam can rewrite in `locales/en.json`.
+13. ⏳ **Custom #2: `rp_welcome`** replaces the chat banner, which never went away, with a welcome pop-up that fades after 20 seconds (once per session), and adds `/discord` to copy the invite. The Discord link now lives only in `server.cfg` as `setr qbx:discordLink`.
 
 **Included in the Qbox recipe (decide later whether to keep, replace, or extend):**
 - **Phone and UI:** npwd (free phone), qbx_hud, qbx_radialmenu, scully_emotemenu, playerlist, and ox_inventory with 303 items.
@@ -301,15 +334,44 @@ Size key: S = days, M = 1–2 weeks, L = several weeks, XL = a month or more (pa
 
 ---
 
-## 7. Economy map (money in and money out)
+## 7. Economy model (decided Oct 27, 2026, RP-first)
 
-**Sources (money in):** legal jobs, business revenue, criminal activity (dirty cash), and government pay for police, EMS, and judges.
+**The full price list and calculator live in `docs/economy.xlsx`.** Edit the blue cells and everything recalculates.
 
-**Sinks (money out):** fuel, taxes, rent and mortgages, loan interest, repairs, fines, bail, medical bills, licenses, and supplier costs.
+**Philosophy:** roleplay comes first. Money matters for the big things and stays out of the way for the small things. Nobody should need to grind, and nobody should get stupid rich.
 
-**Rule of thumb:** a full-time legal player should be able to cover rent, fuel, and a car loan, then save a little. Idling should slowly lose money. We tune numbers in a spreadsheet before going live.
+**The rules:**
+1. **Prices mirror the real world** (US, Oct 2026), so quick math works. For example, $1,000 covers a pistol ($650) and ammo ($15/box). The weapon license is a one-time $350.
+2. **Pay per hour of work = real hourly wage × 30.** Starter jobs pay about $510/hr, the median is about $735, police about $1,080. $1,000 is about 2 hours of starter work. **Target: a regular player works about ⅓ of their playtime**; the rest is roleplay.
+3. **The only weekly bills are rent and loan payments**, charged once every real week and **paused if the player didn't log in**. Rent is the real monthly price (studio $1,264, 1BR $1,533).
+4. **Felt when it happens, at real prices:** medical bills, fines, impound, repairs, guns, cars, homes.
+5. **Background (cheap):** fuel ($4.26/gal, about $64 a tank, a few dollars an hour) and food/drink ($2–10). **Hunger and thirst drain at about half of Qbox's default.**
+6. **Dropped:** phone bill (buy the phone once), car insurance (wrecks are a one-time repair or impound cost), utilities, sales tax (the sticker price is what you pay), and property tax or registration on normal cars and homes.
+7. **Luxury upkeep (keeps the rich in check):** cars over **$100k** pay **6%/yr** on the value above the line, and homes over **$750k** pay **2%/yr** above the line, charged 1/12 each real week. A $3M hypercar costs about $14,500/week; a $5M mansion about $7,100/week.
+8. **Crime pays about 2.5× entry pay per hour** (~$1,275/hr target), averaged over cooldowns and heat. Dirty money loses **30%** when laundered. The black market charges about 2.5× store price for guns. Fences pay 25% of retail.
+9. **New characters:** $500 cash + $2,500 bank + a free starter vehicle.
+10. **Income tax:** brackets rounded from US federal brackets ÷ 12, applied to each real week of job income. Loans use real rates (mortgage 6.86%, used car ~11%), with one payment per real week.
 
----
+**Sanity check** (Life Math tab, one real week):
+
+| Player | Week | Left over |
+|---|---|---|
+| Casual | 5 hrs played (2 working) | ~$90 |
+| Regular | 12 played (4 working), 1BR | ~$600 |
+| Dedicated | 25 played (8 working), 2BR + car loan | ~$1,850 |
+| Grinder | 25 played (20 working) | ~$8,700, held back by luxury upkeep once they buy luxury |
+| Criminal | 12 played (4 of crime) | ~$1,850 |
+| Wealthy lawyer | $250k car + $2M home | ~$2,800/week upkeep |
+
+**Implementation checklist (not done yet):**
+- `qbx_core/config/server.lua` starting money: bank 5,000 → 2,500. Also halve `hungerRate`/`thirstRate`.
+- `ox_inventory/data/shops.lua` prices. Also set `inventory:randomprices false` so prices stay predictable, and fix the shop selling the undefined `cola`.
+- Weapon license price 5,000 → 350 (`ox_inventory/data/licenses.lua`).
+- `ox_fuel/config.lua`: a full tank currently costs ~$1,000; it should be ~$64.
+- Vehicle prices from the sheet → `qbx_core/shared/vehicles.lua`. Remove the 64 flagged weaponized, arena, and sci-fi vehicles. Price boats and aircraft by hand, because Qbox's ordering there is unreliable.
+- Ammo box items, so a box sells at the box price.
+- Tune every job's per-task payout to hit its pay per hour worked.
+- Later (Phase 2): weekly rent and loan billing (paused if inactive), luxury upkeep, the tax system, laundering, and loans.
 
 ## 8. Open questions
 - Server name and brand. This also sets the code prefix for our resources. (Liam + Vinny)
