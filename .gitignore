@@ -1,0 +1,22 @@
+# ---- Secrets: NEVER commit these ----
+secrets.cfg
+nodecraft_config.cfg
+*.env
+
+# ---- Server parts we don't track ----
+cache/
+FXServer/
+servers/
+txData/
+*.log
+logs/
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/*
+!.vscode/extensions.json
+
+# ---- Build output for NUI (web UI) projects ----
+node_modules/
