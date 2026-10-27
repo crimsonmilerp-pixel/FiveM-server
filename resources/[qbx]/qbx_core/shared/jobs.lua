@@ -8,7 +8,7 @@ return {
         grades = {
             [0] = {
                 name = 'Freelancer',
-                payment = 10
+                payment = 0 -- [OUR CHANGE] was 10. No free paycheck for idling (design pillar B). See docs/core-changes.md
             },
         },
     },

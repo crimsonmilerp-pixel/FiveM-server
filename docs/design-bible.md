@@ -22,6 +22,7 @@
 | 2026-10-26 | **Host: Nodecraft, Pro "Best Performance" plan (6 GB, 24/7, static IP), East Coast, monthly billing** ($20.99 the first month, then $29.98/mo) | Managed FiveM hosting with txAdmin built in, sub-users for James, MariaDB included, and DDoS protection. OVH's US VPS stock was sold out. Pro plans upgrade in place, with prorated billing. |
 | 2026-10-26 | **Scripts: mix of premium and our own code** | Buy the systems that are huge to build but not unique (phone, MDT, housing interiors). Custom-build everything that makes us different. |
 | 2026-10-26 | **Claude sessions are Vinny's only.** Vinny and Claude do the build together, with every step explained in plain English. | Claude accounts can't be shared. James keeps his co-owner server access. |
+| 2026-10-26 | **Community Discord: discord.gg/ZjadxPYdYZ** (permanent invite). Used in the chat welcome and `qbx:discordLink`. | Qbox's built-in Discord status is off until we make our own Discord app with our art and a "Join our Discord" button. |
 | 2026-10-26 | **All player-facing text lives in config or locale files, not hard-coded** | Liam can write and edit dialogue and UI text without touching code. |
 
 ## 0.2 Shared server and co-owner access
@@ -180,8 +181,8 @@ Size key: S = days, M = 1–2 weeks, L = several weeks, XL = a month or more (pa
 7. ✅ Vinny joined and tested spawn, inventory, saving, `/car`, and `/tx`. All work, and Vinny is in `group.admin`.
 8. ✅ James co-owner access (section 0.2): Nodecraft sub-user, txAdmin admin with all permissions, and `add_principal identifier.fivem:<id> group.admin`.
 9. ✅ Vinny installed GitHub Desktop, VS Code, and WinSCP, downloaded the server to `C:\Users\mrgri\FiveM\server`, and connected the folder to Claude.
-10. ⏳ Claude added the starter kit and moved the database string into `secrets.cfg`. Next, Vinny publishes the private GitHub repo and uploads `server.cfg` + `secrets.cfg`.
-11. Turn off the unemployment paycheck, then start the clothing and weapon blacklists.
+10. ✅ Claude added the starter kit and moved the database string into `secrets.cfg`, and the server runs from it. The repo is published to GitHub as **private**: 3,955 files, no secrets, no nested `.git` folders.
+11. ✅ Unemployed paycheck turned off (`qbx_core/shared/jobs.lua`, logged in `docs/core-changes.md`). The Qbox console banner, chat ad, and Discord link are removed. ⏳ Next: set the server name in the Cfx.re Portal (required since Oct 21, 2026), then the clothing and weapon blacklists.
 12. **Custom #1: character goal fields** added to the character creation flow (S/M). This is our first real code. It needs Liam's goal-screen text (see section 9).
 
 **Included in the Qbox recipe (decide later whether to keep, replace, or extend):**
@@ -190,7 +191,8 @@ Size key: S = days, M = 1–2 weeks, L = several weeks, XL = a month or more (pa
 - **Legal jobs** (starting points for #4): bus, garbage, taxi, tow, trucker, mechanic, news, recycling, and vineyard.
 - **Crime** (starting points for #5): store, bank, house, jewelry, and truck robbery, plus drugs and weed.
 - **Services:** police, ambulance and medical, and qbx_adminmenu.
-- **Vehicles:** garages, vehicle shop, vehicle sales, customs, keys, and carwash.
+- **Vehicles:** garages, vehicle shop, vehicle sales, customs, keys, carwash, **ox_fuel** (base for #2), and vehiclehandler.
+- **Other:** Renewed-Banking (the bank our loans and taxes will plug into), illenium-appearance (clothing, where the blacklist goes), ox_doorlock, and minigames (mhacking, safecracker, ultra-voltlab).
 - **Housing:** qbx_properties is present, but its `properties` table is missing. We'll decide on housing in Phase 2.
 
 **Known harmless startup warnings:**

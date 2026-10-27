@@ -52,7 +52,7 @@ return {
     },
 
     discord = {
-        enabled = true, -- This will enable or disable the built in discord rich presence.
+        enabled = false, -- [OUR CHANGE] was true. Off until we make our own Discord app (it advertised Qbox). See docs/core-changes.md
 
         richPresence = 'Players {currentPlayers}/{maxPlayers}', -- Rich presence text. Placeholders: {id}, {charName}, {playerName}, {currentPlayers}, {maxPlayers}, {streetName}
 
