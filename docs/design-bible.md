@@ -363,13 +363,13 @@ Size key: S = days, M = 1–2 weeks, L = several weeks, XL = a month or more (pa
 | Criminal | 12 played (4 of crime) | ~$1,850 |
 | Wealthy lawyer | $250k car + $2M home | ~$2,800/week upkeep |
 
-**Implementation checklist (not done yet):**
-- `qbx_core/config/server.lua` starting money: bank 5,000 → 2,500. Also halve `hungerRate`/`thirstRate`.
-- `ox_inventory/data/shops.lua` prices. Also set `inventory:randomprices false` so prices stay predictable, and fix the shop selling the undefined `cola`.
-- Weapon license price 5,000 → 350 (`ox_inventory/data/licenses.lua`).
-- `ox_fuel/config.lua`: a full tank currently costs ~$1,000; it should be ~$64.
-- Vehicle prices from the sheet → `qbx_core/shared/vehicles.lua`. Remove the 64 flagged weaponized, arena, and sci-fi vehicles. Price boats and aircraft by hand, because Qbox's ordering there is unreliable.
-- Ammo box items, so a box sells at the box price.
+**Implementation checklist:**
+- ✅ (Oct 27) Starting bank 2,500, hunger/thirst at half speed (`qbx_core/config/server.lua`).
+- ✅ (Oct 27) Store prices set to real-world (`ox_inventory/data/shops.lua`). Random price swings are off (`ox.cfg`), `cola` is fixed to `sprunk`, more items are stocked, and ammo is **$1/round** (simple quick math; ammo boxes optional later).
+- ✅ (Oct 27) Weapon license 350 (`ox_inventory/data/licenses.lua`).
+- ✅ (Oct 27) Fuel ~$67 a tank, petrol can $35, refill $21 (`ox_fuel/config.lua`).
+- Not yet: police armory and EMS medicine cabinet prices (department gear, still to decide).
+- Not yet: vehicle prices from the sheet → `qbx_core/shared/vehicles.lua`. Remove the 64 flagged weaponized, arena, and sci-fi vehicles. Price boats and aircraft by hand, because Qbox's ordering there is unreliable.
 - Tune every job's per-task payout to hit its pay per hour worked.
 - Later (Phase 2): weekly rent and loan billing (paused if inactive), luxury upkeep, the tax system, laundering, and loans.
 

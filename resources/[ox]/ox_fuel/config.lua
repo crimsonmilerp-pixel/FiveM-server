@@ -19,13 +19,13 @@ return {
 	-- Total duration (ex. 10% missing fuel): 10 / 0.25 * 250 = 10 seconds
 
 	-- Fuel refill value (every 250msec add 0.25%)
-	refillValue = 0.50,
+	refillValue = 1.5, -- [OUR CHANGE] was 0.50. With priceTick 1: about $0.67 per 1% = ~$67 a full tank (real: 15 gal x $4.26).
 
 	-- Fuel tick time (every 250 msec)
 	refillTick = 250,
 
 	-- Fuel cost (Added once every tick)
-	priceTick = 5,
+	priceTick = 1, -- [OUR CHANGE] was 5 (a full tank cost ~$1,000). Must stay a whole number.
 
 	-- Can durability loss per refillTick
 	durabilityTick = 1.3,
@@ -34,8 +34,8 @@ return {
 	petrolCan = {
 		enabled = true,
 		duration = 5000,
-		price = 1000,
-		refillPrice = 800,
+		price = 35, -- [OUR CHANGE] was 1000. Real 5-gallon can.
+		refillPrice = 21, -- [OUR CHANGE] was 800. 5 gallons of gas.
 	},
 
 	---Modifies the fuel consumption rate of all vehicles - see [`SET_FUEL_CONSUMPTION_RATE_MULTIPLIER`](https://docs.fivem.net/natives/?_0x845F3E5C).

@@ -4,9 +4,17 @@ return {
 		blip = {
 			id = 59, colour = 69, scale = 0.8
 		}, inventory = {
-			{ name = 'burger', price = 10 },
-			{ name = 'water', price = 10 },
-			{ name = 'cola', price = 10 },
+			-- [OUR CHANGE] Real-world prices (docs/economy.xlsx). Whole dollars only.
+			{ name = 'water', price = 2 },
+			{ name = 'sprunk', price = 3 }, -- was 'cola', which isn't a defined item
+			{ name = 'coffee', price = 4 },
+			{ name = 'sandwich', price = 7 },
+			{ name = 'burger', price = 8 },
+			{ name = 'bandage', price = 6 },
+			{ name = 'painkillers', price = 12 },
+			{ name = 'firstaid', price = 30 },
+			{ name = 'lighter', price = 2 },
+			{ name = 'rolling_paper', price = 3 },
 		}, locations = {
 			vec3(25.7, -1347.3, 29.49),
 			vec3(-3038.71, 585.9, 7.9),
@@ -37,9 +45,13 @@ return {
 		blip = {
 			id = 93, colour = 69, scale = 0.8
 		}, inventory = {
-			{ name = 'water', price = 10 },
-			{ name = 'cola', price = 10 },
-			{ name = 'burger', price = 15 },
+			-- [OUR CHANGE] Real-world prices (docs/economy.xlsx).
+			{ name = 'water', price = 2 },
+			{ name = 'sprunk', price = 3 },
+			{ name = 'beer', price = 3 },
+			{ name = 'wine', price = 15 },
+			{ name = 'vodka', price = 20 },
+			{ name = 'whiskey', price = 30 },
 		}, locations = {
 			vec3(1135.808, -982.281, 46.415),
 			vec3(-1222.915, -906.983, 12.326),
@@ -63,7 +75,24 @@ return {
 		blip = {
 			id = 402, colour = 69, scale = 0.8
 		}, inventory = {
-			{ name = 'lockpick', price = 10 }
+			-- [OUR CHANGE] Real-world hardware store prices (docs/economy.xlsx).
+			{ name = 'lockpick', price = 30 },
+			{ name = 'screwdriverset', price = 25 },
+			{ name = 'cleaningkit', price = 20 },
+			{ name = 'repairkit', price = 150 },
+			{ name = 'advancedrepairkit', price = 450 },
+			{ name = 'electronickit', price = 90 },
+			{ name = 'drill', price = 180 },
+			{ name = 'binoculars', price = 120 },
+			{ name = 'radio', price = 150 },
+			{ name = 'radiocell', price = 8 },
+			{ name = 'WEAPON_HAMMER', price = 20 },
+			{ name = 'WEAPON_CROWBAR', price = 25 },
+			{ name = 'WEAPON_WRENCH', price = 20 },
+			{ name = 'WEAPON_HATCHET', price = 35 },
+			{ name = 'WEAPON_MACHETE', price = 40 },
+			{ name = 'WEAPON_FLASHLIGHT', price = 40 },
+			{ name = 'WEAPON_FIREEXTINGUISHER', price = 60 },
 		}, locations = {
 			vec3(2748.0, 3473.0, 55.67),
 			vec3(342.99, -1298.26, 32.51)
@@ -77,10 +106,20 @@ return {
 		blip = {
 			id = 110, colour = 69, scale = 0.8
 		}, inventory = {
-			{ name = 'ammo-9', price = 5, },
-			{ name = 'WEAPON_KNIFE', price = 200 },
-			{ name = 'WEAPON_BAT', price = 100 },
-			{ name = 'WEAPON_PISTOL', price = 1000, metadata = { registered = true }, license = 'weapon' }
+			-- [OUR CHANGE] Real-world gun store prices (docs/economy.xlsx). Guns need a weapon license and come registered.
+			-- Ammo is sold per round at $1 (simple quick math; real 9mm is ~$0.30/round). Ammo boxes may come later.
+			{ name = 'ammo-9', price = 1 },
+			{ name = 'ammo-45', price = 1 },
+			{ name = 'ammo-shotgun', price = 1 },
+			{ name = 'WEAPON_KNIFE', price = 40 },
+			{ name = 'WEAPON_BAT', price = 50 },
+			{ name = 'WEAPON_STUNGUN', price = 450 },
+			{ name = 'armour', price = 650 },
+			{ name = 'WEAPON_SNSPISTOL', price = 400, metadata = { registered = true }, license = 'weapon' },
+			{ name = 'WEAPON_PISTOL', price = 650, metadata = { registered = true }, license = 'weapon' },
+			{ name = 'WEAPON_COMBATPISTOL', price = 700, metadata = { registered = true }, license = 'weapon' },
+			{ name = 'WEAPON_HEAVYPISTOL', price = 900, metadata = { registered = true }, license = 'weapon' },
+			{ name = 'WEAPON_PUMPSHOTGUN', price = 500, metadata = { registered = true }, license = 'weapon' },
 		}, locations = {
 			vec3(-662.180, -934.961, 21.829),
 			vec3(810.25, -2157.60, 29.62),
@@ -144,11 +183,17 @@ return {
 	BlackMarketArms = {
 		name = 'Black Market (Arms)',
 		inventory = {
-			{ name = 'WEAPON_DAGGER', price = 5000, metadata = { registered = false	}, currency = 'black_money' },
-			{ name = 'WEAPON_CERAMICPISTOL', price = 50000, metadata = { registered = false }, currency = 'black_money' },
-			{ name = 'at_suppressor_light', price = 50000, currency = 'black_money' },
-			{ name = 'ammo-rifle', price = 1000, currency = 'black_money' },
-			{ name = 'ammo-rifle2', price = 1000, currency = 'black_money' }
+			-- [OUR CHANGE] About 2.5x store price, paid in dirty money, no serial (docs/economy.xlsx).
+			{ name = 'WEAPON_SWITCHBLADE', price = 100, currency = 'black_money' },
+			{ name = 'WEAPON_KNUCKLE', price = 60, currency = 'black_money' },
+			{ name = 'WEAPON_PISTOL', price = 1650, metadata = { registered = false }, currency = 'black_money' },
+			{ name = 'WEAPON_SAWNOFFSHOTGUN', price = 1500, metadata = { registered = false }, currency = 'black_money' },
+			{ name = 'WEAPON_CERAMICPISTOL', price = 5000, metadata = { registered = false }, currency = 'black_money' },
+			{ name = 'at_suppressor_light', price = 4000, currency = 'black_money' },
+			{ name = 'ammo-9', price = 3, currency = 'black_money' },
+			{ name = 'ammo-shotgun', price = 3, currency = 'black_money' },
+			{ name = 'ammo-rifle', price = 2, currency = 'black_money' },
+			{ name = 'ammo-rifle2', price = 2, currency = 'black_money' },
 		}, locations = {
 			vec3(309.09, -913.75, 56.46)
 		}, targets = {
@@ -159,8 +204,9 @@ return {
 	VendingMachineDrinks = {
 		name = 'Vending Machine',
 		inventory = {
-			{ name = 'water', price = 10 },
-			{ name = 'cola', price = 10 },
+			-- [OUR CHANGE] Real-world prices.
+			{ name = 'water', price = 2 },
+			{ name = 'sprunk', price = 3 },
 		},
 		model = {
 			`prop_vend_soda_02`, `prop_vend_fridge01`, `prop_vend_water_01`, `prop_vend_soda_01`
