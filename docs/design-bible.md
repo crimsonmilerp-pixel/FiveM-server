@@ -45,6 +45,7 @@
 | 2026-10-26 | **Goal system:** a required goal right after character creation, with no rewards or milestones, view-only for staff, changeable once every 7 days. Public server for now; a Discord-application whitelist comes later. | It gives every player a reason to move, and keeping it simple keeps it low-friction while we build a player base. |
 | 2026-10-26 | **Phone: LB Phone (lifetime license, official store lbscripts.com only)**, replacing the free npwd | The most widely recommended FiveM phone, with Qbox support (auto-detected), strong performance reports, and a custom-app API with a React/TS template for our goals, opportunities, and loan apps. Escrowed, so we can't edit its code, only its config, open files, and exports. Needs MariaDB 10.11+ (we have 12.3.3) and an upload service such as Fivemanage for photos. Bought on Vinny's Cfx.re account. |
 | 2026-10-27 | **Economy (RP-first): real-world prices; pay = real wage × 30 per hour worked (a regular player works ~⅓ of playtime); only rent and loans are weekly bills (paused if inactive); small bills dropped; luxury upkeep on cars over $100k and homes over $750k; cheap food and slower hunger; crime ~2.5× legal with a 30% laundering cut; start with $500 cash + $2,500 bank** | Roleplay over grind. Quick real-world math. The rich pay to stay rich. See section 7 and `docs/economy.xlsx`. |
+| 2026-10-27 | **Vehicles: keep realistic ones only. No weaponized or armored vehicles, period** (152 removed and blocked, including the police Riot/RCV). **Police cars match or slightly beat most civilian cars:** speed limits by class (police 125 mph; sports 120, muscle 115, sedans 105; only supercars at 130) plus a small boost for emergency vehicles (`rp_vehicles`) | Grounded world (Pillar C), with fair chases. Values to be tuned after test drives. |
 | 2026-10-26 | **All player-facing text lives in config or locale files, not hard-coded** | Liam can write and edit dialogue and UI text without touching code. |
 
 ## 0.2 Shared server and co-owner access
@@ -251,7 +252,7 @@ Size key: S = days, M = 1–2 weeks, L = several weeks, XL = a month or more (pa
   - Fuel prices include tax, which feeds the treasury.
   - Optional later: fuel delivery job, station ownership, and fuel quotas.
 - **Vehicle balance (#7)**: M
-  - Speed caps per class (handling `fInitialDriveMaxFlatVel` plus a script-enforced max).
+  - ⏳ Speed caps per class: a first pass is live via `rp_vehicles` (script-enforced max, police edge). Next: tune after test drives.
   - Rebalanced acceleration and braking.
   - More realistic traction and weight.
   - Documented class tiers.
@@ -369,7 +370,8 @@ Size key: S = days, M = 1–2 weeks, L = several weeks, XL = a month or more (pa
 - ✅ (Oct 27) Weapon license 350 (`ox_inventory/data/licenses.lua`).
 - ✅ (Oct 27) Fuel ~$67 a tank, petrol can $35, refill $21 (`ox_fuel/config.lua`).
 - Not yet: police armory and EMS medicine cabinet prices (department gear, still to decide).
-- Not yet: vehicle prices from the sheet → `qbx_core/shared/vehicles.lua`. Remove the 64 flagged weaponized, arena, and sci-fi vehicles. Price boats and aircraft by hand, because Qbox's ordering there is unreliable.
+- ✅ (Oct 27) Vehicle prices from the sheet → `qbx_core/shared/vehicles.lua` (692 repriced). Boats and aircraft are hand-priced. **152 weaponized, armored, military, arena, and sci-fi vehicles removed and blocked from spawning anywhere** (`rp_vehicles`).
+- Note: sports and super cars aren't sold anywhere yet, because Qbox's luxury dealership is commented out in `qbx_vehicleshop/config/shared.lua`. Qbox also has built-in dealership financing (10% down, 24 payments) to consider for Phase 2 loans.
 - Tune every job's per-task payout to hit its pay per hour worked.
 - Later (Phase 2): weekly rent and loan billing (paused if inactive), luxury upkeep, the tax system, laundering, and loans.
 

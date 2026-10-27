@@ -219,6 +219,8 @@ return {
             'police2',
             'police3',
             'police4',
+            'predator', -- [OUR CHANGE] police boat, not for sale
+            'polmav', -- [OUR CHANGE] police helicopter, not for sale
         }
     },
 
