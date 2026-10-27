@@ -1,0 +1,77 @@
+{
+  "_note": "All text players see for rp_goals. Edit the words on the right side only. Keep every %s: the game fills those in. Use \\n for a new line. **bold** and - lists work in the big pop-ups.",
+  "category": {
+    "legal": "Legal career",
+    "criminal": "Criminal empire",
+    "service": "Public service",
+    "personal": "Personal story"
+  },
+  "intro": {
+    "header": "Every character here has a goal",
+    "content": "Before you hit the streets, decide what your character is working toward.\n\nKeep it **simple** and **actionable**: something you can start on in your very first session. This is a commitment. It's the reason your character gets out of bed in the morning.\n\n**Good goals**\n- Open my own mechanic shop\n- Make detective in the police department\n- Become the biggest weed supplier in Blaine County\n- Pay off my debts and buy a house for my family\n\n**Not goals**\n- Have fun\n- Get rich\n- idk\n\nStaff can see your goal and may build stories around it. You can change it once every %s days.",
+    "button": "Write my goal"
+  },
+  "form": {
+    "header": "Your character's goal",
+    "category_label": "What kind of goal is it?",
+    "category_desc": "Pick the one that fits best.",
+    "goal_label": "Your goal",
+    "goal_desc": "One clear sentence. What does your character want to achieve?",
+    "goal_placeholder": "Open my own mechanic shop",
+    "reason_label": "Why do they want it?",
+    "reason_desc": "A sentence or two. This is what drives your roleplay.",
+    "reason_placeholder": "My dad ran a garage until the bank took it. I want to build one nobody can take from me.",
+    "step_label": "Your first step",
+    "step_desc": "What will you do in your first session to move toward it?",
+    "step_placeholder": "Get a job at a garage and learn the trade"
+  },
+  "confirm": {
+    "header": "Commit to this goal?",
+    "content": "**Type:** %s\n\n**Goal:** %s\n\n**Why:** %s\n\n**First step:** %s\n\nOnce you commit, you can't change it for %s days.",
+    "yes": "I commit",
+    "edit": "Edit"
+  },
+  "done": {
+    "title": "Goal set",
+    "changed_title": "Goal changed",
+    "description": "First step: %s. Go make it happen."
+  },
+  "reminder": {
+    "title": "Your goal",
+    "description": "%s\n\nType /goal to see the details."
+  },
+  "mine": {
+    "title": "Your goal",
+    "why": "Why",
+    "first_step": "First step",
+    "set_on": "Set on",
+    "change": "Change my goal",
+    "change_desc": "After changing, you'll have to wait %s days to change it again.",
+    "change_locked": "You can change your goal again in %s day(s)."
+  },
+  "staff": {
+    "title": "Goals of players online (%s)",
+    "row_title": "%s (ID %s)",
+    "no_goal": "No goal yet (probably still in character creation)",
+    "detail_header": "%s (%s)",
+    "detail_content": "**Type:** %s\n\n**Goal:** %s\n\n**Why:** %s\n\n**First step:** %s\n\n**Set on:** %s\n\n**Times changed:** %s",
+    "empty": "Nobody is online."
+  },
+  "error": {
+    "title": "Not quite",
+    "pick_category": "Pick what kind of goal it is.",
+    "goal_short": "Your goal needs a bit more detail (at least %s characters).",
+    "reason_short": "Tell us a bit more about why (at least %s characters).",
+    "step_short": "Describe your first step in a bit more detail (at least %s characters).",
+    "too_long": "One of your answers is too long. Trim it down a little.",
+    "cooldown": "You can change your goal again in %s day(s).",
+    "slow_down": "Give it a second and try again.",
+    "save_failed": "Couldn't save your goal. Try again in a moment.",
+    "already_set": "This character already has a goal.",
+    "no_permission": "You don't have access to that."
+  },
+  "command": {
+    "goal_help": "View your character's goal",
+    "goals_help": "Staff: see the goals of everyone online"
+  }
+}

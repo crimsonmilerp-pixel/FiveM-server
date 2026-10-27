@@ -23,6 +23,7 @@
 | 2026-10-26 | **Scripts: mix of premium and our own code** | Buy the systems that are huge to build but not unique (phone, MDT, housing interiors). Custom-build everything that makes us different. |
 | 2026-10-26 | **Claude sessions are Vinny's only.** Vinny and Claude do the build together, with every step explained in plain English. | Claude accounts can't be shared. James keeps his co-owner server access. |
 | 2026-10-26 | **Community Discord: discord.gg/ZjadxPYdYZ** (permanent invite). Used in the chat welcome and `qbx:discordLink`. | Qbox's built-in Discord status is off until we make our own Discord app with our art and a "Join our Discord" button. |
+| 2026-10-26 | **Goal system:** a required goal right after character creation, with no rewards or milestones, view-only for staff, changeable once every 7 days. Public server for now; a Discord-application whitelist comes later. | It gives every player a reason to move, and keeping it simple keeps it low-friction while we build a player base. |
 | 2026-10-26 | **All player-facing text lives in config or locale files, not hard-coded** | Liam can write and edit dialogue and UI text without touching code. |
 
 ## 0.2 Shared server and co-owner access
@@ -56,7 +57,8 @@
 **Working with Claude:**
 - This Claude account and project are Vinny's only, as Anthropic's terms require. If the team ever wants shared Claude access, a Team plan gives each person their own seat.
 - A copy of this design bible lives in the repo at `docs/design-bible.md`, so anyone with repo access can see the plan.
-- Claude writes files directly into Vinny's local repo folder (once that folder is connected). Vinny reviews them, commits in GitHub Desktop, and uploads over SFTP.
+- Claude writes files directly into Vinny's local repo folder. Vinny reviews them, commits in GitHub Desktop, and uploads with WinSCP.
+- **Every time Claude changes files, it ends with a simple upload checklist:** for each file, the folders to double-click in WinSCP (the same path on both sides, starting from the `server` folder on the left and `/` on the right), then "drag → Yes", then which restart is needed. No long paths or tables. `docs/` files are never uploaded.
 
 ---
 
@@ -76,12 +78,14 @@ What we're fixing in typical FiveM servers:
 Every feature we build has to support at least one of these.
 
 ### Pillar A: Goal-driven characters
-- **At character creation, a goal is required.** Fields: *Goal* (free text, minimum length), *Category* (Legal career / Criminal empire / Public service / Personal story), *Why does your character want this?*, and *First step*.
-- **Goal journal** (a phone app or `/goal`): the player breaks the goal into 3 to 5 milestones and checks them off.
-- **Staff "story team" view**: an admin panel that lists every character's goal and progress, so staff can create hooks. For example, a character who wants to open a restaurant gets approached by a supplier.
-- **Momentum rewards**: completing milestones gives small non-cash perks such as reputation, unlocks, or a business license discount.
-- **Goals can change**, but at most once every N weeks, with an in-character reason. A completed goal prompts the player to set a new one.
-- **Weekly check-in prompt**: "What did you do toward your goal this week?"
+- **Right after a character is created** (once the clothing editor closes), the player must commit to a **simple, actionable goal** before they can move. They can't skip it.
+- **Fields:** *Type* (Legal career / Criminal empire / Public service / Personal story), *Goal* (one sentence), *Why they want it*, and *First step* (what they'll do in their first session).
+- **Commitment moment:** an explanation with good and bad examples, then a "Commit to this goal?" check with **I commit** or **Edit**.
+- **No rewards and no milestones.** The goal isn't a quest log. It exists so the character has a reason to move.
+- **Reminder on every spawn**, and `/goal` to view it. A character can change their goal once every 7 days, and old goals are kept in history.
+- **Staff can view only** (`/goals` lists everyone online). There's no approval step, because approvals would make players wait.
+- **Later, once the server is big:** move to a whitelist, with the goal included in a **Discord application**.
+- **Built as `rp_goals`** in `resources/[custom]`. All text is in `locales/en.json` for Liam.
 
 ### Pillar B: Never a reason to stand still
 - **No "minimum cops online" rules.** If no player cops respond, **NPC police respond instead**, so crime is always possible. This is the most important single idea in the design.
@@ -183,7 +187,7 @@ Size key: S = days, M = 1–2 weeks, L = several weeks, XL = a month or more (pa
 9. ✅ Vinny installed GitHub Desktop, VS Code, and WinSCP, downloaded the server to `C:\Users\mrgri\FiveM\server`, and connected the folder to Claude.
 10. ✅ Claude added the starter kit and moved the database string into `secrets.cfg`, and the server runs from it. The repo is published to GitHub as **private**: 3,955 files, no secrets, no nested `.git` folders.
 11. ✅ Unemployed paycheck turned off (`qbx_core/shared/jobs.lua`, logged in `docs/core-changes.md`). The Qbox console banner, chat ad, and Discord link are removed. ⏳ Next: set the server name in the Cfx.re Portal (required since Oct 21, 2026), then the clothing and weapon blacklists.
-12. **Custom #1: character goal fields** added to the character creation flow (S/M). This is our first real code. It needs Liam's goal-screen text (see section 9).
+12. ⏳ **Custom #1: `rp_goals`** is written (v1.0.0) and waiting for Vinny to upload and test it. It uses placeholder text that Liam can rewrite in `locales/en.json`.
 
 **Included in the Qbox recipe (decide later whether to keep, replace, or extend):**
 - **Phone and UI:** npwd (free phone), qbx_hud, qbx_radialmenu, scully_emotemenu, playerlist, and ox_inventory with 303 items.
