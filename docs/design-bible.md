@@ -6,11 +6,11 @@
 
 ## ▶ Where we left off (end of Oct 27, 2026 session)
 
-**Live on the server:** Qbox, MariaDB 12.3.3, Vinny's permanent admin, secrets in `secrets.cfg`, Qbox ads removed, Discord link, **rp_goals**, **rp_welcome**, **economy v2** (real prices, fuel, start money, slower hunger, weapon license), **vehicles** (real prices, 152 removed and blocked, speed caps via **rp_vehicles**, tested), and **job pay** (Oct 27, waiting on Vinny's upload and test).
+**Live on the server:** Qbox, MariaDB 12.3.3, Vinny's permanent admin, secrets in `secrets.cfg`, Qbox ads removed, Discord link, **rp_goals**, **rp_welcome**, **economy v2** (real prices, fuel, start money, slower hunger, weapon license), **vehicles** (real prices, 152 removed and blocked, speed caps via **rp_vehicles**, tested), **job pay** (Oct 27), **rp_buyers** and the **job cuts** (Oct 27, waiting on Vinny's upload and test).
 
 **Next session, in order:**
-1. Vinny confirms the job pay test (garbage route, taxi fare, trucker run, tow, police clock-in). Retune any job that's far off.
-2. **rp_buyers**: a buyer NPC for wine and recycled materials, so vineyard and recycling pay.
+1. Vinny tests `rp_buyers` (Scrap Buyer at the scrap yard, Wine Buyer at the vineyard): both stand in a sensible spot (move with `/buyerhere` if not) and selling works.
+2. **Job moments**, starting with garbage and taxi (needs Vinny's go-ahead).
 3. Then: luxury dealership, Pillar C clothing cleanup, LB Phone once bought, and the play-through checklist.
 
 **Loose ends:**
@@ -46,7 +46,8 @@
 | 2026-10-26 | **Phone: LB Phone (lifetime license, official store lbscripts.com only)**, replacing the free npwd | The most widely recommended FiveM phone, with Qbox support (auto-detected), strong performance reports, and a custom-app API with a React/TS template for our goals, opportunities, and loan apps. Escrowed, so we can't edit its code, only its config, open files, and exports. Needs MariaDB 10.11+ (we have 12.3.3) and an upload service such as Fivemanage for photos. Bought on Vinny's Cfx.re account. |
 | 2026-10-27 | **Economy (RP-first): real-world prices; pay = real wage × 30 per hour worked (a regular player works ~⅓ of playtime); only rent and loans are weekly bills (paused if inactive); small bills dropped; luxury upkeep on cars over $100k and homes over $750k; cheap food and slower hunger; crime ~2.5× legal with a 30% laundering cut; start with $500 cash + $2,500 bank** | Roleplay over grind. Quick real-world math. The rich pay to stay rich. See section 7 and `docs/economy.xlsx`. |
 | 2026-10-27 | **Vehicles: keep realistic ones only. No weaponized or armored vehicles, period** (152 removed and blocked, including the police Riot/RCV). **Police cars match or slightly beat most civilian cars:** speed limits by class (police 125 mph; sports 120, muscle 115, sedans 105; only supercars at 130) plus a small boost for emergency vehicles (`rp_vehicles`) | Grounded world (Pillar C), with fair chases. Values to be tuned after test drives. |
-| 2026-10-27 | **Job pay: you only get paid while working.** Task jobs (taxi, bus, trucker, tow, garbage) have no paycheck and pay per fare, stop, box, or bag. Police, EMS, and mechanics start **off duty** and are paid every 10 minutes only after clocking in. Car dealers earn 2.5% commission. Jobs anyone can take with no clock-in (reporter) get no paycheck | Pillar B: no money for standing around. Payouts are first estimates aimed at real wage × 30 per hour, to be checked in play. |
+| 2026-10-27 | **Job pay: you only get paid while working.** Task jobs (taxi, trucker, tow, garbage) have no paycheck and pay per fare, box, tow, or bag. Police, EMS, and mechanics start **off duty** and are paid every 10 minutes only after clocking in. Car dealers earn 2.5% commission. Jobs anyone can take with no clock-in (reporter) get no paycheck | Pillar B: no money for standing around. Payouts are first estimates aimed at real wage × 30 per hour, to be checked in play. |
+| 2026-10-27 | **Fewer jobs, all RP-first.** Cut: bus (nobody rides NPC buses), recycling (it teleports you into a sealed warehouse where no one can run into you), and hot dog (no script). Police stays as is (LSPD, BCSO, SASP). Every job should leave room for RP: **real player calls before NPC work**, **job moments** (now and then a small event with a choice that leads into police, detective, or crime RP), and a **crew bonus** for working together | A small player base spread across fewer jobs means people run into each other, and that's where roleplay starts. |
 | 2026-10-26 | **All player-facing text lives in config or locale files, not hard-coded** | Liam can write and edit dialogue and UI text without touching code. |
 
 ## 0.2 Shared server and co-owner access
@@ -222,12 +223,14 @@ Size key: S = days, M = 1–2 weeks, L = several weeks, XL = a month or more (pa
 10. ✅ Claude added the starter kit and moved the database string into `secrets.cfg`, and the server runs from it. The repo is published to GitHub as **private**: 3,955 files, no secrets, no nested `.git` folders.
 11. ✅ Unemployed paycheck turned off (`qbx_core/shared/jobs.lua`, logged in `docs/core-changes.md`). The Qbox console banner, chat ad, and Discord link are removed. ⏳ Next: set the server name in the Cfx.re Portal (required since Oct 21, 2026), then the clothing and weapon blacklists.
 12. ✅ **Custom #1: `rp_goals`** v1.0.0 is live and tested: goal at creation, reminder on spawn, `/goal`, and `/goals`. It uses placeholder text that Liam can rewrite in `locales/en.json`.
-13. ⏳ **Custom #2: `rp_welcome`** replaces the chat banner, which never went away, with a welcome pop-up that fades after 20 seconds (once per session), and adds `/discord` to copy the invite. The Discord link now lives only in `server.cfg` as `setr qbx:discordLink`.
+13. ✅ **Custom #2: `rp_welcome`** replaces the chat banner, which never went away, with a welcome pop-up that fades after 20 seconds (once per session), and adds `/discord` to copy the invite. The Discord link now lives only in `server.cfg` as `setr qbx:discordLink`.
+14. ✅ **Custom #3: `rp_vehicles`**: speed caps per class, police speed edge, and the block on 152 weaponized/armored/military vehicles. Tested Oct 27.
+15. ⏳ **Custom #4: `rp_buyers`** (Oct 27): NPC buyers for legal goods. A Scrap Buyer at the Sandy Shores scrap yard, for materials from scrapping cars (real scrap prices: copper $4.70/lb, aluminum $0.60, steel/iron/plastic $0.10, glass/rubber $0.05) and a Wine Buyer at the vineyard marker (wine $6, juice $1.50). Paid in cash. Staff can move a buyer with `/buyerhere`. Waiting on Vinny's upload and test.
 
 **Included in the Qbox recipe (decide later whether to keep, replace, or extend):**
 - **Phone and UI:** npwd (free phone), qbx_hud, qbx_radialmenu, scully_emotemenu, playerlist, and ox_inventory with 303 items.
 - **Prison:** xt-prison, a starting point for #6.
-- **Legal jobs** (starting points for #4): bus, garbage, taxi, tow, trucker, mechanic, news, recycling, and vineyard.
+- **Legal jobs** (starting points for #4): garbage, taxi, tow, trucker, mechanic, news, car dealer, plus vineyard and diving as side gigs anyone can do. Bus and recycling are cut (disabled in `resources/[disabled]`), and hot dog is removed.
 - **Crime** (starting points for #5): store, bank, house, jewelry, and truck robbery, plus drugs and weed.
 - **Services:** police, ambulance and medical, and qbx_adminmenu.
 - **Vehicles:** garages, vehicle shop, vehicle sales, customs, keys, carwash, **ox_fuel** (base for #2), and vehiclehandler.
@@ -260,6 +263,10 @@ Size key: S = days, M = 1–2 weeks, L = several weeks, XL = a month or more (pa
 - **Legal jobs, first wave (#4)**: L
   - Delivery, Taxi (NPC fares), Mechanic (NPC tow-ins), Garbage, and Construction.
   - Each job has levels, uses a work vehicle, pays per task (taxed), and posts to the opportunities feed.
+  - **RP-first jobs** (decided Oct 27):
+    - **Players before NPCs:** a real player's call for a cab, tow, or mechanic jumps ahead of NPC work. NPC work only fills the gaps.
+    - **Job moments:** now and then (around 1 task in 10), a small event hands the worker a choice. Garbage: a bag with a pistol and a bloody shirt (turn it in to police, which gives the detective a case, or keep it). Taxi: "follow that car," or "wait out front, I'll be two minutes." Tow: something hidden in the trunk. Trucker: an extra package someone comes asking about later. Pay stays the same on average.
+    - **Crew bonus:** 2–4 people working one route each earn a bit more than working alone.
   - **Repo Agent** and **Tow Driver** jobs come later and connect to loans.
 
 ### Phase 2: Economy backbone
@@ -374,7 +381,7 @@ Size key: S = days, M = 1–2 weeks, L = several weeks, XL = a month or more (pa
 - ✅ (Oct 27) Vehicle prices from the sheet → `qbx_core/shared/vehicles.lua` (692 repriced). Boats and aircraft are hand-priced. **152 weaponized, armored, military, arena, and sci-fi vehicles removed and blocked from spawning anywhere** (`rp_vehicles`).
 - Note: sports and super cars aren't sold anywhere yet, because Qbox's luxury dealership is commented out in `qbx_vehicleshop/config/shared.lua`. Qbox also has built-in dealership financing (10% down, 24 payments) to consider for Phase 2 loans.
 - ✅ (Oct 27) **Job pay** (see the Jobs & Pay tab and `docs/core-changes.md`). Paychecks only for clocked-in police ($900–1,620/hr), EMS ($600–1,500/hr), and mechanics ($300–480/hr base + customers). Taxi $5 + $15/mile, garbage $6–9/bag, trucker $22–28/box, tow $80–95/tow, bus unchanged ($15–25/stop), coral $16–22 / $11–15, car dealer commission 2.5%. The useless cryptostick rewards are off. ⏳ Check each job's real hourly in play and retune.
-- ⏳ **Vineyard and recycling don't pay yet**: nothing in the city buys wine or recycled materials. Next: a simple buyer NPC (`rp_buyers`) priced so an hour lands on ~$510.
+- ✅ (Oct 27) **The vineyard pays** through `rp_buyers` (see section 6, Phase 0, item 15): grape picking gives 1–2 grapes (was 8–12), about 90 bottles of wine an hour ≈ $540. Scrap from the scrap yard sells at real prices to the Scrap Buyer. The recycling job was cut the same day.
 - Later: reporter pay per story; judge clock-in at the courthouse (Phase 3); the trucker/tow 15% "tax" gets replaced by the real tax system (Phase 2).
 - Later (Phase 2): weekly rent and loan billing (paused if inactive), luxury upkeep, the tax system, laundering, and loans.
 

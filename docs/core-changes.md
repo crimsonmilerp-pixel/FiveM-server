@@ -21,3 +21,8 @@ Any edit to a resource we didn't write (Qbox, ox_*, npwd, etc.) gets logged here
 | 2026-10-27 | qbx_towjob | `server/main.lua` | Per tow `random(150,170)` → **`random(80,95)`** | ~$660/hr | Claude |
 | 2026-10-27 | qbx_vehicleshop | `config/server.lua` | `commissionRate` 0.1 → **0.025** | 2.5% = $750 on a $30k car | Claude |
 | 2026-10-27 | qbx_diving | `config/server.lua` | Coral prices $70–100 / $50–70 → **$16–22 / $11–15** | ~$720/hr | Claude |
+| 2026-10-27 | qbx_recyclejob | `config/server.lua` | `maxItemsReceived` 5 → 3, `maxItemReceivedQty` 6 → 4, `chanceItem` cryptostick → copper | Materials now sell at real scrap prices (rp_buyers); ~$510/hr | Claude |
+| 2026-10-27 | qbx_vineyard | `config/server.lua` | `grapeAmount` 8–12 → **1–2** per pick | Wine sells for $6 (rp_buyers); ~90 bottles ≈ $540/hr | Claude |
+| 2026-10-27 | qbx_busjob, qbx_recyclejob | (whole resource) | **Disabled**: folders moved to `resources/[disabled]` so they don't start. Move a folder back into `[qbx]` to bring a job back | Jobs cut: nobody rides NPC buses, and recycling teleports you into a sealed warehouse where no one can run into you (RP-first jobs) | Claude + Vinny |
+| 2026-10-27 | qbx_core | `shared/jobs.lua` | `bus` and `hotdog` jobs removed (no hot dog script exists). `qbx:cleanPlayerGroups` clears them from characters on the next start | Fewer, RP-focused jobs | Claude |
+| 2026-10-27 | qbx_cityhall | `config/shared.lua` | Bus Driver removed from the City Hall job list | Job cut | Claude |

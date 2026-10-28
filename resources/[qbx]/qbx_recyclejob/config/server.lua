@@ -1,8 +1,8 @@
 return {
-    maxItemsReceived 	= 5,
+    maxItemsReceived 	= 3, -- [OUR CHANGE] was 5. Fewer, real-priced materials (~$510/hr at rp_buyers)
     minItemReceivedQty 	= 2,
-    maxItemReceivedQty 	= 6,
-    chanceItem 			= 'cryptostick',
+    maxItemReceivedQty 	= 4, -- [OUR CHANGE] was 6
+    chanceItem 			= 'copper', -- [OUR CHANGE] was 'cryptostick' (no use). Now a 6% bonus piece of copper
     luckyItem 			= 'rubber',
     itemTable = {
         [1] = 'metalscrap',

@@ -40,7 +40,7 @@ return {
             tow = 'Tow Truck',
             reporter = 'News Reporter',
             garbage = 'Garbage Collector',
-            bus = 'Bus Driver',
+            -- bus removed Oct 27 [OUR CHANGE]: job cut. See docs/core-changes.md
         },
     },
 }

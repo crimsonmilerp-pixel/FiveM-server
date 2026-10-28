@@ -1,0 +1,38 @@
+{
+  "_note": "All text players see for rp_buyers. Edit the words on the right side only. Keep every %s: the game fills those in.",
+  "buyer": {
+    "scrapyard": "Scrap Buyer",
+    "winery": "Wine Buyer"
+  },
+  "target": {
+    "sell": "Sell goods"
+  },
+  "menu": {
+    "sell_all": "Sell everything: %s",
+    "sell_all_desc": "Sell all of it at the prices below",
+    "item": "%s: %s each",
+    "item_have": "You have %s, worth %s",
+    "item_none": "You don't have any"
+  },
+  "amount": {
+    "header": "Sell %s",
+    "label": "How many?",
+    "desc": "You have %s. They pay %s each."
+  },
+  "sold": "You were paid %s.",
+  "error": {
+    "slow_down": "Slow down a second.",
+    "too_far": "You need to be standing with the buyer.",
+    "bad_amount": "Enter a number of 1 or more.",
+    "not_enough": "You don't have that many.",
+    "nothing_to_sell": "You don't have anything they buy.",
+    "too_little": "That's not even worth a dollar. Bring more."
+  },
+  "command": {
+    "buyerhere_help": "Staff: copy your position to move a buyer in rp_buyers/config.lua"
+  },
+  "copied": {
+    "title": "Position copied",
+    "description": "Paste this into rp_buyers/config.lua:\n%s"
+  }
+}

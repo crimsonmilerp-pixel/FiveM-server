@@ -4,7 +4,7 @@
 -- [OUR CHANGE] Job pay (economy v2, Oct 27 2026). See docs/core-changes.md and docs/economy.xlsx (Jobs & Pay).
 -- `payment` is paid every 10 minutes, and only while ON DUTY (offDutyPay = false).
 -- Pay per hour = payment x 6. Target pay per hour = real hourly wage x 30.
---   * Task jobs (taxi, bus, trucker, tow, garbage, vineyard) pay 0 here. They pay per fare / stop / delivery
+--   * Task jobs (taxi, trucker, tow, garbage, vineyard) pay 0 here. They pay per fare / stop / delivery
 --     in their own resource, so you only earn by working (Pillar B).
 --   * Shift jobs (police, EMS, mechanic) start OFF duty (defaultDuty = false). Clock in at the station or shop to get paid.
 --   * Commission / client-fee jobs (car dealer, real estate, lawyer) pay 0 here. They earn from sales and clients.
@@ -199,17 +199,7 @@ return {
             },
         },
     },
-    ['bus'] = {
-        label = 'Bus',
-        defaultDuty = true,
-        offDutyPay = false,
-        grades = {
-            [0] = {
-                name = 'Driver',
-                payment = 0 -- [OUR CHANGE] was 50. Paid per stop (qbx_busjob).
-            },
-        },
-    },
+    -- [OUR CHANGE] 'bus' removed Oct 27: job cut (qbx_busjob disabled). See docs/core-changes.md
     ['cardealer'] = {
         label = 'Vehicle Dealer',
         defaultDuty = true,
@@ -346,15 +336,5 @@ return {
             },
         },
     },
-    ['hotdog'] = {
-        label = 'Hotdog',
-        defaultDuty = true,
-        offDutyPay = false,
-        grades = {
-            [0] = {
-                name = 'Sales',
-                payment = 0 -- [OUR CHANGE] was 50. No hot dog stand script is installed.
-            },
-        },
-    },
+    -- [OUR CHANGE] 'hotdog' removed Oct 27: no hot dog script is installed.
 }
