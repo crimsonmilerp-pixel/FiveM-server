@@ -108,16 +108,17 @@ RegisterNetEvent('qbx_truckerjob:server:getPaid', function()
         return notify(player, locale('error.no_work_done'), 'error')
     end
 
-    local dropPrice, bonus = math.random(100, 120), 0
+    -- [OUR CHANGE] was random(100, 120) with bonuses of +500/+400/+300/+100. Aims for ~$810/hr. See docs/core-changes.md
+    local dropPrice, bonus = math.random(22, 28), 0
 
     if playerDrops >= 20 then
-        bonus = math.ceil((dropPrice / 10) * 12) + 500
+        bonus = math.ceil((dropPrice / 10) * 12) + 100
     elseif playerDrops >= 15 then
-        bonus = math.ceil((dropPrice / 10) * 10) + 400
+        bonus = math.ceil((dropPrice / 10) * 10) + 80
     elseif playerDrops >= 10 then
-        bonus = math.ceil((dropPrice / 10) * 7) + 300
+        bonus = math.ceil((dropPrice / 10) * 7) + 60
     elseif playerDrops >= 5 then
-        bonus = math.ceil((dropPrice / 10) * 5) + 100
+        bonus = math.ceil((dropPrice / 10) * 5) + 25
     end
 
     local price = (dropPrice * playerDrops) + bonus

@@ -13,3 +13,11 @@ Any edit to a resource we didn't write (Qbox, ox_*, npwd, etc.) gets logged here
 | 2026-10-27 | (config) | `ox.cfg` | `inventory:randomprices` true → false | Fixed prices for quick math | Claude |
 | 2026-10-27 | qbx_core | `shared/vehicles.lua` | Real-world prices for 692 vehicles (from docs/economy.xlsx). 152 weaponized/armored/military/arena/sci-fi vehicles removed | Economy + Pillar C. Regenerate from the sheet if Qbox updates this file | Claude |
 | 2026-10-27 | qbx_vehicleshop | `config/shared.lua` | Added `predator` and `polmav` to the blocklist | Police boat/heli not for sale | Claude |
+| 2026-10-27 | qbx_core | `shared/jobs.lua` | Job pay. Task jobs (taxi, bus, trucker, tow, garbage, vineyard), car dealer, real estate, lawyer, reporter, hotdog → paycheck 0. Police/BCSO/SASP 150–270, EMS 100–250, mechanic 50–80 per 10 min, and they now start **off duty** (clock in to get paid). Judge 375 but off duty until a courthouse clock-in exists | Economy v2: pay per hour = real wage × 30, and no pay for standing around (Pillar B) | Claude |
+| 2026-10-27 | qbx_taxijob | `config/client.lua` | Meter $125/mile → **$15/mile + $5** to get in | ~$540/hr of NPC fares | Claude |
+| 2026-10-27 | qbx_taxijob | `config/server.lua` | `maxFare` 2000 → 300. `chanceItemEnabled` → false | Blocks fake fares; cryptostick has no use | Claude |
+| 2026-10-27 | qbx_garbagejob | `config/server.lua` | Bag worth $50–100 → **$6–9**. `giveItemReward` → false | ~$660/hr; cryptostick has no use | Claude |
+| 2026-10-27 | qbx_truckerjob | `server/main.lua` | Per box `random(100,120)` → **`random(22,28)`**. Route bonuses +500/+400/+300/+100 → +100/+80/+60/+25 | ~$810/hr | Claude |
+| 2026-10-27 | qbx_towjob | `server/main.lua` | Per tow `random(150,170)` → **`random(80,95)`** | ~$660/hr | Claude |
+| 2026-10-27 | qbx_vehicleshop | `config/server.lua` | `commissionRate` 0.1 → **0.025** | 2.5% = $750 on a $30k car | Claude |
+| 2026-10-27 | qbx_diving | `config/server.lua` | Coral prices $70–100 / $50–70 → **$16–22 / $11–15** | ~$720/hr | Claude |

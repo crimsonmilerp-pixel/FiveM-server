@@ -111,7 +111,7 @@ RegisterNetEvent('qb-tow:server:11101110', function()
     completedJobs[src] = nil
     drops = math.min(drops, 20)
     local bonus = 0
-    local dropPrice = math.random(150, 170)
+    local dropPrice = math.random(80, 95) -- [OUR CHANGE] was random(150, 170). Aims for ~$660/hr. See docs/core-changes.md
     if drops > 5 then
         bonus = math.ceil((dropPrice / 10) * ((3 * (drops / 5)) + 2))
     end

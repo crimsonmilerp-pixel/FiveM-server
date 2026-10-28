@@ -1,5 +1,5 @@
 return {
-    commissionRate = 0.1, -- Percent that goes to sales person from a full car sale 10%
+    commissionRate = 0.025, -- Percent that goes to sales person from a full car sale -- [OUR CHANGE] was 0.1 (10%). 2.5% = $750 on a $30k car
     finance = {
         paymentWarning = 10, -- time in minutes that player has to make payment before repo
         paymentInterval = 24, -- time in hours between payment being due

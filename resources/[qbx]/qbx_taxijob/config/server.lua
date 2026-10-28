@@ -2,7 +2,7 @@ return {
     allowedVehicleModels = {
         'taxi',
     },
-    maxFare = 2000,
+    maxFare = 300, -- [OUR CHANGE] was 2000. Longest real fare is ~$200, so this blocks fake fares
     payCooldownSeconds = 5,
     cabSpawns = {
         vec4(899.0837, -180.4414, 73.4115, 238.7553),
@@ -19,7 +19,7 @@ return {
     },
     spawnPointMaxDistance = 25.0,
     deliverLocationMaxDistance = 20.0,
-    chanceItemEnabled = true,
+    chanceItemEnabled = false, -- [OUR CHANGE] was true. The cryptostick has no use
     chanceItem = 'cryptostick',
     chancePercent = 26,
 }

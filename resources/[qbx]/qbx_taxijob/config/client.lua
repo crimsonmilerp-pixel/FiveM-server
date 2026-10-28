@@ -6,8 +6,8 @@ return {
         { model = 'taxi', label = locale('info.taxi_label_1') }
     },
     meter = {
-        defaultPrice = 125.0, -- price per mile
-        startingPrice = 0,     -- static starting price
+        defaultPrice = 15.0, -- price per mile -- [OUR CHANGE] was 125. Aims for ~$540/hr of NPC fares. See docs/core-changes.md
+        startingPrice = 5,     -- static starting price -- [OUR CHANGE] was 0. $5 to get in
         useGpsPrice = true -- use GPS distance instead of driven distance
     },
     locations = {
