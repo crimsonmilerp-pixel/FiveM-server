@@ -643,4 +643,23 @@ return {
         label = 'Handcuffs',
         weight = 200,
     },
+
+    -- [OUR CHANGE] rp_jobmoments items. See docs/core-changes.md
+    ['found_evidence'] = {
+        label = 'Found Evidence',
+        weight = 1000,
+        stack = false,
+        close = true,
+        description = 'Something you found on the job. Turn it in at a police front desk.',
+        client = { image = 'paperbag.png', export = 'rp_jobmoments.useEvidence' },
+    },
+
+    ['lost_wallet'] = {
+        label = 'Lost Wallet',
+        weight = 100,
+        stack = false,
+        close = true,
+        description = "Someone's wallet. Their address is on the ID inside.",
+        client = { image = 'card_id.png', export = 'rp_jobmoments.useWallet' },
+    },
 }

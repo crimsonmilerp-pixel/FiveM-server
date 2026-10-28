@@ -6,12 +6,13 @@
 
 ## ▶ Where we left off (end of Oct 27, 2026 session)
 
-**Live on the server:** Qbox, MariaDB 12.3.3, Vinny's permanent admin, secrets in `secrets.cfg`, Qbox ads removed, Discord link, **rp_goals**, **rp_welcome**, **economy v2** (real prices, fuel, start money, slower hunger, weapon license), **vehicles** (real prices, 152 removed and blocked, speed caps via **rp_vehicles**, tested), **job pay** (Oct 27), **rp_buyers** and the **job cuts** (Oct 27, waiting on Vinny's upload and test).
+**Live on the server:** Qbox, MariaDB 12.3.3, Vinny's permanent admin, secrets in `secrets.cfg`, Qbox ads removed, Discord link, **rp_goals**, **rp_welcome**, **economy v2** (real prices, fuel, start money, slower hunger, weapon license), **vehicles** (real prices, 152 removed and blocked, speed caps via **rp_vehicles**, tested), **job pay**, **rp_buyers**, and the **job cuts** (all Oct 27). **rp_jobmoments** is built (Oct 27) and waiting on Vinny's upload and test.
 
 **Next session, in order:**
 1. Vinny tests `rp_buyers` (Scrap Buyer at the scrap yard, Wine Buyer at the vineyard): both stand in a sensible spot (move with `/buyerhere` if not) and selling works.
-2. **Job moments**, starting with garbage and taxi (needs Vinny's go-ahead).
-3. Then: luxury dealership, Pillar C clothing cleanup, LB Phone once bought, and the play-through checklist.
+2. Vinny tests `rp_jobmoments`. To see moments quickly, set `oneIn = 1` and `cooldownMinutes = 0` in its `config.lua`, then put them back to 20 and 10.
+3. Next for jobs: moments for tow and trucker, the crew bonus, and real player calls before NPC work (needs the phone).
+4. Then: luxury dealership, Pillar C clothing cleanup, LB Phone once bought, and the play-through checklist.
 
 **Loose ends:**
 - James's `fivem:` ID goes into `permissions.cfg`.
@@ -48,6 +49,8 @@
 | 2026-10-27 | **Vehicles: keep realistic ones only. No weaponized or armored vehicles, period** (152 removed and blocked, including the police Riot/RCV). **Police cars match or slightly beat most civilian cars:** speed limits by class (police 125 mph; sports 120, muscle 115, sedans 105; only supercars at 130) plus a small boost for emergency vehicles (`rp_vehicles`) | Grounded world (Pillar C), with fair chases. Values to be tuned after test drives. |
 | 2026-10-27 | **Job pay: you only get paid while working.** Task jobs (taxi, trucker, tow, garbage) have no paycheck and pay per fare, box, tow, or bag. Police, EMS, and mechanics start **off duty** and are paid every 10 minutes only after clocking in. Car dealers earn 2.5% commission. Jobs anyone can take with no clock-in (reporter) get no paycheck | Pillar B: no money for standing around. Payouts are first estimates aimed at real wage × 30 per hour, to be checked in play. |
 | 2026-10-27 | **Fewer jobs, all RP-first.** Cut: bus (nobody rides NPC buses), recycling (it teleports you into a sealed warehouse where no one can run into you), and hot dog (no script). Police stays as is (LSPD, BCSO, SASP). Every job should leave room for RP: **real player calls before NPC work**, **job moments** (now and then a small event with a choice that leads into police, detective, or crime RP), and a **crew bonus** for working together | A small player base spread across fewer jobs means people run into each other, and that's where roleplay starts. |
+| 2026-10-27 | **Job moments: 1 task in 20.** A kept pistol is real but **traceable** (its serial is on file for an open shooting case). Doing the right thing pays a **small reward (~$100) and is logged** for police and detectives | Moments should feel special, and choices should have consequences (Pillar D) that feed police and detective RP. |
+| 2026-10-27 | **NPC cases rule:** police can only charge a player for what they actually did (possession, keeping found cash, lying, planting evidence), never for a crime the server made up. The system never attaches a player's name to an NPC case; the only link is physically finding the gun on someone and running its serial. The case file and `/serial` say the shooter is unknown | So nobody gets pinned for a crime that never involved a player. Players passing the gun around, or planting it, is real RP, and the staff log is the safety net. |
 | 2026-10-26 | **All player-facing text lives in config or locale files, not hard-coded** | Liam can write and edit dialogue and UI text without touching code. |
 
 ## 0.2 Shared server and co-owner access
@@ -129,6 +132,7 @@ Every feature we build has to support at least one of these.
 ### Pillar D: Consequences instead of restrictions
 - Crime is open, but heat, evidence, warrants, prison, and debt make it risky.
 - Legal life is open, but taxes, quotas, and loans make it demanding.
+- **NPC cases rule:** a crime the server made up (an NPC shooting behind a found gun, a runaway fare) can only lead to charges for what a player **actually did**: carrying an unregistered or evidence-linked weapon, keeping found cash, lying to police, planting evidence. Never the NPC crime itself. Being caught with a traced gun proves possession, not who fired it. The police handbook will spell this out, and staff can check the private choice log if someone says they were framed.
 
 ---
 
@@ -226,6 +230,7 @@ Size key: S = days, M = 1–2 weeks, L = several weeks, XL = a month or more (pa
 13. ✅ **Custom #2: `rp_welcome`** replaces the chat banner, which never went away, with a welcome pop-up that fades after 20 seconds (once per session), and adds `/discord` to copy the invite. The Discord link now lives only in `server.cfg` as `setr qbx:discordLink`.
 14. ✅ **Custom #3: `rp_vehicles`**: speed caps per class, police speed edge, and the block on 152 weaponized/armored/military vehicles. Tested Oct 27.
 15. ⏳ **Custom #4: `rp_buyers`** (Oct 27): NPC buyers for legal goods. A Scrap Buyer at the Sandy Shores scrap yard, for materials from scrapping cars (real scrap prices: copper $4.70/lb, aluminum $0.60, steel/iron/plastic $0.10, glass/rubber $0.05) and a Wine Buyer at the vineyard marker (wine $6, juice $1.50). Paid in cash. Staff can move a buyer with `/buyerhere`. Waiting on Vinny's upload and test.
+16. ⏳ **Custom #5: `rp_jobmoments`** (Oct 27): job moments for garbage and taxi, about 1 task in 20 (10-minute cooldown). Garbage: a **bloody bag** with a pistol (turn in, keep, or leave; keeping gives a real unregistered pistol whose serial is on file for an open shooting case) and a **lost wallet** (return it to the owner's door for $100, or take the $60). Taxi: a **left-behind bag** of $300 (turn in, or keep it as dirty money; the passenger's report has the cab's plate) and a **runner** (grab them for the fare + 25% tip, call it in to police, or let them go; running them over becomes a pedestrian-death case). Evidence is turned in at the police clock-in spots (Mission Row, Paleto) for $100; on-duty police log it without reward. **`/cases`** and **`/serial`** for on-duty police and staff; staff (mod+) also see who kept what. The case file and `/serial` both say the shooter is unknown (NPC cases rule, Pillar D). Adds the `found_evidence` and `lost_wallet` items. Waiting on Vinny's upload and test.
 
 **Included in the Qbox recipe (decide later whether to keep, replace, or extend):**
 - **Phone and UI:** npwd (free phone), qbx_hud, qbx_radialmenu, scully_emotemenu, playerlist, and ox_inventory with 303 items.
@@ -265,7 +270,7 @@ Size key: S = days, M = 1–2 weeks, L = several weeks, XL = a month or more (pa
   - Each job has levels, uses a work vehicle, pays per task (taxed), and posts to the opportunities feed.
   - **RP-first jobs** (decided Oct 27):
     - **Players before NPCs:** a real player's call for a cab, tow, or mechanic jumps ahead of NPC work. NPC work only fills the gaps.
-    - **Job moments:** now and then (around 1 task in 10), a small event hands the worker a choice. Garbage: a bag with a pistol and a bloody shirt (turn it in to police, which gives the detective a case, or keep it). Taxi: "follow that car," or "wait out front, I'll be two minutes." Tow: something hidden in the trunk. Trucker: an extra package someone comes asking about later. Pay stays the same on average.
+    - **Job moments** (v1 built Oct 27 as `rp_jobmoments` for garbage and taxi, 1 task in 20; Vinny's picks: traceable pistol, small reward + police log): now and then, a small event hands the worker a choice. Garbage: a bag with a pistol and a bloody shirt (turn it in to police, which gives the detective a case, or keep it). Taxi: "follow that car," or "wait out front, I'll be two minutes." Tow: something hidden in the trunk. Trucker: an extra package someone comes asking about later. Pay stays the same on average.
     - **Crew bonus:** 2–4 people working one route each earn a bit more than working alone.
   - **Repo Agent** and **Tow Driver** jobs come later and connect to loans.
 
@@ -320,6 +325,7 @@ Size key: S = days, M = 1–2 weeks, L = several weeks, XL = a month or more (pa
     - CCTV stills: partial plate and vehicle color.
   - Lab processing takes real time.
   - Case files in the MDT that link evidence, suspects, and witness statements.
+  - Cases started by `rp_jobmoments` (NPC shootings, missing cash, fare evasion) follow the **NPC cases rule** in Pillar D: charges only for what a player actually did.
   - Suspect tracking through plate readers and, with a warrant, phone pings.
 - **Search warrants (#11)**: M
   - Warrant types: search (house, vehicle, person), arrest, and phone records.

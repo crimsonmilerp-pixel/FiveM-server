@@ -130,6 +130,13 @@ RegisterNetEvent('qb-taxi:server:NpcPay', function(payment)
         return
     end
 
+    -- [OUR CHANGE] Job moments (rp_jobmoments). A moment can take over this fare
+    -- (the passenger runs off without paying). See docs/core-changes.md
+    if GetResourceState('rp_jobmoments') == 'started' and exports.rp_jobmoments:OnTask(src, 'taxi', { fare = paymentAmount }) then
+        lastPayTime[src] = now
+        return
+    end
+
     local randomAmount = math.random(1, 5)
     local r1, r2 = math.random(1, 5), math.random(1, 5)
     if randomAmount == r1 or randomAmount == r2 then

@@ -113,6 +113,11 @@ lib.callback.register('garbagejob:server:nextStop', function(source)
     route.actualPay = math.ceil(route.actualPay + calculateStopPay(route))
     route.stopsCompleted += 1
 
+    -- [OUR CHANGE] Job moments (rp_jobmoments): now and then, something happens at a stop. See docs/core-changes.md
+    if GetResourceState('rp_jobmoments') == 'started' then
+        exports.rp_jobmoments:OnTask(source, 'garbage')
+    end
+
     if config.giveItemReward and math.random(100) >= config.itemRewardChance then
         player.Functions.AddItem(config.itemRewardName, 1, false)
         exports.qbx_core:Notify(source, locale('info.found_crypto'))

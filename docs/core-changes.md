@@ -26,3 +26,6 @@ Any edit to a resource we didn't write (Qbox, ox_*, npwd, etc.) gets logged here
 | 2026-10-27 | qbx_busjob, qbx_recyclejob | (whole resource) | **Disabled**: folders moved to `resources/[disabled]` so they don't start. Move a folder back into `[qbx]` to bring a job back | Jobs cut: nobody rides NPC buses, and recycling teleports you into a sealed warehouse where no one can run into you (RP-first jobs) | Claude + Vinny |
 | 2026-10-27 | qbx_core | `shared/jobs.lua` | `bus` and `hotdog` jobs removed (no hot dog script exists). `qbx:cleanPlayerGroups` clears them from characters on the next start | Fewer, RP-focused jobs | Claude |
 | 2026-10-27 | qbx_cityhall | `config/shared.lua` | Bus Driver removed from the City Hall job list | Job cut | Claude |
+| 2026-10-27 | qbx_garbagejob | `server/main.lua` | Calls `exports.rp_jobmoments:OnTask(source, 'garbage')` after each finished stop (only if rp_jobmoments is running) | Job moments | Claude |
+| 2026-10-27 | qbx_taxijob | `server/main.lua` | In `NpcPay`, calls `exports.rp_jobmoments:OnTask(src, 'taxi', { fare })` before paying. If it returns true (the runner moment), the fare is paid later by rp_jobmoments | Job moments | Claude |
+| 2026-10-27 | ox_inventory | `data/items.lua` | Added `found_evidence` and `lost_wallet` items (reusing the paperbag and ID card images) | Job moments | Claude |
