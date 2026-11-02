@@ -1,7 +1,6 @@
 {
   "_note": "All text players see for rp_jobmoments. Edit the words on the right side only. Keep every %s: the game fills those in (names, amounts, streets). \\n starts a new line.",
   "title": "On the job",
-
   "moment": {
     "bloody_bag": {
       "title": "Something's wrong with this bag",
@@ -14,9 +13,16 @@
     "left_bag": {
       "title": "Left on the back seat",
       "story": "Your passenger is gone, but their gym bag isn't. You unzip it: about $%s in cash, rubber-banded."
+    },
+    "tow_trunk": {
+      "title": "The trunk pops open",
+      "story": "As you unhook the car (plate %s), the trunk lid swings up. Wrapped in a gym towel: a taped brick of white powder."
+    },
+    "extra_package": {
+      "title": "That's not on the invoice",
+      "story": "The clerk frowns at one box. \"That's not ours.\" No label, taped shut, heavy. You crack a corner: stacks of cash, about $%s."
     }
   },
-
   "choice": {
     "bloody_bag": {
       "turn_in": "Bag it for the police",
@@ -41,9 +47,24 @@
       "keep_desc": "$%s in loose bills. They'd have to be laundered before you could spend them safely.",
       "leave": "Zip it back up and leave it",
       "leave_desc": "Someone else can deal with it."
+    },
+    "tow_trunk": {
+      "turn_in": "Bag it for the police",
+      "turn_in_desc": "Take it to a police front desk (Mission Row or Paleto). There's a reward.",
+      "keep": "Keep it",
+      "keep_desc": "Somebody's going to miss this...",
+      "leave": "Shut the trunk",
+      "leave_desc": "It goes to the crusher with the car."
+    },
+    "extra_package": {
+      "turn_in": "Turn it in to the police",
+      "turn_in_desc": "Take it to a police front desk. There's a reward.",
+      "keep": "Keep the cash",
+      "keep_desc": "$%s in loose bills. Dirty money: it needs laundering before you can spend it safely.",
+      "leave": "Leave it with the clerk",
+      "leave_desc": "Not your problem."
     }
   },
-
   "result": {
     "bloody_bag": {
       "turn_in": "You bag the pistol and the shirt. Take them to a police front desk (use the item to set your GPS).",
@@ -59,9 +80,18 @@
       "turn_in": "You take the bag. Bring it to a police front desk (use the item to set your GPS).",
       "keep": "You stash the cash. Hopefully nobody wrote down your cab's plate.",
       "leave": "You zip the bag back up and leave it."
+    },
+    "tow_trunk": {
+      "turn_in": "You bag the brick. Take it to a police front desk (use the item to set your GPS).",
+      "keep": "You tuck the brick away. Whoever owned that car will want it back.",
+      "leave": "You slam the trunk. The crusher can have it."
+    },
+    "extra_package": {
+      "turn_in": "You take the box. Bring it to a police front desk (use the item to set your GPS).",
+      "keep": "You stash the cash in your truck. Somebody packed that box for someone...",
+      "leave": "You leave the box with the clerk and get back on the road."
     }
   },
-
   "runner": {
     "start": "Hey! Your passenger just bolted without paying! You have %s seconds to catch them.",
     "help": "[E] Grab them  ·  [G] Call it in to police",
@@ -71,53 +101,69 @@
     "dead": "They're not getting up. That's not how you collect a fare...",
     "escaped": "They're gone. So is your fare."
   },
-
   "desk": {
     "target": "Turn in found evidence",
     "thanks": "The desk officer logs %s item(s) and hands you a $%s reward. \"Thanks for doing the right thing.\"",
     "logged": "Logged %s item(s) into evidence.",
     "gps": "GPS set to the nearest police front desk."
   },
-
   "wallet": {
     "target": "Return the wallet",
     "thanks": "%s can't believe it. \"Thank you so much!\" They give you $%s.",
     "gps": "GPS set to the owner's address: %s."
   },
-
   "item": {
     "bloody_bag": "A pistol (serial %s) and a bloody shirt, found in the trash near %s. Turn it in at a police front desk.",
     "wallet": "Belongs to %s. Use it to set your GPS to their address.",
-    "left_bag": "Gym bag with $%s in cash, left in taxi %s. Turn it in at a police front desk."
+    "left_bag": "Gym bag with $%s in cash, left in taxi %s. Turn it in at a police front desk.",
+    "tow_trunk": "A taped brick of white powder from the trunk of a towed car (plate %s). Turn it in at a police front desk.",
+    "extra_package": "An unlabeled box with about $%s in cash, found in a store delivery near %s. Turn it in at a police front desk."
   },
-
   "alert": {
     "runner": "Taxi fare skipped: suspect fled on foot",
     "ped_down": "Pedestrian down"
   },
-
   "kind": {
     "shooting": "Shooting",
     "lost_cash": "Missing cash",
     "fare_evasion": "Fare evasion",
-    "pedestrian_down": "Pedestrian death"
+    "pedestrian_down": "Pedestrian death",
+    "drugs_found": "Drugs found",
+    "found_shipment": "Found cash"
   },
-
   "status": {
-    "shooting": { "open": "Open: weapon not recovered", "recovered": "Weapon recovered" },
-    "lost_cash": { "open": "Open: cash missing", "recovered": "Cash recovered" },
-    "fare_evasion": { "open": "Open" },
-    "pedestrian_down": { "open": "Open" }
+    "shooting": {
+      "open": "Open: weapon not recovered",
+      "recovered": "Weapon recovered"
+    },
+    "lost_cash": {
+      "open": "Open: cash missing",
+      "recovered": "Cash recovered"
+    },
+    "fare_evasion": {
+      "open": "Open"
+    },
+    "pedestrian_down": {
+      "open": "Open"
+    },
+    "drugs_found": {
+      "open": "Open",
+      "recovered": "Turned in"
+    },
+    "found_shipment": {
+      "open": "Open",
+      "recovered": "Turned in"
+    }
   },
-
   "detail": {
     "shooting": "Shots fired near %s. The victim was treated and released. The weapon, a pistol (serial %s), was never found.\n\nThe shooter is unknown. Carrying this weapon doesn't prove who fired it. Ask where they got it.",
     "lost_cash": "A passenger reports leaving about $%s in a gym bag in taxi %s, near %s.",
     "fare_evasion": "A $%s taxi fare skipped near %s. The suspect fled on foot. Reported by driver %s (taxi %s).",
     "pedestrian_down": "A pedestrian was found dead near %s. Witnesses saw them running from a taxi (plate %s).",
-    "recovered": "Turned in by %s on %s."
+    "recovered": "Turned in by %s on %s.",
+    "drugs_found": "A taped brick of cocaine was found in the trunk of a car towed to the impound lot (plate %s). The car's owner hasn't come forward.",
+    "found_shipment": "An unlabeled box with about $%s in cash turned up in a store delivery near %s. Nobody has claimed it."
   },
-
   "cases": {
     "title": "Case files",
     "empty": "No cases yet",
@@ -130,7 +176,6 @@
     "staff_only": "Only staff can see this. Citizen ID: %s",
     "officer": "Officer %s"
   },
-
   "log": {
     "turn_in": "took it to turn in",
     "keep": "kept it",
@@ -143,18 +188,15 @@
     "take_cash": "took the cash",
     "return": "took it to return"
   },
-
   "serial": {
     "none": "Serial %s: no record.",
     "match": "Serial %s is linked to case #%s (%s): %s. The shooter is unknown. Carrying this weapon doesn't prove who fired it. Ask where they got it. Use /cases for details."
   },
-
   "command": {
     "cases_help": "Police (on duty) and staff: open the case files",
     "serial_help": "Police (on duty) and staff: check a weapon serial number against the case files",
     "serial_param": "The serial number from the weapon"
   },
-
   "error": {
     "cant_carry": "You can't carry that. Make some room and pick again.",
     "expired": "The moment has passed.",
@@ -162,5 +204,9 @@
     "nothing": "You don't have any found evidence.",
     "no_wallet": "You don't have their wallet.",
     "no_permission": "Only on-duty police and staff can do that."
+  },
+  "followup": {
+    "sender": "Unknown number",
+    "extra_package": "You've got a box that belongs to us. We'll be in touch."
   }
 }

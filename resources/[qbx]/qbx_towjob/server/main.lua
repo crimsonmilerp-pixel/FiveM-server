@@ -111,7 +111,7 @@ RegisterNetEvent('qb-tow:server:11101110', function()
     completedJobs[src] = nil
     drops = math.min(drops, 20)
     local bonus = 0
-    local dropPrice = math.random(80, 95) -- [OUR CHANGE] was random(150, 170). Aims for ~$660/hr. See docs/core-changes.md
+    local dropPrice = math.random(68, 78) -- [OUR CHANGE] was random(150, 170); Oct 27 80-95; Nov 2 68-78 after measuring tow distances. Aims for ~$660/hr. See docs/core-changes.md
     if drops > 5 then
         bonus = math.ceil((dropPrice / 10) * ((3 * (drops / 5)) + 2))
     end
@@ -212,6 +212,12 @@ lib.callback.register('qb-tow:server:completeTow', function(source, netId)
 
     activeJobs[source] = nil
     completedJobs[source] = (completedJobs[source] or 0) + 1
+
+    -- [OUR CHANGE] Job moments and crew bonus (rp_jobmoments, rp_crews). See docs/core-changes.md
+    if GetResourceState('rp_jobmoments') == 'started' then
+        exports.rp_jobmoments:OnTask(source, 'tow', { plate = GetVehicleNumberPlateText(vehicle) })
+    end
+
     DeleteEntity(vehicle)
     return true
 end)

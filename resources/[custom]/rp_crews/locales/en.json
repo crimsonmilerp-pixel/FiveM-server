@@ -1,0 +1,66 @@
+{
+  "_note": "All text players see for rp_crews. Edit the words on the right side only. Keep every %s: the game fills those in.",
+  "title": "Crew",
+
+  "tip": {
+    "solo": "Working alone? Crews pay more: +%s%% for each crewmate on the same job, up to +%s%%. Type /crew to start one.",
+    "new_job": "New job: %s. Tip: crews pay more (+%s%% per crewmate on the same job, up to +%s%%). Stand next to a friend and type /crew to invite them."
+  },
+
+  "crew": {
+    "invite_sent": "Crew invite sent to %s.",
+    "invite_declined": "%s declined your crew invite.",
+    "you_joined": "You joined the crew. Each task pays +%s%% for every crewmate working the same job (up to +%s%%). Type /crew to see who's in it.",
+    "member_joined": "%s joined the crew.",
+    "member_left": "%s left the crew.",
+    "member_removed": "%s was removed from the crew.",
+    "you_were_removed": "You were removed from the crew.",
+    "you_left": "You left the crew.",
+    "now_leader": "You're the crew leader now.",
+    "disbanded": "Your crew broke up (it takes at least 2).",
+    "bonus": "Crew bonus: +$%s (%s crewmate(s) working, +%s%%)"
+  },
+
+  "menu": {
+    "title_solo": "Crew (just you)",
+    "title_crew": "Your crew (%s of %s)",
+    "how_title": "How crews work",
+    "how_desc": "Everyone runs their own route. Each task pays +%s%% for every crewmate who's also working the same job right now (up to +%s%%). Up to %s people.",
+    "working": "%s · working now",
+    "not_working": "%s · not working right now",
+    "you": " (you)",
+    "invite_nearby": "Invite someone nearby",
+    "invite_by_id": "Invite by ID",
+    "invite_by_id_desc": "Their ID is next to their name on the scoreboard (player list).",
+    "id_label": "Player ID",
+    "id_desc": "The number next to their name in the player list",
+    "tap_to_invite": "Send a crew invite",
+    "already_in_crew": "Already in a crew",
+    "nobody_nearby": "Nobody nearby",
+    "nobody_nearby_desc": "Stand next to them, or invite by ID instead.",
+    "leave": "Leave the crew",
+    "remove_header": "Remove %s?",
+    "remove_text": "%s will be taken out of the crew.",
+    "remove_yes": "Remove",
+    "remove_no": "Cancel"
+  },
+
+  "invite": {
+    "header": "Crew invite",
+    "text": "**%s** (%s) wants you in their crew.\n\nEveryone still runs their own route, but each task pays **+%s%%** for every crewmate working the same job (up to **+%s%%**).",
+    "accept": "Join",
+    "decline": "No thanks"
+  },
+
+  "command": {
+    "crew_help": "Open your crew menu, or invite someone: /crew [their ID]",
+    "crew_param": "Player ID to invite (optional)"
+  },
+
+  "error": {
+    "bad_target": "That player isn't available.",
+    "target_in_crew": "They're already in a crew.",
+    "crew_full": "Your crew is full.",
+    "invite_expired": "That invite has expired."
+  }
+}

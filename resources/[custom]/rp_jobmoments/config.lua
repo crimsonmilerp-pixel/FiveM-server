@@ -26,6 +26,12 @@ return {
             { id = 'left_bag', weight = 1 },
             { id = 'runner',   weight = 1 },
         },
+        tow = {
+            { id = 'tow_trunk', weight = 1 },
+        },
+        trucker = {
+            { id = 'extra_package', weight = 1 },
+        },
     },
 
     -- Doing the right thing (turning in evidence at a police front desk).
@@ -77,6 +83,17 @@ return {
     -- Taxi: a passenger leaves a bag of cash in the back seat
     leftBag = {
         dirtyCash = 300, -- if kept, it's dirty money (needs laundering)
+    },
+
+    -- Tow: something in the trunk of the car you just towed
+    towTrunk = {
+        item = 'coke_brick', -- what they get if they keep it
+    },
+
+    -- Trucker: a box that isn't on the invoice, full of cash
+    extraPackage = {
+        dirtyCash = 400,                          -- if kept, it's dirty money (needs laundering)
+        followUpMinutes = { min = 8, max = 15 },  -- when "someone" texts them about it
     },
 
     -- Taxi: the passenger runs off without paying

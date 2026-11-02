@@ -109,7 +109,8 @@ RegisterNetEvent('qbx_truckerjob:server:getPaid', function()
     end
 
     -- [OUR CHANGE] was random(100, 120) with bonuses of +500/+400/+300/+100. Aims for ~$810/hr. See docs/core-changes.md
-    local dropPrice, bonus = math.random(22, 28), 0
+    -- Nov 2: a "drop" is one store (1-3 boxes), not one box, so 22-28 paid far too little. Now 58-72.
+    local dropPrice, bonus = math.random(58, 72), 0
 
     if playerDrops >= 20 then
         bonus = math.ceil((dropPrice / 10) * 12) + 100
@@ -238,6 +239,11 @@ lib.callback.register('qbx_truckerjob:server:getNewTask', function(source, init)
     if #(GetEntityCoords(GetPlayerPed(source)) - GetEntityCoords(rentalVehicle)) > 60.0 then return nil, 0 end
 
     drops[citizenid] = (drops[citizenid] or 0) + 1
+
+    -- [OUR CHANGE] Job moments and crew bonus (rp_jobmoments, rp_crews). See docs/core-changes.md
+    if GetResourceState('rp_jobmoments') == 'started' then
+        exports.rp_jobmoments:OnTask(source, 'trucker')
+    end
 
     local doneLocations = route.done
     route.done[#doneLocations + 1] = route.current

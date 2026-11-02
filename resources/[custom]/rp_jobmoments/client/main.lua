@@ -165,6 +165,16 @@ local CHOICES = {
         { id = 'keep', icon = 'sack-dollar' },
         { id = 'leave', icon = 'arrow-right' },
     },
+    tow_trunk = {
+        { id = 'turn_in', icon = 'shield-halved' },
+        { id = 'keep', icon = 'hand' },
+        { id = 'leave', icon = 'arrow-right' },
+    },
+    extra_package = {
+        { id = 'turn_in', icon = 'shield-halved' },
+        { id = 'keep', icon = 'sack-dollar' },
+        { id = 'leave', icon = 'arrow-right' },
+    },
 }
 
 local showMoment
@@ -192,7 +202,7 @@ showMoment = function(momentId, kind, show)
     local options = {
         {
             title = locale(('moment.%s.title'):format(kind)),
-            description = locale(('moment.%s.story'):format(kind), show.owner or show.cash or '', show.cash or ''),
+            description = locale(('moment.%s.story'):format(kind), show.owner or show.cash or show.plate or '', show.cash or ''),
             icon = 'circle-exclamation',
             readOnly = true,
         },
@@ -353,6 +363,10 @@ local function caseDetail(case)
         text = locale('detail.fare_evasion', d.fare or 0, street, d.reporter or '?', d.plate or '?')
     elseif case.kind == 'pedestrian_down' then
         text = locale('detail.pedestrian_down', street, d.plate or '?')
+    elseif case.kind == 'drugs_found' then
+        text = locale('detail.drugs_found', d.plate or '?')
+    elseif case.kind == 'found_shipment' then
+        text = locale('detail.found_shipment', d.amount or 0, street)
     else
         text = case.kind
     end
@@ -418,6 +432,13 @@ openCases = function()
     lib.registerContext({ id = 'rp_jobmoments_cases', title = locale('cases.title'), options = options })
     lib.showContext('rp_jobmoments_cases')
 end
+
+-- A text from someone (moment follow-ups)
+RegisterNetEvent('rp_jobmoments:client:text', function(sender, message)
+    if GetInvokingResource() then return end
+    PlaySoundFrontend(-1, 'Text_Arrive_Tone', 'Phone_SoundSet_Default', false)
+    lib.notify({ title = sender, description = message, type = 'inform', icon = 'comment-sms', duration = 15000 })
+end)
 
 RegisterNetEvent('rp_jobmoments:client:openCases', function()
     if GetInvokingResource() then return end

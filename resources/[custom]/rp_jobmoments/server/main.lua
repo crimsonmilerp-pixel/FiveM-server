@@ -138,9 +138,10 @@ end
 -- Starting a moment (called by job resources)
 -- ------------------------------------------------------------
 
----Called after every finished job task. Returns true only if the moment takes over paying for this task
+---Decides whether a moment happens for this finished task.
+---Returns true only if the moment takes over paying for this task
 ---(the taxi runner: the fare is paid later, if the driver catches them).
-local function OnTask(source, job, info)
+local function pickMoment(source, job, info)
     local list = config.jobs[job]
     if not list or not getPlayer(source) then return false end
 
@@ -186,6 +187,11 @@ local function OnTask(source, job, info)
     elseif kind == 'left_bag' then
         moment.data.plate = vehiclePlate(source)
         show.cash = config.leftBag.dirtyCash
+    elseif kind == 'tow_trunk' then
+        moment.data.plate = info and type(info.plate) == 'string' and info.plate:gsub('^%s+', ''):gsub('%s+$', '') or '?'
+        show.plate = moment.data.plate
+    elseif kind == 'extra_package' then
+        show.cash = config.extraPackage.dirtyCash
     end
 
     -- A short pause, so it doesn't pop up on top of the job's own messages.
@@ -195,6 +201,16 @@ local function OnTask(source, job, info)
         end
     end)
     return false
+end
+
+---Called by job resources after every finished task (a garbage stop, a taxi fare, a tow, a trucker delivery).
+---Also tells other resources (rp_crews) that the task is done, unless a moment took over its pay.
+local function OnTask(source, job, info)
+    local takesOver = pickMoment(source, job, info)
+    if not takesOver then
+        TriggerEvent('rp_jobmoments:server:taskDone', source, job, info or {})
+    end
+    return takesOver
 end
 exports('OnTask', OnTask)
 
@@ -280,10 +296,71 @@ handlers.left_bag = function(source, player, moment, choice, street)
     return true, 'result.left_bag.leave'
 end
 
+handlers.tow_trunk = function(source, player, moment, choice, street)
+    local plate = moment.data.plate
+
+    if choice == 'turn_in' then
+        local metadata = {
+            description = locale('item.tow_trunk', plate),
+        }
+        if not exports.ox_inventory:CanCarryItem(source, 'found_evidence', 1, metadata) then return false, 'cant_carry' end
+        moment.data.caseId = moment.data.caseId or createCase('drugs_found', moment.coords, { street = street, plate = plate, found_by = charName(player) })
+        metadata.caseId = moment.data.caseId
+        exports.ox_inventory:AddItem(source, 'found_evidence', 1, metadata)
+        logChoice(player, moment.data.caseId, moment.kind, choice)
+        return true, 'result.tow_trunk.turn_in'
+    elseif choice == 'keep' then
+        local item = config.towTrunk.item
+        if not exports.ox_inventory:CanCarryItem(source, item, 1) then return false, 'cant_carry' end
+        exports.ox_inventory:AddItem(source, item, 1)
+        logChoice(player, nil, moment.kind, choice)
+        return true, 'result.tow_trunk.keep'
+    end
+
+    logChoice(player, nil, moment.kind, 'leave')
+    return true, 'result.tow_trunk.leave'
+end
+
+handlers.extra_package = function(source, player, moment, choice, street)
+    local amount = config.extraPackage.dirtyCash
+
+    if choice == 'turn_in' then
+        local metadata = {
+            description = locale('item.extra_package', amount, street),
+        }
+        if not exports.ox_inventory:CanCarryItem(source, 'found_evidence', 1, metadata) then return false, 'cant_carry' end
+        moment.data.caseId = moment.data.caseId or createCase('found_shipment', moment.coords, { street = street, amount = amount, found_by = charName(player) })
+        metadata.caseId = moment.data.caseId
+        exports.ox_inventory:AddItem(source, 'found_evidence', 1, metadata)
+        logChoice(player, moment.data.caseId, moment.kind, choice)
+        return true, 'result.extra_package.turn_in'
+    elseif choice == 'keep' then
+        if not exports.ox_inventory:CanCarryItem(source, 'black_money', amount) then return false, 'cant_carry' end
+        exports.ox_inventory:AddItem(source, 'black_money', amount)
+        logChoice(player, nil, moment.kind, choice)
+
+        -- Someone notices their box is missing...
+        local citizenid = player.PlayerData.citizenid
+        local delay = math.random(config.extraPackage.followUpMinutes.min, config.extraPackage.followUpMinutes.max) * 60000
+        SetTimeout(delay, function()
+            local later = exports.qbx_core:GetPlayerByCitizenId(citizenid)
+            if later then
+                TriggerClientEvent('rp_jobmoments:client:text', later.PlayerData.source, locale('followup.sender'), locale('followup.extra_package'))
+            end
+        end)
+        return true, 'result.extra_package.keep'
+    end
+
+    logChoice(player, nil, moment.kind, 'leave')
+    return true, 'result.extra_package.leave'
+end
+
 local VALID_CHOICES = {
     bloody_bag = { turn_in = true, keep = true, leave = true },
     lost_wallet = { ['return'] = true, take_cash = true, leave = true },
     left_bag = { turn_in = true, keep = true, leave = true },
+    tow_trunk = { turn_in = true, keep = true, leave = true },
+    extra_package = { turn_in = true, keep = true, leave = true },
 }
 
 ---Returns: ok, localeKey, extra
@@ -424,7 +501,10 @@ lib.callback.register('rp_jobmoments:server:cases', function(source)
     local allowed, staff = canSeeCases(source)
     if not allowed then return end
 
-    local rows = MySQL.query.await('SELECT * FROM `rp_cases` ORDER BY `id` DESC LIMIT 30') or {}
+    -- Police only learn about found drugs or cash once someone turns them in. Staff see everything.
+    local rows = MySQL.query.await(staff
+        and 'SELECT * FROM `rp_cases` ORDER BY `id` DESC LIMIT 30'
+        or "SELECT * FROM `rp_cases` WHERE NOT (`kind` IN ('drugs_found', 'found_shipment') AND `status` = 'open') ORDER BY `id` DESC LIMIT 30") or {}
     local cases = {}
     for i, row in ipairs(rows) do
         cases[i] = {

@@ -10,12 +10,15 @@ Now and then (about **1 task in 20**), a small story event happens during a job 
 | Garbage | **Lost wallet** with an ID and $60 | Return it to the owner's door ($100 thank-you) · Take the cash · Leave it |
 | Taxi | **Left-behind bag** with $300 cash | Turn it in (reward) · Keep it (dirty money) · Leave it |
 | Taxi | **Runner**: the passenger bolts without paying | Chase and grab them (**E**) for the fare + a tip · Call it in to police (**G**) · Let them go |
+| Tow | **Trunk find**: a taped brick in the towed car's trunk | Bag it for police (reward; police get a case with the plate) · Keep it (a `coke_brick`) · Shut the trunk |
+| Trucker | **Extra package**: a box not on the invoice, full of cash ($400) | Turn it in (reward) · Keep it (dirty money, and about 10 minutes later an unknown number texts you about it) · Leave it with the clerk |
 
 ## How it connects to police
 
 - **Every bloody bag is a real case.** Police see an open shooting with the pistol's serial number in **`/cases`**. If the worker kept the pistol, any officer who checks that gun's serial with **`/serial`** sees it's the missing weapon. That makes the carrier a suspect.
 - **A kept bag of cash** leaves a case with the cab's plate on it, so police have a lead.
 - **Calling in a runner** sends an alert to on-duty police.
+- **Found drugs or cash** only show up in police case files once someone turns them in.
 - **Running the runner over** is reported as a pedestrian death, with the taxi's plate.
 - **Found evidence** is turned in at the police clock-in spot at **Mission Row or Paleto** (third eye → *Turn in found evidence*). Workers get **$100** per item. On-duty officers can log evidence too, but they don't get the reward.
 
@@ -33,6 +36,10 @@ Two items were added to `ox_inventory/data/items.lua`:
 ## Settings
 
 All in **`config.lua`**: how often moments happen, which moments each job gets, rewards, cash amounts, the runner chase time, wallet owner names and homes, and the police desk spots.
+
+## Crews
+
+Every finished task also fires the server event `rp_jobmoments:server:taskDone` (source, job, info), unless a moment took over that task's pay. **rp_crews** listens for it to pay the crew bonus.
 
 ## Adding moments to another job
 

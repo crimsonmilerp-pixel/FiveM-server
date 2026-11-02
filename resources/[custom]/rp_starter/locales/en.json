@@ -1,11 +1,9 @@
 {
   "_note": "All text players see for rp_starter. PLACEHOLDER TEXT: Liam will rewrite the arrival story and tour. Edit the words on the right side only. Keep every %s: the game fills those in. \\n starts a new line. **bold** and - lists work in the big pop-ups.",
   "title": "New in town",
-
   "blip": {
     "station": "Bus Station (new arrivals)"
   },
-
   "volunteer": {
     "header": "Welcome to Los Santos",
     "intro": "Long ride, huh? Welcome to the city. I volunteer here for the **Fresh Start** program. We help new arrivals get on their feet.\n\nHere's what you've got:\n- **$500 cash** in your pocket and **$2,500** in the bank\n- A phone and your ID (press **TAB** to check your pockets)\n- One **free used vehicle** from the program. Pick it right here.\n\nAfter that, I'll point you around: the bank, a gas station, and City Hall for work. Then you're on your own. Good luck out there.",
@@ -13,14 +11,28 @@
     "target_talk": "Talk to the volunteer",
     "target_vehicle": "Pick your free vehicle"
   },
-
   "vehicle": {
     "menu_title": "Fresh Start: pick one vehicle",
-    "asea": { "label": "Declasse Asea (sedan)", "desc": "Four doors, cheap to run, nobody looks twice." },
-    "landstalker": { "label": "Dundreary Landstalker (SUV)", "desc": "Old but roomy. Good for hauling friends and stuff." },
-    "pcj": { "label": "Shitzu PCJ-600 (motorcycle)", "desc": "Quick and nimble. Not much room for anything else." },
-    "chino": { "label": "Vapid Chino (old muscle)", "desc": "A classic with a big engine and bigger personality." },
-    "bobcatxl": { "label": "Vapid Bobcat XL (truck)", "desc": "An open-bed work truck. Honest and tough." },
+    "asea": {
+      "label": "Declasse Asea (sedan)",
+      "desc": "Four doors, cheap to run, nobody looks twice."
+    },
+    "landstalker": {
+      "label": "Dundreary Landstalker (SUV)",
+      "desc": "Old but roomy. Good for hauling friends and stuff."
+    },
+    "pcj": {
+      "label": "Shitzu PCJ-600 (motorcycle)",
+      "desc": "Quick and nimble. Not much room for anything else."
+    },
+    "chino": {
+      "label": "Vapid Chino (old muscle)",
+      "desc": "A classic with a big engine and bigger personality."
+    },
+    "bobcatxl": {
+      "label": "Vapid Bobcat XL (truck)",
+      "desc": "An open-bed work truck. Honest and tough."
+    },
     "confirm_header": "Take the %s?",
     "confirm_text": "This is your **only** free vehicle, so choose well. It's yours to keep, but it **can't be sold or traded**.\n\nIt comes with about half a tank of gas.",
     "confirm_yes": "Take it",
@@ -28,20 +40,36 @@
     "claimed": "The %s is yours. Plate: %s. Park it in any garage when you're done driving.",
     "cant_sell": "Free starter vehicles can't be sold or traded."
   },
-
   "kiosk": {
     "name": "Bus Station Kiosk",
     "target": "Browse the kiosk"
   },
-
   "step": {
     "progress": "Step %s of %s",
-    "greet": { "text": "Talk to the volunteer at the bus station (look at them and use your third eye).", "blip": "Volunteer" },
-    "vehicle": { "text": "Pick your free vehicle from the volunteer.", "blip": "Volunteer" },
-    "kiosk": { "text": "Grab some water or a snack at the kiosk next door. Hunger and thirst go down slowly.", "blip": "Kiosk" },
-    "bank": { "text": "Head to the Fleeca bank on Legion Square. Your $2,500 is in there. Banks and ATMs work anywhere in the city.", "blip": "Bank" },
-    "fuel": { "text": "Fill up at the gas station on Strawberry Ave. Gas is about $4.26 a gallon, so a full tank runs about $65.", "blip": "Gas station" },
-    "cityhall": { "text": "Stop by City Hall. That's where you find work and replace lost IDs.", "blip": "City Hall" },
+    "greet": {
+      "text": "Talk to the volunteer at the bus station (look at them and use your third eye).",
+      "blip": "Volunteer"
+    },
+    "vehicle": {
+      "text": "Pick your free vehicle from the volunteer.",
+      "blip": "Volunteer"
+    },
+    "kiosk": {
+      "text": "Grab some water or a snack at the kiosk next door. Hunger and thirst go down slowly.",
+      "blip": "Kiosk"
+    },
+    "bank": {
+      "text": "Head to the Fleeca bank on Legion Square. Your $2,500 is in there. Banks and ATMs work anywhere in the city.",
+      "blip": "Bank"
+    },
+    "fuel": {
+      "text": "Fill up at the gas station on Strawberry Ave. Gas is about $4.26 a gallon, so a full tank runs about $65.",
+      "blip": "Gas station"
+    },
+    "cityhall": {
+      "text": "Stop by City Hall. That's where you find work and replace lost IDs. Tip: jobs pay more with friends. Type /crew to start a crew.",
+      "blip": "City Hall"
+    },
     "goal": {
       "title": "You're on your own now",
       "text": "That's the tour. The rest is up to you.\n\nYour goal's first step:\n**%s**\n\nGo make it happen. Type **/goal** anytime to see your goal again.",
@@ -49,18 +77,15 @@
       "button": "Let's go"
     }
   },
-
   "skip": {
     "hint": "You've done this tour before on another character. Type /skiptutorial to skip it.",
     "done": "Tour skipped. Welcome back.",
     "done_no_vehicle": "Tour skipped. Don't forget your free vehicle from the volunteer at the bus station."
   },
-
   "command": {
     "tutorial_help": "Show your current tour step again",
     "skip_help": "Skip the new-arrival tour (2nd and 3rd characters only)"
   },
-
   "error": {
     "no_tour": "You don't have a tour going.",
     "first_character": "Your first character takes the tour. It only takes a few minutes.",
