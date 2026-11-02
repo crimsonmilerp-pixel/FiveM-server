@@ -194,6 +194,8 @@ local function runGoalFlow(mode, current)
                             icon = 'bullseye',
                             duration = 10000,
                         })
+                        -- Lets other resources react (rp_starter starts the tour after a new character's goal).
+                        TriggerEvent('rp_goals:client:goalSaved', mode)
                         break
                     end
 

@@ -321,6 +321,9 @@ lib.addCommand('transfervehicle', {
     local row = exports.qbx_vehicles:GetPlayerVehicle(vehicleId)
     local isFinanced = sharedConfig.finance.enable and financeStorage.fetchIsFinanced(vehicleId)
 
+    -- [OUR CHANGE] Free starter vehicles (rp_starter) can't be sold or traded. See docs/core-changes.md
+    if GetResourceState('rp_starter') == 'started' and exports.rp_starter:BlockStarterSale(source, nil, vehicleId) then return end
+
     if not row then return end
 
     if config.finance.preventSelling and isFinanced then

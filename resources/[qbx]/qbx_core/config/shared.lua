@@ -1,6 +1,6 @@
 return {
     serverName = 'Server',
-    defaultSpawn = vec4(-540.58, -212.02, 37.65, 208.88),
+    defaultSpawn = vec4(454.50, -640.50, 28.90, 270.0), -- [OUR CHANGE] was vec4(-540.58, -212.02, 37.65, 208.88). New arrivals: downtown bus station (rp_starter)
     notifyPosition = 'top-right', -- 'top' | 'top-right' | 'top-left' | 'bottom' | 'bottom-right' | 'bottom-left'
     ---@type { name: string, amount: integer, metadata: fun(source: number): table }[]
     starterItems = { -- Character starting items

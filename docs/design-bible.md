@@ -1,23 +1,23 @@
 # Server Design Bible & Roadmap
 
-*Living plan for the project. Update it whenever we make a decision. Last updated: Oct 27, 2026.*
+*Living plan for the project. Update it whenever we make a decision. Last updated: Nov 2, 2026.*
 
 ---
 
-## ▶ Where we left off (end of Oct 27, 2026 session)
+## ▶ Where we left off (end of Nov 2, 2026 session)
 
-**Live on the server:** Qbox, MariaDB 12.3.3, Vinny's permanent admin, secrets in `secrets.cfg`, Qbox ads removed, Discord link, **rp_goals**, **rp_welcome**, **economy v2** (real prices, fuel, start money, slower hunger, weapon license), **vehicles** (real prices, 152 removed and blocked, speed caps via **rp_vehicles**, tested), **job pay**, **rp_buyers**, and the **job cuts** (all Oct 27). **rp_jobmoments** is built (Oct 27) and waiting on Vinny's upload and test.
+**Live on the server:** Qbox, MariaDB 12.3.3, Vinny's permanent admin, secrets in `secrets.cfg`, Qbox ads removed, Discord link, **rp_goals**, **rp_welcome**, **economy v2** (real prices, fuel, start money, slower hunger, weapon license), **vehicles** (real prices, 152 removed and blocked, speed caps via **rp_vehicles**, tested), **job pay**, **rp_buyers**, and the **job cuts** (Oct 27). **rp_jobmoments** (Oct 27) and **rp_starter** (Nov 2) are built and waiting on Vinny's upload and test.
 
 **Next session, in order:**
-1. Vinny tests `rp_buyers` (Scrap Buyer at the scrap yard, Wine Buyer at the vineyard): both stand in a sensible spot (move with `/buyerhere` if not) and selling works.
-2. Vinny tests `rp_jobmoments`. To see moments quickly, set `oneIn = 1` and `cooldownMinutes = 0` in its `config.lua`, then put them back to 20 and 10.
+1. Vinny tests **rp_starter** with a brand-new character: arrival at the bus station, volunteer and kiosk in sensible spots (move with `/buyerhere` if not), vehicle pick, the tour steps, and the final goal screen. Also check that the starter vehicle can't be sold at the used car lot.
+2. Vinny tests `rp_buyers` and `rp_jobmoments` if not done yet. (For moments, set `oneIn = 1` and `cooldownMinutes = 0` while testing, then back to 20 and 10.)
 3. Next for jobs: moments for tow and trucker, the crew bonus, and real player calls before NPC work (needs the phone).
-4. Then: luxury dealership, Pillar C clothing cleanup, LB Phone once bought, and the play-through checklist.
+4. Then: luxury dealership, Pillar C clothing cleanup, LB Phone once bought (then add phone and job board steps to the tour), and the play-through checklist.
 
 **Loose ends:**
 - James's `fivem:` ID goes into `permissions.cfg`.
 - Set the server name in the Cfx.re Portal.
-- Liam rewrites `rp_goals` and `rp_welcome` `locales/en.json`.
+- Liam rewrites `rp_goals`, `rp_welcome`, `rp_starter` (arrival story, volunteer, tour), and `rp_jobmoments` `locales/en.json`.
 - Police armory and EMS cabinet prices.
 
 **Working style:** plain English, and every change ends with a short WinSCP upload checklist (double-click path → drag → Yes → which restart). Claude writes directly into `C:\Users\mrgri\FiveM\server` (connected folder).
@@ -51,6 +51,7 @@
 | 2026-10-27 | **Fewer jobs, all RP-first.** Cut: bus (nobody rides NPC buses), recycling (it teleports you into a sealed warehouse where no one can run into you), and hot dog (no script). Police stays as is (LSPD, BCSO, SASP). Every job should leave room for RP: **real player calls before NPC work**, **job moments** (now and then a small event with a choice that leads into police, detective, or crime RP), and a **crew bonus** for working together | A small player base spread across fewer jobs means people run into each other, and that's where roleplay starts. |
 | 2026-10-27 | **Job moments: 1 task in 20.** A kept pistol is real but **traceable** (its serial is on file for an open shooting case). Doing the right thing pays a **small reward (~$100) and is logged** for police and detectives | Moments should feel special, and choices should have consequences (Pillar D) that feed police and detective RP. |
 | 2026-10-27 | **NPC cases rule:** police can only charge a player for what they actually did (possession, keeping found cash, lying, planting evidence), never for a crime the server made up. The system never attaches a player's name to an NPC case; the only link is physically finding the gun on someone and running its serial. The case file and `/serial` say the shooter is unknown | So nobody gets pinned for a crime that never involved a player. Players passing the gun around, or planting it, is real RP, and the staff log is the safety net. |
+| 2026-11-02 | **Starter area:** new characters arrive at the **downtown bus station**. **No free apartment** (a home is something you work toward; until rent exists, you log out anywhere). Free starter vehicles are **plain used cars**: Asea, Landstalker, PCJ-600, Chino, Bobcat XL. **One per character, can't be sold or traded.** The tour is **required on your first character** and skippable after that | Grounded "starting from the bottom" feel, every character gets a fair start, and free cars can't be farmed for cash (the used-car lot buys back at 50%). |
 | 2026-10-26 | **All player-facing text lives in config or locale files, not hard-coded** | Liam can write and edit dialogue and UI text without touching code. |
 
 ## 0.2 Shared server and co-owner access
@@ -231,6 +232,7 @@ Size key: S = days, M = 1–2 weeks, L = several weeks, XL = a month or more (pa
 14. ✅ **Custom #3: `rp_vehicles`**: speed caps per class, police speed edge, and the block on 152 weaponized/armored/military vehicles. Tested Oct 27.
 15. ⏳ **Custom #4: `rp_buyers`** (Oct 27): NPC buyers for legal goods. A Scrap Buyer at the Sandy Shores scrap yard, for materials from scrapping cars (real scrap prices: copper $4.70/lb, aluminum $0.60, steel/iron/plastic $0.10, glass/rubber $0.05) and a Wine Buyer at the vineyard marker (wine $6, juice $1.50). Paid in cash. Staff can move a buyer with `/buyerhere`. Waiting on Vinny's upload and test.
 16. ⏳ **Custom #5: `rp_jobmoments`** (Oct 27): job moments for garbage and taxi, about 1 task in 20 (10-minute cooldown). Garbage: a **bloody bag** with a pistol (turn in, keep, or leave; keeping gives a real unregistered pistol whose serial is on file for an open shooting case) and a **lost wallet** (return it to the owner's door for $100, or take the $60). Taxi: a **left-behind bag** of $300 (turn in, or keep it as dirty money; the passenger's report has the cab's plate) and a **runner** (grab them for the fare + 25% tip, call it in to police, or let them go; running them over becomes a pedestrian-death case). Evidence is turned in at the police clock-in spots (Mission Row, Paleto) for $100; on-duty police log it without reward. **`/cases`** and **`/serial`** for on-duty police and staff; staff (mod+) also see who kept what. The case file and `/serial` both say the shooter is unknown (NPC cases rule, Pillar D). Adds the `found_evidence` and `lost_wallet` items. Waiting on Vinny's upload and test.
+17. ⏳ **Custom #6: `rp_starter`** (Nov 2): the starter area and new-arrival tour (see Phase 1, #1). Adds the `rp_starter_progress` table and blocks starter vehicle sales in qbx_vehiclesales and `/transfervehicle`. rp_goals now fires `rp_goals:client:goalSaved` so the tour starts right after the goal screen. Waiting on Vinny's upload and test.
 
 **Included in the Qbox recipe (decide later whether to keep, replace, or extend):**
 - **Phone and UI:** npwd (free phone), qbx_hud, qbx_radialmenu, scully_emotemenu, playerlist, and ox_inventory with 303 items.
@@ -248,7 +250,7 @@ Size key: S = days, M = 1–2 weeks, L = several weeks, XL = a month or more (pa
 - The Qbox welcome banner. Set `qbx:acknowledge true` to hide it.
 
 ### Phase 1: The first hour of play
-- **Tutorial and starter area (#1)**: M
+- **Tutorial and starter area (#1)**: M. ⏳ **v1 built Nov 2 as `rp_starter`** (waiting on Vinny's test): arrival at the downtown bus station, the Fresh Start volunteer, 5 free starter vehicles (Asea, Landstalker, PCJ-600, Chino, Bobcat XL; one per character, half a tank, can't be sold or traded), a bus station kiosk, and a 7-step tour (volunteer → vehicle → kiosk → Fleeca Legion Square → gas on Strawberry Ave → City Hall → your goal's first step). Free starter apartments are off. First character must take the tour; later characters and staff can `/skiptutorial`. `/tutorial` repeats the current step. Text is placeholder for Liam. Still to come: phone and job board steps (after LB Phone).
   - A guided intro walks the player through phone, inventory, bank, fuel, the job board, and the goal journal.
   - Pick 1 of 5 starter vehicles: SUV, Sedan, Motorcycle, Old Muscle Car, Truck. The vehicle is owned and modest, and you can't get a second free one.
   - Starter shop: phone, water, food, bandage, map, repair kit.

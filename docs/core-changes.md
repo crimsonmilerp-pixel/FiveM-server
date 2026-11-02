@@ -29,3 +29,8 @@ Any edit to a resource we didn't write (Qbox, ox_*, npwd, etc.) gets logged here
 | 2026-10-27 | qbx_garbagejob | `server/main.lua` | Calls `exports.rp_jobmoments:OnTask(source, 'garbage')` after each finished stop (only if rp_jobmoments is running) | Job moments | Claude |
 | 2026-10-27 | qbx_taxijob | `server/main.lua` | In `NpcPay`, calls `exports.rp_jobmoments:OnTask(src, 'taxi', { fare })` before paying. If it returns true (the runner moment), the fare is paid later by rp_jobmoments | Job moments | Claude |
 | 2026-10-27 | ox_inventory | `data/items.lua` | Added `found_evidence` and `lost_wallet` items (reusing the paperbag and ID card images) | Job moments | Claude |
+| 2026-11-02 | qbx_core | `config/client.lua` | `startingApartment` true → **false** | No free apartment. New characters arrive at the bus station and rp_starter takes over | Claude |
+| 2026-11-02 | qbx_core | `config/shared.lua` | `defaultSpawn` → downtown bus station `vec4(454.50, -640.50, 28.90, 270.0)` | Starter area arrival point | Claude |
+| 2026-11-02 | qbx_vehiclesales | `server/main.lua` | `checkVehicleOwner`, `sellVehicle`, and `sellVehicleBack` refuse free starter vehicles (`exports.rp_starter:BlockStarterSale`) | Starter vehicles can't be sold (the sell-back pays 50% of value) | Claude |
+| 2026-11-02 | qbx_vehiclesales | `locales/en.json` | `not_your_vehicle` → "You can't sell this vehicle." | Fits both "not yours" and "starter vehicle" | Claude |
+| 2026-11-02 | qbx_vehicleshop | `server/main.lua` | `/transfervehicle` refuses free starter vehicles | Starter vehicles can't be traded | Claude |

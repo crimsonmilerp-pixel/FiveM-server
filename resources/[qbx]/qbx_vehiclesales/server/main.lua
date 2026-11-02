@@ -37,6 +37,8 @@ end)
 
 lib.callback.register('qbx_vehiclesales:server:checkVehicleOwner', function(source, plate)
     local player = exports.qbx_core:GetPlayer(source)
+    -- [OUR CHANGE] Free starter vehicles (rp_starter) can't be sold. See docs/core-changes.md
+    if GetResourceState('rp_starter') == 'started' and exports.rp_starter:BlockStarterSale(source, plate) then return false end
     local result = MySQL.single.await('SELECT * FROM player_vehicles WHERE plate = ? AND citizenid = ?', {plate, player.PlayerData.citizenid})
 
     if result and result.id then
@@ -71,6 +73,8 @@ end)
 RegisterNetEvent('qb-occasions:server:sellVehicle', function(vehiclePrice, vehicleData)
     local src = source
     local player = exports.qbx_core:GetPlayer(src)
+    -- [OUR CHANGE] Free starter vehicles (rp_starter) can't be sold
+    if GetResourceState('rp_starter') == 'started' and exports.rp_starter:BlockStarterSale(src, vehicleData and vehicleData.plate) then return end
     MySQL.query('DELETE FROM player_vehicles WHERE plate = ? AND vehicle = ?',{vehicleData.plate, vehicleData.model})
     MySQL.insert('INSERT INTO occasion_vehicles (seller, price, description, plate, model, mods, occasionid) VALUES (?, ?, ?, ?, ?, ?, ?)',{player.PlayerData.citizenid, vehiclePrice, vehicleData.desc, vehicleData.plate, vehicleData.model,json.encode(vehicleData.mods), generateOID()})
     TriggerEvent('qb-log:server:CreateLog', 'vehicleshop', 'Vehicle for Sale', 'red','**' .. GetPlayerName(src) .. '** has a ' .. vehicleData.model .. ' priced at ' .. vehiclePrice)
@@ -91,6 +95,8 @@ end
 RegisterNetEvent('qb-occasions:server:sellVehicleBack', function(vehData)
     local src = source
     local player = exports.qbx_core:GetPlayer(src)
+    -- [OUR CHANGE] Free starter vehicles (rp_starter) can't be sold back
+    if GetResourceState('rp_starter') == 'started' and exports.rp_starter:BlockStarterSale(src, vehData and vehData.plate) then return end
     local plate = vehData.plate
     local price = getVehPrice(vehData.model)
     local payout = math.floor(price * 0.5) -- This will give you half of the cars value
