@@ -12,7 +12,7 @@
 1. ✅ rp_starter tested Nov 2 (tour works, NPC spots good). Still to check: the starter vehicle is refused at the used car lot.
 2. Vinny tests `rp_buyers` and `rp_jobmoments` if not done yet. (For moments, set `oneIn = 1` and `cooldownMinutes = 0` while testing, then back to 20 and 10.)
 3. Vinny tests **rp_crews** (two people, same job, `/crew`) and the new tow/trucker moments. Time one trucker route and a few tows so we can check the new pay.
-   Next for jobs later: real player calls before NPC work (needs the phone).
+   Next for jobs later: real player calls before NPC work, and **reporter pay per story** (Weazel News buys photos or footage of real events; then put the job back on the City Hall list). Both need the phone.
 4. Then: luxury dealership, Pillar C clothing cleanup, LB Phone once bought (then add phone and job board steps to the tour), and the play-through checklist.
 
 **Loose ends:**
@@ -241,7 +241,7 @@ Size key: S = days, M = 1–2 weeks, L = several weeks, XL = a month or more (pa
 **Included in the Qbox recipe (decide later whether to keep, replace, or extend):**
 - **Phone and UI:** npwd (free phone), qbx_hud, qbx_radialmenu, scully_emotemenu, playerlist, and ox_inventory with 303 items.
 - **Prison:** xt-prison, a starting point for #6.
-- **Legal jobs** (starting points for #4): garbage, taxi, tow, trucker, mechanic, news, car dealer, plus vineyard and diving as side gigs anyone can do. Bus and recycling are cut (disabled in `resources/[disabled]`), and hot dog is removed.
+- **Legal jobs** (starting points for #4): garbage, taxi, tow, trucker, mechanic, news, car dealer, plus vineyard and diving as side gigs anyone can do. Bus and recycling are cut (disabled in `resources/[disabled]`), and hot dog is removed. News reporter is off the City Hall list (Nov 2) until it pays per story; staff can still give it.
 - **Crime** (starting points for #5): store, bank, house, jewelry, and truck robbery, plus drugs and weed.
 - **Services:** police, ambulance and medical, and qbx_adminmenu.
 - **Vehicles:** garages, vehicle shop, vehicle sales, customs, keys, carwash, **ox_fuel** (base for #2), and vehiclehandler.

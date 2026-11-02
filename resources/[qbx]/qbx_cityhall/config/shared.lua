@@ -38,7 +38,7 @@ return {
             trucker = 'Trucker',
             taxi = 'Taxi',
             tow = 'Tow Truck',
-            reporter = 'News Reporter',
+            -- reporter removed Nov 2 [OUR CHANGE]: pays $0 until pay per story exists. Staff can still give it: /setjob [ID] reporter 0
             garbage = 'Garbage Collector',
             -- bus removed Oct 27 [OUR CHANGE]: job cut. See docs/core-changes.md
         },
