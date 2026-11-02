@@ -7,3 +7,4 @@ Rules:
 - Every resource starts with the same name prefix, decided once the server is named. Until then, use `rp_`.
 - All player-facing text goes in `locales/en.json`, so Liam can edit it without touching code.
 - Settings an admin might tune (prices, timers, rates) go in `config.lua`.
+- In `dependencies`, list only resources that also run in players' games. A server-only resource (like `qbx_vehicles`, marked `server_only 'yes'`) makes every player fail to load ours with "Couldn't load resource". This happened with rp_starter on Nov 2.

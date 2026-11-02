@@ -26,12 +26,13 @@ files {
     'locales/*.json',
 }
 
+-- qbx_vehicles is also needed, but it's server-only, so it can't be listed here:
+-- players' games never receive it, and they'd refuse to load this resource.
 dependencies {
     'ox_lib',
     'oxmysql',
     'ox_target',
     'ox_inventory',
     'qbx_core',
-    'qbx_vehicles',
     'qbx_vehiclekeys',
 }
