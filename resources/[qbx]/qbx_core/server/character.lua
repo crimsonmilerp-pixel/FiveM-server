@@ -72,9 +72,16 @@ local function sanitizeNewCharInfo(data)
         return value
     end
 
-    local firstname = text(data.firstname, MAX_TEXT)
-    local lastname = text(data.lastname, MAX_TEXT)
-    local nationality = text(data.nationality, MAX_TEXT)
+    -- [OUR CHANGE] Names show up in menus that format text, so a name like ![x](link) could load an
+    -- image from the internet on staff screens (and reveal their IP). Strip those symbols. See docs/core-changes.md
+    local function plainName(value)
+        if type(value) ~= 'string' then return nil end
+        return text((value:gsub('[%c<>%[%]%(%){}!`*_#|\\=~^]', '')), MAX_TEXT)
+    end
+
+    local firstname = plainName(data.firstname)
+    local lastname = plainName(data.lastname)
+    local nationality = plainName(data.nationality)
     local birthdate = text(data.birthdate, MAX_TEXT)
     local gender = tonumber(data.gender)
 

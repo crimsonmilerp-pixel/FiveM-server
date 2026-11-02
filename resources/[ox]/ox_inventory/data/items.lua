@@ -662,4 +662,52 @@ return {
         description = "Someone's wallet. Their address is on the ID inside.",
         client = { image = 'card_id.png', export = 'rp_jobmoments.useWallet' },
     },
+
+    -- [OUR CHANGE] Items other Qbox scripts already hand out, but that were missing from this list
+    -- (so players got nothing, or an error). See docs/core-changes.md
+    ['markedbills'] = { -- drug deliveries and store robberies (the worth is stored on each stack)
+        label = 'Marked Bills',
+        weight = 1000,
+        stack = false,
+        close = true,
+        description = 'Bundles of cash with a dye marking. Hard to spend clean.',
+    },
+
+    ['moneybag'] = { -- police put seized cash in one of these
+        label = 'Money Bag',
+        weight = 500,
+        stack = false,
+        close = true,
+        description = 'A sealed bag of seized cash.',
+    },
+
+    ['iphone'] = { -- pawn shop
+        label = 'iFruit Phone',
+        weight = 200,
+        description = "Someone's old phone. A pawn shop might take it.",
+    },
+
+    ['samsungphone'] = { -- pawn shop
+        label = 'Facade Phone',
+        weight = 200,
+        description = "Someone's old phone. A pawn shop might take it.",
+    },
+
+    ['laptop'] = { -- pawn shop
+        label = 'Laptop',
+        weight = 2000,
+        description = 'A used laptop. A pawn shop might take it.',
+    },
+
+    ['tablet'] = { -- pawn shop
+        label = 'Tablet',
+        weight = 600,
+        description = 'A used tablet. A pawn shop might take it.',
+    },
+
+    ['microwave'] = { -- house robbery
+        label = 'Microwave',
+        weight = 10000,
+        description = 'Heavy and awkward to carry.',
+    },
 }

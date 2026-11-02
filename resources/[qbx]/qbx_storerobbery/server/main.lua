@@ -195,13 +195,11 @@ local function completeSafe(src, combination)
 
     local worthMarkedBills = math.random(config.safeReward.markedBillsWorth.min, config.safeReward.markedBillsWorth.max)
     local numMarkedBills = math.random(config.safeReward.markedBillsAmount.min, config.safeReward.markedBillsAmount.max)
-    local billsMeta = {
-        worth = worthMarkedBills,
-        description = locale('text.value', {value = worthMarkedBills})
-    }
 
     startedSafe[src] = nil
-    player.Functions.AddItem('markedbills', numMarkedBills, false, billsMeta)
+    -- [OUR CHANGE] Pay the same amount as Dirty Money (black_money), the one kind of dirty cash this server uses
+    -- (the black market takes it). Marked bills had no use anywhere. See docs/core-changes.md
+    exports.ox_inventory:AddItem(src, 'black_money', worthMarkedBills * numMarkedBills)
     if config.safeReward.chanceAtSpecial > math.random(0, 100) then
         player.Functions.AddItem('rolex', math.random(config.safeReward.rolexAmount.min, config.safeReward.rolexAmount.max))
         if config.safeReward.chanceAtSpecial / 2 > math.random(0, 100) then

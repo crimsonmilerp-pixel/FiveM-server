@@ -171,8 +171,9 @@ return {
 		blip = {
 			id = 403, colour = 69, scale = 0.8
 		}, inventory = {
-			{ name = 'medikit', price = 26 },
-			{ name = 'bandage', price = 5 }
+			-- [OUR CHANGE] 'medikit' isn't a real item. Same items and prices as the pharmacy. See docs/core-changes.md
+			{ name = 'firstaid', price = 30 },
+			{ name = 'bandage', price = 6 }
 		}, locations = {
 			vec3(306.3687, -601.5139, 43.28406)
 		}, targets = {

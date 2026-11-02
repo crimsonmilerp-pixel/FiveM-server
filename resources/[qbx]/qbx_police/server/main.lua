@@ -70,7 +70,10 @@ exports.qbx_core:CreateUseableItem('handcuffs', function(source)
 end)
 
 exports.qbx_core:CreateUseableItem('moneybag', function(source, item)
-    if not item.info or item.info == '' then return end
+    -- [OUR CHANGE] ox_inventory stores the cash amount in item.metadata (there is no item.info),
+    -- so the bag could never be opened. See docs/core-changes.md
+    local info = item.metadata or item.info
+    if type(info) ~= 'table' or not tonumber(info.cash) then return end
     local player = exports.qbx_core:GetPlayer(source)
     if not player
         or player.PlayerData.job.type == 'leo'
@@ -79,7 +82,7 @@ exports.qbx_core:CreateUseableItem('moneybag', function(source, item)
     then
         return
     end
-    player.Functions.AddMoney('cash', tonumber(item.info.cash), 'used-moneybag')
+    player.Functions.AddMoney('cash', tonumber(info.cash), 'used-moneybag')
 end)
 
 -- Callbacks
@@ -377,7 +380,8 @@ RegisterNetEvent('police:server:SeizeCash', function(targetSrc)
     if isTargetTooFar(src, targetSrc) then return end
 
     local player = exports.qbx_core:GetPlayer(src)
-    if not player then return end
+    -- [OUR CHANGE] Only on-duty police can seize cash (the server didn't check, so anyone could). See docs/core-changes.md
+    if not player or not IsLeoAndOnDuty(player) then return end
     local targetPlayer = exports.qbx_core:GetPlayer(targetSrc)
     if not targetPlayer then return end
 

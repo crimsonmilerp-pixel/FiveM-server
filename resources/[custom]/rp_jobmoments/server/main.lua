@@ -73,7 +73,9 @@ end
 ---Street names come from the player's game (the server can't look them up). Keep them short and plain.
 local function cleanStreet(street)
     if type(street) ~= 'string' then return '?' end
-    street = (street:gsub('[%c<>]', '')):sub(1, 60)
+    -- Street names come from the player's game, and police/staff menus show them as formatted text,
+    -- so strip anything that could turn into a link, image or HTML.
+    street = (street:gsub('[%c<>%[%]%(%)!`*_#|\\]', '')):sub(1, 60)
     return street ~= '' and street or '?'
 end
 

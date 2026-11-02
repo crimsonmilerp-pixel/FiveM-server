@@ -8,6 +8,8 @@
 
 **Live on the server:** Qbox, MariaDB 12.3.3, Vinny's permanent admin, secrets in `secrets.cfg`, Qbox ads removed, Discord link, **rp_goals**, **rp_welcome**, **economy v2** (real prices, fuel, start money, slower hunger, weapon license), **vehicles** (real prices, 152 removed and blocked, speed caps via **rp_vehicles**, tested), **job pay**, **rp_buyers**, and the **job cuts** (Oct 27). **rp_starter** (Nov 2, tested). **rp_jobmoments** (Oct 27; tow and trucker moments added Nov 2) and **rp_crews** (Nov 2) are built and waiting on Vinny's test.
 
+**Nov 2 audit (deep check of all server files):** fixed the used car lot exploits (listing other people's cars, selling back any car at supercar prices, spawning any vehicle, the contract leaking the seller's whole player row), 7 missing items, 169 item pictures that sat one folder too deep, the police money bag that could never be opened, cash seizing that didn't check for police, store safes paying unusable marked bills (now Dirty Money), the EMS cabinet selling a fake item, the example lockpick workbench, `cola` in car loot, the rp_starter logout event, and text from players (names, goals, street names) that could carry images or links into staff menus. Details: `docs/core-changes.md`.
+
 **Next session, in order:**
 1. ✅ rp_starter tested Nov 2 (tour works, NPC spots good). Still to check: the starter vehicle is refused at the used car lot.
 2. Vinny tests `rp_buyers` and `rp_jobmoments` if not done yet. (For moments, set `oneIn = 1` and `cooldownMinutes = 0` while testing, then back to 20 and 10.)
@@ -16,10 +18,12 @@
 4. Then: luxury dealership, Pillar C clothing cleanup, LB Phone once bought (then add phone and job board steps to the tour), and the play-through checklist.
 
 **Loose ends:**
+- After uploading the audit: delete the folder `resources/[ox]/ox_inventory/web/images/images` (the pictures were copied up one level, so it's now a duplicate). Locally and on the server.
+- Found in the audit, left for crime balancing (Phase 3): bank robberies pay **$10k-40k Dirty Money** per drawer/vault (far above our crime ≈ 2.5× legal rule); `police:server:RobPlayer` (rob someone with hands up) can't check hands-up on the server, so it relies on the game; `qbx_properties` tables: check the txAdmin console for SQL errors when we get to housing.
 - James's `fivem:` ID goes into `permissions.cfg`.
 - Set the server name in the Cfx.re Portal.
 - Liam rewrites `rp_goals`, `rp_welcome`, `rp_starter` (arrival story, volunteer, tour), and `rp_jobmoments` `locales/en.json`.
-- Police armory and EMS cabinet prices.
+- Police armory prices (the EMS cabinet now matches the pharmacy: first aid $30, bandage $6).
 
 **Working style:** plain English, and every change ends with a short WinSCP upload checklist (double-click path → drag → Yes → which restart). Claude writes directly into `C:\Users\mrgri\FiveM\server` (connected folder).
 
@@ -54,6 +58,7 @@
 | 2026-10-27 | **NPC cases rule:** police can only charge a player for what they actually did (possession, keeping found cash, lying, planting evidence), never for a crime the server made up. The system never attaches a player's name to an NPC case; the only link is physically finding the gun on someone and running its serial. The case file and `/serial` say the shooter is unknown | So nobody gets pinned for a crime that never involved a player. Players passing the gun around, or planting it, is real RP, and the staff log is the safety net. |
 | 2026-11-02 | **Starter area:** new characters arrive at the **downtown bus station**. **No free apartment** (a home is something you work toward; until rent exists, you log out anywhere). Free starter vehicles are **plain used cars**: Asea, Landstalker, PCJ-600, Chino, Bobcat XL. **One per character, can't be sold or traded.** The tour is **required on your first character** and skippable after that | Grounded "starting from the bottom" feel, every character gets a fair start, and free cars can't be farmed for cash (the used-car lot buys back at 50%). |
 | 2026-11-02 | **Crews: form a crew with `/crew` (2-4 people); everyone runs their own route; each task pays +10% per crewmate working the same job, up to +30%.** Players learn about it from a tip when they take a crew job, a reminder about once an hour while working alone, and the tour's City Hall step. **New moments:** tow (drugs in the trunk) and trucker (extra package of cash). Trucker pay fixed: a "drop" is one store, not one box | A shared route would mean rewriting every job; this works for all four task jobs now and still rewards working together. Vinny asked that players be told how to form a crew. |
+| 2026-11-02 | **One kind of dirty cash: Dirty Money (`black_money`).** Store safes now pay it instead of marked bills. **Anything a player types (names, goals, descriptions) is cleaned on the server** so it can't carry images, links or HTML into menus | Marked bills had no use anywhere. Menus format text, so a typed image link could load on a staff member's screen and reveal their IP. |
 | 2026-10-26 | **All player-facing text lives in config or locale files, not hard-coded** | Liam can write and edit dialogue and UI text without touching code. |
 
 ## 0.2 Shared server and co-owner access
@@ -389,7 +394,7 @@ Size key: S = days, M = 1–2 weeks, L = several weeks, XL = a month or more (pa
 - ✅ (Oct 27) Store prices set to real-world (`ox_inventory/data/shops.lua`). Random price swings are off (`ox.cfg`), `cola` is fixed to `sprunk`, more items are stocked, and ammo is **$1/round** (simple quick math; ammo boxes optional later).
 - ✅ (Oct 27) Weapon license 350 (`ox_inventory/data/licenses.lua`).
 - ✅ (Oct 27) Fuel ~$67 a tank, petrol can $35, refill $21 (`ox_fuel/config.lua`).
-- Not yet: police armory and EMS medicine cabinet prices (department gear, still to decide).
+- Not yet: police armory prices (department gear, still to decide). The EMS medicine cabinet matches the pharmacy (first aid $30, bandage $6).
 - ✅ (Oct 27) Vehicle prices from the sheet → `qbx_core/shared/vehicles.lua` (692 repriced). Boats and aircraft are hand-priced. **152 weaponized, armored, military, arena, and sci-fi vehicles removed and blocked from spawning anywhere** (`rp_vehicles`).
 - Note: sports and super cars aren't sold anywhere yet, because Qbox's luxury dealership is commented out in `qbx_vehicleshop/config/shared.lua`. Qbox also has built-in dealership financing (10% down, 24 payments) to consider for Phase 2 loans.
 - ✅ (Oct 27) **Job pay** (see the Jobs & Pay tab and `docs/core-changes.md`). Paychecks only for clocked-in police ($900–1,620/hr), EMS ($600–1,500/hr), and mechanics ($300–480/hr base + customers). Taxi $5 + $15/mile, garbage $6–9/bag, trucker $22–28/box, tow $80–95/tow, bus unchanged ($15–25/stop), coral $16–22 / $11–15, car dealer commission 2.5%. The useless cryptostick rewards are off. ⏳ Check each job's real hourly in play and retune.

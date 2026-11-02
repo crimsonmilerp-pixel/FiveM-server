@@ -58,6 +58,18 @@ local function trim(text)
     return (text:match('^%s*(.-)%s*$'))
 end
 
+---Goals are shown in menus that format text (markdown). Keep the words, but stop anyone sneaking in
+---images, links or HTML (an image from the internet could reveal a staff member's IP address).
+local function plainText(text)
+    if type(text) ~= 'string' then return '' end
+    text = text:gsub('\t', ' ')
+    text = text:gsub('[\0-\8\11-\31\127]', '') -- invisible control characters (new lines are fine)
+    text = text:gsub('[<>]', '')                  -- HTML tags
+    text = text:gsub('!%[', '[')                  -- ![image](link) becomes plain text
+    text = text:gsub('%]%(', '] (')               -- [text](link) becomes plain text
+    return text
+end
+
 ---Counts characters (not bytes), so emojis and accents count as one.
 local function textLength(text)
     return utf8.len(text) or #text
@@ -86,9 +98,9 @@ local function toClient(row)
     local wait = secondsUntilChangeAllowed(row)
     return {
         category = row.category,
-        goal = row.goal,
-        reason = row.reason,
-        firstStep = row.first_step,
+        goal = plainText(row.goal),
+        reason = plainText(row.reason),
+        firstStep = plainText(row.first_step),
         setOn = os.date('%b %d, %Y', row.changed_at),
         timesChanged = row.times_changed,
         canChange = wait == 0,
@@ -129,9 +141,9 @@ lib.callback.register('rp_goals:server:save', function(source, input)
 
     local mode = input.mode == 'change' and 'change' or 'create'
     local category = input.category
-    local goal = trim(input.goal)
-    local reason = trim(input.reason)
-    local firstStep = trim(input.firstStep)
+    local goal = trim(plainText(input.goal))
+    local reason = trim(plainText(input.reason))
+    local firstStep = trim(plainText(input.firstStep))
 
     if not VALID_CATEGORY[category] then return false, 'pick_category' end
 

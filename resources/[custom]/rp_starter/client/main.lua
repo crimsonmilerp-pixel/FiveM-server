@@ -167,7 +167,8 @@ AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
     end)
 end)
 
-AddEventHandler('QBCore:Client:OnPlayerUnload', function()
+-- The server sends this one on logout, so it must be a RegisterNetEvent (AddEventHandler never heard it).
+RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
     clearStepMarkers()
     status = nil
 end)
