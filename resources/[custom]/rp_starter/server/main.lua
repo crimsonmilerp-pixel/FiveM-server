@@ -15,6 +15,11 @@ for _, v in ipairs(config.vehicles) do ALLOWED_MODEL[v.model] = true end
 local starterIds, starterPlates = {}, {} -- every starter vehicle, kept in memory for fast checks
 local claiming = {}                       -- [source] = true while a vehicle is being created
 
+---The database hands back yes/no columns as true/false (not 1/0), so check both.
+local function isYes(value)
+    return value == true or value == 1
+end
+
 local function trimPlate(plate)
     return tostring(plate or ''):gsub('^%s+', ''):gsub('%s+$', ''):upper()
 end
@@ -92,12 +97,12 @@ local function statusFor(source, player, row)
     if not row then return nil end
     return {
         step = row.step,
-        done = row.done == 1,
-        skipped = row.skipped == 1,
+        done = isYes(row.done),
+        skipped = isYes(row.skipped),
         vehicleClaimed = row.vehicle_id ~= nil,
         model = row.model,
         plate = row.plate,
-        canSkip = row.done ~= 1 and canSkip(source, player) or false,
+        canSkip = not isYes(row.done) and canSkip(source, player) or false,
     }
 end
 
@@ -131,7 +136,7 @@ lib.callback.register('rp_starter:server:advance', function(source, stepId)
     local player = getPlayer(source)
     if not player then return end
     local row = getRow(player.PlayerData.citizenid)
-    if not row or row.done == 1 or row.step ~= stepId then return end
+    if not row or isYes(row.done) or row.step ~= stepId then return end
 
     local index = STEP_INDEX[stepId]
     local step = config.steps[index]
@@ -152,7 +157,7 @@ lib.callback.register('rp_starter:server:skip', function(source)
     local player = getPlayer(source)
     if not player then return false, 'no_tour' end
     local row = getRow(player.PlayerData.citizenid)
-    if not row or row.done == 1 then return false, 'no_tour' end
+    if not row or isYes(row.done) then return false, 'no_tour' end
     if not canSkip(source, player) then return false, 'first_character' end
 
     MySQL.update.await('UPDATE `rp_starter_progress` SET `done` = 1, `skipped` = 1, `updated_at` = ? WHERE `citizenid` = ?',
@@ -200,7 +205,7 @@ lib.callback.register('rp_starter:server:claimVehicle', function(source, model)
         { vehicleId, plate, model, os.time(), citizenid })
 
     -- Picking the vehicle also finishes the tour's first two steps.
-    if row.done ~= 1 and (STEP_INDEX[row.step] or 1) <= STEP_INDEX.vehicle then
+    if not isYes(row.done) and (STEP_INDEX[row.step] or 1) <= STEP_INDEX.vehicle then
         setStep(citizenid, config.steps[STEP_INDEX.vehicle + 1].id, false)
     end
 

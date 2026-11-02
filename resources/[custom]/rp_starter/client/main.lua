@@ -70,7 +70,13 @@ local function advance(stepId)
     end
 end
 
+local finishShown = false -- the final screen shows once per session, no matter what
+
 local function finishTour()
+    if finishShown then return end
+    finishShown = true
+    clearStepMarkers()
+
     local mine = GetResourceState('rp_goals') == 'started' and lib.callback.await('rp_goals:server:getMine', false)
     local firstStep = mine and mine.goal and mine.goal.firstStep
 
@@ -81,7 +87,8 @@ local function finishTour()
         size = 'lg',
         labels = { confirm = locale('step.goal.button') },
     })
-    advance('goal')
+    local newStatus = lib.callback.await('rp_starter:server:advance', false, 'goal')
+    status = newStatus or { done = true }
 end
 
 showStep = function()
