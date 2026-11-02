@@ -409,6 +409,7 @@ Size key: S = days, M = 1–2 weeks, L = several weeks, XL = a month or more (pa
 - Staff team: who moderates, and who runs the story team?
 - Whitelisted (application) or public?
 - Budget for premium scripts (hosting is $29.98/mo on Nodecraft Pro 6 GB).
+- **Wasabi Scripts bundles (looked at Nov 2, not bought).** Advanced bundle $229.99 one-time (police, EMS, MDT/dispatch, evidence, crutches, admin menu, car lock, notify) and Core UI bundle $147.99 one-time (loading screen, banking, VIP coin shop, notify, multicharacter, spawn selector, pause menu, UI kit). The subscriptions are $29.99/mo each, and escrowed scripts are removed from your account when a subscription ends, so they're rentals. All sales are final. The code is locked except config, locale and "customize" files. Advice: **don't subscribe; don't buy either bundle now.** Most of it replaces things that already work (multicharacter, spawn, Renewed-Banking, vehicle keys, notify) or things we decided to build ourselves (police overhaul, evidence). The VIP coin shop goes against our economy, and selling in-game currency for real money is banned by the Cfx.re platform license (3.1). Worth comparing in Phase 3: **wasabi MDT and dispatch** (sold alone, $49.99) against other MDTs, for the warrants and case-file work. Maybe later: the EMS job (V2), if a play-through shows qbx_ambulancejob isn't enough.
 - Do sentences, loans, and taxes run on real-world time or in-game days?
 - Death rules: permadeath only by consent, or something stricter?
 
