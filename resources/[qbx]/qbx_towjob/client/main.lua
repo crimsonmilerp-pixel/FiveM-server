@@ -171,7 +171,19 @@ local function deliverVehicle(vehicle)
     SetBlipRouteColour(CurrentBlip, 3)
 end
 
+-- [OUR CHANGE] Remember the tow yard markers, so they aren't stacked twice and are removed when you leave the job. See docs/core-changes.md
+local towBlips = {}
+local towZonesCreated = false
+
+local function RemoveElements()
+    for _, blip in ipairs(towBlips) do
+        if DoesBlipExist(blip) then RemoveBlip(blip) end
+    end
+    towBlips = {}
+end
+
 local function CreateElements()
+    if #towBlips > 0 then return end
     local TowBlip = AddBlipForCoord(sharedConfig.locations["main"].coords.x, sharedConfig.locations["main"].coords.y, sharedConfig.locations["main"].coords.z)
     SetBlipSprite(TowBlip, 477)
     SetBlipDisplay(TowBlip, 4)
@@ -191,7 +203,10 @@ local function CreateElements()
     BeginTextCommandSetBlipName("STRING")
     AddTextComponentSubstringPlayerName(sharedConfig.locations["vehicle"].label)
     EndTextCommandSetBlipName(TowVehBlip)
+    towBlips = { TowBlip, TowVehBlip }
 
+    if towZonesCreated then return end
+    towZonesCreated = true
     CreateZone("main")
     CreateZone("vehicle")
 end
@@ -218,6 +233,7 @@ RegisterNetEvent('qb-tow:client:SpawnVehicle', function()
 end)
 
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+    PlayerJob = QBX.PlayerData.job -- [OUR CHANGE] was never set at login, so tow drivers lost their map markers after logging back in
     if PlayerJob.name == "tow" then
         CreateElements()
     end
@@ -228,6 +244,8 @@ RegisterNetEvent('QBCore:Client:OnJobUpdate', function(JobInfo)
 
     if PlayerJob.name == "tow" then
         CreateElements()
+    else
+        RemoveElements() -- [OUR CHANGE] take the markers off the map when you leave the job
     end
 end)
 

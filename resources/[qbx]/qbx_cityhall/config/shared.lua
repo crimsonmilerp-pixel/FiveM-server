@@ -4,7 +4,7 @@ return {
             coords = vec3(-265.0, -963.6, 31.2),
             showBlip = true,
             blip = {
-                label = 'City Services',
+                label = 'City Hall (jobs and IDs)', -- [OUR CHANGE] was 'City Services'. See docs/core-changes.md
                 shortRange = true,
                 sprite = 487,
                 display = 4,

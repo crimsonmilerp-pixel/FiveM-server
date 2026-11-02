@@ -1,0 +1,19 @@
+{
+  "_note": "Text for rp_jobmarkers. Edit the words on the right side only. Keep every %s.",
+  "marker": {
+    "garbage": "Work: Garbage depot",
+    "taxi": "Work: Taxi depot",
+    "tow": "Work: Tow yard",
+    "trucker": "Work: Trucker shed"
+  },
+  "job": {
+    "garbage": "garbage collector",
+    "taxi": "taxi driver",
+    "tow": "tow truck driver",
+    "trucker": "trucker"
+  },
+  "hint": {
+    "title": "Looking for work?",
+    "text": "This is where you'd work as a %s. Sign up at City Hall first (it's on your map), then come back here to start."
+  }
+}
