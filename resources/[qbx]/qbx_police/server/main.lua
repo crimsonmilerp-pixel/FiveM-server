@@ -1,4 +1,5 @@
 local sharedConfig = require 'config.shared'
+local clientConfig = require 'config.client' -- [OUR CHANGE] the server checks the helicopter model and the old garage lists too
 local playerStatus = {}
 local casings = {}
 local bloodDrops = {}
@@ -104,11 +105,73 @@ lib.callback.register('police:GetPlayerStatus', function(_, targetSrc)
     return statList
 end)
 
-lib.callback.register('police:GetImpoundedVehicles', function()
+lib.callback.register('police:GetImpoundedVehicles', function(source)
+    -- [OUR CHANGE] Was open to anyone (the full list of impounded cars and their owners). See docs/core-changes.md
+    local player = exports.qbx_core:GetPlayer(source)
+    if not player or not IsLeoAndOnDuty(player) then return end
     return FetchImpoundedVehicles()
 end)
 
+-- [OUR CHANGE] Checks for police vehicle spawns. Before this, anyone could ask the server for any vehicle,
+-- anywhere, with keys. Now: on-duty police only, standing at a police garage, helipad or impound, and only
+-- the cars their rank and division allow (rp_police). See docs/core-changes.md
+local function isNear(coords, list, maxDistance)
+    for i = 1, #list do
+        local spot = list[i]
+        if #(coords - vec3(spot.x, spot.y, spot.z)) <= maxDistance then return true end
+    end
+    return false
+end
+
+local function randomPlate(prefix)
+    local pattern = ''
+    for _ = 1, 8 - #prefix do pattern = pattern .. '1' end
+    return prefix .. lib.string.random(pattern):upper()
+end
+
+---Returns the plate to use, or nil if this spawn isn't allowed.
+local function checkPoliceSpawn(source, player, model, coords, plate, vehId)
+    if type(model) ~= 'string' then return end
+    local coordsType = type(coords)
+    if coordsType ~= 'vector3' and coordsType ~= 'vector4' then return end
+
+    local spot = vec3(coords.x, coords.y, coords.z)
+    if #(GetEntityCoords(GetPlayerPed(source)) - spot) > 10.0 then return end
+
+    if vehId then
+        -- Impound: it must really be impounded, and be that car with that plate.
+        if not isNear(spot, sharedConfig.locations.impound, 2.0) then return end
+        local row = MySQL.single.await('SELECT `vehicle`, `plate` FROM `player_vehicles` WHERE `id` = ? AND `state` = 2', { vehId })
+        if not row or row.vehicle ~= model or row.plate ~= plate then return end
+        return row.plate
+    end
+
+    local rpPolice = GetResourceState('rp_police') == 'started'
+
+    if isNear(spot, sharedConfig.locations.helicopter, 6.0) then
+        if model ~= clientConfig.policeHelicopter then return end
+        if rpPolice and exports.rp_police:CanUseHelicopter(source) == false then return end
+        return randomPlate('ZULU')
+    end
+
+    if isNear(spot, sharedConfig.locations.vehicle, 2.0) then
+        local allowed
+        if rpPolice then allowed = exports.rp_police:CanUseVehicle(source, model) end
+        if allowed == nil then -- a department rp_police doesn't manage: use the old lists
+            local list = clientConfig.authorizedVehicles[player.PlayerData.job.grade.level]
+            allowed = (list and list[model] ~= nil) or clientConfig.whitelistedVehicles[model] ~= nil
+        end
+        if not allowed then return end
+        return randomPlate(sharedConfig.policePlatePrefix)
+    end
+end
+
 lib.callback.register('qbx_policejob:server:spawnVehicle', function(source, model, coords, plate, giveKeys, vehId)
+    local player = exports.qbx_core:GetPlayer(source)
+    if not player or not IsLeoAndOnDuty(player) then return end
+    plate = checkPoliceSpawn(source, player, model, coords, plate, vehId)
+    if not plate then return end
+
     local netId, veh = qbx.spawnVehicle({
         model = model,
         spawnSource = coords,
@@ -200,8 +263,13 @@ end)
 RegisterNetEvent('police:server:TakeOutImpound', function(plate, garage)
     local src = tonumber(source)
     if not src then return end
+    -- [OUR CHANGE] Was missing a police check (anyone could release an impounded car). See docs/core-changes.md
+    local player = exports.qbx_core:GetPlayer(src)
+    if not player or not IsLeoAndOnDuty(player) then return end
+    local impound = sharedConfig.locations.impound[tonumber(garage) or 0]
+    if not impound or type(plate) ~= 'string' then return end
     local playerCoords = GetEntityCoords(GetPlayerPed(src))
-    if #(playerCoords - sharedConfig.locations.impound[garage]) > 10.0 then return end
+    if #(playerCoords - impound) > 10.0 then return end
 
     Unimpound(plate)
     exports.qbx_core:Notify(src, locale('success.impound_vehicle_removed'), 'success')
@@ -457,7 +525,10 @@ RegisterNetEvent('evidence:server:CreateFingerDrop', function(coords)
 end)
 
 RegisterNetEvent('evidence:server:ClearBlooddrops', function(bloodDropList)
-    if not bloodDropList or not next(bloodDropList) then return end
+    -- [OUR CHANGE] Was missing a police check (anyone could wipe blood evidence). See docs/core-changes.md
+    local player = exports.qbx_core:GetPlayer(source)
+    if not player or not IsLeoAndOnDuty(player) then return end
+    if type(bloodDropList) ~= 'table' or not next(bloodDropList) then return end
     for _, v in pairs(bloodDropList) do
         TriggerClientEvent('evidence:client:RemoveBlooddrop', -1, v)
         bloodDrops[v] = nil
@@ -530,7 +601,10 @@ RegisterNetEvent('police:server:UpdateCurrentCops', function()
 end)
 
 RegisterNetEvent('evidence:server:ClearCasings', function(casingList)
-    if casingList and next(casingList) then
+    -- [OUR CHANGE] Was missing a police check (anyone could wipe bullet casings). See docs/core-changes.md
+    local player = exports.qbx_core:GetPlayer(source)
+    if not player or not IsLeoAndOnDuty(player) then return end
+    if type(casingList) == 'table' and next(casingList) then
         for _, v in pairs(casingList) do
             TriggerClientEvent('evidence:client:RemoveCasing', -1, v)
             casings[v] = nil

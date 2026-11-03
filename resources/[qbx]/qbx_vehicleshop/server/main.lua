@@ -10,10 +10,9 @@ local saleTimeout = {}
 local testDrives = {}
 local managedTestDriveAuthorizations = {}
 
+-- [OUR CHANGE] Uses IsShopSalesperson (server/utils.lua): at npcFallback shops the dealer must be clocked in.
 local function isAuthorizedSalesperson(source, shop)
-    if not shop or shop.type ~= 'managed' or not shop.job then return false end
-    local player = exports.qbx_core:GetPlayer(source)
-    return player and player.PlayerData.job.name == shop.job
+    return IsShopSalesperson(source, shop)
 end
 
 ---@param data {toVehicle: string, targetVehicle: integer, closestShop: string}
@@ -24,7 +23,7 @@ RegisterNetEvent('qbx_vehicleshop:server:swapVehicle', function(data)
     local shopId = GetShopZone(src)
     local shop = sharedConfig.shops[shopId]
     if not shop or shopId ~= data.closestShop or not shop.showroomVehicles[data.targetVehicle] then return end
-    if shop.type == 'managed' and not isAuthorizedSalesperson(src, shop) then return end
+    if not IsShopSelfService(shop, src) and not isAuthorizedSalesperson(src, shop) then return end -- [OUR CHANGE] was shop.type == 'managed'
     if not CheckVehicleList(data.toVehicle, shopId) then return end
 
     TriggerClientEvent('qbx_vehicleshop:client:swapVehicle', -1, {
@@ -46,7 +45,7 @@ RegisterNetEvent('qbx_vehicleshop:server:testDrive', function(vehicle)
     local shopId = GetShopZone(src)
     local shop = sharedConfig.shops[shopId]
     if not shop then return end
-    if shop.type == 'managed' and not isAuthorizedSalesperson(src, shop) then
+    if not IsShopSelfService(shop, src) and not isAuthorizedSalesperson(src, shop) then -- [OUR CHANGE] was shop.type == 'managed'
         local authorization = managedTestDriveAuthorizations[src]
         managedTestDriveAuthorizations[src] = nil
         if not authorization or authorization.shopId ~= shopId or authorization.vehicle ~= vehicle or authorization.expiresAt < os.time() then return end
@@ -167,7 +166,7 @@ RegisterNetEvent('qbx_vehicleshop:server:buyShowroomVehicle', function(vehicle)
     local shopId = GetShopZone(src)
     local shop = sharedConfig.shops[shopId]
     if not shop then return end
-    if shop.type ~= 'free-use' or not sharedConfig.enableFreeUseBuy then return end
+    if not IsShopSelfService(shop, src) or not sharedConfig.enableFreeUseBuy then return end -- [OUR CHANGE] was shop.type ~= 'free-use'
 
     if not CheckVehicleList(vehicle, shopId) then
         return exports.qbx_core:Notify(src, locale('error.notallowed'), 'error')
@@ -225,6 +224,10 @@ end
 ---@param playerId string|number
 RegisterNetEvent('qbx_vehicleshop:server:sellShowroomVehicle', function(vehicle, playerId)
     local src = source
+    -- [OUR CHANGE] No selling to yourself (that would pay you a commission on your own car)
+    if tonumber(playerId) == src then
+        return exports.qbx_core:Notify(src, locale('error.selfsale'), 'error')
+    end
     local target = exports.qbx_core:GetPlayer(tonumber(playerId))
 
     if not target then

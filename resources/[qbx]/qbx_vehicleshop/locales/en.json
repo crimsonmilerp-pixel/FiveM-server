@@ -24,7 +24,8 @@
         "selftransfer": "You can't transfer to yourself",
         "sale_timeout": "Wait a while before trading your vehicle",
         "notallowed": "You are not allowed to purchase this vehicle model",
-        "no_clear_spawn": "No spawn area found for vehicle."
+        "no_clear_spawn": "No spawn area found for vehicle.",
+        "selfsale": "You can't sell a car to yourself"
     },
     "success": {
         "purchased": "Congratulations on your purchase!",
@@ -71,7 +72,10 @@
         "submit_ID": "Server ID (#)",
         "keypress_showFinanceMenu": "[E] Open Finance Menu",
         "keypress_vehicleViewMenu": "[E] View Vehicle",
-        "target_showFinanceMenu": "Open Finance Menu"
+        "target_showFinanceMenu": "Open Finance Menu",
+        "dealer_working_header": "A salesperson is on the floor",
+        "dealer_working_txt": "Find the dealer to buy, test drive or finance a car.",
+        "buy_for_yourself_txt": "Buy this car for yourself (no other dealer is working)"
     },
     "general": {
         "testdrive_timer": "Test Drive Time Remaining: ",

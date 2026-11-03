@@ -9,6 +9,14 @@ return {
     ---@alias GroupName string
     ---@type table<GroupName, ZoneInfo|ZoneInfo[]>
     menus = {
+        -- [OUR CHANGE] LSPD boss menu (Captain and Chief): hire Cadets, promote, fire.
+        -- In the captain's office at Mission Row. See docs/core-changes.md
+        police = {
+            coords = vec3(461.45, -986.2, 30.73),
+            size = vec3(1.5, 1.5, 1.5),
+            rotation = 0.0,
+            type = 'job',
+        },
         lostmc = {
             {
                 coords = vec3(983.69, -90.92, 74.85),

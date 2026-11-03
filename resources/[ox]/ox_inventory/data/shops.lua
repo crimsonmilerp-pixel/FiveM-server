@@ -143,19 +143,39 @@ return {
 		}
 	},
 
+	-- [OUR CHANGE] Nov 2 2026: gear is issued free (the department pays for it), by rank and division.
+	-- Officers must be clocked in, and every sign-out is logged with its serial number (rp_police, /policelog).
+	--   grade   = lowest rank: 0 Cadet, 1 Officer I, 2 Officer II, 3 Officer III, 4 Sergeant, 5 Lieutenant...
+	--   license = a division certification ('police_swat' = SWAT, see /certs)
+	-- Duty guns are registered to the officer by name and have POL in the serial. Was: officers paid,
+	-- and needed a civilian weapon license. See docs/core-changes.md
 	PoliceArmoury = {
 		name = 'Police Armoury',
 		groups = shared.police,
 		blip = {
 			id = 110, colour = 84, scale = 0.8
 		}, inventory = {
-			{ name = 'ammo-9', price = 5, },
-			{ name = 'ammo-rifle', price = 5, },
-			{ name = 'WEAPON_FLASHLIGHT', price = 200 },
-			{ name = 'WEAPON_NIGHTSTICK', price = 100 },
-			{ name = 'WEAPON_PISTOL', price = 500, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
-			{ name = 'WEAPON_CARBINERIFLE', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 3 },
-			{ name = 'WEAPON_STUNGUN', price = 500, metadata = { registered = true, serial = 'POL'} }
+			-- Every officer (Cadet and up)
+			{ name = 'radio', price = 0 },
+			{ name = 'handcuffs', price = 0 },
+			{ name = 'empty_evidence_bag', price = 0 },
+			{ name = 'bandage', price = 0 },
+			{ name = 'armour', price = 0 },
+			{ name = 'WEAPON_FLASHLIGHT', price = 0 },
+			{ name = 'WEAPON_NIGHTSTICK', price = 0 },
+			{ name = 'WEAPON_STUNGUN', price = 0, metadata = { registered = true, serial = 'POL' } },
+			{ name = 'WEAPON_PISTOL', price = 0, metadata = { registered = true, serial = 'POL' } },
+			{ name = 'ammo-9', price = 0 },
+			-- Officer I and up: shotgun
+			{ name = 'WEAPON_PUMPSHOTGUN', price = 0, metadata = { registered = true, serial = 'POL' }, grade = 1 },
+			{ name = 'ammo-shotgun', price = 0, grade = 1 },
+			-- Officer II and up: patrol rifle
+			{ name = 'WEAPON_CARBINERIFLE', price = 0, metadata = { registered = true, serial = 'POL' }, grade = 2 },
+			{ name = 'ammo-rifle', price = 0, grade = 2 },
+			-- SWAT only
+			{ name = 'WEAPON_SMG', price = 0, metadata = { registered = true, serial = 'POL' }, grade = 3, license = 'police_swat' },
+			{ name = 'WEAPON_SMOKEGRENADE', price = 0, grade = 3, license = 'police_swat' },
+			{ name = 'WEAPON_TEARGAS', price = 0, grade = 3, license = 'police_swat' },
 		}, locations = {
 			vec3(451.51, -979.44, 30.68)
 		}, targets = {

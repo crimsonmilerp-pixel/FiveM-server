@@ -311,6 +311,16 @@ end
 local function openVehicleSellMenu(targetVehicle)
     local options = {}
     local vehicle = sharedConfig.shops[insideShop].showroomVehicles[targetVehicle].vehicle
+
+    -- [OUR CHANGE] Dealers first, NPC backup. The server says whether customers can serve themselves right now
+    -- (no clocked-in dealer at the shop) and whether this player is a salesperson. See docs/core-changes.md
+    local shop = sharedConfig.shops[insideShop]
+    local selfService, salesperson = shop.type == 'free-use', false
+    if shop.type ~= 'free-use' then
+        local status = lib.callback.await('qbx_vehicleshop:server:shopStatus', false)
+        if not status then return end
+        selfService, salesperson = status.selfService, status.salesperson
+    end
     local swapOption = {
         title = locale('menus.swap_header'),
         description = locale('menus.swap_txt'),
@@ -320,7 +330,7 @@ local function openVehicleSellMenu(targetVehicle)
         arrow = true
     }
 
-    if sharedConfig.shops[insideShop].type == 'free-use' then
+    if selfService and not salesperson then -- [OUR CHANGE] was: if shop type is 'free-use'
         if sharedConfig.enableTestDrive then
             options[#options + 1] = {
                 title = locale('menus.test_header'),
@@ -352,6 +362,14 @@ local function openVehicleSellMenu(targetVehicle)
         end
 
         options[#options + 1] = swapOption
+    elseif not salesperson then
+        -- [OUR CHANGE] A dealer is working: customers talk to them instead of buying from the NPC.
+        options[1] = {
+            title = locale('menus.dealer_working_header'),
+            description = locale('menus.dealer_working_txt'),
+            icon = 'user-tie',
+            readOnly = true,
+        }
     else
         options[1] = {
                 title = locale('menus.managed_sell_header'),
@@ -381,6 +399,17 @@ local function openVehicleSellMenu(targetVehicle)
             }
         end
 
+        -- [OUR CHANGE] A dealer can buy a car for themselves from the NPC when no other dealer is working.
+        if selfService and sharedConfig.enableFreeUseBuy then
+            options[#options + 1] = {
+                title = locale('menus.freeuse_buy_header'),
+                description = locale('menus.buy_for_yourself_txt'),
+                onSelect = function()
+                    TriggerServerEvent('qbx_vehicleshop:server:buyShowroomVehicle', vehicle)
+                end,
+            }
+        end
+
         options[#options + 1] = swapOption
     end
 
@@ -405,7 +434,7 @@ local function createVehicleTarget(shopName, entity, targetVehicle)
             icon = 'fas fa-car',
             label = locale('general.vehinteraction'),
             distance = shop.zone.targetDistance,
-            groups = shop.job,
+            groups = not shop.npcFallback and shop.job or nil, -- [OUR CHANGE] npcFallback shops are open to customers
             onSelect = function()
                 openVehicleSellMenu(targetVehicle)
             end
@@ -428,7 +457,7 @@ local function createVehicleZone(shopName, coords, targetVehicle)
             if not insideShop then return end
 
             local job = sharedConfig.shops[insideShop].job
-            if job and QBX.PlayerData.job.name ~= job then return end
+            if job and not sharedConfig.shops[insideShop].npcFallback and QBX.PlayerData.job.name ~= job then return end -- [OUR CHANGE] npcFallback
 
             lib.showTextUI(locale('menus.keypress_vehicleViewMenu'))
         end,
@@ -436,7 +465,7 @@ local function createVehicleZone(shopName, coords, targetVehicle)
             if not insideShop then return end
 
             local job = sharedConfig.shops[insideShop].job
-            if not IsControlJustPressed(0, 38) or job and QBX.PlayerData.job.name ~= job then return end
+            if not IsControlJustPressed(0, 38) or job and not sharedConfig.shops[insideShop].npcFallback and QBX.PlayerData.job.name ~= job then return end -- [OUR CHANGE] npcFallback
 
             openVehicleSellMenu(targetVehicle)
         end,
@@ -552,6 +581,12 @@ AddStateBagChangeHandler('isInTestDrive', ('player:%s'):format(cache.serverId), 
 
     exports.qbx_core:Notify(locale('general.testdrive_timenoti', value), 'inform')
     startTestDriveTimer(value * 60)
+end)
+
+-- [OUR CHANGE] Clock in / out from the radial menu (car dealers). While a dealer is clocked in at the shop,
+-- they handle sales; otherwise customers buy from the NPC. See docs/core-changes.md
+AddEventHandler('qbx_vehicleshop:client:toggleDuty', function()
+    TriggerServerEvent('QBCore:ToggleDuty')
 end)
 
 --- Swaps the chosen vehicle with another one

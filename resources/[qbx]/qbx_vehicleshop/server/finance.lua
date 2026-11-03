@@ -11,10 +11,9 @@ function SetHasFinanced(src, bool)
     financeTimer[src].hasFinanced = bool
 end
 
+-- [OUR CHANGE] Uses IsShopSalesperson (server/utils.lua): at npcFallback shops the dealer must be clocked in.
 local function isAuthorizedSalesperson(source, shop)
-    if not shop or shop.type ~= 'managed' or not shop.job then return false end
-    local player = exports.qbx_core:GetPlayer(source)
-    return player and player.PlayerData.job.name == shop.job
+    return IsShopSalesperson(source, shop)
 end
 
 local function getOwnedFinance(source, vehicleId)
@@ -210,6 +209,10 @@ end)
 ---@param playerId string|number
 RegisterNetEvent('qbx_vehicleshop:server:sellfinanceVehicle', function(downPayment, paymentAmount, vehicle, playerId)
     local src = source
+    -- [OUR CHANGE] No selling to yourself (that would pay you a commission on your own car)
+    if tonumber(playerId) == src then
+        return exports.qbx_core:Notify(src, locale('error.selfsale'), 'error')
+    end
     local target = exports.qbx_core:GetPlayer(tonumber(playerId))
 
     if not target then
@@ -292,7 +295,7 @@ RegisterNetEvent('qbx_vehicleshop:server:financeVehicle', function(downPayment, 
 
     local shop = sharedConfig.shops[shopId]
     if not shop then return end
-    if shop.type ~= 'free-use' or not sharedConfig.enableFreeUseBuy then return end
+    if not IsShopSelfService(shop, src) or not sharedConfig.enableFreeUseBuy then return end -- [OUR CHANGE] was shop.type ~= 'free-use'
 
     if not CheckVehicleList(vehicle, shopId) then
         return exports.qbx_core:Notify(src, locale('error.notallowed'), 'error')

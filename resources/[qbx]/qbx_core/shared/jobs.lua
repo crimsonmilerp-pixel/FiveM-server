@@ -25,37 +25,55 @@ return {
         type = 'leo',
         defaultDuty = false, -- [OUR CHANGE] was true. Clock in at the station to get paid.
         offDutyPay = false,
-        grades = { -- [OUR CHANGE] was 50/75/100/125/150. Officer = $1,080/hr (real $36/hr x 30)
+        -- [OUR CHANGE] Nov 2 2026: real LSPD ladder (was Recruit/Officer/Sergeant/Lieutenant/Chief).
+        -- Divisions, training and garage access by rank: resources/[custom]/rp_police. Pay was 150/180/210/240/270.
+        -- Captain and Chief get the boss menu (hire, promote, fire). Only the Chief touches the department bank.
+        grades = {
             [0] = {
-                name = 'Recruit',
-                payment = 150 -- $900/hr
+                name = 'Cadet',
+                payment = 150 -- $900/hr. In training, rides with an FTO.
             },
             [1] = {
-                name = 'Officer',
-                payment = 180 -- $1,080/hr
+                name = 'Officer I',
+                payment = 165 -- $990/hr
             },
             [2] = {
-                name = 'Sergeant',
-                payment = 210 -- $1,260/hr
+                name = 'Officer II',
+                payment = 180 -- $1,080/hr (real $36/hr x 30)
             },
             [3] = {
-                name = 'Lieutenant',
-                payment = 240 -- $1,440/hr
+                name = 'Officer III',
+                payment = 195 -- $1,170/hr
             },
             [4] = {
+                name = 'Sergeant',
+                payment = 220 -- $1,320/hr
+            },
+            [5] = {
+                name = 'Lieutenant',
+                payment = 250 -- $1,500/hr
+            },
+            [6] = {
+                name = 'Captain',
+                isboss = true,
+                payment = 285 -- $1,710/hr
+            },
+            [7] = {
                 name = 'Chief',
                 isboss = true,
                 bankAuth = true,
-                payment = 270 -- $1,620/hr
+                payment = 330 -- $1,980/hr
             },
         },
     },
+    -- BCSO and SASP aren't open yet (LSPD covers the whole map at launch). When one opens,
+    -- copy the LSPD ladder above so ranks mean the same thing in the armory and garage.
     ['bcso'] = {
         label = 'BCSO',
         type = 'leo',
         defaultDuty = false, -- [OUR CHANGE] was true. Clock in at the station to get paid.
         offDutyPay = false,
-        grades = { -- [OUR CHANGE] was 50/75/100/125/150. Same as LSPD.
+        grades = { -- [OUR CHANGE] was 50/75/100/125/150. Not open yet: still the old 5-rank ladder.
             [0] = {
                 name = 'Recruit',
                 payment = 150
@@ -85,7 +103,7 @@ return {
         type = 'leo',
         defaultDuty = false, -- [OUR CHANGE] was true. Clock in at the station to get paid.
         offDutyPay = false,
-        grades = { -- [OUR CHANGE] was 50/75/100/125/150. Same as LSPD.
+        grades = { -- [OUR CHANGE] was 50/75/100/125/150. Not open yet: still the old 5-rank ladder.
             [0] = {
                 name = 'Recruit',
                 payment = 150
@@ -202,7 +220,7 @@ return {
     -- [OUR CHANGE] 'bus' removed Oct 27: job cut (qbx_busjob disabled). See docs/core-changes.md
     ['cardealer'] = {
         label = 'Vehicle Dealer',
-        defaultDuty = true,
+        defaultDuty = false, -- [OUR CHANGE] was true. Dealers clock in (radial menu) to take over sales at PDM
         offDutyPay = false,
         grades = { -- [OUR CHANGE] was 50/75/100/125/150. Paid by commission per car sold (qbx_vehicleshop commissionRate).
             [0] = {

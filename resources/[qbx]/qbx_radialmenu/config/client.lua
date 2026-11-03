@@ -215,6 +215,32 @@ return {
 
     jobItems = {
         police = {
+            -- [OUR CHANGE] rp_police: certifications, cadet training and the penal code. See docs/core-changes.md
+            {
+                id = 'policeDepartment',
+                icon = 'building-shield',
+                label = 'Department',
+                items = {
+                    {
+                        id = 'policeCerts',
+                        icon = 'certificate',
+                        label = 'My Certifications',
+                        event = 'rp_police:client:openCerts',
+                    },
+                    {
+                        id = 'policeTraining',
+                        icon = 'list-check',
+                        label = 'My Training',
+                        event = 'rp_police:client:openTraining',
+                    },
+                    {
+                        id = 'policePenalCode',
+                        icon = 'scale-balanced',
+                        label = 'Penal Code',
+                        event = 'rp_police:client:openPenalCode',
+                    },
+                },
+            },
             {
                 id = 'emergencyButton',
                 icon = 'bell',
@@ -357,6 +383,15 @@ return {
                 icon = 'truck-pickup',
                 label = 'Tow Vehicle',
                 event = 'qb-tow:client:TowVehicle',
+            },
+        },
+        -- [OUR CHANGE] Car dealers clock in to handle sales at the dealership (qbx_vehicleshop npcFallback). See docs/core-changes.md
+        cardealer = {
+            {
+                id = 'dealerDuty',
+                icon = 'user-tie',
+                label = 'Clock In / Out',
+                event = 'qbx_vehicleshop:client:toggleDuty',
             },
         },
         taxi = {

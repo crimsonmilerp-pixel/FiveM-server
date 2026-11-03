@@ -62,7 +62,10 @@ local function takeOutImpound(vehicle)
     local coords = sharedConfig.locations.impound[currentGarage]
     if not coords then return end
 
-    local netId = lib.callback.await('qbx_policejob:server:spawnVehicle', false, vehicle.vehicle, coords, vehicle.plate, vehicle.id)
+    -- [OUR CHANGE] The vehicle id was being sent where "give keys" goes, so the server never knew which
+    -- impounded car this was. See docs/core-changes.md
+    local netId = lib.callback.await('qbx_policejob:server:spawnVehicle', false, vehicle.vehicle, coords, vehicle.plate, true, vehicle.id)
+    if not netId then return exports.qbx_core:Notify(locale('error.canceled'), 'error') end
 
     local veh = lib.waitFor(function()
         if NetworkDoesEntityExistWithNetworkId(netId) then
@@ -88,6 +91,7 @@ local function takeOutVehicle(vehicleInfo)
     end
     local plate = sharedConfig.policePlatePrefix..lib.string.random(pattern):upper()
     local netId = lib.callback.await('qbx_policejob:server:spawnVehicle', false, vehicleInfo, coords, plate, true)
+    if not netId then return exports.qbx_core:Notify(locale('error.canceled'), 'error') end -- [OUR CHANGE] the server said no
 
     local veh = lib.waitFor(function()
         if NetworkDoesEntityExistWithNetworkId(netId) then
@@ -124,11 +128,29 @@ local function addGarageMenuItems(destinationOptions, sourceOptions)
 end
 
 local function openGarageMenu()
-    local authorizedVehicles = config.authorizedVehicles[QBX.PlayerData.job.grade.level]
     local options = {}
 
-    options = addGarageMenuItems(options, authorizedVehicles)
-    options = addGarageMenuItems(options, config.whitelistedVehicles)
+    -- [OUR CHANGE] rp_police decides which cars each rank and division may take (and shows the locked
+    -- ones with what they need). Departments rp_police doesn't manage use the old list. See docs/core-changes.md
+    local rpVehicles = GetResourceState('rp_police') == 'started' and exports.rp_police:GetGarageVehicles() or nil
+    if rpVehicles then
+        for i = 1, #rpVehicles do
+            local vehicle = rpVehicles[i]
+            options[#options + 1] = {
+                title = vehicle.label,
+                description = vehicle.description,
+                icon = vehicle.locked and 'lock' or 'car',
+                disabled = vehicle.locked,
+                onSelect = function()
+                    takeOutVehicle(vehicle.model)
+                end,
+            }
+        end
+    else
+        local authorizedVehicles = config.authorizedVehicles[QBX.PlayerData.job.grade.level] or {}
+        options = addGarageMenuItems(options, authorizedVehicles)
+        options = addGarageMenuItems(options, config.whitelistedVehicles)
+    end
 
     lib.registerContext({
         id = 'vehicleMenu',
@@ -195,9 +217,12 @@ end
 
 local function spawnHelicopter()
     if not inHelicopter then return end
+    -- [OUR CHANGE] rp_police: the helicopter needs Air Support certification (it explains when you can't). See docs/core-changes.md
+    if GetResourceState('rp_police') == 'started' and exports.rp_police:CheckHelicopter() == false then return end
     local plyCoords = GetEntityCoords(cache.ped)
     local coords = vec4(plyCoords.x, plyCoords.y, plyCoords.z, GetEntityHeading(cache.ped))
     local netId = lib.callback.await('qbx_policejob:server:spawnVehicle', false, config.policeHelicopter, coords, 'ZULU'..lib.string.random('1111'), true)
+    if not netId then return exports.qbx_core:Notify(locale('error.canceled'), 'error') end -- [OUR CHANGE] the server said no
     local heli = lib.waitFor(function()
         if NetworkDoesEntityExistWithNetworkId(netId) then
             return NetToVeh(netId)

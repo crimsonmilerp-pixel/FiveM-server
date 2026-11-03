@@ -18,6 +18,60 @@ end
 local shops = require 'config.shared'.shops
 local shopZones = {}
 
+-- [OUR CHANGE] Dealers first, NPC backup (shops with npcFallback = true). See docs/core-changes.md
+
+---Can this player sell cars to others at this shop right now? (Right job, and clocked in at npcFallback shops.)
+---@param source number
+---@param shop table?
+---@return boolean
+function IsShopSalesperson(source, shop)
+    if not shop or shop.type ~= 'managed' or not shop.job then return false end
+    local player = exports.qbx_core:GetPlayer(source)
+    if not player or player.PlayerData.job.name ~= shop.job then return false end
+    return player.PlayerData.job.onduty or not shop.npcFallback
+end
+
+---Is a salesperson (other than `except`) clocked in and at the shop?
+---@param shop table?
+---@param except number? a player to leave out (a dealer can't sell a car to themselves)
+---@return boolean
+function IsDealerWorking(shop, except)
+    if not shop or shop.type ~= 'managed' or not shop.job then return false end
+    if not shop.npcFallback then return true end
+    local center = shop.blip and shop.blip.coords
+    local range = shop.dealerRange or 60.0
+    local _, dealers = exports.qbx_core:GetDutyCountJob(shop.job)
+    for i = 1, #(dealers or {}) do
+        local dealer = dealers[i]
+        if dealer ~= except then
+            local ped = GetPlayerPed(dealer)
+            if ped ~= 0 and (not center or #(GetEntityCoords(ped) - center) <= range) then
+                return true
+            end
+        end
+    end
+    return false
+end
+
+---Can customers buy, test drive and finance on their own here right now?
+---@param shop table?
+---@param source number? the customer (left out of the dealer check)
+---@return boolean
+function IsShopSelfService(shop, source)
+    if not shop then return false end
+    if shop.type == 'free-use' then return true end
+    return shop.npcFallback == true and not IsDealerWorking(shop, source)
+end
+
+lib.callback.register('qbx_vehicleshop:server:shopStatus', function(source)
+    local shop = shops[GetShopZone(source)]
+    if not shop then return end
+    return {
+        selfService = IsShopSelfService(shop, source),
+        salesperson = IsShopSalesperson(source, shop),
+    }
+end)
+
 ---@param source number
 ---@return string?
 function GetShopZone(source)

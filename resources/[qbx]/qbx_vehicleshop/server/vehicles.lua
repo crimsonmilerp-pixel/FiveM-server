@@ -4,11 +4,17 @@ local VEHICLES = exports.qbx_core:GetVehiclesByName()
 local sharedConfig = require 'config.shared'.vehicles
 local count = 0
 
-local function insertVehicle(vehicleData, shopType)
+-- [OUR CHANGE] Luxury cars ($100k+) go to the luxury shop and their own menu section. See docs/core-changes.md
+local luxury = sharedConfig.luxury
+local function isLuxury(vehicle)
+    return luxury ~= nil and luxury.classes[vehicle.category] and (tonumber(vehicle.price) or 0) >= luxury.minPrice
+end
+
+local function insertVehicle(vehicleData, shopType, isLuxuryCar)
     count += 1
     vehicles[count] = {
         shopType = shopType,
-        category = vehicleData.category,
+        category = isLuxuryCar and luxury.category or vehicleData.category,
         model = vehicleData.model,
     }
 end
@@ -19,7 +25,8 @@ for i = 1, #sharedConfig.blocklist do
 end
 
 for k, vehicle in pairs(VEHICLES) do
-    local vehicleShop = sharedConfig.models[k] or sharedConfig.categories[vehicle.category] or sharedConfig.default
+    local isLuxuryCar = not sharedConfig.models[k] and isLuxury(vehicle) -- [OUR CHANGE]
+    local vehicleShop = sharedConfig.models[k] or (isLuxuryCar and luxury.shop) or sharedConfig.categories[vehicle.category] or sharedConfig.default
 
     if blocklist[k] then
         lib.print.debug('Vehicle is blocked. Skipping: ' .. k)
@@ -28,10 +35,10 @@ for k, vehicle in pairs(VEHICLES) do
     else
         if type(vehicleShop) == 'table' then
             for i = 1, #vehicleShop do
-                insertVehicle(vehicle, vehicleShop[i])
+                insertVehicle(vehicle, vehicleShop[i], isLuxuryCar)
             end
         else
-            insertVehicle(vehicle, vehicleShop)
+            insertVehicle(vehicle, vehicleShop, isLuxuryCar)
         end
     end
 end

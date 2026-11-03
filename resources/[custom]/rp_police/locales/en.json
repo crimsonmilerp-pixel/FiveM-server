@@ -1,0 +1,145 @@
+{
+  "_note": "All text players see for rp_police. Edit the words on the right side only. Keep every %s: the game fills those in.",
+
+  "rank_fallback": "Rank %s",
+
+  "command": {
+    "certs_help": "Police: see your division certifications (add an ID to manage an officer's)",
+    "training_help": "Police: see your cadet training (add an ID to sign off a cadet)",
+    "log_help": "Police command: the department log (add an ID for one officer)",
+    "penalcode_help": "Read the San Andreas penal code",
+    "id_param": "Player ID (optional)"
+  },
+
+  "error": {
+    "failed": "That didn't work. Try again.",
+    "not_online": "Nobody with that ID is in the city.",
+    "not_officer": "This is for LSPD officers.",
+    "target_not_officer": "That person isn't an LSPD officer.",
+    "no_permission": "Your rank can't do that.",
+    "too_junior": "They need a higher rank before they can hold that certification.",
+    "not_trainer": "Only Field Training Officers and Sergeants (or higher) can sign off training.",
+    "no_self": "You can't sign off your own training.",
+    "not_cadet": "Training is only signed off for cadets."
+  },
+
+  "menu": {
+    "yes": "Yes",
+    "no": "Cancel"
+  },
+
+  "cert": {
+    "traffic":   { "label": "Traffic Division",       "desc": "Interceptors and police motorcycles. Speed enforcement and crash scenes." },
+    "detective": { "label": "Detective Bureau",       "desc": "Unmarked cars. Follows up on cases, evidence and warrants." },
+    "air":       { "label": "Air Support",            "desc": "Flies the police helicopter." },
+    "swat":      { "label": "SWAT",                   "desc": "High-risk warrants and standoffs. SWAT vehicles and heavy gear." },
+    "fto":       { "label": "Field Training Officer", "desc": "Trains cadets and signs off their training." }
+  },
+
+  "certs": {
+    "title": "Certifications: %s",
+    "manage_hint": "Click a certification to grant or remove it.",
+    "status_has": "Certified",
+    "status_can": "Not certified",
+    "status_too_junior": "Needs %s or higher",
+    "grant_header": "Grant %s?",
+    "grant_text": "Give the %s certification to %s? It unlocks that division's cars and gear.",
+    "remove_header": "Remove %s?",
+    "remove_text": "Take the %s certification away from %s?",
+    "granted": "%s granted to %s.",
+    "removed": "%s removed from %s.",
+    "you_got": "You're now certified: %s. Check /certs and the garage.",
+    "you_lost": "Your %s certification was removed."
+  },
+
+  "training": {
+    "title": "Training: %s (%s/%s)",
+    "sign_hint": "Click an item to sign it off (or undo a sign-off).",
+    "complete": "Training complete. Ready for promotion to %s.",
+    "not_cadet": "Training is finished for this officer.",
+    "signed_by": "Signed off by %s on %s",
+    "sign_header": "Sign off: %s?",
+    "sign_text": "Sign off \"%s\" for %s? Only sign what they really did, with you, in the city.",
+    "unsign_header": "Undo: %s?",
+    "unsign_text": "Remove the %s sign-off for %s?",
+    "you_signed": "Training signed off: %s (by %s). See /training.",
+    "you_unsigned": "A training sign-off was removed: %s.",
+    "you_finished": "Training complete! Command has been told you're ready for %s.",
+    "command_news": "Cadet %s has finished training and is ready for %s. A Captain or the Chief can promote them from the boss menu.",
+
+    "orientation": { "label": "Station orientation",      "desc": "Tour of the station: locker room, armory, garage, evidence, holding cells." },
+    "radio":       { "label": "Radio and codes",          "desc": "Uses the radio properly: channels, call signs, short clear messages." },
+    "rideAlong1":  { "label": "Ride-along 1",             "desc": "A full patrol shift riding with an FTO." },
+    "rideAlong2":  { "label": "Ride-along 2",             "desc": "A second patrol shift. The cadet starts taking calls." },
+    "rideAlong3":  { "label": "Ride-along 3",             "desc": "A third patrol shift. The cadet leads; the FTO only steps in if needed." },
+    "trafficStop": { "label": "Traffic stop",             "desc": "Runs a safe traffic stop: positioning, approach, ID, ticket or warning." },
+    "arrest":      { "label": "Arrest and booking",       "desc": "Cuffs, searches, explains the arrest, books and charges using the penal code." },
+    "pursuit":     { "label": "Pursuit policy",           "desc": "Knows when to chase, when to call it off, and how to stop a car safely." },
+    "test":        { "label": "Final review",             "desc": "Passes a short spoken test with an FTO or a Sergeant." }
+  },
+
+  "log": {
+    "title": "Department log",
+    "title_one": "Department log: %s",
+    "empty": "Nothing logged yet.",
+    "by": "By %s · %s",
+    "system": "Automatic",
+    "cert_granted": "%s: certified for %s",
+    "cert_removed": "%s: lost %s",
+    "certs_cleared": "%s left the department. Certifications removed: %s",
+    "training_signed": "%s: training signed (%s)",
+    "training_removed": "%s: training sign-off undone (%s)",
+    "training_done": "%s finished training, ready for %s",
+    "armory": "%s signed out %s"
+  },
+
+  "armory": {
+    "clock_in": "Clock in first. Gear is only signed out to officers on shift.",
+    "log": "%sx %s",
+    "log_serial": "%sx %s (serial %s)"
+  },
+
+  "garage": {
+    "needs": "Needs: %s",
+    "heli_needs": "The helicopter needs: %s"
+  },
+
+  "vehicle": {
+    "police": "Stanier Cruiser",
+    "police5": "Stanier LE Cruiser",
+    "police2": "Buffalo Cruiser",
+    "polgreenwood": "Greenwood Cruiser",
+    "polimpaler5": "Impaler SZ Cruiser",
+    "polcaracara": "Caracara Pursuit Truck",
+    "policet": "Prisoner Transport Van",
+    "police3": "Interceptor",
+    "polgauntlet": "Gauntlet Interceptor",
+    "poldominator10": "Dominator FX Interceptor",
+    "policeb": "Police Motorcycle",
+    "police4": "Unmarked Stanier",
+    "fbi": "Unmarked Buffalo",
+    "fbi2": "Unmarked Granger (SWAT)",
+    "polterminus": "Terminus Patrol (SWAT)"
+  },
+
+  "penal": {
+    "title": "San Andreas Penal Code",
+    "how_title": "How charges work",
+    "how_desc": "Fines are in dollars. Jail time is in minutes, served while you're in the city. Police can give up to %s minutes in total; anything longer goes to a judge. Only charge what a player actually did.",
+    "count": "%s charges",
+    "line": "%s · $%s fine · %s",
+    "about": "What it means",
+    "jail_minutes": "%s min jail",
+    "no_jail": "no jail",
+    "class_infraction": "Infraction (ticket)",
+    "class_misdemeanor": "Misdemeanor",
+    "class_felony": "Felony",
+    "category_traffic": "Traffic",
+    "category_public": "Public order",
+    "category_property": "Property and fraud",
+    "category_violent": "Violence against people",
+    "category_weapons": "Weapons",
+    "category_drugs": "Drugs",
+    "category_justice": "Justice and police"
+  }
+}

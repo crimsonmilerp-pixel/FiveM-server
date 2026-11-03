@@ -12,13 +12,18 @@
 
 **Nov 2 (evening): clothing and weapon cleanup built (Pillar C), waiting on Vinny's upload and test.** About 450 clothing items hidden in the clothing menu (holiday and Halloween ones can be switched on in season), animal/NPC character models limited to staff, 28 sci-fi/joke/heavy military weapons removed, and gun skins cut to wood, metal and three camos. Details: `docs/clothing-blacklist/` and `docs/core-changes.md`.
 
+**Nov 2 (night): luxury cars and dealers-first sales built, waiting on Vinny's upload and test.** All 165 cars priced $100k+ are sold at PDM under "Luxury ($100k+)", and sports cars under $100k (Sultan, Buffalo, Futo...) are finally for sale too. When a Car Dealer is clocked in at PDM, they handle every sale (2.5% commission); when none is, customers buy from the NPC like before. Dealers clock in and out from the radial menu. Staff give the job with `/setjob [ID] cardealer 0` (it isn't on the City Hall list; dealerships hire).
+
+**Nov 2 (late night): police groundwork built (new resource `rp_police`), waiting on Vinny's upload and test.** LSPD only for now, with 8 ranks (Cadet → Chief), 5 divisions you get certified for (Traffic, Air Support, Detectives, SWAT, Field Training Officer), a cadet training checklist (`/training`), certifications (`/certs`), a department log (`/policelog`), and the penal code v1 for everyone (`/penalcode`, 71 charges, for Liam to polish). The police garage shows every car, with the locked ones saying what they need. The armory hands out gear free by rank and division, only to clocked-in officers, and logs each gun's serial. A boss menu in the Mission Row captain's office lets the Captain and Chief hire and promote. Also fixed: anyone could spawn any police vehicle anywhere, see and release impounded cars, and wipe evidence. `docs/economy.xlsx` now has the new police pay and the penal code fines. Details: `resources/[custom]/rp_police/README.md` and `docs/core-changes.md`.
+
 **Next session, in order:**
 0. Upload the clothing and weapon cleanup, then browse the clothing menu (masks, tops, hats) and note the number of any costume piece still showing. About 1,100 items have no in-game name, so they couldn't be checked automatically.
 1. ✅ rp_starter tested Nov 2 (tour works, NPC spots good). Still to check: the starter vehicle is refused at the used car lot.
 2. Vinny tests `rp_buyers` and `rp_jobmoments` if not done yet. (For moments, set `oneIn = 1` and `cooldownMinutes = 0` while testing, then back to 20 and 10.)
 3. Vinny tests **rp_crews** (two people, same job, `/crew`) and the new tow/trucker moments. Time one trucker route and a few tows so we can check the new pay.
    Next for jobs later: real player calls before NPC work, and **reporter pay per story** (Weazel News buys photos or footage of real events; then put the job back on the City Hall list). Both need the phone.
-4. Then: luxury dealership, Pillar C clothing cleanup, LB Phone once bought (then add phone and job board steps to the tour), and the play-through checklist.
+4. Upload and test **police** (Nov 2): set your character to Chief with `/setjob [your ID] police 7` (old ranks shifted: the old Chief, grade 4, is now a Sergeant), check the boss menu spot in the captain's office (tell Claude if the marker is in a wall), clock in, open the garage (locked cars greyed out), try the armory clocked out and in, give yourself a cert with `/certs [ID]` (staff can), and read `/penalcode`. With a second person: hire them as a Cadet from the boss menu and sign a training item with `/training [ID]`.
+5. Then: ~~luxury dealership~~ (built Nov 2), ~~Pillar C clothing cleanup~~ (built Nov 2), ~~police groundwork~~ (built Nov 2), LB Phone once bought (then add phone and job board steps to the tour), and the play-through checklist.
 
 **Loose ends:**
 - After uploading the audit: delete the folder `resources/[ox]/ox_inventory/web/images/images` (the pictures were copied up one level, so it's now a duplicate). Locally and on the server.
@@ -26,9 +31,10 @@
 - James's `fivem:` ID goes into `permissions.cfg`.
 - Set the server name in the Cfx.re Portal.
 - Liam rewrites `rp_goals`, `rp_welcome`, `rp_starter` (arrival story, volunteer, tour), and `rp_jobmoments` `locales/en.json`.
-- Police armory prices (the EMS cabinet now matches the pharmacy: first aid $30, bandage $6).
+- ~~Police armory prices~~: decided Nov 2, department gear is free but logged (see the decisions log).
+- Liam polishes the penal code (`resources/[custom]/rp_police/data/penalcode.lua`, instructions at the top) and the rp_police text (`locales/en.json`).
 
-**Working style:** plain English, and every change ends with a short WinSCP upload checklist (double-click path → drag → Yes → which restart). Claude writes directly into `C:\Users\mrgri\FiveM\server` (connected folder).
+**Working style:** plain English, and every change ends with a short WinSCP upload checklist in the **folder style** (Nov 2): drag whole resource folders (Ctrl+click to pick several in the same category), drop on an empty spot on the right, **Yes to All**, then which restart. Loose files (like `.cfg`) are dragged one by one. Claude writes directly into `C:\Users\mrgri\FiveM\server` (connected folder).
 
 ---
 
@@ -64,6 +70,8 @@
 | 2026-11-02 | **One kind of dirty cash: Dirty Money (`black_money`).** Store safes now pay it instead of marked bills. **Anything a player types (names, goals, descriptions) is cleaned on the server** so it can't carry images, links or HTML into menus | Marked bills had no use anywhere. Menus format text, so a typed image link could load on a staff member's screen and reveal their IP. |
 | 2026-11-02 | **Look: our own brand on everything, not store-bought UI packs.** Brand first (name, logo, colors, fonts), then one skin over ox_lib (every menu, notification, progress bar and dialog on the server), our own loading screen and HUD, and a reskinned MDT. Money for looks goes to things players see in the world (MLO interiors, starting with the police station) and custom art, not UI kits. **Police is the deepest system on the server**, built on open-source bases we can change completely | Vinny wants a server that looks like no one else's, and popular UI packs are exactly what make servers look the same. Locked police scripts would cap how deep police can go. |
 | 2026-11-02 | **Clothing and weapons (Pillar C):** masks are real or party-store only (no cartoon, mascot, sci-fi, glowing or monster masks); holiday and Halloween clothes are hidden and switched on in season; lingerie is hidden, swimwear stays. **Heavy military weapons and explosives are removed completely**, along with sci-fi and joke weapons; gun skins are realistic only | Vinny's picks. Robbers still get realistic disguises, the city looks like real people, and big gunfights stay grounded. |
+| 2026-11-02 | **Car sales: dealers first, NPC backup.** Luxury cars ($100k+) get their own section in PDM until we buy a dealership interior. A clocked-in Car Dealer at the shop handles sales for the 2.5% commission; with no dealer there, customers buy from the NPC. The dealership account no longer keeps the full sale price | Real players before NPCs without ever blocking a purchase. Keeping the full price would have let players pocket money that should leave the economy. |
+| 2026-11-02 | **Police groundwork:** **one department first (LSPD covers the whole map;** BCSO and SASP open when there are enough officers). **Apply, then train:** police isn't on the City Hall list; the Captain or Chief hires people as **Cadets**, and an FTO signs off a 9-item training checklist before promotion. **A real ladder plus divisions:** Cadet, Officer I–III, Sergeant, Lieutenant, Captain, Chief; Traffic, Air Support, Detectives, SWAT and FTO are certifications granted by Lieutenants and up that unlock cars and gear. **Penal code: Claude drafts, Liam polishes.** **Armory gear is free** (the department pays) but only for clocked-in officers, and every sign-out is logged with its serial | Vinny's picks. A ladder with divisions gives officers goals (Pillar A); training keeps quality up; free but logged gear is realistic, and a corrupt cop selling department guns leaves a trail (Pillar D). |
 | 2026-10-26 | **All player-facing text lives in config or locale files, not hard-coded** | Liam can write and edit dialogue and UI text without touching code. |
 
 ## 0.2 Shared server and co-owner access
@@ -98,7 +106,7 @@
 - This Claude account and project are Vinny's only, as Anthropic's terms require. If the team ever wants shared Claude access, a Team plan gives each person their own seat.
 - A copy of this design bible lives in the repo at `docs/design-bible.md`, so anyone with repo access can see the plan.
 - Claude writes files directly into Vinny's local repo folder. Vinny reviews them, commits in GitHub Desktop, and uploads with WinSCP.
-- **Every time Claude changes files, it ends with a simple upload checklist:** for each file, the folders to double-click in WinSCP (the same path on both sides, starting from the `server` folder on the left and `/` on the right), then "drag → Yes", then which restart is needed. No long paths or tables. `docs/` files are never uploaded.
+- **Every time Claude changes files, it ends with a simple upload checklist (folder style, since Nov 2):** one step per category folder (`[qbx]`, `[ox]`, `[standalone]`, `[custom]`): open it on both sides, Ctrl+click the changed resource folders, drag them onto an empty spot on the right, **Yes to All**. Loose files in the top folder (`.cfg`) are dragged one by one. Then which restart. Whole folders mean no file gets missed; the PC copy (and GitHub) is the master copy. `docs/` files are never uploaded.
 
 ---
 
@@ -336,6 +344,8 @@ Size key: S = days, M = 1–2 weeks, L = several weeks, XL = a month or more (pa
   - Better NPC behavior: real patrol routes, traffic stops, foot chases, surrender and arrest instead of instant shooting.
   - GTA's built-in wanted system is replaced by ours.
 - **Player police overhaul (#3)**: L. Cuffing, searching, transport, the penal code, fines, an impound tie-in, and an MDT.
+  - ✅ **Groundwork (Nov 2, `rp_police`):** LSPD ranks (Cadet, Officer I–III, Sergeant, Lieutenant, Captain, Chief), division certifications (Traffic, Air Support, Detectives, SWAT, FTO) that unlock garage cars, the helicopter and SWAT gear, the cadet training checklist, the department log, free but logged armory gear (clocked-in only), the boss menu for hiring, and **penal code v1** (71 charges based on California law; fines in real dollars, jail in minutes, up to 120 from police and longer only from a judge). Security fixes in qbx_police (vehicle spawns, impound, evidence wiping).
+  - Next: MDT and dispatch (ps-mdt + ps-dispatch, reskinned) with charges picked straight from the penal code, warrants and case files; a police handbook (SOPs) for Liam; then BCSO and SASP when there are enough officers.
 - **NPC interactions (#5)**: L
   - *Police:* stop and frisk ambient peds, check generated NPC IDs, question witnesses (gives detective clues), and arrest generated "wanted NPC" bounties.
   - *Criminals:* mug pedestrians (aim → hands up → loot, with a chance they resist), rob stores (register and safe), carjack (driver may flee or fight), burglarize NPC homes, sell drugs on corners.
@@ -407,10 +417,10 @@ Size key: S = days, M = 1–2 weeks, L = several weeks, XL = a month or more (pa
 - ✅ (Oct 27) Store prices set to real-world (`ox_inventory/data/shops.lua`). Random price swings are off (`ox.cfg`), `cola` is fixed to `sprunk`, more items are stocked, and ammo is **$1/round** (simple quick math; ammo boxes optional later).
 - ✅ (Oct 27) Weapon license 350 (`ox_inventory/data/licenses.lua`).
 - ✅ (Oct 27) Fuel ~$67 a tank, petrol can $35, refill $21 (`ox_fuel/config.lua`).
-- Not yet: police armory prices (department gear, still to decide). The EMS medicine cabinet matches the pharmacy (first aid $30, bandage $6).
+- ✅ (Nov 2) Police armory: department gear is **free**, by rank and division, clocked-in officers only, every sign-out logged with its serial (`rp_police`). The EMS medicine cabinet matches the pharmacy (first aid $30, bandage $6).
 - ✅ (Oct 27) Vehicle prices from the sheet → `qbx_core/shared/vehicles.lua` (692 repriced). Boats and aircraft are hand-priced. **152 weaponized, armored, military, arena, and sci-fi vehicles removed and blocked from spawning anywhere** (`rp_vehicles`).
-- Note: sports and super cars aren't sold anywhere yet, because Qbox's luxury dealership is commented out in `qbx_vehicleshop/config/shared.lua`. Qbox also has built-in dealership financing (10% down, 24 payments) to consider for Phase 2 loans.
-- ✅ (Oct 27) **Job pay** (see the Jobs & Pay tab and `docs/core-changes.md`). Paychecks only for clocked-in police ($900–1,620/hr), EMS ($600–1,500/hr), and mechanics ($300–480/hr base + customers). Taxi $5 + $15/mile, garbage $6–9/bag, trucker $22–28/box, tow $80–95/tow, bus unchanged ($15–25/stop), coral $16–22 / $11–15, car dealer commission 2.5%. The useless cryptostick rewards are off. ⏳ Check each job's real hourly in play and retune.
+- ✅ (Nov 2) Luxury cars: every car priced **$100k+** is sold at PDM under "Luxury ($100k+)" (165 cars), the same line as the luxury upkeep. Sports cars under $100k are sold under Sports. When we buy a dealership interior (MLO), the luxury section moves there with one setting (`luxury.shop` in `qbx_vehicleshop/config/shared.lua`). Qbox's built-in dealership financing (10% down, up to 24 payments, no interest, one payment per 24 hours played) stays for now; Phase 2 loans replace it.
+- ✅ (Oct 27) **Job pay** (see the Jobs & Pay tab and `docs/core-changes.md`). Paychecks only for clocked-in police ($900–1,980/hr from Cadet to Chief, new ladder Nov 2), EMS ($600–1,500/hr), and mechanics ($300–480/hr base + customers). Taxi $5 + $15/mile, garbage $6–9/bag, trucker $22–28/box, tow $80–95/tow, bus unchanged ($15–25/stop), coral $16–22 / $11–15, car dealer commission 2.5%. The useless cryptostick rewards are off. ⏳ Check each job's real hourly in play and retune.
 - ✅ (Oct 27) **The vineyard pays** through `rp_buyers` (see section 6, Phase 0, item 15): grape picking gives 1–2 grapes (was 8–12), about 90 bottles of wine an hour ≈ $540. Scrap from the scrap yard sells at real prices to the Scrap Buyer. The recycling job was cut the same day.
 - Later: reporter pay per story; judge clock-in at the courthouse (Phase 3); the trucker/tow 15% "tax" gets replaced by the real tax system (Phase 2).
 - Later (Phase 2): weekly rent and loan billing (paused if inactive), luxury upkeep, the tax system, laundering, and loans.
@@ -444,7 +454,7 @@ Short and punchy beats long. Players skip walls of text in-game, so detail belon
    - City hall, bank, and police department names.
    - Criminal suppliers and bosses who set quotas: name, personality, what they want, and how they escalate when you miss a quota.
    - Gangs and territories.
-6. **Laws and penal code (Phase 3)**: charges, fines, and sentence lengths. Co-written with whoever designs police.
+6. **Laws and penal code (Phase 3)**: ✅ v1 drafted by Claude on Nov 2 (`resources/[custom]/rp_police/data/penalcode.lua`, 71 charges with fines and jail times, instructions for editing at the top). Liam polishes the wording and checks the numbers feel right. Next: a short **police handbook** (how a traffic stop, an arrest and a pursuit should go; the FTO training items in `rp_police/locales/en.json` follow it).
 7. **World events and tips library (ongoing)**: short hooks for the opportunities feed, such as "A cargo truck broke down on Route 68 and the driver's looking for help, or for someone to look the other way."
 
 **Format tip:** write in-game lines in a simple table with columns *ID / Who says it / Line*. Each row can then go straight into a locale file.

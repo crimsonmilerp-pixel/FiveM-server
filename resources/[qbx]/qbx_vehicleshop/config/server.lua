@@ -20,12 +20,11 @@ return {
     ---@param amount number Amount to add
     ---@return boolean
     addSocietyFunds = function(society, amount) -- function to add funds to society
-        if GetResourceState('Renewed-Banking'):find('started') then
-            return exports['Renewed-Banking']:addAccountMoney(society, amount)
-        else
-            lib.print.error(('Renewed-Banking is needed for Society Funds and it\'s currently %s'):format(GetResourceState('Renewed-Banking')))
-            return false
-        end
+        -- [OUR CHANGE] Off. The dealership's shared account got the FULL price of every car a dealer sold, so the
+        -- money a car costs stayed with players instead of leaving the economy (NPC sales don't do this). The
+        -- salesperson's 2.5% commission is their pay. Revisit when businesses get margins/taxes (Phase 2).
+        -- Original: return exports['Renewed-Banking']:addAccountMoney(society, amount)
+        return true
     end,
 
     ---@param player any QBX Player object
