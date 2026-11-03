@@ -95,7 +95,9 @@ Config.DisableProps = {
 }
 
 ---@type string[]
-Config.Aces = {} -- list of ace permissions used for blacklisting
+-- [OUR CHANGE] Groups of hidden clothing (see shared/blacklist.lua). A player with one of these ACEs sees that group.
+-- Seasonal switches live in permissions.cfg. See docs/core-changes.md
+Config.Aces = { 'clothing.festive', 'clothing.halloween', 'clothing.costume', 'clothing.racy', 'appearance.allpeds' } -- list of ace permissions used for blacklisting
 
 Config.Blips = {
     ["clothing"] = {

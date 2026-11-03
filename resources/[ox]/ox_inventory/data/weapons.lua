@@ -1,17 +1,15 @@
 return {
+	-- [OUR CHANGE] Pillar C (grounded world). Removed so they can't exist on the server: sci-fi and joke weapons
+	-- (ray guns, railguns, EMP and snowball launchers, snowballs, candy cane, stone hatchet, battle axe, hazard and
+	-- fertilizer cans, firework launcher), heavy military weapons and explosives (minigun, RPG, homing, grenade and
+	-- compact launchers, frag grenades, sticky bombs, proximity mines, pipe bombs, machine guns, .50 cal sniper) and
+	-- their ammo, and every gun skin except wood, metal, camo, brushstroke and woodland. See docs/core-changes.md
 	Weapons = {
 		['WEAPON_BATTLERIFLE'] = {
 			label = 'Battle Rifle',
 			weight = 3300,
 			durability = 0.03,
 			ammoname = 'ammo-rifle2',
-		},
-
-		['WEAPON_SNOWLAUNCHER'] = {
-			label = 'Snowball Launcher',
-			weight = 1000,
-			durability = 0.03,
-			ammoname = 'WEAPON_SNOWBALL',
 		},
 
 		['WEAPON_TECPISTOL'] = {
@@ -72,12 +70,6 @@ return {
 		['WEAPON_BAT'] = {
 			label = 'Bat',
 			weight = 1134,
-			durability = 0.1,
-		},
-
-		['WEAPON_BATTLEAXE'] = {
-			label = 'Battle Axe',
-			weight = 6500,
 			durability = 0.1,
 		},
 
@@ -142,20 +134,6 @@ return {
 			ammoname = 'ammo-9'
 		},
 
-		['WEAPON_COMBATMG'] = {
-			label = 'Combat MG',
-			weight = 7500,
-			durability = 0.02,
-			ammoname = 'ammo-rifle'
-		},
-
-		['WEAPON_COMBATMG_MK2'] = {
-			label = 'Combat MG MK2',
-			weight = 8000,
-			durability = 0.02,
-			ammoname = 'ammo-rifle2'
-		},
-
 		['WEAPON_COMBATPDW'] = {
 			label = 'Combat PDW',
 			weight = 2300,
@@ -175,13 +153,6 @@ return {
 			weight = 4400,
 			durability = 0.2,
 			ammoname = 'ammo-shotgun'
-		},
-
-		['WEAPON_COMPACTLAUNCHER'] = {
-			label = 'Compact Grenade Launcher',
-			weight = 2500,
-			durability = 0.05,
-			ammoname = 'ammo-grenade'
 		},
 
 		['WEAPON_COMPACTRIFLE'] = {
@@ -217,24 +188,10 @@ return {
 			ammoname = 'ammo-38'
 		},
 
-		['WEAPON_EMPLAUNCHER'] = {
-			label = 'Compact EMP Launcher',
-			weight = 2750,
-			durability = 0.2,
-			ammoname = 'ammo-emp'
-		},
-
 		['WEAPON_FIREEXTINGUISHER'] = {
 			label = 'Fire Extinguisher',
 			weight = 8616,
             durability = 0.006
-		},
-
-		['WEAPON_FIREWORK'] = {
-			label = 'Firework Launcher',
-			weight = 1000,
-			durability = 0.5,
-			ammoname = 'ammo-firework'
 		},
 
 		['WEAPON_FLARE'] = {
@@ -260,19 +217,6 @@ return {
 			label = 'Golf Club',
 			weight = 330,
 			durability = 0.1,
-		},
-
-		['WEAPON_GRENADE'] = {
-			label = 'Grenade',
-			weight = 400,
-			throwable = true,
-		},
-
-		['WEAPON_GRENADELAUNCHER'] = {
-			label = 'Grenade Launcher',
-			weight = 6500,
-			durability = 0.05,
-			ammoname = 'ammo-grenade'
 		},
 
 		['WEAPON_GUSENBERG'] = {
@@ -301,26 +245,9 @@ return {
 			ammoname = 'ammo-rifle'
 		},
 
-		['WEAPON_HAZARDCAN'] = {
-			label = 'Hazard Can',
-			weight = 12000,
-		},
-
 		['WEAPON_METALDETECTOR'] = {
 			label = 'Metal Detector',
 			weight = 1200,
-		},
-
-		['WEAPON_HOMINGLAUNCHER'] = {
-			label = 'Homing Launcher',
-			weight = 10000,
-			durability = 0.6,
-			ammoname = 'ammo-rocket'
-		},
-
-		['WEAPON_FERTILIZERCAN'] = {
-			label = 'Fertilizer Can',
-			weight = 12000,
 		},
 
 		['WEAPON_HEAVYPISTOL'] = {
@@ -335,20 +262,6 @@ return {
 			weight = 3600,
 			durability = 0.1,
 			ammoname = 'ammo-shotgun'
-		},
-
-		['WEAPON_HEAVYSNIPER'] = {
-			label = 'Heavy Sniper',
-			weight = 12700,
-			durability = 0.5,
-			ammoname = 'ammo-heavysniper'
-		},
-
-		['WEAPON_HEAVYSNIPER_MK2'] = {
-			label = 'Heavy Sniper MK2',
-			weight = 14000,
-			durability = 0.5,
-			ammoname = 'ammo-heavysniper'
 		},
 
 		['WEAPON_KNIFE'] = {
@@ -395,20 +308,6 @@ return {
 			weight = 4000,
 			durability = 0.4,
 			ammoname = 'ammo-sniper'
-		},
-
-		['WEAPON_MG'] = {
-			label = 'Machine Gun',
-			weight = 9000,
-			durability = 0.02,
-			ammoname = 'ammo-rifle2'
-		},
-
-		['WEAPON_MINIGUN'] = {
-			label = 'Minigun',
-			weight = 38500,
-			durability = 0.1,
-			ammoname = 'ammo-rifle2'
 		},
 
 		['WEAPON_MICROSMG'] = {
@@ -470,12 +369,6 @@ return {
 			ammoname = 'ammo-9'
 		},
 
-		['WEAPON_PIPEBOMB'] = {
-			label = 'Pipe Bomb',
-			weight = 1800,
-			throwable = true,
-		},
-
 		['WEAPON_PISTOL'] = {
 			label = 'Pistol',
 			weight = 1130,
@@ -503,18 +396,6 @@ return {
 			durability = 0.1,
 		},
 
-		['WEAPON_CANDYCANE'] = {
-			label = 'Candy Cane',
-			weight = 85,
-			durability = 0.1,
-		},
-
-		['WEAPON_PROXMINE'] = {
-			label = 'Proximity Mine',
-			weight = 2500,
-			throwable = true,
-		},
-
 		['WEAPON_PUMPSHOTGUN'] = {
 			label = 'Pump Shotgun',
 			weight = 3400,
@@ -529,33 +410,6 @@ return {
 			ammoname = 'ammo-shotgun'
 		},
 
-		['WEAPON_RAILGUN'] = {
-			label = 'Railgun',
-			weight = 3570,
-			durability = 0.5,
-			ammoname = 'ammo-railgun'
-		},
-
-		['WEAPON_RAILGUNXM3'] = {
-			label = 'Railgun XM3',
-			weight = 3570,
-			durability = 0.5,
-			ammoname = 'ammo-railgun'
-		},
-
-		['WEAPON_RAYCARBINE'] = {
-			label = 'Unholy Hellbringer',
-			weight = 3620,
-			durability = 0.2,
-			ammoname = 'ammo-laser'
-		},
-
-		['WEAPON_RAYPISTOL'] = {
-			label = 'Up-n-Atomizer',
-			weight = 1540,
-			durability = 0.5
-		},
-
 		['WEAPON_REVOLVER'] = {
 			label = 'Revolver',
 			weight = 2260,
@@ -568,13 +422,6 @@ return {
 			weight = 2600,
 			durability = 0.1,
 			ammoname = 'ammo-44'
-		},
-
-		['WEAPON_RPG'] = {
-			label = 'RPG',
-			weight = 5000,
-			durability = 0.3,
-			ammoname = 'ammo-rocket'
 		},
 
 		['WEAPON_SAWNOFFSHOTGUN'] = {
@@ -611,12 +458,6 @@ return {
 			ammoname = 'ammo-sniper'
 		},
 
-		['WEAPON_SNOWBALL'] = {
-			label = 'Snow Ball',
-			weight = 5,
-			throwable = true,
-		},
-
 		['WEAPON_SNSPISTOL'] = {
 			label = 'SNS Pistol',
 			weight = 465,
@@ -645,18 +486,6 @@ return {
 			ammoname = 'ammo-rifle'
 		},
 
-		['WEAPON_STICKYBOMB'] = {
-			label = 'Sticky Bomb',
-			weight = 1000,
-			throwable = true,
-		},
-
-		['WEAPON_STONE_HATCHET'] = {
-			label = 'Stone Hatchet',
-			weight = 800,
-			durability = 0.1,
-		},
-
 		['WEAPON_STUNGUN'] = {
 			label = 'Tazer',
 			weight = 227,
@@ -682,13 +511,6 @@ return {
 			weight = 700,
 			durability = 0.1,
 			ammoname = 'ammo-9'
-		},
-
-		['WEAPON_RAYMINIGUN'] = {
-			label = 'Widowmaker',
-			weight = 7000,
-			durability = 0.1,
-			ammoname = 'ammo-laser'
 		},
 
 		['WEAPON_WRENCH'] = {
@@ -1185,27 +1007,6 @@ return {
 			}
 		},
 
-		['at_skin_luxe'] = {
-			label = 'Luxury Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTRIFLE_VARMOD_LUXE`,
-					`COMPONENT_ASSAULTSMG_VARMOD_LOWRIDER`,
-					`COMPONENT_CARBINERIFLE_VARMOD_LUXE`,
-					`COMPONENT_COMBATPISTOL_VARMOD_LOWRIDER`,
-					`COMPONENT_MARKSMANRIFLE_VARMOD_LUXE`,
-					`COMPONENT_MG_VARMOD_LOWRIDER`,
-					`COMPONENT_MICROSMG_VARMOD_LUXE`,
-					`COMPONENT_PISTOL_VARMOD_LUXE`,
-					`COMPONENT_PUMPSHOTGUN_VARMOD_LOWRIDER`,
-					`COMPONENT_SMG_VARMOD_LUXE`
-				},
-				usetime = 2500
-			}
-		},
-
 		['at_skin_wood'] = {
 			label = 'Wood Weapon Kit',
 			type = 'skin',
@@ -1231,297 +1032,6 @@ return {
 					`COMPONENT_BULLPUPRIFLE_VARMOD_LOW`,
 					`COMPONENT_SAWNOFFSHOTGUN_VARMOD_LUXE`,
 					`COMPONENT_SPECIALCARBINE_VARMOD_LOWRIDER`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_pearl'] = {
-			label = 'Pearl Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_PISTOL50_VARMOD_LUXE`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_ballas'] = {
-			label = 'Ballas Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_KNUCKLE_VARMOD_BALLAS`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_diamond'] = {
-			label = 'Diamond Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_KNUCKLE_VARMOD_DIAMOND`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_dollar'] = {
-			label = 'Dollar Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_KNUCKLE_VARMOD_DOLLAR`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_hate'] = {
-			label = 'Hate Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_KNUCKLE_VARMOD_HATE`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_king'] = {
-			label = 'King Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_KNUCKLE_VARMOD_KING`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_love'] = {
-			label = 'Love Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_KNUCKLE_VARMOD_LOVE`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_pimp'] = {
-			label = 'Pimp Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_KNUCKLE_VARMOD_PIMP`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_player'] = {
-			label = 'Player Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_KNUCKLE_VARMOD_PLAYER`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_vagos'] = {
-			label = 'Vagos Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_KNUCKLE_VARMOD_VAGOS`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_blagueurs'] = {
-			label = 'Blagueurs Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_BAT_VARMOD_XM3`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_splatter'] = {
-			label = 'Splatter Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_BAT_VARMOD_XM3_01`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_bulletholes'] = {
-			label = 'Bullet Holes Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_BAT_VARMOD_XM3_02`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_burgershot'] = {
-			label = 'Burger Shot Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_BAT_VARMOD_XM3_03`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_cluckinbell'] = {
-			label = 'Cluckin Bell Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_BAT_VARMOD_XM3_04`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_fatalincursion'] = {
-			label = 'Fatal Incursion Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_BAT_VARMOD_XM3_05`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_luchalibre'] = {
-			label = 'Lucha Libre Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_BAT_VARMOD_XM3_06`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_trippy'] = {
-			label = 'Trippy Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_BAT_VARMOD_XM3_07`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_tiedye'] = {
-			label = 'Tie-Dye Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_BAT_VARMOD_XM3_08`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_wall'] = {
-			label = 'Wall Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_BAT_VARMOD_XM3_09`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_vip'] = {
-			label = 'VIP Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_REVOLVER_VARMOD_BOSS`,
-					`COMPONENT_SWITCHBLADE_VARMOD_VAR1`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_bodyguard'] = {
-			label = 'Bodyguard Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_REVOLVER_VARMOD_GOON`,
-					`COMPONENT_SWITCHBLADE_VARMOD_VAR2`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_festive'] = {
-			label = 'Festive Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_RAYPISTOL_VARMOD_XMAS18`
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_security'] = {
-			label = 'Security Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_APPISTOL_VARMOD_SECURITY`,
-					`COMPONENT_MICROSMG_VARMOD_SECURITY`,
 				},
 				usetime = 2500
 			}
@@ -1596,189 +1106,6 @@ return {
 			}
 		},
 
-		['at_skin_skull'] = {
-			label = 'Skull Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTRIFLE_MK2_CAMO_04`,
-					`COMPONENT_BULLPUPRIFLE_MK2_CAMO_04`,
-					`COMPONENT_CARBINERIFLE_MK2_CAMO_04`,
-					`COMPONENT_COMBATMG_MK2_CAMO_04`,
-					`COMPONENT_HEAVYSNIPER_MK2_CAMO_04`,
-					`COMPONENT_MARKSMANRIFLE_MK2_CAMO_04`,
-					`COMPONENT_PISTOL_MK2_CAMO_04`,
-					`COMPONENT_PUMPSHOTGUN_MK2_CAMO_04`,
-					`COMPONENT_REVOLVER_MK2_CAMO_04`,
-					`COMPONENT_SMG_MK2_CAMO_04`,
-					`COMPONENT_SNSPISTOL_MK2_CAMO_04`,
-					`COMPONENT_SPECIALCARBINE_MK2_CAMO_04`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_sessanta'] = {
-			label = 'Sessanta Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTRIFLE_MK2_CAMO_05`,
-					`COMPONENT_BULLPUPRIFLE_MK2_CAMO_05`,
-					`COMPONENT_CARBINERIFLE_MK2_CAMO_05`,
-					`COMPONENT_COMBATMG_MK2_CAMO_05`,
-					`COMPONENT_HEAVYSNIPER_MK2_CAMO_05`,
-					`COMPONENT_MARKSMANRIFLE_MK2_CAMO_05`,
-					`COMPONENT_PISTOL_MK2_CAMO_05`,
-					`COMPONENT_PUMPSHOTGUN_MK2_CAMO_05`,
-					`COMPONENT_REVOLVER_MK2_CAMO_05`,
-					`COMPONENT_SMG_MK2_CAMO_05`,
-					`COMPONENT_SNSPISTOL_MK2_CAMO_05`,
-					`COMPONENT_SPECIALCARBINE_MK2_CAMO_05`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_perseus'] = {
-			label = 'Perseus Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTRIFLE_MK2_CAMO_06`,
-					`COMPONENT_BULLPUPRIFLE_MK2_CAMO_06`,
-					`COMPONENT_CARBINERIFLE_MK2_CAMO_06`,
-					`COMPONENT_COMBATMG_MK2_CAMO_06`,
-					`COMPONENT_HEAVYSNIPER_MK2_CAMO_06`,
-					`COMPONENT_MARKSMANRIFLE_MK2_CAMO_06`,
-					`COMPONENT_PISTOL_MK2_CAMO_06`,
-					`COMPONENT_PUMPSHOTGUN_MK2_CAMO_06`,
-					`COMPONENT_REVOLVER_MK2_CAMO_06`,
-					`COMPONENT_SMG_MK2_CAMO_06`,
-					`COMPONENT_SNSPISTOL_MK2_CAMO_06`,
-					`COMPONENT_SPECIALCARBINE_MK2_CAMO_06`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_leopard'] = {
-			label = 'Leopard Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTRIFLE_MK2_CAMO_07`,
-					`COMPONENT_BULLPUPRIFLE_MK2_CAMO_07`,
-					`COMPONENT_CARBINERIFLE_MK2_CAMO_07`,
-					`COMPONENT_COMBATMG_MK2_CAMO_07`,
-					`COMPONENT_HEAVYSNIPER_MK2_CAMO_07`,
-					`COMPONENT_MARKSMANRIFLE_MK2_CAMO_07`,
-					`COMPONENT_PISTOL_MK2_CAMO_07`,
-					`COMPONENT_PUMPSHOTGUN_MK2_CAMO_07`,
-					`COMPONENT_REVOLVER_MK2_CAMO_07`,
-					`COMPONENT_SMG_MK2_CAMO_07`,
-					`COMPONENT_SNSPISTOL_MK2_CAMO_07`,
-					`COMPONENT_SPECIALCARBINE_MK2_CAMO_07`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_zebra'] = {
-			label = 'Zebra Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTRIFLE_MK2_CAMO_08`,
-					`COMPONENT_BULLPUPRIFLE_MK2_CAMO_08`,
-					`COMPONENT_CARBINERIFLE_MK2_CAMO_08`,
-					`COMPONENT_COMBATMG_MK2_CAMO_08`,
-					`COMPONENT_HEAVYSNIPER_MK2_CAMO_08`,
-					`COMPONENT_MARKSMANRIFLE_MK2_CAMO_08`,
-					`COMPONENT_PISTOL_MK2_CAMO_08`,
-					`COMPONENT_PUMPSHOTGUN_MK2_CAMO_08`,
-					`COMPONENT_REVOLVER_MK2_CAMO_08`,
-					`COMPONENT_SMG_MK2_CAMO_08`,
-					`COMPONENT_SNSPISTOL_MK2_CAMO_08`,
-					`COMPONENT_SPECIALCARBINE_MK2_CAMO_08`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_geometric'] = {
-			label = 'Geometric Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTRIFLE_MK2_CAMO_09`,
-					`COMPONENT_BULLPUPRIFLE_MK2_CAMO_09`,
-					`COMPONENT_CARBINERIFLE_MK2_CAMO_09`,
-					`COMPONENT_COMBATMG_MK2_CAMO_09`,
-					`COMPONENT_HEAVYSNIPER_MK2_CAMO_09`,
-					`COMPONENT_MARKSMANRIFLE_MK2_CAMO_09`,
-					`COMPONENT_PISTOL_MK2_CAMO_09`,
-					`COMPONENT_PUMPSHOTGUN_MK2_CAMO_09`,
-					`COMPONENT_REVOLVER_MK2_CAMO_09`,
-					`COMPONENT_SMG_MK2_CAMO_09`,
-					`COMPONENT_SNSPISTOL_MK2_CAMO_09`,
-					`COMPONENT_SPECIALCARBINE_MK2_CAMO_09`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_boom'] = {
-			label = 'Boom Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTRIFLE_MK2_CAMO_10`,
-					`COMPONENT_BULLPUPRIFLE_MK2_CAMO_10`,
-					`COMPONENT_CARBINERIFLE_MK2_CAMO_10`,
-					`COMPONENT_COMBATMG_MK2_CAMO_10`,
-					`COMPONENT_HEAVYSNIPER_MK2_CAMO_10`,
-					`COMPONENT_MARKSMANRIFLE_MK2_CAMO_10`,
-					`COMPONENT_PISTOL_MK2_CAMO_10`,
-					`COMPONENT_PUMPSHOTGUN_MK2_CAMO_10`,
-					`COMPONENT_REVOLVER_MK2_CAMO_10`,
-					`COMPONENT_SMG_MK2_CAMO_10`,
-					`COMPONENT_SNSPISTOL_MK2_CAMO_10`,
-					`COMPONENT_SPECIALCARBINE_MK2_CAMO_10`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_skin_patriotic'] = {
-			label = 'Patriotic Weapon Kit',
-			type = 'skin',
-			weight = 50,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTRIFLE_MK2_CAMO_IND_01`,
-					`COMPONENT_BULLPUPRIFLE_MK2_CAMO_IND_01`,
-					`COMPONENT_CARBINERIFLE_MK2_CAMO_IND_01`,
-					`COMPONENT_COMBATMG_MK2_CAMO_IND_01`,
-					`COMPONENT_HEAVYSNIPER_MK2_CAMO_IND_01`,
-					`COMPONENT_MARKSMANRIFLE_MK2_CAMO_IND_01`,
-					`COMPONENT_PISTOL_MK2_CAMO_IND_01`,
-					`COMPONENT_PUMPSHOTGUN_MK2_CAMO_IND_01`,
-					`COMPONENT_REVOLVER_MK2_CAMO_IND_01`,
-					`COMPONENT_SMG_MK2_CAMO_IND_01`,
-					`COMPONENT_SNSPISTOL_MK2_CAMO_IND_01`,
-					`COMPONENT_SPECIALCARBINE_MK2_CAMO_IND_01`,
-				},
-				usetime = 2500
-			}
-		},
 	},
 
 	Ammo = {
@@ -1812,39 +1139,14 @@ return {
 			weight = 7,
 		},
 
-		['ammo-firework'] = {
-			label = 'Firework',
-			weight = 200,
-		},
-
 		['ammo-flare'] = {
 			label = 'Flare round',
 			weight = 38,
 		},
 
-		['ammo-grenade'] = {
-			label = '40mm Explosive',
-			weight = 400,
-		},
-
-		['ammo-heavysniper'] = {
-			label = '.50 BMG',
-			weight = 51,
-		},
-
-		['ammo-laser'] = {
-			label = 'Laser charge',
-			weight = 1,
-		},
-
 		['ammo-musket'] = {
 			label = '.50 Ball',
 			weight = 38,
-		},
-
-		['ammo-railgun'] = {
-			label = 'Railgun charge',
-			weight = 150,
 		},
 
 		['ammo-rifle'] = {
@@ -1857,11 +1159,6 @@ return {
 			weight = 8,
 		},
 
-		['ammo-rocket'] = {
-			label = 'Rocket',
-			weight = 500,
-		},
-
 		['ammo-shotgun'] = {
 			label = '12 Gauge',
 			weight = 38,
@@ -1872,9 +1169,5 @@ return {
 			weight = 9,
 		},
 
-		['ammo-emp'] = {
-			label = 'EMP round',
-			weight = 400,
-		},
 	}
 }

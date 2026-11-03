@@ -1,6 +1,13 @@
 Config.Peds = {
     pedConfig = {
+        -- [OUR CHANGE] Pillar C: everyone gets the two customizable characters only. See docs/core-changes.md
         {
+            peds = { "mp_m_freemode_01", "mp_f_freemode_01" }
+        },
+        -- [OUR CHANGE] Every other model (animals, NPCs, zombies, mascots...) is staff only, for events.
+        -- Staff get it with the ACE appearance.allpeds (permissions.cfg).
+        {
+            aces = { "appearance.allpeds" },
             peds = {
                 "a_c_boar",
                 "a_c_boar_02",
