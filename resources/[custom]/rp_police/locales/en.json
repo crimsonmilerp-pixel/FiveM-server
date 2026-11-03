@@ -99,6 +99,17 @@
     "log_serial": "%sx %s (serial %s)"
   },
 
+  "station": {
+    "duty": "Duty desk: press E to clock in or out",
+    "locker": "Locker room: uniforms",
+    "boss": "Captain's desk: press E for the boss menu",
+    "boss_prompt": "[E] Boss menu (hire, promote, fire)",
+    "armory": "Armory: hold Left Alt and click (clocked in)",
+    "garage": "Police garage: press E",
+    "impound": "Impound lot: press E",
+    "heli": "Helipad: press E (Air Support)"
+  },
+
   "garage": {
     "needs": "Needs: %s",
     "heli_needs": "The helicopter needs: %s"

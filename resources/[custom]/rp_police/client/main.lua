@@ -258,6 +258,114 @@ RegisterNetEvent('rp_police:client:openPenalCode', function()
 end)
 
 -- ------------------------------------------------------------
+-- Station markers: a circle on the floor and a label at each police
+-- spot (duty desk, lockers, armory, garage...), for officers only.
+-- ------------------------------------------------------------
+local MARKER_COLOUR = { r = 70, g = 130, b = 230, a = 110 }
+
+local function canSeeMarker(job, show)
+    if show == 'always' then return true end
+    if show == 'duty' then return job.onduty == true end
+    if show == 'boss' then return job.isboss == true end
+    return false
+end
+
+---Finds the floor under a spot once (falls back to about 1 m below the spot).
+local function floorZ(marker)
+    if marker.floor then return marker.floor end
+    local c = marker.coords
+    local found, z = GetGroundZFor_3dCoord(c.x, c.y, c.z + 0.5, false)
+    if found and z > c.z - 3.0 and z <= c.z + 0.5 then
+        marker.floor = z
+    else
+        return c.z - 0.98 -- not cached: try again when the area has loaded
+    end
+    return marker.floor
+end
+
+local function drawLabel(x, y, z, text)
+    SetTextScale(0.32, 0.32)
+    SetTextFont(4)
+    SetTextColour(255, 255, 255, 230)
+    SetTextOutline()
+    SetTextCentre(true)
+    SetDrawOrigin(x, y, z, 0)
+    BeginTextCommandDisplayText('STRING')
+    AddTextComponentSubstringPlayerName(text)
+    EndTextCommandDisplayText(0.0, 0.0)
+    ClearDrawOrigin()
+end
+
+CreateThread(function()
+    local markers = config.stationMarkers or {}
+    local drawDistance = config.markerDrawDistance or 25.0
+    local labelDistance = config.markerLabelDistance or 8.0
+
+    while true do
+        local job = LocalPlayer.state.isLoggedIn and myDepartment()
+        local nearby = {}
+
+        if job then
+            local coords = GetEntityCoords(cache.ped)
+            for _, marker in ipairs(markers) do
+                if canSeeMarker(job, marker.show) and #(coords - marker.coords) < drawDistance then
+                    nearby[#nearby + 1] = marker
+                end
+            end
+        end
+
+        if #nearby == 0 then
+            Wait(1500)
+        else
+            -- Draw every frame for a second, then check again who and what is nearby.
+            local untilTime = GetGameTimer() + 1000
+            while GetGameTimer() < untilTime do
+                local coords = GetEntityCoords(cache.ped)
+                for _, marker in ipairs(nearby) do
+                    local c = marker.coords
+                    local z = floorZ(marker)
+                    DrawMarker(25, c.x, c.y, z + 0.02, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.2, 1.2, 1.0,
+                        MARKER_COLOUR.r, MARKER_COLOUR.g, MARKER_COLOUR.b, MARKER_COLOUR.a, false, false, 2, false, nil, nil, false)
+                    if #(coords - c) < labelDistance then
+                        drawLabel(c.x, c.y, z + 1.0, locale('station.' .. marker.point))
+                    end
+                end
+                Wait(0)
+            end
+        end
+    end
+end)
+
+-- The captain's desk: rp_police opens the boss menu (qbx_management) itself, from the
+-- same spot as the floor circle. Qbox's own spot was too thin from floor to ceiling
+-- (half a meter of leeway), so pressing E often did nothing.
+local function isBossHere()
+    local job = myDepartment()
+    return job ~= nil and job.isboss == true
+end
+
+for _, marker in ipairs(config.stationMarkers or {}) do
+    if marker.point == 'boss' then
+        lib.zones.box({
+            coords = marker.coords,
+            size = vec3(3.0, 3.0, 6.0),
+            onEnter = function()
+                if isBossHere() then lib.showTextUI(locale('station.boss_prompt')) end
+            end,
+            onExit = function()
+                lib.hideTextUI()
+            end,
+            inside = function()
+                if IsControlJustReleased(0, 38) and isBossHere() and GetResourceState('qbx_management') == 'started' then
+                    lib.hideTextUI()
+                    exports.qbx_management:OpenBossMenu('job')
+                end
+            end,
+        })
+    end
+end
+
+-- ------------------------------------------------------------
 -- Exports for qbx_police (garage menu and helipad)
 -- Both return nil when the player isn't in a department we manage,
 -- so qbx_police falls back to its own rules.

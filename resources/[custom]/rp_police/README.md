@@ -43,6 +43,24 @@ Cadets type **`/training`** to see their own checklist.
 - Certifications are saved on the character (as licences called `police_traffic`, `police_swat` and so on). **Leaving the department removes them.**
 - Staff with the `admin` permission can do everything (for example, the Chief's own certs).
 
+## Finding things at the station
+
+Officers see a blue circle on the floor with a label at every police spot. Walk into the circle and press **E** (the armory is **hold Left Alt and click**).
+
+| Spot | Where (Mission Row) | Who sees it |
+|---|---|---|
+| Duty desk (clock in or out) | Front desk, just inside the main doors. Also at Paleto Bay station | Every officer |
+| Locker room (uniforms) | Ground floor locker room | Every officer |
+| Captain's desk (boss menu) | Captain's office | Captain and Chief |
+| Armory | Ground floor | Clocked in |
+| Police garage | Basement garage and the back lot | Clocked in |
+| Impound lot | Behind the station. Also at Paleto Bay | Clocked in |
+| Helipad | Roof. Also at Paleto Bay | Clocked in |
+
+The captain's desk is the one spot rp_police handles itself: it opens Qbox's boss menu (qbx_management) when a Captain or Chief presses E in the circle.
+
+The other spots are set in other resources (each line in `config.lua` → `stationMarkers` says which file). The markers only show where they are, so if a spot moves, move its marker too.
+
 ## Garage and helicopter
 
 The police garage shows **every** police car. The ones an officer can't take yet are greyed out with what they need ("Needs: Officer II · Traffic Division"). That's on purpose: it shows people what to work toward. The list is in `config.lua` (`garage`). The helicopter needs Officer II and Air Support.

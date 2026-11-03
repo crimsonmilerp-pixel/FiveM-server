@@ -371,6 +371,10 @@ return {
         },
 
         -- Job Garages
+        -- [OUR CHANGE] Nov 2: the "Police" personal-car garage behind Mission Row is switched off. It sat next to
+        -- the real police garage (qbx_police + rp_police) and only held officers' own cars, so it just said
+        -- "no vehicles" and confused people. See docs/core-changes.md
+        --[[
         police = {
             label = 'Police',
             vehicleType = VehicleType.CAR,
@@ -382,6 +386,7 @@ return {
                 }
             },
         },
+        ]]
 
         -- Gang Garages
         ballas = {

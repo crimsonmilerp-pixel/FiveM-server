@@ -9,16 +9,9 @@ return {
     ---@alias GroupName string
     ---@type table<GroupName, ZoneInfo|ZoneInfo[]>
     menus = {
-        -- [OUR CHANGE] LSPD boss menu (Captain and Chief): hire Cadets, promote, fire.
-        -- At the desk in the captain's office, Mission Row ground floor (door just past the front desk).
-        -- Nothing shows on the floor: stand on the spot as Captain or Chief and "[E] - Open Boss Management" appears.
-        -- (Qbox's old default, 461.45, -986.2, was the back hallway by the roof stairs.) See docs/core-changes.md
-        police = {
-            coords = vec3(448.4, -973.2, 30.69),
-            size = vec3(2.0, 2.0, 2.0),
-            rotation = 0.0,
-            type = 'job',
-        },
+        -- [OUR CHANGE] The LSPD boss menu (Captain and Chief: hire, promote, fire) is opened by rp_police at the
+        -- captain's desk (rp_police/config.lua, stationMarkers), using this resource's OpenBossMenu export.
+        -- A spot here too would show two prompts. See docs/core-changes.md
         lostmc = {
             {
                 coords = vec3(983.69, -90.92, 74.85),

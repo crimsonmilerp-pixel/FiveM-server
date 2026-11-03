@@ -515,10 +515,12 @@ CreateThread(function()
     end
 
     -- Helicopter
+    -- [OUR CHANGE] Zones made taller (ox_lib only allows a quarter of the height above or below the spot,
+    -- so standing on the ground often didn't count as "inside" and E did nothing). See docs/core-changes.md
     for i = 1, #sharedConfig.locations.helicopter do
         lib.zones.box({
             coords = sharedConfig.locations.helicopter[i],
-            size = vec3(4, 4, 4),
+            size = vec3(6, 6, 8),
             rotation = 0.0,
             debug = config.polyDebug,
             onEnter = function()
@@ -540,7 +542,7 @@ CreateThread(function()
     for i = 1, #sharedConfig.locations.impound do
         lib.zones.box({
             coords = sharedConfig.locations.impound[i],
-            size = vec3(2, 2, 2),
+            size = vec3(3, 3, 6), -- [OUR CHANGE] was vec3(2, 2, 2), see Helicopter above
             rotation = 0.0,
             debug = config.polyDebug,
             onEnter = function()
@@ -564,7 +566,7 @@ CreateThread(function()
     for i = 1, #sharedConfig.locations.vehicle do
         lib.zones.box({
             coords = sharedConfig.locations.vehicle[i],
-            size = vec3(2, 2, 2),
+            size = vec3(3, 3, 6), -- [OUR CHANGE] was vec3(2, 2, 2), see Helicopter above
             rotation = 0.0,
             debug = config.polyDebug,
             onEnter = function()

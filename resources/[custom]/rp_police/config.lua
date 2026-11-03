@@ -74,4 +74,34 @@ return {
 
     -- How many entries /policelog shows.
     logLimit = 40,
+
+    -- Floor markers with a label at the police station, so officers can find things.
+    -- Only officers see them. They only SHOW where things are: the real spots are set
+    -- in the file named on each line, so move a marker when you move the real spot.
+    --   show = 'always' (every officer), 'duty' (clocked in only), 'boss' (Captain and Chief)
+    --   point = which label to show (locales/en.json, station.*)
+    stationMarkers = {
+        -- qbx_police/config/shared.lua (locations.duty): stand here and press E to clock in or out
+        { point = 'duty',    show = 'always', coords = vec3(440.09, -974.92, 30.69) },  -- Mission Row front desk
+        { point = 'duty',    show = 'always', coords = vec3(-449.81, 6012.91, 31.82) }, -- Paleto Bay station
+        -- illenium-appearance/shared/config.lua (Config.ClothingRooms): uniforms
+        { point = 'locker',  show = 'always', coords = vec3(454.91, -990.89, 30.69) },
+        -- The captain's desk. rp_police opens the boss menu here itself (qbx_management: hire, promote, fire)
+        { point = 'boss',    show = 'boss',   coords = vec3(448.4, -973.2, 30.69) },
+        -- ox_inventory/data/shops.lua (PoliceArmoury targets): hold Left Alt and click
+        { point = 'armory',  show = 'duty',   coords = vec3(453.21, -980.03, 30.68) },
+        -- qbx_police/config/shared.lua (locations.vehicle): police cars
+        { point = 'garage',  show = 'duty',   coords = vec3(452.0, -996.0, 26.0) },
+        { point = 'garage',  show = 'duty',   coords = vec3(447.0, -997.0, 26.0) },
+        { point = 'garage',  show = 'duty',   coords = vec3(463.0, -1019.0, 28.0) },
+        { point = 'garage',  show = 'duty',   coords = vec3(463.0, -1015.0, 28.0) },
+        -- qbx_police/config/shared.lua (locations.impound)
+        { point = 'impound', show = 'duty',   coords = vec3(436.68, -1007.42, 27.32) },
+        { point = 'impound', show = 'duty',   coords = vec3(-436.14, 5982.63, 31.34) },
+        -- qbx_police/config/shared.lua (locations.helicopter): Mission Row roof, Paleto
+        { point = 'heli',    show = 'duty',   coords = vec3(449.17, -981.33, 43.69) },
+        { point = 'heli',    show = 'duty',   coords = vec3(-475.43, 5988.35, 31.72) },
+    },
+    markerDrawDistance = 25.0, -- markers show within this many meters
+    markerLabelDistance = 8.0, -- labels show within this many meters
 }

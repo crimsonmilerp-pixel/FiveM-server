@@ -601,7 +601,7 @@ Config.PlayerOutfitRooms = {
 }
 
 Config.Outfits = {
-    ["police"] = {
+    ["police"] = { -- [OUR CHANGE] Nov 2: grades 5-7 added for the new LSPD ladder (0 Cadet ... 7 Chief). See docs/core-changes.md
         ["Male"] = {
             {
                 name = "Short Sleeve",
@@ -618,7 +618,7 @@ Config.Outfits = {
                     ["glass"] = {item = 0, texture = 0}, -- Glasses
                     ["mask"] = {item = 0, texture = 0} -- Mask
                 },
-                grades = {0, 1, 2, 3, 4},
+                grades = {0, 1, 2, 3, 4, 5, 6, 7},
             },
             {
                 name = "Trooper Tan",
@@ -635,7 +635,7 @@ Config.Outfits = {
                     ["glass"] = {item = 0, texture = 0}, -- Glasses
                     ["mask"] = {item = 0, texture = 0} -- Mask
                 },
-                grades = {0, 1, 2, 3, 4},
+                grades = {0, 1, 2, 3, 4, 5, 6, 7},
             },
             {
                 name = "Long Sleeve",
@@ -652,7 +652,7 @@ Config.Outfits = {
                     ["glass"] = {item = 0, texture = 0}, -- Glasses
                     ["mask"] = {item = 0, texture = 0} -- Mask
                 },
-                grades = {1, 2, 3, 4},
+                grades = {1, 2, 3, 4, 5, 6, 7},
             },
             {
                 name = "Trooper Black",
@@ -669,7 +669,7 @@ Config.Outfits = {
                     ["glass"] = {item = 0, texture = 0}, -- Glasses
                     ["mask"] = {item = 0, texture = 0} -- Mask
                 },
-                grades = {2, 3, 4},
+                grades = {2, 3, 4, 5, 6, 7},
             },
             {
                 name = "SWAT",
@@ -685,7 +685,7 @@ Config.Outfits = {
                     ["glass"] = {item = 0, texture = 0}, -- Glasses
                     ["mask"] = {item = 52, texture = 0} -- Mask
                 },
-                grades = {3, 4},
+                grades = {3, 4, 5, 6, 7},
             }
         },
         ["Female"] = {
@@ -704,7 +704,7 @@ Config.Outfits = {
                     ["glass"] = {item = 0, texture = 0}, -- Glasses
                     ["mask"] = {item = 0, texture = 0} -- Mask
                 },
-                grades = {0, 1, 2, 3, 4},
+                grades = {0, 1, 2, 3, 4, 5, 6, 7},
             },
             {
                 name = "Trooper Tan",
@@ -721,7 +721,7 @@ Config.Outfits = {
                     ["glass"] = {item = 0, texture = 0}, -- Glasses
                     ["mask"] = {item = 0, texture = 0} -- Mask
                 },
-                grades = {0, 1, 2, 3, 4},
+                grades = {0, 1, 2, 3, 4, 5, 6, 7},
             },
             {
                 name = "Long Sleeve",
@@ -738,7 +738,7 @@ Config.Outfits = {
                     ["glass"] = {item = 0, texture = 0}, -- Glasses
                     ["mask"] = {item = 0, texture = 0} -- Mask
                 },
-                grades = {1, 2, 3, 4},
+                grades = {1, 2, 3, 4, 5, 6, 7},
             },
             {
                 name = "Trooper Black",
@@ -755,7 +755,7 @@ Config.Outfits = {
                     ["glass"] = {item = 0, texture = 0}, -- Glasses
                     ["mask"] = {item = 0, texture = 0} -- Mask
                 },
-                grades = {2, 3, 4},
+                grades = {2, 3, 4, 5, 6, 7},
             },
             {
                 name = "SWAT",
@@ -772,7 +772,7 @@ Config.Outfits = {
                     ["glass"] = {item = 0, texture = 0}, -- Glasses
                     ["mask"] = {item = 35, texture = 0} -- Mask
                 },
-                grades = {3, 4},
+                grades = {3, 4, 5, 6, 7},
             }
         }
     },
