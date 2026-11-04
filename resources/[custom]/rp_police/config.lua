@@ -59,6 +59,7 @@ return {
         { model = 'police3',       minGrade = 2, cert = 'traffic' },  -- Interceptor
         { model = 'polimpaler5',   minGrade = 2, cert = 'traffic' },  -- Impaler SZ pursuit car
         { model = 'onx_polscout',  minGrade = 4, loadout = 'scout' }, -- Vapid Scout SUV: supervisors and command (resources/[onx_vehicles])
+        { model = 'onx_polvstr',   minGrade = 6, loadout = 'vstr' },  -- Presidente VSTR command car: Captain and Chief only (resources/[onx_vehicles])
         { model = 'police4',       minGrade = 3, cert = 'detective' },-- Unmarked Stanier
         { model = 'fbi',           minGrade = 3, cert = 'detective' },-- Unmarked Buffalo
         { model = 'fbi2',          minGrade = 3, cert = 'swat' },     -- Unmarked Granger (SWAT)
@@ -67,11 +68,12 @@ return {
 
     -- Equipment fitted to a car when it leaves the garage. The numbers come from the car's
     -- carcols.meta (mod type = list position): see docs/police-vehicles.md for every option.
+    -- Lightbars: the ONX cars' own lightbar is extra 1. Don't set mod 49 (lightbar) above 3: those
+    -- lightbars come from ONX's paid companion pack, which we don't have, so the roof would be empty.
     loadouts = {
         scout = { -- ONX Vapid Scout (onx_polscout)
             mods = {
                 [48] = 0,  -- livery: LSPD
-                [49] = 4,  -- lightbar: Large Wisen Alliance
                 [10] = 0,  -- roof: city (metropolitan) antennas
                 [32] = 0,  -- back: window bars (the back seats stay for prisoners)
                 [28] = 7,  -- front console: LSPD laptop (MDW LSPD)
@@ -91,6 +93,23 @@ return {
             -- The 5 callsign number slots, left to right (number n = mod n). Filled from the officer's
             -- callsign (/callsign or the MDT). Officers without one get no numbers.
             callsignMods = { 5, 42, 43, 44, 45 },
+        },
+        vstr = { -- ONX Albany Presidente VSTR (onx_polvstr): the command car
+            mods = {
+                [48] = 0,  -- livery: LSPD
+                [32] = 1,  -- back: window bars (the back seats stay for prisoners)
+                [28] = 7,  -- front console: LSPD laptop (MDW LSPD)
+                [27] = 0,  -- cabin lights off (it has a lightbar)
+                [30] = 2,  -- rifle rack on the divider
+                [34] = 0,  -- dash radar
+                [8]  = 0,  -- driver spotlight (controllable)
+                [9]  = 0,  -- passenger spotlight
+            },
+            extras = { [1] = true, [2] = false, [3] = false, [4] = false, [5] = false, [6] = false, [7] = false, [8] = false, [9] = false }, -- 1 = lightbar, 2 = push bar (off: command car)
+            tagMod = 46,
+            tagByGrade = { [6] = 1, [7] = 1 }, -- Command tag
+            -- This car has 3 callsign number slots, so it shows the first 3 digits.
+            callsignMods = { 5, 42, 43 },
         },
     },
 

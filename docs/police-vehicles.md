@@ -1,6 +1,6 @@
 # Police vehicles
 
-What's in the police garage and how the Scout SUV is fitted out. The car list itself is `resources/[custom]/rp_police/config.lua` → `garage`. Nothing here is uploaded.
+What's in the police garage and how the ONX cars (Scout SUV and Presidente Command Car) are fitted out. The car list itself is `resources/[custom]/rp_police/config.lua` → `garage`. Nothing here is uploaded.
 
 ## Rules
 
@@ -20,6 +20,7 @@ What's in the police garage and how the Scout SUV is fitted out. The car list it
 | Interceptor | `police3` | 4 | Officer II + Traffic Division |
 | Impaler SZ Pursuit | `polimpaler5` | 4 | Officer II + Traffic Division |
 | **Scout SUV** | `onx_polscout` | 6 | **Sergeant and up** |
+| **Presidente Command Car** | `onx_polvstr` | 4 | **Captain and Chief only** |
 | Unmarked Stanier | `police4` | 4 | Officer III + Detective Bureau |
 | Unmarked Buffalo | `fbi` | 4 | Officer III + Detective Bureau |
 | Unmarked Granger | `fbi2` | 8 | Officer III + SWAT |
@@ -39,7 +40,7 @@ What's in the police garage and how the Scout SUV is fitted out. The car list it
 | Part | Mod type | Choice |
 |---|---|---|
 | Livery | 48 | 0 = LSPD |
-| Lightbar | 49 | 4 = Large Wisen Alliance (extra 1 switched on, extras 2-9 off) |
+| Lightbar | extra 1 | The car's own lightbar (extra 1 on, extras 2-9 off). Mod 49 is left alone, see below |
 | Antennas | 10 | 0 = city |
 | Back seats | 32 | 0 = window bars (the back seats stay for prisoners) |
 | Console | 28 | 7 = LSPD laptop |
@@ -52,8 +53,34 @@ What's in the police garage and how the Scout SUV is fitted out. The car list it
 | **Door tag** | 46 | **0 = Supervisor** (Sergeant, Lieutenant), **1 = Command** (Captain, Chief) |
 | **Callsign numbers** | 5, 42, 43, 44, 45 | Left to right, digit n = mod n. Taken from the officer's callsign |
 
-Other choices the car has (to swap in config): liveries 0-21 (LSPD, LSSD, SAHP, BCSO, Del Perro, Davis, State Parks...; the odd numbers are single-colour versions), lightbars 0 slicktop, 1-3 ALPR cameras, 4-13 light bars, door tags 2-7 (Warden, Paramedic, SWAT, Gang Unit, K9; 8-15 are the red reflective versions of 0-7), back seats 1-5 (no divider, K9 seats).
+Other choices the car has (to swap in config): liveries 0-21 (LSPD, LSSD, SAHP, BCSO, Del Perro, Davis, State Parks...; the odd numbers are single-colour versions), mod 49: 0 slicktop (no lightbar), 1-3 plate-reader (ALPR) cameras on top of the lightbar, door tags 2-7 (Warden, Paramedic, SWAT, Gang Unit, K9; 8-15 are the red reflective versions of 0-7), back seats 1-5 (no divider, K9 seats).
+
+**Lightbars (found Nov 4):** the lightbar choices 4-19 in mod 49 are empty in our files. Their 3D models come in ONX's paid **EVP Companion** subscription, which we don't have, so picking one would leave the roof bare. Our cars use the lightbar built into the car (extra 1). If we ever buy the Companion, we can choose other lightbars.
+
+## The Presidente Command Car (ONX, bought)
+
+- "ONX Albany Presidente VSTR (2020)" from the official Cfx.re Marketplace, bought with Vinny's own Cfx.re account on Nov 4, 2026 ($5.99). Escrowed like the Scout, with the same `.fxap` lock and the same entitlement error if the key doesn't match.
+- Resource `onx-evp-d-polvstr` in `resources/[onx_vehicles]`. It uses the same shared and audio resources as the Scout. About 7 MB more for players.
+- **Captain and Chief only** (`minGrade = 6`), so the bosses drive something no one else can.
+
+### What the garage fits (`loadouts.vstr` in config.lua)
+
+| Part | Mod type | Choice |
+|---|---|---|
+| Livery | 48 | 0 = LSPD (1 = single-colour LSPD) |
+| Lightbar | extra 1 | The car's own lightbar |
+| Push bar | extra 2 | Off (a command car doesn't push) |
+| Back seats | 32 | 1 = window bars (0 would remove the divider) |
+| Console | 28 | 7 = LSPD laptop |
+| Cabin lights | 27 | 0 = off |
+| Gun rack | 30 | 2 = rifle rack on the divider |
+| Radar | 34 | 0 |
+| Spotlights | 8 / 9 | 0 / 0 |
+| **Door tag** | 46 | **1 = Command** |
+| **Callsign numbers** | 5, 42, 43 | Only **3** slots on this car: it shows the first 3 digits |
+
+It also has its own body parts (front splitter, hoods, spoilers, exhausts: mod types 0-7) from the normal car. We leave those stock.
 
 ### Callsigns
 
-Officers set theirs with **`/callsign 123`** (or in the MDT). The garage puts the digits on the Scout, up to 5. Officers without a callsign get a Scout with no numbers.
+Officers set theirs with **`/callsign 123`** (or in the MDT). The garage puts the digits on the Scout (up to 5) and the Command Car (up to 3), so **3-digit callsigns** look the same on both. Officers without a callsign get cars with no numbers.
