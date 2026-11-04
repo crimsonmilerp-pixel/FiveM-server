@@ -14,11 +14,15 @@ local COMPONENTS = {
 local PROPS = { { 0, 'hats' }, { 1, 'glasses' } }
 
 local function say(text)
+    -- F8 console line (always) + chat line + top-left notice, so the answer is seen somewhere
     print('[rp_eup] ' .. text)
     TriggerEvent('chat:addMessage', { args = { 'Uniforms', text } })
+    BeginTextCommandThefeedPost('STRING')
+    AddTextComponentSubstringPlayerName(text)
+    EndTextCommandThefeedPostTicker(false, false)
 end
 
-RegisterCommand('eupcheck', function()
+local function check()
     local ped = PlayerPedId()
     local parts, total = {}, 0
     for _, c in ipairs(COMPONENTS) do
@@ -38,12 +42,12 @@ RegisterCommand('eupcheck', function()
     end
 
     -- Load test: ask the game to load one shirt without wearing it.
-    local global = GetPedDrawableGlobalIndexFromCollection(ped, 11, COLLECTION, 0)
-    if not global or global < 0 then
+    local globalIndex = GetPedDrawableGlobalIndexFromCollection(ped, 11, COLLECTION, 0)
+    if not globalIndex or globalIndex < 0 then
         say('Load test skipped: could not find the first shirt.')
         return
     end
-    SetPedPreloadVariationData(ped, 11, global, 0)
+    SetPedPreloadVariationData(ped, 11, globalIndex, 0)
     local started = GetGameTimer()
     while not HasPedPreloadVariationDataFinished(ped) and GetGameTimer() - started < 10000 do
         Wait(100)
@@ -55,4 +59,16 @@ RegisterCommand('eupcheck', function()
     else
         say('Load test FAILED: the list is there but the clothes themselves never loaded. FiveM blocks custom clothing on servers with more than 8 slots (unless the owner has Element Club Argentum). Set Max Players to 8 and restart.')
     end
+end
+
+RegisterCommand('eupcheck', function()
+    say('Checking the uniform pack...')
+    CreateThread(function()
+        local ok, err = pcall(check)
+        if not ok then
+            say('The check itself failed: ' .. tostring(err))
+        end
+    end)
 end, false)
+
+print('[rp_eup] loaded. Type /eupcheck in chat (or eupcheck in F8) to test the uniforms.')
