@@ -104,6 +104,9 @@
     "locker": "Locker room: uniforms",
     "boss": "Captain's desk: press E for the boss menu",
     "boss_prompt": "[E] Boss menu (hire, promote, fire)",
+    "garage_prompt": "[E] Police garage",
+    "heli_prompt": "[E] Take the helicopter",
+    "park_prompt": "[E] Park this police vehicle",
     "armory": "Armory: hold Left Alt and click (clocked in)",
     "garage": "Police garage: press E",
     "impound": "Impound lot: press E",
@@ -111,6 +114,10 @@
   },
 
   "garage": {
+    "title": "Police garage",
+    "empty": "No police cars are available on this server.",
+    "failed": "Couldn't bring the vehicle out. Wait a moment and try again.",
+    "not_police": "Only police vehicles can be parked here.",
     "needs": "Needs: %s",
     "heli_needs": "The helicopter needs: %s"
   },

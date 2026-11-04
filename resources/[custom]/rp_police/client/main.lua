@@ -366,13 +366,13 @@ for _, marker in ipairs(config.stationMarkers or {}) do
 end
 
 -- ------------------------------------------------------------
--- Exports for qbx_police (garage menu and helipad)
--- Both return nil when the player isn't in a department we manage,
--- so qbx_police falls back to its own rules.
+-- Police garage and helipad (the floor circles). rp_police runs these
+-- itself and asks qbx_police's server to bring out the car, which
+-- checks rank, division, duty and location again.
 -- ------------------------------------------------------------
 
 ---Every garage car this server has, with `locked = true` on the ones this officer can't take yet.
-exports('GetGarageVehicles', function()
+local function getGarageVehicles()
     local job = myDepartment()
     if not job then return nil end
 
@@ -389,10 +389,10 @@ exports('GetGarageVehicles', function()
         end
     end
     return list
-end)
+end
 
 ---Checks the helipad rule and tells the officer why when they can't fly.
-exports('CheckHelicopter', function()
+local function checkHelicopter()
     local job = myDepartment()
     if not job then return nil end
 
@@ -400,6 +400,104 @@ exports('CheckHelicopter', function()
     if job.grade.level >= heli.minGrade and (not heli.cert or hasCert(heli.cert)) then return true end
     notify(locale('garage.heli_needs', requirementText(job.name, heli)), 'error')
     return false
-end)
+end
 
+-- Cars that can be parked back in the garage (only police cars, never someone's own car).
+local PARKABLE = {}
+for _, entry in ipairs(config.garage) do PARKABLE[GetHashKey(entry.model)] = true end
+PARKABLE[GetHashKey(config.helicopter.model)] = true
+
+local function onDutyOfficer()
+    local job = myDepartment()
+    return job ~= nil and job.onduty == true
+end
+
+local function takeOut(model, marker, isHeli)
+    lib.hideTextUI()
+    local c = marker.coords
+    local heading = marker.heading or 0.0
+    local netId = lib.callback.await('qbx_policejob:server:spawnVehicle', false, model, vec4(c.x, c.y, c.z, heading), '', true)
+    if not netId then return notify(locale('garage.failed'), 'error') end
+
+    local ok, vehicle = pcall(lib.waitFor, function()
+        if NetworkDoesEntityExistWithNetworkId(netId) then
+            local entity = NetToVeh(netId)
+            if entity ~= 0 then return entity end
+        end
+    end, nil, 10000)
+    if not ok or not vehicle then return notify(locale('garage.failed'), 'error') end
+
+    SetEntityHeading(vehicle, heading)
+    SetVehicleFuelLevel(vehicle, 100.0)
+    if isHeli then
+        SetVehicleLivery(vehicle, 0)
+        SetVehicleMod(vehicle, 0, 48, false)
+    end
+    SetVehicleEngineOn(vehicle, true, true, false)
+end
+
+local function openGarage(marker)
+    local options = {}
+    for _, vehicle in ipairs(getGarageVehicles() or {}) do
+        options[#options + 1] = {
+            title = vehicle.label,
+            description = vehicle.description,
+            icon = vehicle.locked and 'lock' or 'car',
+            disabled = vehicle.locked,
+            onSelect = function() takeOut(vehicle.model, marker, false) end,
+        }
+    end
+    if #options == 0 then
+        options[1] = { title = locale('garage.empty'), icon = 'circle-info', readOnly = true }
+    end
+    lib.registerContext({ id = 'rp_police_garage', title = locale('garage.title'), options = options })
+    lib.showContext('rp_police_garage')
+end
+
+local function parkVehicle()
+    local vehicle = cache.vehicle
+    if not vehicle or GetPedInVehicleSeat(vehicle, -1) ~= cache.ped then return end
+    if not PARKABLE[GetEntityModel(vehicle)] then
+        return notify(locale('garage.not_police'), 'error')
+    end
+    lib.hideTextUI()
+    SetEntityAsMissionEntity(vehicle, true, true)
+    DeleteVehicle(vehicle)
+end
+
+for _, marker in ipairs(config.stationMarkers or {}) do
+    if marker.point == 'garage' or marker.point == 'heli' then
+        local isHeli = marker.point == 'heli'
+        lib.zones.box({
+            coords = marker.coords,
+            size = isHeli and vec3(6.0, 6.0, 8.0) or vec3(3.0, 3.0, 6.0),
+            onEnter = function()
+                if not onDutyOfficer() then return end
+                local key = cache.vehicle and 'station.park_prompt' or (isHeli and 'station.heli_prompt' or 'station.garage_prompt')
+                lib.showTextUI(locale(key))
+            end,
+            onExit = function()
+                lib.hideTextUI()
+            end,
+            inside = function()
+                if not IsControlJustReleased(0, 38) or not onDutyOfficer() then return end
+                if cache.vehicle then return parkVehicle() end
+                if isHeli then
+                    if checkHelicopter() then
+                        CreateThread(function() takeOut(config.helicopter.model, marker, true) end)
+                    end
+                else
+                    openGarage(marker)
+                end
+            end,
+        })
+    end
+end
+
+-- ------------------------------------------------------------
+-- Exports for other resources. Both return nil when the player isn't
+-- in a department we manage.
+-- ------------------------------------------------------------
+exports('GetGarageVehicles', getGarageVehicles)
+exports('CheckHelicopter', checkHelicopter)
 exports('HasCert', hasCert)

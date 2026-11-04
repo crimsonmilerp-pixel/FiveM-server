@@ -90,17 +90,18 @@ return {
         { point = 'boss',    show = 'boss',   coords = vec3(448.4, -973.2, 30.69) },
         -- ox_inventory/data/shops.lua (PoliceArmoury targets): hold Left Alt and click
         { point = 'armory',  show = 'duty',   coords = vec3(453.21, -980.03, 30.68) },
-        -- qbx_police/config/shared.lua (locations.vehicle): police cars
-        { point = 'garage',  show = 'duty',   coords = vec3(452.0, -996.0, 26.0) },
-        { point = 'garage',  show = 'duty',   coords = vec3(447.0, -997.0, 26.0) },
-        { point = 'garage',  show = 'duty',   coords = vec3(463.0, -1019.0, 28.0) },
-        { point = 'garage',  show = 'duty',   coords = vec3(463.0, -1015.0, 28.0) },
+        -- Police cars: rp_police runs these spots itself (press E for the car list, or to park a police car).
+        -- They must match qbx_police/config/shared.lua (locations.vehicle): its server checks the spot.
+        { point = 'garage',  show = 'duty',   coords = vec3(452.0, -996.0, 26.0),   heading = 175.0 },
+        { point = 'garage',  show = 'duty',   coords = vec3(447.0, -997.0, 26.0),   heading = 178.0 },
+        { point = 'garage',  show = 'duty',   coords = vec3(463.0, -1019.0, 28.0),  heading = 87.0 },
+        { point = 'garage',  show = 'duty',   coords = vec3(463.0, -1015.0, 28.0),  heading = 87.0 },
         -- qbx_police/config/shared.lua (locations.impound)
         { point = 'impound', show = 'duty',   coords = vec3(436.68, -1007.42, 27.32) },
         { point = 'impound', show = 'duty',   coords = vec3(-436.14, 5982.63, 31.34) },
-        -- qbx_police/config/shared.lua (locations.helicopter): Mission Row roof, Paleto
-        { point = 'heli',    show = 'duty',   coords = vec3(449.17, -981.33, 43.69) },
-        { point = 'heli',    show = 'duty',   coords = vec3(-475.43, 5988.35, 31.72) },
+        -- Helipads: rp_police runs these too. Must match qbx_police/config/shared.lua (locations.helicopter).
+        { point = 'heli',    show = 'duty',   coords = vec3(449.17, -981.33, 43.69), heading = 87.23 },
+        { point = 'heli',    show = 'duty',   coords = vec3(-475.43, 5988.35, 31.72), heading = 31.34 },
     },
     markerDrawDistance = 25.0, -- markers show within this many meters
     markerLabelDistance = 8.0, -- labels show within this many meters

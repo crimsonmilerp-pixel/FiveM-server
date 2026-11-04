@@ -525,6 +525,7 @@ CreateThread(function()
             debug = config.polyDebug,
             onEnter = function()
                 if QBX.PlayerData.job.type ~= 'leo' or not QBX.PlayerData.job.onduty then return end
+                if GetResourceState('rp_police') == 'started' then return end -- [OUR CHANGE] rp_police runs the helipad
                 inHelicopter = true
                 inPrompt = true
                 uiPrompt('heli')
@@ -571,6 +572,7 @@ CreateThread(function()
             debug = config.polyDebug,
             onEnter = function()
                 if QBX.PlayerData.job.type ~= 'leo' or not QBX.PlayerData.job.onduty then return end
+                if GetResourceState('rp_police') == 'started' then return end -- [OUR CHANGE] rp_police runs the garage
                 inGarage = true
                 inPrompt = true
                 currentGarage = i

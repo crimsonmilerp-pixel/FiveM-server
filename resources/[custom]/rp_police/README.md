@@ -57,7 +57,7 @@ Officers see a blue circle on the floor with a label at every police spot. Walk 
 | Impound lot | Behind the station. Also at Paleto Bay | Clocked in |
 | Helipad | Roof. Also at Paleto Bay | Clocked in |
 
-The captain's desk is the one spot rp_police handles itself: it opens Qbox's boss menu (qbx_management) when a Captain or Chief presses E in the circle.
+rp_police runs three of these spots itself: the **captain's desk** (opens Qbox's boss menu, qbx_management), the **garage** (its own car list; in a police car, E parks it) and the **helipads**. The car still comes from qbx_police's server, which checks duty, rank, division and location again.
 
 The other spots are set in other resources (each line in `config.lua` → `stationMarkers` says which file). The markers only show where they are, so if a spot moves, move its marker too.
 
