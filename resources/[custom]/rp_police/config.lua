@@ -26,7 +26,7 @@ return {
     -- which is also what the armory checks (ox_inventory shops.lua: license = 'police_swat').
     -- minGrade: lowest rank that can hold it.
     certs = {
-        { id = 'traffic',   minGrade = 2, icon = 'gauge-high' },        -- Traffic Division: interceptors, motorcycles
+        { id = 'traffic',   minGrade = 2, icon = 'gauge-high' },        -- Traffic Division: the pursuit cars
         { id = 'detective', minGrade = 3, icon = 'magnifying-glass' },  -- Detectives: unmarked cars, investigations
         { id = 'air',       minGrade = 2, icon = 'helicopter' },        -- Air Support: the police helicopter
         { id = 'swat',      minGrade = 3, icon = 'shield-halved' },     -- SWAT: heavy gear and SWAT vehicles
@@ -42,26 +42,56 @@ return {
     trainingDoneGrade = 1, -- the rank a cadet is ready for once training is complete (1 = Officer I)
 
     -- Police garage: which vehicles an officer may take out.
-    --   minGrade = lowest rank, cert = division certification needed (optional).
+    --   minGrade = lowest rank, cert = division certification needed (optional),
+    --   loadout = equipment fitted when the car comes out (see loadouts below).
     -- Officers see every car here; the ones they can't take yet show what they need (a goal to work toward).
     -- Cars missing from the server's game version are hidden automatically. Names: locales/en.json (vehicle.*).
     -- Sheriff and Park Ranger cars are left out on purpose: they belong to BCSO and the rangers when those open.
+    -- Every police car seats at least 4 (two officers and two in the back). Anything smaller is hidden (minSeats).
+    minSeats = 4,
     garage = {
         { model = 'police',        minGrade = 0 },                    -- Stanier cruiser
         { model = 'police5',       minGrade = 0 },                    -- Stanier LE cruiser
+        { model = 'policet',       minGrade = 0 },                    -- Transport van (prisoner transport)
         { model = 'police2',       minGrade = 1 },                    -- Buffalo cruiser
         { model = 'polgreenwood',  minGrade = 1 },                    -- Greenwood cruiser
-        { model = 'polimpaler5',   minGrade = 1 },                    -- Impaler SZ cruiser
         { model = 'polcaracara',   minGrade = 1 },                    -- Caracara pursuit truck (rural and off-road)
-        { model = 'policet',       minGrade = 0 },                    -- Transport van (prisoner transport)
         { model = 'police3',       minGrade = 2, cert = 'traffic' },  -- Interceptor
-        { model = 'polgauntlet',   minGrade = 2, cert = 'traffic' },  -- Gauntlet interceptor
-        { model = 'poldominator10', minGrade = 2, cert = 'traffic' }, -- Dominator FX interceptor
-        { model = 'policeb',       minGrade = 2, cert = 'traffic' },  -- Police motorcycle
+        { model = 'polimpaler5',   minGrade = 2, cert = 'traffic' },  -- Impaler SZ pursuit car
+        { model = 'onx_polscout',  minGrade = 4, loadout = 'scout' }, -- Vapid Scout SUV: supervisors and command (resources/[onx_vehicles])
         { model = 'police4',       minGrade = 3, cert = 'detective' },-- Unmarked Stanier
         { model = 'fbi',           minGrade = 3, cert = 'detective' },-- Unmarked Buffalo
         { model = 'fbi2',          minGrade = 3, cert = 'swat' },     -- Unmarked Granger (SWAT)
         { model = 'polterminus',   minGrade = 3, cert = 'swat' },     -- Terminus patrol (SWAT)
+    },
+
+    -- Equipment fitted to a car when it leaves the garage. The numbers come from the car's
+    -- carcols.meta (mod type = list position): see docs/police-vehicles.md for every option.
+    loadouts = {
+        scout = { -- ONX Vapid Scout (onx_polscout)
+            mods = {
+                [48] = 0,  -- livery: LSPD
+                [49] = 4,  -- lightbar: Large Wisen Alliance
+                [10] = 0,  -- roof: city (metropolitan) antennas
+                [32] = 0,  -- back: window bars (the back seats stay for prisoners)
+                [28] = 7,  -- front console: LSPD laptop (MDW LSPD)
+                [27] = 0,  -- cabin lights off (it has a lightbar)
+                [30] = 1,  -- rifle rack on the divider
+                [34] = 0,  -- dash radar
+                [8]  = 0,  -- driver spotlight (controllable)
+                [9]  = 0,  -- passenger spotlight
+                [35] = 1,  -- push bar
+                [26] = 0,  -- trunk badges
+                [37] = 6,  -- trunk lockbox, tidy
+            },
+            extras = { [1] = true, [2] = false, [3] = false, [4] = false, [5] = false, [6] = false, [7] = false, [8] = false, [9] = false }, -- 1 = lightbar
+            -- Door tag by rank: 0 = Supervisor, 1 = Command. Ranks not listed get no tag.
+            tagMod = 46,
+            tagByGrade = { [4] = 0, [5] = 0, [6] = 1, [7] = 1 },
+            -- The 5 callsign number slots, left to right (number n = mod n). Filled from the officer's
+            -- callsign (/callsign or the MDT). Officers without one get no numbers.
+            callsignMods = { 5, 42, 43, 44, 45 },
+        },
     },
 
     -- The police helicopter (taken at the helipad, not the garage).

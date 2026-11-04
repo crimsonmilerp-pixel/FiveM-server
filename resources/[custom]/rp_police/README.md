@@ -32,7 +32,7 @@ Cadets type **`/training`** to see their own checklist.
 
 | Division | From rank | Unlocks |
 |---|---|---|
-| Traffic Division | Officer II | Interceptors and the police motorcycle |
+| Traffic Division | Officer II | The Interceptor and the Impaler SZ pursuit car |
 | Air Support | Officer II | The police helicopter |
 | Detective Bureau | Officer III | Unmarked cars |
 | SWAT | Officer III | SWAT vehicles and SWAT gear at the armory |
@@ -75,6 +75,8 @@ At the locker room, each officer only sees **their own rank's uniforms**. They'r
 
 ## Garage and helicopter
 
+Every police car **seats at least 4** (two officers and two people in the back); the garage hides anything smaller. The **Scout SUV** is for **Sergeant and up**: it comes out in LSPD colours with a lightbar and a shoulder-height divider, a **Supervisor** door tag for Sergeants and Lieutenants or a **Command** tag for the Captain and Chief, and **the officer's callsign** on it (set it with `/callsign 123`). Full fleet and options: `docs/police-vehicles.md`.
+
 The police garage shows **every** police car. The ones an officer can't take yet are greyed out with what they need ("Needs: Officer II · Traffic Division"). That's on purpose: it shows people what to work toward. The list is in `config.lua` (`garage`). The helicopter needs Officer II and Air Support.
 
 The server checks again when a car is taken out, so nobody can cheat their way into a car they haven't earned.
@@ -102,6 +104,7 @@ The MDT's charge list is **our penal code**: every time the server starts, rp_po
 - **ox_lib**, **qbx_core**, **oxmysql** (the two tables `rp_police_training` and `rp_police_log` are created automatically)
 - **qbx_police** asks rp_police which cars an officer may take
 - **ox_inventory** for the armory rule and log
+- **[onx_vehicles]** for the Scout SUV (free from ONX, locked to Vinny's Cfx.re account). Without it the Scout is simply hidden
 
 ## Settings and words
 

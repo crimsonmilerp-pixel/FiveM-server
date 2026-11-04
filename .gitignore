@@ -27,3 +27,7 @@ eup-source/
 
 # The converted uniform clothes (825 MB). The small files next to them (fxmanifest, .meta, README) are tracked.
 resources/[[]assets[]]/rp_eup/stream/
+
+# Licensed police cars from the Cfx.re Marketplace (ONX, about 126 MB). Not ours to share.
+# To get them again: portal.cfx.re -> Assets -> Granted Assets.
+resources/[[]onx_vehicles[]]/

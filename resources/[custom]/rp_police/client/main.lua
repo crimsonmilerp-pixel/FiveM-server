@@ -372,13 +372,23 @@ end
 -- ------------------------------------------------------------
 
 ---Every garage car this server has, with `locked = true` on the ones this officer can't take yet.
+local GARAGE_ENTRY = {}
+for _, entry in ipairs(config.garage) do GARAGE_ENTRY[entry.model] = entry end
+
+---Every police car must seat at least config.minSeats. 0 means the game doesn't know yet: allowed.
+local function hasEnoughSeats(hash)
+    local seats = GetVehicleModelNumberOfSeats(hash)
+    return not config.minSeats or seats == 0 or seats >= config.minSeats
+end
+
 local function getGarageVehicles()
     local job = myDepartment()
     if not job then return nil end
 
     local list = {}
     for _, entry in ipairs(config.garage) do
-        if IsModelInCdimage(GetHashKey(entry.model)) then
+        local hash = GetHashKey(entry.model)
+        if IsModelInCdimage(hash) and hasEnoughSeats(hash) then
             local allowed = job.grade.level >= entry.minGrade and (not entry.cert or hasCert(entry.cert))
             list[#list + 1] = {
                 model = entry.model,
@@ -412,6 +422,47 @@ local function onDutyOfficer()
     return job ~= nil and job.onduty == true
 end
 
+---The officer's callsign as up to 5 single digits (from /callsign or the MDT).
+local function callsignDigits()
+    local raw = QBX.PlayerData.metadata and QBX.PlayerData.metadata.callsign
+    local digits = {}
+    for d in tostring(raw or ''):gmatch('%d') do
+        digits[#digits + 1] = tonumber(d)
+        if #digits == 5 then break end
+    end
+    return digits
+end
+
+---Fits the equipment from config.loadouts: livery, lightbar, interior, rank door tag, callsign numbers.
+local function fitLoadout(vehicle, loadoutId, grade)
+    local loadout = loadoutId and config.loadouts and config.loadouts[loadoutId]
+    if not loadout then return end
+    if not NetworkHasControlOfEntity(vehicle) then
+        pcall(lib.waitFor, function()
+            if NetworkHasControlOfEntity(vehicle) then return true end
+            NetworkRequestControlOfEntity(vehicle)
+        end, nil, 3000)
+    end
+    SetVehicleModKit(vehicle, 0)
+    local function setMod(modType, index)
+        if index < GetNumVehicleMods(vehicle, modType) then SetVehicleMod(vehicle, modType, index, false) end
+    end
+    for modType, index in pairs(loadout.mods or {}) do setMod(modType, index) end
+    for extra, on in pairs(loadout.extras or {}) do
+        if DoesExtraExist(vehicle, extra) then SetVehicleExtra(vehicle, extra, not on) end
+    end
+    if loadout.tagMod then
+        local tag = loadout.tagByGrade and loadout.tagByGrade[grade]
+        if tag then setMod(loadout.tagMod, tag) else RemoveVehicleMod(vehicle, loadout.tagMod) end
+    end
+    if loadout.callsignMods then
+        local digits = callsignDigits()
+        for i, modType in ipairs(loadout.callsignMods) do
+            if digits[i] then setMod(modType, digits[i]) else RemoveVehicleMod(vehicle, modType) end
+        end
+    end
+end
+
 local function takeOut(model, marker, isHeli)
     lib.hideTextUI()
     local c = marker.coords
@@ -429,6 +480,11 @@ local function takeOut(model, marker, isHeli)
 
     SetEntityHeading(vehicle, heading)
     SetVehicleFuelLevel(vehicle, 100.0)
+    local entry = GARAGE_ENTRY[model]
+    if entry and entry.loadout then
+        local job = myDepartment()
+        fitLoadout(vehicle, entry.loadout, job and job.grade.level or 0)
+    end
     if isHeli then
         SetVehicleLivery(vehicle, 0)
         SetVehicleMod(vehicle, 0, 48, false)
