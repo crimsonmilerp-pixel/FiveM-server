@@ -1,0 +1,8173 @@
+{
+"mp_f_freemode_01": [
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_bikerdlc_01",
+1,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_gunrunning_01",
+1,
+4
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_importexport_01",
+1,
+10
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"base",
+4,
+3
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"base",
+4,
+5
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_apt01",
+4,
+8
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_freemode_mplts",
+4,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_heist",
+4,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_heist",
+4,
+2
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_heist",
+4,
+4
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_heist",
+4,
+9
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_xmas2",
+4,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_executive_01",
+4,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_importexport_01",
+4,
+6
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+4,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_freemode_mplts",
+5,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_freemode_mplts",
+5,
+8
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"v",
+"w",
+"x",
+"y"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_freemode_mplts",
+5,
+9
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"v",
+"w",
+"x",
+"y"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_xmas2",
+5,
+1
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_xmas2",
+5,
+2
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_xmas2",
+5,
+3
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_xmas2",
+5,
+4
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_xmas2",
+5,
+5
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_xmas2",
+5,
+6
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_bikerdlc_01",
+5,
+1
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_bikerdlc_01",
+5,
+2
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"v"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_bikerdlc_01",
+5,
+3
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_bikerdlc_01",
+5,
+6
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_christmas2018",
+5,
+0
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_christmas2018",
+5,
+2
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_christmas2018",
+5,
+3
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_christmas2018",
+5,
+4
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_christmas2018",
+5,
+6
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_christmas2018",
+5,
+8
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_christmas2018",
+5,
+9
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_christmas2018",
+5,
+10
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+5,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+5,
+1
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+5,
+2
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+5,
+3
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+5,
+4
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"j"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+5,
+6
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+5,
+7
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+5,
+8
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+5,
+9
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_bikerdlc_01",
+6,
+2
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"base",
+7,
+1
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"base",
+7,
+2
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"base",
+7,
+3
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"base",
+7,
+5
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"base",
+7,
+6
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"base",
+7,
+8
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"base",
+7,
+9
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_lowrider_01",
+7,
+0
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_lowrider_02",
+7,
+0
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_lowrider_02",
+7,
+1
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_luxe_01",
+7,
+4
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_luxe_01",
+7,
+5
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"base",
+8,
+2
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"base",
+8,
+3
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"base",
+8,
+7
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"base",
+8,
+9
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"base",
+8,
+10
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_apt01",
+8,
+1
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_freemode_business",
+8,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_freemode_hipster",
+8,
+0
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_freemode_hipster",
+8,
+2
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_freemode_hipster",
+8,
+3
+],
+"tex": [
+"a",
+"c"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_freemode_independence",
+8,
+0
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_heist",
+8,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_heist",
+8,
+1
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_heist",
+8,
+2
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_heist",
+8,
+3
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_heist",
+8,
+5
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_battle",
+8,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_battle",
+8,
+1
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_bikerdlc_01",
+8,
+14
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_bikerdlc_01",
+8,
+15
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_bikerdlc_01",
+8,
+18
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_christmas2017",
+8,
+7
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_christmas2017",
+8,
+9
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_executive_01",
+8,
+3
+],
+"tex": [
+"a",
+"b",
+"d"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_executive_01",
+8,
+4
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_executive_01",
+8,
+5
+],
+"tex": [
+"a",
+"b",
+"d",
+"f"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_gunrunning_01",
+8,
+24
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_gunrunning_01",
+8,
+25
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_gunrunning_01",
+8,
+26
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_heist3",
+8,
+3
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_heist3",
+8,
+10
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_heist3",
+8,
+11
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_importexport_01",
+8,
+0
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_luxe_01",
+8,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"k",
+"s"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_luxe_01",
+8,
+1
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"s"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_luxe_01",
+8,
+3
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_luxe_01",
+8,
+4
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_luxe_01",
+8,
+6
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_luxe_01",
+8,
+7
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_stunt_01",
+8,
+0
+],
+"tex": [
+"a",
+"b",
+"d",
+"e",
+"f",
+"q",
+"r",
+"s",
+"t",
+"u"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_stunt_01",
+8,
+1
+],
+"tex": [
+"q",
+"r",
+"s",
+"t",
+"u"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"base",
+9,
+3
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"base",
+9,
+4
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"base",
+9,
+7
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_apt01",
+9,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_apt01",
+9,
+2
+],
+"tex": [
+"a",
+"c"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_freemode_pilot",
+9,
+0
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_heist3",
+9,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_heist3",
+9,
+1
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_heist3",
+9,
+2
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+9,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+9,
+1
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+9,
+2
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+9,
+3
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+9,
+4
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+9,
+5
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+9,
+6
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+9,
+7
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+9,
+8
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+9,
+9
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+9,
+10
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+9,
+11
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_january2016",
+9,
+12
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"h",
+"j"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_luxe_01",
+9,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_luxe_01",
+9,
+1
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_smuggler_01",
+9,
+1
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_smuggler_01",
+9,
+6
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_vinewood",
+9,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_vinewood",
+9,
+1
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_vinewood",
+9,
+2
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_vinewood",
+9,
+3
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_vinewood",
+9,
+4
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_vinewood",
+9,
+5
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_vinewood",
+9,
+9
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_vinewood",
+9,
+10
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"base",
+10,
+1
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"base",
+10,
+2
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_freemode_mplts",
+10,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_heist",
+10,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_airraces_01",
+10,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_bikerdlc_01",
+10,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_bikerdlc_01",
+10,
+6
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_gunrunning_01",
+10,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_gunrunning_01",
+10,
+1
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_gunrunning_01",
+10,
+2
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_gunrunning_01",
+10,
+3
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_gunrunning_01",
+10,
+4
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_gunrunning_01",
+10,
+5
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_lowrider_01",
+10,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_stunt_01",
+10,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_stunt_01",
+10,
+1
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"base",
+11,
+14
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_apt01",
+11,
+2
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_apt01",
+11,
+3
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_apt01",
+11,
+10
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_apt01",
+11,
+11
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_apt01",
+11,
+17
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_freemode_business",
+11,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_freemode_business2",
+11,
+0
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_freemode_hipster",
+11,
+3
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_freemode_hipster",
+11,
+4
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_freemode_hipster",
+11,
+5
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_freemode_independence",
+11,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_heist",
+11,
+10
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_xmas",
+11,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"female_xmas2",
+11,
+0
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_battle",
+11,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_battle",
+11,
+10
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_battle",
+11,
+11
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_battle",
+11,
+15
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_bikerdlc_01",
+11,
+9
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_bikerdlc_01",
+11,
+14
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_bikerdlc_01",
+11,
+20
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_bikerdlc_01",
+11,
+21
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_bikerdlc_01",
+11,
+25
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_bikerdlc_01",
+11,
+31
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_christmas2018",
+11,
+9
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"v",
+"w",
+"x"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_executive_01",
+11,
+13
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_gunrunning_01",
+11,
+11
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"v",
+"w",
+"x"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_gunrunning_01",
+11,
+12
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"v",
+"w",
+"x"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_gunrunning_01",
+11,
+15
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_gunrunning_01",
+11,
+16
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_gunrunning_01",
+11,
+19
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_gunrunning_01",
+11,
+20
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_heist3",
+11,
+10
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_importexport_01",
+11,
+0
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_importexport_01",
+11,
+1
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_importexport_01",
+11,
+4
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"w",
+"y"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_importexport_01",
+11,
+7
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"x",
+"z"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_importexport_01",
+11,
+12
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_importexport_01",
+11,
+14
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"w",
+"x",
+"y",
+"z"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_lowrider_02",
+11,
+2
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_stunt_01",
+11,
+2
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_stunt_01",
+11,
+3
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_stunt_01",
+11,
+5
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_sum",
+11,
+19
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+false,
+"mp_f_vinewood",
+11,
+15
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"base",
+0,
+1
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"base",
+0,
+2
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"base",
+0,
+4
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"base",
+0,
+5
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"base",
+0,
+6
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"base",
+0,
+8
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"base",
+0,
+13
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"base",
+0,
+17
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"female_freemode_hipster",
+0,
+0
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"female_freemode_independence",
+0,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"female_freemode_independence",
+0,
+2
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"female_freemode_mplts",
+0,
+0
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"female_heist",
+0,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"female_heist",
+0,
+2
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"female_heist",
+0,
+3
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"mp_f_bikerdlc_01",
+0,
+5
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"mp_f_bikerdlc_01",
+0,
+10
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"mp_f_heist4",
+0,
+0
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"mp_f_january2016",
+0,
+0
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"mp_f_smuggler_01",
+0,
+4
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"mp_f_smuggler_01",
+0,
+5
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"mp_f_stunt_01",
+0,
+8
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"mp_f_stunt_01",
+0,
+11
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"mp_f_stunt_01",
+0,
+12
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"mp_f_vinewood",
+0,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"v",
+"w",
+"x"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"mp_f_bikerdlc_01",
+1,
+1
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_f_freemode_01",
+true,
+"mp_f_january2016",
+1,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+}
+],
+"mp_m_freemode_01": [
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_bikerdlc_01",
+1,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_gunrunning_01",
+1,
+4
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_importexport_01",
+1,
+10
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+4,
+4
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+4,
+7
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_apt01",
+4,
+8
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_business2",
+4,
+1
+],
+"tex": [
+"a",
+"b",
+"c",
+"e"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_mplts",
+4,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_heist",
+4,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_heist",
+4,
+2
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_heist",
+4,
+4
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_xmas2",
+4,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_executive_01",
+4,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_gunrunning_01",
+4,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"g",
+"h",
+"i",
+"k",
+"l",
+"m",
+"n",
+"o"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_gunrunning_01",
+4,
+1
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"g",
+"h",
+"i",
+"k",
+"l",
+"m",
+"n",
+"o"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_importexport_01",
+4,
+6
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_january2016",
+4,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_mplts",
+5,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_mplts",
+5,
+8
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"v",
+"w",
+"x",
+"y",
+"z"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_mplts",
+5,
+9
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"v",
+"w",
+"x",
+"y",
+"z"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_pilot",
+5,
+1
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_pilot",
+5,
+2
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_xmas2",
+5,
+1
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_xmas2",
+5,
+2
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_xmas2",
+5,
+3
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_xmas2",
+5,
+4
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_xmas2",
+5,
+5
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_xmas2",
+5,
+6
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_bikerdlc_01",
+5,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_bikerdlc_01",
+5,
+1
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_bikerdlc_01",
+5,
+2
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"v"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_bikerdlc_01",
+5,
+3
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_bikerdlc_01",
+5,
+6
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_bikerdlc_01",
+5,
+7
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_christmas2018",
+5,
+0
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_christmas2018",
+5,
+2
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_christmas2018",
+5,
+3
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_christmas2018",
+5,
+4
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_christmas2018",
+5,
+6
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_christmas2018",
+5,
+7
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_christmas2018",
+5,
+8
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_christmas2018",
+5,
+9
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_christmas2018",
+5,
+10
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_january2016",
+5,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_january2016",
+5,
+1
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_january2016",
+5,
+2
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_january2016",
+5,
+3
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_january2016",
+5,
+4
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_january2016",
+5,
+6
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_january2016",
+5,
+7
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_january2016",
+5,
+8
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_apt01",
+6,
+4
+],
+"tex": [
+"a",
+"b",
+"d"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_apt01",
+6,
+5
+],
+"tex": [
+"a",
+"b",
+"d"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_bikerdlc_01",
+6,
+2
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+7,
+1
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+7,
+2
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+7,
+3
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+7,
+5
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+7,
+6
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+7,
+8
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+7,
+9
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+7,
+10
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+7,
+12
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+7,
+13
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_independence",
+7,
+0
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_valentines",
+7,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_heist",
+7,
+3
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_lowrider_01",
+7,
+0
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_lowrider_02",
+7,
+0
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_lowrider_02",
+7,
+1
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_luxe_01",
+7,
+14
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_luxe_01",
+7,
+15
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+8,
+10
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+8,
+11
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+8,
+12
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_beach",
+8,
+0
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_beach",
+8,
+2
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_business",
+8,
+3
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_hipster",
+8,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_hipster",
+8,
+1
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_hipster",
+8,
+2
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_hipster",
+8,
+6
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_hipster",
+8,
+7
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_hipster",
+8,
+8
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_hipster",
+8,
+10
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_hipster",
+8,
+11
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_independence",
+8,
+0
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_independence",
+8,
+4
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_valentines",
+8,
+2
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_valentines",
+8,
+3
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_heist",
+8,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_heist",
+8,
+1
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_heist",
+8,
+2
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_heist",
+8,
+3
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_battle",
+8,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_battle",
+8,
+1
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_battle",
+8,
+5
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_bikerdlc_01",
+8,
+6
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_bikerdlc_01",
+8,
+7
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_bikerdlc_01",
+8,
+13
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_christmas2017",
+8,
+7
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_christmas2017",
+8,
+9
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_gunrunning_01",
+8,
+3
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_gunrunning_01",
+8,
+4
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_gunrunning_01",
+8,
+6
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_gunrunning_01",
+8,
+7
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_gunrunning_01",
+8,
+8
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_heist3",
+8,
+3
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_heist3",
+8,
+10
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_heist3",
+8,
+11
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_importexport_01",
+8,
+0
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_luxe_01",
+8,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"k",
+"s"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_luxe_01",
+8,
+1
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"s"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_luxe_01",
+8,
+2
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_luxe_01",
+8,
+3
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_smuggler_01",
+8,
+3
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_smuggler_01",
+8,
+4
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_smuggler_01",
+8,
+5
+],
+"tex": [
+"a",
+"b",
+"d",
+"e",
+"f"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_smuggler_01",
+8,
+6
+],
+"tex": [
+"a",
+"b",
+"d",
+"e",
+"f"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_smuggler_01",
+8,
+7
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"f"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_stunt_01",
+8,
+2
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_tuner",
+8,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_tuner",
+8,
+1
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+9,
+4
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+9,
+5
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+9,
+7
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+9,
+8
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_apt01",
+9,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_apt01",
+9,
+2
+],
+"tex": [
+"a",
+"c"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_business2",
+9,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_heist3",
+9,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_heist3",
+9,
+1
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_heist3",
+9,
+2
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_january2016",
+9,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_january2016",
+9,
+1
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_january2016",
+9,
+2
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"h",
+"j"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_january2016",
+9,
+3
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_january2016",
+9,
+4
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_january2016",
+9,
+5
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_january2016",
+9,
+6
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_january2016",
+9,
+7
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_january2016",
+9,
+8
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_january2016",
+9,
+9
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_january2016",
+9,
+10
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_january2016",
+9,
+11
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_luxe_01",
+9,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_smuggler_01",
+9,
+1
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_smuggler_01",
+9,
+6
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_smuggler_01",
+9,
+7
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_smuggler_01",
+9,
+8
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_vinewood",
+9,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_vinewood",
+9,
+1
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_vinewood",
+9,
+2
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_vinewood",
+9,
+3
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_vinewood",
+9,
+4
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_vinewood",
+9,
+5
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_vinewood",
+9,
+7
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+10,
+1
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+10,
+2
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_mplts",
+10,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_heist",
+10,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_heist",
+10,
+1
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_airraces_01",
+10,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_bikerdlc_01",
+10,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_bikerdlc_01",
+10,
+6
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_gunrunning_01",
+10,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_gunrunning_01",
+10,
+1
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_gunrunning_01",
+10,
+2
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_gunrunning_01",
+10,
+3
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_gunrunning_01",
+10,
+4
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_gunrunning_01",
+10,
+5
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_lowrider_01",
+10,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_stunt_01",
+10,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_stunt_01",
+10,
+1
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+11,
+2
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+11,
+3
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+11,
+10
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"base",
+11,
+12
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_apt01",
+11,
+2
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_apt01",
+11,
+3
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_apt01",
+11,
+10
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_apt01",
+11,
+11
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_apt01",
+11,
+17
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_beach",
+11,
+0
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_business",
+11,
+5
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_business2",
+11,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_business2",
+11,
+1
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_hipster",
+11,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_hipster",
+11,
+2
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_hipster",
+11,
+3
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_hipster",
+11,
+5
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_hipster",
+11,
+6
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_hipster",
+11,
+7
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_hipster",
+11,
+11
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_valentines",
+11,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_freemode_valentines",
+11,
+1
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_heist",
+11,
+10
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_heist",
+11,
+11
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_xmas",
+11,
+1
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"male_xmas2",
+11,
+1
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_battle",
+11,
+10
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_battle",
+11,
+11
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_bikerdlc_01",
+11,
+9
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_bikerdlc_01",
+11,
+26
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_executive_01",
+11,
+14
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_gunrunning_01",
+11,
+2
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"s",
+"t"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_gunrunning_01",
+11,
+3
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_gunrunning_01",
+11,
+6
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_gunrunning_01",
+11,
+13
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_gunrunning_01",
+11,
+14
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_heist3",
+11,
+9
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"v",
+"w",
+"x",
+"y",
+"z"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_heist3",
+11,
+11
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"v",
+"w",
+"x"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_importexport_01",
+11,
+0
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_importexport_01",
+11,
+1
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_importexport_01",
+11,
+4
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"x",
+"z"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_importexport_01",
+11,
+7
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"x",
+"y",
+"z"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_importexport_01",
+11,
+14
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"x",
+"y",
+"z"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_lowrider_01",
+11,
+0
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_luxe_01",
+11,
+3
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"r",
+"s"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_stunt_01",
+11,
+2
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_stunt_01",
+11,
+3
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_stunt_01",
+11,
+5
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_vinewood",
+11,
+2
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"v",
+"w",
+"x",
+"y",
+"z"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_vinewood",
+11,
+3
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"v",
+"w",
+"x",
+"y",
+"z"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_vinewood",
+11,
+17
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"v",
+"w",
+"x"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_vinewood",
+11,
+21
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+false,
+"mp_m_vinewood",
+11,
+22
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"base",
+0,
+1
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"base",
+0,
+2
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"base",
+0,
+3
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"base",
+0,
+4
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"base",
+0,
+8
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"base",
+0,
+13
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"base",
+0,
+17
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"male_freemode_hipster",
+0,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"male_freemode_hipster",
+0,
+2
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"male_freemode_independence",
+0,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"male_freemode_independence",
+0,
+2
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"male_freemode_mplts",
+0,
+0
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"male_heist",
+0,
+0
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"male_heist",
+0,
+2
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"male_heist",
+0,
+3
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"mp_m_bikerdlc_01",
+0,
+5
+],
+"tex": [
+"a"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"mp_m_bikerdlc_01",
+0,
+10
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"mp_m_heist4",
+0,
+0
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"mp_m_january2016",
+0,
+0
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"mp_m_smuggler_01",
+0,
+4
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"mp_m_smuggler_01",
+0,
+5
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"mp_m_stunt_01",
+0,
+8
+],
+"tex": [
+"a",
+"b"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"mp_m_stunt_01",
+0,
+11
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"mp_m_stunt_01",
+0,
+12
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"base",
+1,
+6
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"base",
+1,
+11
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"mp_m_bikerdlc_01",
+1,
+1
+],
+"tex": [
+"a",
+"b",
+"c"
+]
+},
+{
+"key": [
+"mp_m_freemode_01",
+true,
+"mp_m_january2016",
+1,
+0
+],
+"tex": [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j"
+]
+}
+]
+}

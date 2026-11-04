@@ -50,7 +50,7 @@ Officers see a blue circle on the floor with a label at every police spot. Walk 
 | Spot | Where (Mission Row) | Who sees it |
 |---|---|---|
 | Duty desk (clock in or out) | Front desk, just inside the main doors. Also at Paleto Bay station | Every officer |
-| Locker room (uniforms) | Ground floor locker room | Every officer |
+| Locker room (uniforms by rank) | Ground floor locker room | Every officer |
 | Captain's desk (boss menu) | Captain's office | Captain and Chief |
 | Armory | Ground floor | Clocked in |
 | Police garage | Basement garage and the back lot | Clocked in |
@@ -60,6 +60,18 @@ Officers see a blue circle on the floor with a label at every police spot. Walk 
 rp_police runs three of these spots itself: the **captain's desk** (opens Qbox's boss menu, qbx_management), the **garage** (its own car list; in a police car, E parks it) and the **helipads**. The car still comes from qbx_police's server, which checks duty, rank, division and location again.
 
 The other spots are set in other resources (each line in `config.lua` → `stationMarkers` says which file). The markers only show where they are, so if a spot moves, move its marker too.
+
+## Uniforms (locker room)
+
+At the locker room, each officer only sees **their own rank's uniforms**. They're EUP pieces from `rp_eup`:
+
+- **Cadet**: one plain short sleeve uniform.
+- **Officer I to Sergeant**: short sleeve, long sleeve, or long sleeve with the service cap. Sleeve stripes show the rank: none for Officer I, two for Officer II, two and a star for Officer III, three for Sergeant.
+- **Lieutenant, Captain, Chief**: the command uniform (closed collar and tie), with or without the cap. Gold collar insignia: one bar, two bars, four stars.
+- The badge says the rank (Police Officer, Sergeant, Lieutenant, Captain, Chief). Everyone has the duty belt and the belt radio with its shoulder mic.
+- **SWAT: Tactical Gear** shows only with the SWAT certification.
+
+**Civilian clothes** at the top of the locker menu gives you your own clothes back. Pictures and details: `docs/eup/uniforms.md`. The outfits live in illenium-appearance's `shared/config.lua` (`Config.Outfits["police"]`). That file is generated, so ask Claude to change it.
 
 ## Garage and helicopter
 

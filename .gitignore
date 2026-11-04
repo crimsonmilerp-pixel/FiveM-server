@@ -24,3 +24,6 @@ node_modules/
 # ---- Big downloaded packs we unpack and convert (too big for GitHub) ----
 eup-source/
 [[]EUP[]]/
+
+# The converted uniform clothes (825 MB). The small files next to them (fxmanifest, .meta, README) are tracked.
+resources/[[]assets[]]/rp_eup/stream/

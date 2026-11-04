@@ -97,7 +97,14 @@ Config.DisableProps = {
 ---@type string[]
 -- [OUR CHANGE] Groups of hidden clothing (see shared/blacklist.lua). A player with one of these ACEs sees that group.
 -- Seasonal switches live in permissions.cfg. See docs/core-changes.md
-Config.Aces = { 'clothing.festive', 'clothing.halloween', 'clothing.costume', 'clothing.racy', 'appearance.allpeds' } -- list of ace permissions used for blacklisting
+Config.Aces = { 'clothing.festive', 'clothing.halloween', 'clothing.costume', 'clothing.racy', 'clothing.uniforms', 'appearance.allpeds' } -- list of ace permissions used for blacklisting
+
+-- [OUR CHANGE] Nov 3: whole clothing packs that only some players may wear. The police uniforms
+-- (resources/[assets]/rp_eup) are hidden in the clothing menu for everyone except the police job and
+-- staff with the clothing.uniforms ACE (see permissions.cfg). Works on any game build. See docs/core-changes.md
+Config.LockedCollections = {
+    { collection = 'rp_eup', jobs = { 'police' }, aces = { 'clothing.uniforms' } },
+}
 
 Config.Blips = {
     ["clothing"] = {
@@ -601,78 +608,337 @@ Config.PlayerOutfitRooms = {
 }
 
 Config.Outfits = {
-    ["police"] = { -- [OUR CHANGE] Nov 2: grades 5-7 added for the new LSPD ladder (0 Cadet ... 7 Chief). See docs/core-changes.md
+    ["police"] = { -- [OUR CHANGE] Nov 4: LSPD rank uniforms from the rp_eup pack (resources/[assets]/rp_eup).
+        -- Generated: change docs/eup/tool/uniforms.py and ask Claude to rebuild. Pieces with collection = "rp_eup" use the
+        -- piece number inside the pack (they never move); the others are normal game numbers. Pictures: docs/eup/lookbook/
+        -- Rank shows on the badge, the sleeves (Officer II and up) and the collar (Lieutenant and up). See docs/core-changes.md
         ["Male"] = {
             {
-                name = "Short Sleeve",
+                name = "Cadet: Short Sleeve",
                 outfitData = {
-                    ["pants"] = {item = 24, texture = 0}, -- Pants
-                    ["arms"] = {item = 19, texture = 0}, -- Arms
-                    ["t-shirt"] = {item = 58, texture = 0}, -- T Shirt
-                    ["vest"] = {item = 0, texture = 0}, -- Body Vest
-                    ["torso2"] = {item = 55, texture = 0}, -- Jacket
-                    ["shoes"] = {item = 51, texture = 0}, -- Shoes
-                    ["accessory"] = {item = 0, texture = 0}, -- Neck Accessory
-                    ["bag"] = {item = 0, texture = 0}, -- Bag
-                    ["hat"] = {item = -1, texture = -1}, -- Hat
-                    ["glass"] = {item = 0, texture = 0}, -- Glasses
-                    ["mask"] = {item = 0, texture = 0} -- Mask
+                    ["torso2"] = {collection = "rp_eup", item = 40, texture = 1}, -- LSPD shirt, short sleeve
+                    ["arms"] = {item = 0, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 6, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 51, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 26, texture = 0}, -- Badge "Police Officer" and name tag
+                    ["decals"] = {item = 0, texture = 0}, -- No insignia
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
                 },
-                grades = {0, 1, 2, 3, 4, 5, 6, 7},
+                grades = {0},
             },
             {
-                name = "Trooper Tan",
+                name = "Officer I: Short Sleeve",
                 outfitData = {
-                    ["pants"] = {item = 24, texture = 0}, -- Pants
-                    ["arms"] = {item = 20, texture = 0}, -- Arms
-                    ["t-shirt"] = {item = 58, texture = 0}, -- T Shirt
-                    ["vest"] = {item = 0, texture = 0}, -- Body Vest
-                    ["torso2"] = {item = 317, texture = 3}, -- Jacket
-                    ["shoes"] = {item = 51, texture = 0}, -- Shoes
-                    ["accessory"] = {item = 0, texture = 0}, -- Neck Accessory
-                    ["bag"] = {item = 0, texture = 0}, -- Bag
-                    ["hat"] = {item = 58, texture = 0}, -- Hat
-                    ["glass"] = {item = 0, texture = 0}, -- Glasses
-                    ["mask"] = {item = 0, texture = 0} -- Mask
+                    ["torso2"] = {collection = "rp_eup", item = 40, texture = 1}, -- LSPD shirt, short sleeve
+                    ["arms"] = {item = 0, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 6, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 51, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 26, texture = 0}, -- Badge "Police Officer" and name tag
+                    ["decals"] = {item = 0, texture = 0}, -- No insignia
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
                 },
-                grades = {0, 1, 2, 3, 4, 5, 6, 7},
+                grades = {1},
             },
             {
-                name = "Long Sleeve",
+                name = "Officer I: Long Sleeve",
                 outfitData = {
-                    ["pants"] = {item = 24, texture = 0}, -- Pants
-                    ["arms"] = {item = 20, texture = 0}, -- Arms
-                    ["t-shirt"] = {item = 58, texture = 0}, -- T Shirt
-                    ["vest"] = {item = 0, texture = 0}, -- Body Vest
-                    ["torso2"] = {item = 317, texture = 0}, -- Jacket
-                    ["shoes"] = {item = 51, texture = 0}, -- Shoes
-                    ["accessory"] = {item = 0, texture = 0}, -- Neck Accessory
-                    ["bag"] = {item = 0, texture = 0}, -- Bag
-                    ["hat"] = {item = -1, texture = -1}, -- Hat
-                    ["glass"] = {item = 0, texture = 0}, -- Glasses
-                    ["mask"] = {item = 0, texture = 0} -- Mask
+                    ["torso2"] = {collection = "rp_eup", item = 41, texture = 1}, -- LSPD shirt, long sleeve
+                    ["arms"] = {item = 1, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 6, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 51, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 26, texture = 0}, -- Badge "Police Officer" and name tag
+                    ["decals"] = {item = 0, texture = 0}, -- No insignia
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
                 },
-                grades = {1, 2, 3, 4, 5, 6, 7},
+                grades = {1},
             },
             {
-                name = "Trooper Black",
+                name = "Officer I: Long Sleeve and Cap",
                 outfitData = {
-                    ["pants"] = {item = 24, texture = 0}, -- Pants
-                    ["arms"] = {item = 20, texture = 0}, -- Arms
-                    ["t-shirt"] = {item = 58, texture = 0}, -- T Shirt
-                    ["vest"] = {item = 0, texture = 0}, -- Body Vest
-                    ["torso2"] = {item = 317, texture = 8}, -- Jacket
-                    ["shoes"] = {item = 51, texture = 0}, -- Shoes
-                    ["accessory"] = {item = 0, texture = 0}, -- Neck Accessory
-                    ["bag"] = {item = 0, texture = 0}, -- Bag
-                    ["hat"] = {item = 58, texture = 3}, -- Hat
-                    ["glass"] = {item = 0, texture = 0}, -- Glasses
-                    ["mask"] = {item = 0, texture = 0} -- Mask
+                    ["torso2"] = {collection = "rp_eup", item = 41, texture = 1}, -- LSPD shirt, long sleeve
+                    ["arms"] = {item = 1, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 6, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 51, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 26, texture = 0}, -- Badge "Police Officer" and name tag
+                    ["decals"] = {item = 0, texture = 0}, -- No insignia
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {collection = "rp_eup", item = 0, texture = 0} -- LSPD service cap
                 },
-                grades = {2, 3, 4, 5, 6, 7},
+                grades = {1},
             },
             {
-                name = "SWAT",
+                name = "Officer II: Short Sleeve",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 40, texture = 1}, -- LSPD shirt, short sleeve
+                    ["arms"] = {item = 0, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 6, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 51, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 26, texture = 0}, -- Badge "Police Officer" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 6, texture = 0}, -- Sleeve stripes: two
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
+                },
+                grades = {2},
+            },
+            {
+                name = "Officer II: Long Sleeve",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 41, texture = 1}, -- LSPD shirt, long sleeve
+                    ["arms"] = {item = 1, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 6, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 51, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 26, texture = 0}, -- Badge "Police Officer" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 16, texture = 0}, -- Sleeve stripes: two
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
+                },
+                grades = {2},
+            },
+            {
+                name = "Officer II: Long Sleeve and Cap",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 41, texture = 1}, -- LSPD shirt, long sleeve
+                    ["arms"] = {item = 1, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 6, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 51, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 26, texture = 0}, -- Badge "Police Officer" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 16, texture = 0}, -- Sleeve stripes: two
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {collection = "rp_eup", item = 0, texture = 0} -- LSPD service cap
+                },
+                grades = {2},
+            },
+            {
+                name = "Officer III: Short Sleeve",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 40, texture = 1}, -- LSPD shirt, short sleeve
+                    ["arms"] = {item = 0, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 6, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 51, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 26, texture = 0}, -- Badge "Police Officer" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 6, texture = 1}, -- Sleeve stripes: two and a star
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
+                },
+                grades = {3},
+            },
+            {
+                name = "Officer III: Long Sleeve",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 41, texture = 1}, -- LSPD shirt, long sleeve
+                    ["arms"] = {item = 1, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 6, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 51, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 26, texture = 0}, -- Badge "Police Officer" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 16, texture = 1}, -- Sleeve stripes: two and a star
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
+                },
+                grades = {3},
+            },
+            {
+                name = "Officer III: Long Sleeve and Cap",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 41, texture = 1}, -- LSPD shirt, long sleeve
+                    ["arms"] = {item = 1, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 6, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 51, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 26, texture = 0}, -- Badge "Police Officer" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 16, texture = 1}, -- Sleeve stripes: two and a star
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {collection = "rp_eup", item = 0, texture = 0} -- LSPD service cap
+                },
+                grades = {3},
+            },
+            {
+                name = "Sergeant: Short Sleeve",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 40, texture = 1}, -- LSPD shirt, short sleeve
+                    ["arms"] = {item = 0, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 6, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 51, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 26, texture = 1}, -- Badge "Sergeant" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 6, texture = 2}, -- Sleeve stripes: three (Sergeant)
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
+                },
+                grades = {4},
+            },
+            {
+                name = "Sergeant: Long Sleeve",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 41, texture = 1}, -- LSPD shirt, long sleeve
+                    ["arms"] = {item = 1, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 6, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 51, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 26, texture = 1}, -- Badge "Sergeant" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 16, texture = 2}, -- Sleeve stripes: three (Sergeant)
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
+                },
+                grades = {4},
+            },
+            {
+                name = "Sergeant: Long Sleeve and Cap",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 41, texture = 1}, -- LSPD shirt, long sleeve
+                    ["arms"] = {item = 1, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 6, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 51, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 26, texture = 1}, -- Badge "Sergeant" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 16, texture = 2}, -- Sleeve stripes: three (Sergeant)
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {collection = "rp_eup", item = 0, texture = 0} -- LSPD service cap
+                },
+                grades = {4},
+            },
+            {
+                name = "Lieutenant: Command Uniform",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 42, texture = 1}, -- LSPD shirt, closed collar and tie
+                    ["arms"] = {item = 1, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 6, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 51, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 26, texture = 2}, -- Badge "Lieutenant" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 13, texture = 6}, -- Collar: one gold bar
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
+                },
+                grades = {5},
+            },
+            {
+                name = "Lieutenant: Command Uniform and Cap",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 42, texture = 1}, -- LSPD shirt, closed collar and tie
+                    ["arms"] = {item = 1, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 6, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 51, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 26, texture = 2}, -- Badge "Lieutenant" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 13, texture = 6}, -- Collar: one gold bar
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {collection = "rp_eup", item = 0, texture = 0} -- LSPD service cap
+                },
+                grades = {5},
+            },
+            {
+                name = "Captain: Command Uniform",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 42, texture = 1}, -- LSPD shirt, closed collar and tie
+                    ["arms"] = {item = 1, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 6, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 51, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 26, texture = 3}, -- Badge "Captain" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 13, texture = 7}, -- Collar: two gold bars
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
+                },
+                grades = {6},
+            },
+            {
+                name = "Captain: Command Uniform and Cap",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 42, texture = 1}, -- LSPD shirt, closed collar and tie
+                    ["arms"] = {item = 1, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 6, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 51, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 26, texture = 3}, -- Badge "Captain" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 13, texture = 7}, -- Collar: two gold bars
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {collection = "rp_eup", item = 0, texture = 0} -- LSPD service cap
+                },
+                grades = {6},
+            },
+            {
+                name = "Chief: Command Uniform",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 42, texture = 1}, -- LSPD shirt, closed collar and tie
+                    ["arms"] = {item = 1, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 6, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 51, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 26, texture = 8}, -- Badge "Chief of Police" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 12, texture = 0}, -- Collar: four gold stars
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
+                },
+                grades = {7},
+            },
+            {
+                name = "Chief: Command Uniform and Cap",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 42, texture = 1}, -- LSPD shirt, closed collar and tie
+                    ["arms"] = {item = 1, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 6, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 51, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 26, texture = 8}, -- Badge "Chief of Police" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 12, texture = 0}, -- Collar: four gold stars
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {collection = "rp_eup", item = 0, texture = 0} -- LSPD service cap
+                },
+                grades = {7},
+            },
+            {
+                name = "SWAT: Tactical Gear", -- [OUR CHANGE] Nov 4: only for officers with the SWAT certification
+                cert = "swat",
                 outfitData = {
                     ["pants"] = {item = 130, texture = 1}, -- Pants
                     ["arms"] = {item = 172, texture = 0}, -- Arms
@@ -690,75 +956,331 @@ Config.Outfits = {
         },
         ["Female"] = {
             {
-                name = "Short Sleeve",
+                name = "Cadet: Short Sleeve",
                 outfitData = {
-                    ["pants"] = {item = 133, texture = 0}, -- Pants
-                    ["arms"] = {item = 31, texture = 0}, -- Arms
-                    ["t-shirt"] = {item = 35, texture = 0}, -- T Shirt
-                    ["vest"] = {item = 34, texture = 0}, -- Body Vest
-                    ["torso2"] = {item = 48, texture = 0}, -- Jacket
-                    ["shoes"] = {item = 52, texture = 0}, -- Shoes
-                    ["accessory"] = {item = 0, texture = 0}, -- Neck Accessory
-                    ["bag"] = {item = 0, texture = 0}, -- Bag
-                    ["hat"] = {item = 0, texture = 0}, -- Hat
-                    ["glass"] = {item = 0, texture = 0}, -- Glasses
-                    ["mask"] = {item = 0, texture = 0} -- Mask
+                    ["torso2"] = {collection = "rp_eup", item = 36, texture = 1}, -- LSPD shirt, short sleeve
+                    ["arms"] = {item = 14, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 5, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 52, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 21, texture = 0}, -- Badge "Police Officer" and name tag
+                    ["decals"] = {item = 0, texture = 0}, -- No insignia
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
                 },
-                grades = {0, 1, 2, 3, 4, 5, 6, 7},
+                grades = {0},
             },
             {
-                name = "Trooper Tan",
+                name = "Officer I: Short Sleeve",
                 outfitData = {
-                    ["pants"] = {item = 133, texture = 0}, -- Pants
-                    ["arms"] = {item = 31, texture = 0}, -- Arms
-                    ["t-shirt"] = {item = 35, texture = 0}, -- T Shirt
-                    ["vest"] = {item = 34, texture = 0}, -- Body Vest
-                    ["torso2"] = {item = 327, texture = 3}, -- Jacket
-                    ["shoes"] = {item = 52, texture = 0}, -- Shoes
-                    ["accessory"] = {item = 0, texture = 0}, -- Neck Accessory
-                    ["bag"] = {item = 0, texture = 0}, -- Bag
-                    ["hat"] = {item = 0, texture = 0}, -- Hat
-                    ["glass"] = {item = 0, texture = 0}, -- Glasses
-                    ["mask"] = {item = 0, texture = 0} -- Mask
+                    ["torso2"] = {collection = "rp_eup", item = 36, texture = 1}, -- LSPD shirt, short sleeve
+                    ["arms"] = {item = 14, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 5, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 52, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 21, texture = 0}, -- Badge "Police Officer" and name tag
+                    ["decals"] = {item = 0, texture = 0}, -- No insignia
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
                 },
-                grades = {0, 1, 2, 3, 4, 5, 6, 7},
+                grades = {1},
             },
             {
-                name = "Long Sleeve",
+                name = "Officer I: Long Sleeve",
                 outfitData = {
-                    ["pants"] = {item = 133, texture = 0}, -- Pants
-                    ["arms"] = {item = 31, texture = 0}, -- Arms
-                    ["t-shirt"] = {item = 35, texture = 0}, -- T Shirt
-                    ["vest"] = {item = 34, texture = 0}, -- Body Vest
-                    ["torso2"] = {item = 327, texture = 0}, -- Jacket
-                    ["shoes"] = {item = 52, texture = 0}, -- Shoes
-                    ["accessory"] = {item = 0, texture = 0}, -- Neck Accessory
-                    ["bag"] = {item = 0, texture = 0}, -- Bag
-                    ["hat"] = {item = 0, texture = 0}, -- Hat
-                    ["glass"] = {item = 0, texture = 0}, -- Glasses
-                    ["mask"] = {item = 0, texture = 0} -- Mask
+                    ["torso2"] = {collection = "rp_eup", item = 37, texture = 1}, -- LSPD shirt, long sleeve
+                    ["arms"] = {item = 14, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 5, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 52, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 21, texture = 0}, -- Badge "Police Officer" and name tag
+                    ["decals"] = {item = 0, texture = 0}, -- No insignia
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
                 },
-                grades = {1, 2, 3, 4, 5, 6, 7},
+                grades = {1},
             },
             {
-                name = "Trooper Black",
+                name = "Officer I: Long Sleeve and Cap",
                 outfitData = {
-                    ["pants"] = {item = 133, texture = 0}, -- Pants
-                    ["arms"] = {item = 31, texture = 0}, -- Arms
-                    ["t-shirt"] = {item = 35, texture = 0}, -- T Shirt
-                    ["vest"] = {item = 34, texture = 0}, -- Body Vest
-                    ["torso2"] = {item = 327, texture = 8}, -- Jacket
-                    ["shoes"] = {item = 52, texture = 0}, -- Shoes
-                    ["accessory"] = {item = 0, texture = 0}, -- Neck Accessory
-                    ["bag"] = {item = 0, texture = 0}, -- Bag
-                    ["hat"] = {item = 0, texture = 0}, -- Hat
-                    ["glass"] = {item = 0, texture = 0}, -- Glasses
-                    ["mask"] = {item = 0, texture = 0} -- Mask
+                    ["torso2"] = {collection = "rp_eup", item = 37, texture = 1}, -- LSPD shirt, long sleeve
+                    ["arms"] = {item = 14, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 5, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 52, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 21, texture = 0}, -- Badge "Police Officer" and name tag
+                    ["decals"] = {item = 0, texture = 0}, -- No insignia
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {collection = "rp_eup", item = 0, texture = 0} -- LSPD service cap
                 },
-                grades = {2, 3, 4, 5, 6, 7},
+                grades = {1},
             },
             {
-                name = "SWAT",
+                name = "Officer II: Short Sleeve",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 36, texture = 1}, -- LSPD shirt, short sleeve
+                    ["arms"] = {item = 14, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 5, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 52, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 21, texture = 0}, -- Badge "Police Officer" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 5, texture = 0}, -- Sleeve stripes: two
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
+                },
+                grades = {2},
+            },
+            {
+                name = "Officer II: Long Sleeve",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 37, texture = 1}, -- LSPD shirt, long sleeve
+                    ["arms"] = {item = 14, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 5, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 52, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 21, texture = 0}, -- Badge "Police Officer" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 15, texture = 0}, -- Sleeve stripes: two
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
+                },
+                grades = {2},
+            },
+            {
+                name = "Officer II: Long Sleeve and Cap",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 37, texture = 1}, -- LSPD shirt, long sleeve
+                    ["arms"] = {item = 14, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 5, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 52, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 21, texture = 0}, -- Badge "Police Officer" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 15, texture = 0}, -- Sleeve stripes: two
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {collection = "rp_eup", item = 0, texture = 0} -- LSPD service cap
+                },
+                grades = {2},
+            },
+            {
+                name = "Officer III: Short Sleeve",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 36, texture = 1}, -- LSPD shirt, short sleeve
+                    ["arms"] = {item = 14, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 5, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 52, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 21, texture = 0}, -- Badge "Police Officer" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 5, texture = 1}, -- Sleeve stripes: two and a star
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
+                },
+                grades = {3},
+            },
+            {
+                name = "Officer III: Long Sleeve",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 37, texture = 1}, -- LSPD shirt, long sleeve
+                    ["arms"] = {item = 14, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 5, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 52, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 21, texture = 0}, -- Badge "Police Officer" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 15, texture = 1}, -- Sleeve stripes: two and a star
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
+                },
+                grades = {3},
+            },
+            {
+                name = "Officer III: Long Sleeve and Cap",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 37, texture = 1}, -- LSPD shirt, long sleeve
+                    ["arms"] = {item = 14, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 5, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 52, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 21, texture = 0}, -- Badge "Police Officer" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 15, texture = 1}, -- Sleeve stripes: two and a star
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {collection = "rp_eup", item = 0, texture = 0} -- LSPD service cap
+                },
+                grades = {3},
+            },
+            {
+                name = "Sergeant: Short Sleeve",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 36, texture = 1}, -- LSPD shirt, short sleeve
+                    ["arms"] = {item = 14, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 5, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 52, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 21, texture = 1}, -- Badge "Sergeant" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 5, texture = 2}, -- Sleeve stripes: three (Sergeant)
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
+                },
+                grades = {4},
+            },
+            {
+                name = "Sergeant: Long Sleeve",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 37, texture = 1}, -- LSPD shirt, long sleeve
+                    ["arms"] = {item = 14, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 5, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 52, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 21, texture = 1}, -- Badge "Sergeant" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 15, texture = 2}, -- Sleeve stripes: three (Sergeant)
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
+                },
+                grades = {4},
+            },
+            {
+                name = "Sergeant: Long Sleeve and Cap",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 37, texture = 1}, -- LSPD shirt, long sleeve
+                    ["arms"] = {item = 14, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 5, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 52, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 21, texture = 1}, -- Badge "Sergeant" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 15, texture = 2}, -- Sleeve stripes: three (Sergeant)
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {collection = "rp_eup", item = 0, texture = 0} -- LSPD service cap
+                },
+                grades = {4},
+            },
+            {
+                name = "Lieutenant: Command Uniform",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 39, texture = 1}, -- LSPD shirt, closed collar and tie
+                    ["arms"] = {item = 14, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 5, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 52, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 21, texture = 2}, -- Badge "Lieutenant" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 12, texture = 6}, -- Collar: one gold bar
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
+                },
+                grades = {5},
+            },
+            {
+                name = "Lieutenant: Command Uniform and Cap",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 39, texture = 1}, -- LSPD shirt, closed collar and tie
+                    ["arms"] = {item = 14, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 5, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 52, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 21, texture = 2}, -- Badge "Lieutenant" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 12, texture = 6}, -- Collar: one gold bar
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {collection = "rp_eup", item = 0, texture = 0} -- LSPD service cap
+                },
+                grades = {5},
+            },
+            {
+                name = "Captain: Command Uniform",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 39, texture = 1}, -- LSPD shirt, closed collar and tie
+                    ["arms"] = {item = 14, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 5, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 52, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 21, texture = 3}, -- Badge "Captain" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 12, texture = 7}, -- Collar: two gold bars
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
+                },
+                grades = {6},
+            },
+            {
+                name = "Captain: Command Uniform and Cap",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 39, texture = 1}, -- LSPD shirt, closed collar and tie
+                    ["arms"] = {item = 14, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 5, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 52, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 21, texture = 3}, -- Badge "Captain" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 12, texture = 7}, -- Collar: two gold bars
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {collection = "rp_eup", item = 0, texture = 0} -- LSPD service cap
+                },
+                grades = {6},
+            },
+            {
+                name = "Chief: Command Uniform",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 39, texture = 1}, -- LSPD shirt, closed collar and tie
+                    ["arms"] = {item = 14, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 5, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 52, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 21, texture = 8}, -- Badge "Chief of Police" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 11, texture = 0}, -- Collar: four gold stars
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {item = -1, texture = -1} -- No hat
+                },
+                grades = {7},
+            },
+            {
+                name = "Chief: Command Uniform and Cap",
+                outfitData = {
+                    ["torso2"] = {collection = "rp_eup", item = 39, texture = 1}, -- LSPD shirt, closed collar and tie
+                    ["arms"] = {item = 14, texture = 0}, -- Arms, bare hands
+                    ["t-shirt"] = {collection = "rp_eup", item = 7, texture = 0}, -- Duty belt (holster, taser, cuffs, keys)
+                    ["vest"] = {collection = "rp_eup", item = 22, texture = 0}, -- Radio on the belt, cord up to the shoulder mic
+                    ["pants"] = {collection = "rp_eup", item = 5, texture = 0}, -- Navy uniform trousers
+                    ["shoes"] = {item = 52, texture = 0}, -- Black lace-up boots
+                    ["bag"] = {collection = "rp_eup", item = 21, texture = 8}, -- Badge "Chief of Police" and name tag
+                    ["decals"] = {collection = "rp_eup", item = 11, texture = 0}, -- Collar: four gold stars
+                    ["accessory"] = {item = 0, texture = 0}, -- No neck accessory
+                    ["mask"] = {item = 0, texture = 0}, -- No mask
+                    ["hat"] = {collection = "rp_eup", item = 0, texture = 0} -- LSPD service cap
+                },
+                grades = {7},
+            },
+            {
+                name = "SWAT: Tactical Gear", -- [OUR CHANGE] Nov 4: only for officers with the SWAT certification
+                cert = "swat",
                 outfitData = {
                     ["pants"] = {item = 135, texture = 1}, -- Pants
                     ["arms"] = {item = 213, texture = 0}, -- Arms

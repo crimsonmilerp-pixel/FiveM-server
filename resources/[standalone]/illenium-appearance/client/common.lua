@@ -14,6 +14,21 @@ function IsPlayerAllowedForOutfitRoom(outfitRoom)
     return isAllowed or not outfitRoom.citizenIDs or count == 0
 end
 
+-- [OUR CHANGE] Nov 4: an outfit with `cert` (like the SWAT gear) only shows for officers who hold that
+-- police certification in rp_police. See docs/core-changes.md
+local function hasOutfitCert(outfit)
+    if not outfit.cert then
+        return true
+    end
+    if GetResourceState("rp_police") ~= "started" then
+        return false
+    end
+    local ok, result = pcall(function()
+        return exports.rp_police:HasCert(outfit.cert)
+    end)
+    return ok and result == true
+end
+
 function GetPlayerJobOutfits(job)
     local outfits = {}
     local gender = Framework.GetGender()
@@ -36,7 +51,7 @@ function GetPlayerJobOutfits(job)
     elseif Config.Outfits[jobName] and Config.Outfits[jobName][gender] then
         for i = 1, #Config.Outfits[jobName][gender], 1 do
             for _, v in pairs(Config.Outfits[jobName][gender][i].grades) do
-                if v == gradeLevel then
+                if v == gradeLevel and hasOutfitCert(Config.Outfits[jobName][gender][i]) then -- [OUR CHANGE] Nov 4
                     outfits[#outfits + 1] = Config.Outfits[jobName][gender][i]
                     outfits[#outfits].gender = gender
                     outfits[#outfits].jobName = jobName

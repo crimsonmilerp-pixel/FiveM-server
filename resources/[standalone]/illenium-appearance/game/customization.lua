@@ -111,6 +111,46 @@ local function filterBlacklistSettings(items, drawableId)
     return blacklistSettings
 end
 
+-- [OUR CHANGE] Nov 3: hide whole clothing packs (Config.LockedCollections) from players who may not wear them.
+-- A pack is one block of numbers at the end of each clothing slot, so we ask the game where the block
+-- starts and how long it is. That keeps working when the game build changes. See docs/core-changes.md
+local lockAces, lockAcesTime = nil, 0
+
+local function getLockAces()
+    if not lockAces or GetGameTimer() - lockAcesTime > 10000 then
+        lockAces = lib.callback.await("illenium-appearance:server:GetPlayerAces", false) or {}
+        lockAcesTime = GetGameTimer()
+    end
+    return lockAces
+end
+
+local function addLockedCollections(ped, blacklistSettings, slotId, isProp)
+    local locks = Config.LockedCollections
+    if not locks or #locks == 0 then
+        return blacklistSettings
+    end
+    local allowedAces = getLockAces()
+    for i = 1, #locks do
+        local lock = locks[i]
+        if not allowedForPlayer(lock, allowedAces) then
+            local count, first
+            if isProp then
+                count = GetNumberOfPedCollectionPropDrawableVariations(ped, slotId, lock.collection)
+                first = GetPedPropGlobalIndexFromCollection(ped, slotId, lock.collection, 0)
+            else
+                count = GetNumberOfPedCollectionDrawableVariations(ped, slotId, lock.collection)
+                first = GetPedDrawableGlobalIndexFromCollection(ped, slotId, lock.collection, 0)
+            end
+            if count and count > 0 and first and first >= 0 then
+                for drawable = first, first + count - 1 do
+                    blacklistSettings.drawables[#blacklistSettings.drawables + 1] = drawable
+                end
+            end
+        end
+    end
+    return blacklistSettings
+end
+
 local function componentBlacklistMap(gender, componentId)
     local genderSettings = Config.Blacklist[gender].components
     if componentId == 1 then
@@ -167,6 +207,7 @@ local function getComponentSettings(ped, componentId)
 
     if client.isPedFreemodeModel(ped) then
         blacklistSettings = filterBlacklistSettings(componentBlacklistMap(gender, componentId), drawableId)
+        blacklistSettings = addLockedCollections(ped, blacklistSettings, componentId, false) -- [OUR CHANGE] Nov 3
     end
 
     return {
@@ -195,6 +236,7 @@ local function getPropSettings(ped, propId)
 
     if client.isPedFreemodeModel(ped) then
         blacklistSettings = filterBlacklistSettings(propBlacklistMap(gender, propId), drawableId)
+        blacklistSettings = addLockedCollections(ped, blacklistSettings, propId, true) -- [OUR CHANGE] Nov 3
     end
 
     local settings = {
