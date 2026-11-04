@@ -10,6 +10,21 @@ local currentAreaIndex = math.random(1, #sharedConfig.coralLocations)
 local pickedUpCoralIndexes = {}
 local harvestCooldowns = {}
 
+-- [OUR CHANGE] Job pay goes through rp_economy, which takes income tax off and records it.
+-- If rp_economy isn't running, the full amount is paid like before. See docs/core-changes.md
+local function payIncome(source, amount, account, reason)
+    if GetResourceState('rp_economy') == 'started' then
+        local ok, paid = pcall(function()
+            return exports.rp_economy:PayIncome(source, amount, { account = account, reason = reason })
+        end)
+        if ok then return paid end
+    end
+    local player = exports.qbx_core:GetPlayer(source)
+    if player and amount > 0 and player.Functions.AddMoney(account, amount, reason) then
+        return { gross = amount, net = amount, tax = 0, note = '' }
+    end
+end
+
 ---@param source number
 ---@param coords vector3
 ---@param maxDistance number
@@ -81,7 +96,7 @@ RegisterNetEvent('qbx_diving:server:sellCoral', function()
         message = locale('logs.sell_coral', payout),
         webhook = config.discordWebhook,
     })
-    player.Functions.AddMoney('cash', payout, 'sold-coral')
+    payIncome(src, payout, 'cash', 'sold-coral') -- [OUR CHANGE] income tax comes off (rp_economy)
 end)
 
 local function getNewLocation()

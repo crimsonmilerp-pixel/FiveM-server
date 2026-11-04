@@ -16,6 +16,21 @@ local nextCrewId = 0
 local BONUS_PCT = math.floor(config.bonusPerMate * 100 + 0.5)                   -- 10
 local MAX_PCT = math.floor(config.bonusPerMate * config.maxMates * 100 + 0.5)   -- 30
 
+---Legal work income goes through rp_economy, which takes income tax off and records it.
+---If rp_economy isn't running, the full amount is paid instead.
+local function payIncome(source, amount, account, reason)
+    if GetResourceState('rp_economy') == 'started' then
+        local ok, paid = pcall(function()
+            return exports.rp_economy:PayIncome(source, amount, { account = account, reason = reason })
+        end)
+        if ok then return paid end
+    end
+    local player = exports.qbx_core:GetPlayer(source)
+    if player and amount > 0 and player.Functions.AddMoney(account, amount, reason) then
+        return { gross = amount, net = amount, tax = 0, note = '' }
+    end
+end
+
 -- ------------------------------------------------------------
 -- Helpers
 -- ------------------------------------------------------------
@@ -248,8 +263,10 @@ AddEventHandler('rp_jobmoments:server:taskDone', function(source, job, info)
     local bonus = math.floor(value * config.bonusPerMate * mates + 0.5)
     if bonus < 1 then return end
 
-    getPlayer(source).Functions.AddMoney(config.payAccount, bonus, 'crew-bonus')
-    notify(source, locale('crew.bonus', bonus, mates, BONUS_PCT * mates), 'success', 5000)
+    -- The bonus is job income: income tax comes off (rp_economy).
+    local paid = payIncome(source, bonus, config.payAccount, 'crew-bonus')
+    if not paid then return end
+    notify(source, locale('crew.bonus', paid.net, mates, BONUS_PCT * mates) .. paid.note, 'success', 5000)
 end)
 
 -- Tip when someone takes one of the crew jobs.

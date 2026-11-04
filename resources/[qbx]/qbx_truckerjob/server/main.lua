@@ -4,6 +4,21 @@ local sharedConfig = require 'config.shared'
 --- drops is the counter of packages for which payment is due
 local bail, drops, locations, antiAbuse, rentals = {}, {}, {}, {}, {}
 
+-- [OUR CHANGE] Job pay goes through rp_economy, which takes income tax off and records it.
+-- If rp_economy isn't running, the full amount is paid like before. See docs/core-changes.md
+local function payIncome(source, amount, account, reason)
+    if GetResourceState('rp_economy') == 'started' then
+        local ok, paid = pcall(function()
+            return exports.rp_economy:PayIncome(source, amount, { account = account, reason = reason })
+        end)
+        if ok then return paid end
+    end
+    local player = exports.qbx_core:GetPlayer(source)
+    if player and amount > 0 and player.Functions.AddMoney(account, amount, reason) then
+        return { gross = amount, net = amount, tax = 0, note = '' }
+    end
+end
+
 ---@alias NotificationPosition 'top' | 'top-right' | 'top-left' | 'bottom' | 'bottom-right' | 'bottom-left' | 'center-right' | 'center-left'
 ---@alias NotificationType 'info' | 'warning' | 'success' | 'error'
 
@@ -129,8 +144,9 @@ RegisterNetEvent('qbx_truckerjob:server:getPaid', function()
     drops[citizenid] = nil
     locations[source] = nil
 
-    player.Functions.AddMoney('bank', payment, 'trucker-salary')
-    notify(player, locale('success.you_earned', payment), 'success')
+    -- [OUR CHANGE] Paid through rp_economy: income tax comes off (it replaced the 15% "tax", now 0 in config)
+    local paid = payIncome(player.PlayerData.source, payment, 'bank', 'trucker-salary')
+    if paid then notify(player, locale('success.you_earned', paid.net) .. paid.note, 'success') end
 end)
 
 lib.callback.register('qbx_truckerjob:server:spawnVehicle', function(source, model)

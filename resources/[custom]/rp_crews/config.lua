@@ -16,8 +16,8 @@ return {
     -- Taxi uses the real fare instead.
     jobs = {
         garbage = { taskValue = 26 },  -- one stop
-        tow     = { taskValue = 62 },  -- one tow, after the 15% "tax"
-        trucker = { taskValue = 65 },  -- one store delivery, after the 15% "tax"
+        tow     = { taskValue = 73 },  -- one tow ($68-78)
+        trucker = { taskValue = 65 },  -- one store delivery ($58-72)
         taxi    = { useFare = true },
     },
 

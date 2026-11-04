@@ -51,6 +51,8 @@ lib.callback.register('qbx_vehiclesales:server:checkVehicleOwner', function(sour
     local player = exports.qbx_core:GetPlayer(source)
     -- [OUR CHANGE] Free starter vehicles (rp_starter) can't be sold. See docs/core-changes.md
     if GetResourceState('rp_starter') == 'started' and exports.rp_starter:BlockStarterSale(source, plate) then return false end
+    -- [OUR CHANGE] A car with a loan on it (rp_economy) can't be sold until it's paid off
+    if GetResourceState('rp_economy') == 'started' and exports.rp_economy:BlockLoanSale(source, plate) then return false end
     local result = MySQL.single.await('SELECT * FROM player_vehicles WHERE plate = ? AND citizenid = ?', {plate, player.PlayerData.citizenid})
 
     if result and result.id then
@@ -92,6 +94,8 @@ RegisterNetEvent('qb-occasions:server:sellVehicle', function(vehiclePrice, vehic
     local player = exports.qbx_core:GetPlayer(src)
     -- [OUR CHANGE] Free starter vehicles (rp_starter) can't be sold
     if GetResourceState('rp_starter') == 'started' and exports.rp_starter:BlockStarterSale(src, vehicleData and vehicleData.plate) then return end
+    -- [OUR CHANGE] A car with a loan on it (rp_economy) can't be sold until it's paid off
+    if GetResourceState('rp_economy') == 'started' and exports.rp_economy:BlockLoanSale(src, vehicleData and vehicleData.plate) then return end
 
     -- [OUR CHANGE] Security: it used to delete ANY car with that plate (even someone else's) and list it for the
     -- caller, at any price. Now: it must be your car, paid off, at a sane price, using the database's copy. See docs/core-changes.md
@@ -120,6 +124,8 @@ RegisterNetEvent('qb-occasions:server:sellVehicleBack', function(vehData)
     local player = exports.qbx_core:GetPlayer(src)
     -- [OUR CHANGE] Free starter vehicles (rp_starter) can't be sold back
     if GetResourceState('rp_starter') == 'started' and exports.rp_starter:BlockStarterSale(src, vehData and vehData.plate) then return end
+    -- [OUR CHANGE] A car with a loan on it (rp_economy) can't be sold back until it's paid off
+    if GetResourceState('rp_economy') == 'started' and exports.rp_economy:BlockLoanSale(src, vehData and vehData.plate) then return end
     -- [OUR CHANGE] Security: the price used to come from the model the game sent, so any car could be sold back
     -- at half a supercar's price. Now it's the database's model, and the car must be paid off. See docs/core-changes.md
     if not player or type(vehData) ~= 'table' then return end

@@ -7,6 +7,21 @@ local completedJobs = {}
 local activeTrucks = {}
 local spawning = {}
 
+-- [OUR CHANGE] Job pay goes through rp_economy, which takes income tax off and records it.
+-- If rp_economy isn't running, the full amount is paid like before. See docs/core-changes.md
+local function payIncome(source, amount, account, reason)
+    if GetResourceState('rp_economy') == 'started' then
+        local ok, paid = pcall(function()
+            return exports.rp_economy:PayIncome(source, amount, { account = account, reason = reason })
+        end)
+        if ok then return paid end
+    end
+    local player = exports.qbx_core:GetPlayer(source)
+    if player and amount > 0 and player.Functions.AddMoney(account, amount, reason) then
+        return { gross = amount, net = amount, tax = 0, note = '' }
+    end
+end
+
 local function isTowDriver(player)
     return player and player.PlayerData.job.name == 'tow'
 end
@@ -119,11 +134,13 @@ RegisterNetEvent('qb-tow:server:11101110', function()
     local payment = price - math.ceil((price / 100) * config.paymentTax)
 
     player.Functions.AddJobReputation(1)
-    player.Functions.AddMoney('bank', payment, 'tow-salary')
+    -- [OUR CHANGE] Paid through rp_economy: income tax comes off (it replaced the 15% "tax", now 0 in config)
+    local paid = payIncome(src, payment, 'bank', 'tow-salary')
+    if not paid then return end
     TriggerClientEvent('ox_lib:notify', src, {
         id = 'tow_pay',
         title = 'Job Payment',
-        description = locale('success.you_earned', payment),
+        description = locale('success.you_earned', paid.net) .. paid.note,
         showDuration = true,
         position = 'center-right',
         icon = 'check',

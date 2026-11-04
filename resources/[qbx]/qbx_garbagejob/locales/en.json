@@ -10,7 +10,7 @@
     },
     "success": {
         "clear_routes": "Cleared users routes they had %s routes stored",
-        "pay_slip": "You got $%s, your payslip %s got paid to your bank account!"
+        "pay_slip": "You got $%s, paid to your bank account%s."
     },
     "target": {
         "talk": "Talk to Garbageman",
@@ -44,7 +44,7 @@
         "garbage_in_truck": "Put the bag in your truck..",
         "stand_here": "Stand here..",
         "found_crypto": "You found a cryptostick on the floor",
-        "payout_deposit": "(+ $%s deposit)",
+        "payout_deposit": " (includes your $%s deposit back)",
         "store_truck": "[E] - Store Garbage Truck",
         "get_truck": "[E] - Garbage Truck",
         "picking_bag": "Grabbing garbage bag..",

@@ -5,6 +5,21 @@ local activeTrucks = {}
 local vehicleSpawns = {}
 local MINIMUM_TIME_PER_BAG = 2500
 
+-- [OUR CHANGE] Job pay goes through rp_economy, which takes income tax off and records it.
+-- If rp_economy isn't running, the full amount is paid like before. See docs/core-changes.md
+local function payIncome(source, amount, account, reason)
+    if GetResourceState('rp_economy') == 'started' then
+        local ok, paid = pcall(function()
+            return exports.rp_economy:PayIncome(source, amount, { account = account, reason = reason })
+        end)
+        if ok then return paid end
+    end
+    local player = exports.qbx_core:GetPlayer(source)
+    if player and amount > 0 and player.Functions.AddMoney(account, amount, reason) then
+        return { gross = amount, net = amount, tax = 0, note = '' }
+    end
+end
+
 ---@param player table
 ---@return boolean
 local function isGarbageWorker(player)
@@ -217,10 +232,12 @@ lib.callback.register('garbagejob:server:payShift', function(source, continue)
         )
     end
 
-    local totalToPay = depositPay + route.actualPay
+    -- [OUR CHANGE] The route pay goes through rp_economy (income tax comes off). The truck deposit coming back isn't income.
+    local paid = payIncome(source, route.actualPay, 'bank', 'garbage-payslip')
+    if depositPay > 0 then player.Functions.AddMoney('bank', depositPay, 'garbage-deposit-refund') end
+    local totalToPay = depositPay + (paid and paid.net or 0)
     local payoutDeposit = depositPay > 0 and locale('info.payout_deposit', depositPay) or ''
-    player.Functions.AddMoney('bank', totalToPay, 'garbage-payslip')
-    exports.qbx_core:Notify(source, locale('success.pay_slip', totalToPay, payoutDeposit), 'success')
+    exports.qbx_core:Notify(source, locale('success.pay_slip', totalToPay, payoutDeposit .. (paid and paid.note or '')), 'success')
     routes[citizenId] = nil
 
     if not continue then

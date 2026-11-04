@@ -6,6 +6,21 @@ local ITEMS = exports.ox_inventory:Items()
 
 local lastPayTime = {}
 
+-- [OUR CHANGE] Job pay goes through rp_economy, which takes income tax off and records it.
+-- If rp_economy isn't running, the full amount is paid like before. See docs/core-changes.md
+local function payIncome(source, amount, account, reason)
+    if GetResourceState('rp_economy') == 'started' then
+        local ok, paid = pcall(function()
+            return exports.rp_economy:PayIncome(source, amount, { account = account, reason = reason })
+        end)
+        if ok then return paid end
+    end
+    local player = exports.qbx_core:GetPlayer(source)
+    if player and amount > 0 and player.Functions.AddMoney(account, amount, reason) then
+        return { gross = amount, net = amount, tax = 0, note = '' }
+    end
+end
+
 local function getPlayerWithTaxiJob(src)
     local player = exports.qbx_core:GetPlayer(src)
     if not player then return nil end
@@ -144,7 +159,7 @@ RegisterNetEvent('qb-taxi:server:NpcPay', function(payment)
     end
     paymentAmount = math.min(paymentAmount, config.maxFare + 20)
 
-    player.Functions.AddMoney('cash', paymentAmount)
+    payIncome(src, paymentAmount, 'cash', 'taxi-fare') -- [OUR CHANGE] income tax comes off (rp_economy)
     lastPayTime[src] = now
     if config.chanceItemEnabled and config.chanceItem and config.chancePercent and config.chancePercent > 0 then
         local chance = math.random(1, 100)

@@ -1,0 +1,126 @@
+{
+  "_note": "All text players see for rp_economy. Edit the words on the right side only. Keep every %s: the game fills those in.",
+  "tax": {
+    "note": " (%s income tax taken off)"
+  },
+  "paycheck": {
+    "taxed": "Paycheck: %s (%s income tax taken off)",
+    "plain": "Paycheck: %s"
+  },
+  "bill": {
+    "vehicle_upkeep": "Luxury upkeep: %s (%s)",
+    "paid_title": "Weekly bills paid",
+    "paid": "%s came out of your bank. Type /finances for the details.",
+    "overdrawn": "Your bank account is overdrawn: %s. Anything paid by card will fail until it's back above $0."
+  },
+  "credit": {
+    "excellent": "Excellent",
+    "good": "Good",
+    "fair": "Fair",
+    "poor": "Poor"
+  },
+  "loan": {
+    "offer_title": "Car loan offer: %s",
+    "offer_text": "**Price:** %s  \n**Down payment:** %s  \n**Loan:** %s at **%s%%** a year (credit score %s, %s)  \n**Payment:** %s a week for %s weeks, about %s in all  \n\nPayments come out of your **bank** with your weekly bills. If your bank can't cover one, it's missed: a late fee, a lower credit score, and after %s missed payments in a row the bank takes the car back. You can't sell or trade the car until the loan is paid off.",
+    "offer_accept": "Sign",
+    "offer_decline": "No thanks",
+    "created_title": "Car loan signed",
+    "created": "%s a week for %s weeks, taken from your bank with your weekly bills (the first one at least %s days from now). /finances shows the loan.",
+    "line_paid": "Car loan: %s",
+    "line_missed": "MISSED car payment: %s (late fee %s)",
+    "line_repo": "Taken back by the bank: %s",
+    "missed_title": "Car payment missed",
+    "missed": "Your bank couldn't cover the payment on the %s (%s). A %s late fee was added. That's %s missed in a row; at %s the bank takes the car. Credit score: %s. Catch up in /finances.",
+    "repo_title": "Car repossessed",
+    "repo": "The bank took back the %s after too many missed payments. The loan is closed. Credit score: %s.",
+    "paid_off_title": "Car loan paid off",
+    "paid_off": "The %s is all yours. Credit score: %s.",
+    "paid_off_now": "Loan paid off: %s from your bank. The car is all yours.",
+    "caught_up": "Caught up: %s from your bank. Your loan is back on track.",
+    "no_sale": "This car still has a loan on it. Pay it off first (/finances).",
+    "error_no_player": "The bank couldn't find your details. Try again.",
+    "error_bad_car": "The bank can't finance that car.",
+    "error_down_small": "The down payment has to be at least %s (%s%% of the price).",
+    "error_too_small": "That's less than %s to borrow. Just buy it outright.",
+    "error_weeks": "Pick between %s and %s weekly payments.",
+    "error_score": "The bank won't lend with a credit score of %s. Pay what you owe on time to bring it up.",
+    "error_max_active": "You already have %s car loans. Pay one off first.",
+    "error_behind": "You're behind on a loan. Catch up in /finances before borrowing more.",
+    "error_afford": "The bank won't go that high. Your loan payments can be up to %s a week right now, and this one would be %s. Put more down, pick more weeks, or earn more first (it looks at your job income over the last 4 weeks)."
+  },
+  "finances": {
+    "title": "Your finances",
+    "bank": "Bank: %s",
+    "bank_desc": "Cash on you: %s",
+    "bank_negative_desc": "Overdrawn. Cash on you: %s",
+    "tax_week": "This tax week: %s earned, %s income tax",
+    "tax_week_desc": "Top rate this week: %s%%. The tax week starts over in %s.",
+    "tax_week_none": "No job income yet this tax week",
+    "tax_week_none_desc": "Income tax comes off every paycheck and job payout. The tax week starts over in %s.",
+    "next_bills": "Next weekly bills: about %s",
+    "next_bills_due": "Next weekly bills: due now",
+    "next_bills_desc": "In %s. Only charged while you're in the city.",
+    "next_bills_soon_desc": "It will be charged within a few minutes.",
+    "no_bills": "No weekly bills",
+    "next_bills_none_desc": "Nothing to pay right now. Weekly bills come from car loans and luxury cars over $100,000 (and later rent).",
+    "bill_line": "%s: %s",
+    "last_bills": "Last bills: %s, %s ago",
+    "last_bills_none": "No weekly bills paid yet",
+    "statement_title": "Bills paid %s ago",
+    "statement_total": "Total: %s",
+    "credit": "Credit score: %s (%s)",
+    "credit_desc": "Car loans for you right now: %s%% a year. On-time payments raise your score; missed ones lower it.",
+    "credit_none": "Credit score: %s",
+    "credit_none_desc": "Too low for the bank to lend. Paying what you owe on time brings it back up.",
+    "loan": "%s: %s left",
+    "loan_desc": "%s a week, %s of %s payments made, %s%% a year",
+    "loan_desc_missed": "%s MISSED IN A ROW (the bank takes the car at %s). %s a week, %s%% a year",
+    "loan_overdue": "Catch up now: %s",
+    "loan_overdue_desc": "Pays the missed payments from your bank and puts the loan back on track.",
+    "loan_payoff": "Pay it off now: %s",
+    "loan_payoff_desc": "From your bank. No fee for paying early. Then the car is all yours.",
+    "loan_confirm_title": "Pay %s from your bank?",
+    "loan_error_not_enough": "Your bank doesn't have enough for that.",
+    "loan_error_nothing_overdue": "Nothing is overdue on that loan.",
+    "loan_error_not_found": "That loan isn't active anymore.",
+    "loan_error_busy": "One moment..."
+  },
+  "treasury": {
+    "title": "Government treasury",
+    "balance": "Balance: %s",
+    "balance_desc": "All tax and upkeep collected, minus government paychecks. It never stops anyone's pay.",
+    "this_week": "This week so far",
+    "last_week": "Last week",
+    "line": "%s: %s",
+    "nothing": "Nothing yet",
+    "kind_income_tax": "Income tax",
+    "kind_luxury_upkeep": "Luxury upkeep",
+    "kind_pay_police": "Police paychecks",
+    "kind_pay_ambulance": "EMS paychecks",
+    "kind_other": "%s"
+  },
+  "time": {
+    "days_hours": "%s days %s hours",
+    "one_day_hours": "1 day %s hours",
+    "hours_minutes": "%s hours %s minutes",
+    "one_hour_minutes": "1 hour %s minutes",
+    "minutes": "%s minutes",
+    "one_minute": "1 minute",
+    "under_a_minute": "less than a minute"
+  },
+  "command": {
+    "finances_help": "See your income tax this week, your next weekly bills and the last ones you paid",
+    "treasury_help": "Staff: the government treasury (taxes in, paychecks out)",
+    "billsnow_help": "Staff: charge a player's weekly bills right now (for testing)",
+    "billsnow_arg": "Player ID (leave empty for yourself)"
+  },
+  "error": {
+    "not_staff": "Only staff can do that.",
+    "not_online": "That player isn't in the city.",
+    "not_loaded": "Your finances aren't loaded yet. Try again in a moment."
+  },
+  "staff": {
+    "bills_charged": "Weekly bills charged for %s: %s.",
+    "bills_nothing": "%s has no weekly bills right now. Their next ones are due in 7 days."
+  }
+}

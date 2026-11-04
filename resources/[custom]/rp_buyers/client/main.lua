@@ -32,11 +32,11 @@ end
 local openMenu
 
 local function sell(buyerId, itemName, amount)
-    local ok, result = lib.callback.await('rp_buyers:server:sell', false, buyerId, itemName, amount)
+    local ok, result, tax = lib.callback.await('rp_buyers:server:sell', false, buyerId, itemName, amount)
     if ok then
         lib.notify({
             title = buyerName(buyerId),
-            description = locale('sold', money(result)),
+            description = (tax or 0) > 0 and locale('sold_taxed', money(result), money(tax)) or locale('sold', money(result)),
             type = 'success',
             icon = 'hand-holding-dollar',
         })

@@ -78,6 +78,8 @@ end
 
 --- Gets the owned vehicles based on financing then opens a menu
 local function showFinancedVehiclesMenu()
+    -- [OUR CHANGE] Loans live in rp_economy now: the finance desk opens /finances (loans, catch up, pay off)
+    if GetResourceState('rp_economy') == 'started' then return TriggerEvent('rp_economy:client:openFinances') end
     local vehicles = lib.callback.await('qbx_vehicleshop:server:GetFinancedVehicles')
     local options = {}
 
@@ -161,7 +163,7 @@ local function openFinance(targetShowroomVehicle, buyVehicle)
         {
             type = 'number',
             label = locale('menus.financesubmit_totalpayment')..sharedConfig.finance.maximumPayments,
-            min = 2,
+            min = sharedConfig.finance.minimumPayments or 2, -- [OUR CHANGE] was 2
             max = sharedConfig.finance.maximumPayments
         }
     })
@@ -635,6 +637,23 @@ local function confirmTrade(confirmationText)
 
     return accepted
 end
+
+-- [OUR CHANGE] The buyer reads the loan offer from rp_economy and signs it (or not). See docs/core-changes.md
+lib.callback.register('qbx_vehicleshop:client:confirmLoan', function(quote)
+    if type(quote) ~= 'table' then return false end
+    local answer = lib.alertDialog({
+        header = quote.title,
+        content = quote.text,
+        centered = true,
+        cancel = true,
+        size = 'lg',
+        labels = {
+            cancel = quote.decline,
+            confirm = quote.accept,
+        }
+    })
+    return answer == 'confirm'
+end)
 
 lib.callback.register('qbx_vehicleshop:client:confirmFinance', function(financeData)
     local alert = lib.alertDialog({

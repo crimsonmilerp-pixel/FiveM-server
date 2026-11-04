@@ -10,6 +10,21 @@ local saleTimeout = {}
 local testDrives = {}
 local managedTestDriveAuthorizations = {}
 
+-- [OUR CHANGE] Job pay goes through rp_economy, which takes income tax off and records it.
+-- If rp_economy isn't running, the full amount is paid like before. See docs/core-changes.md
+local function payIncome(source, amount, account, reason)
+    if GetResourceState('rp_economy') == 'started' then
+        local ok, paid = pcall(function()
+            return exports.rp_economy:PayIncome(source, amount, { account = account, reason = reason })
+        end)
+        if ok then return paid end
+    end
+    local player = exports.qbx_core:GetPlayer(source)
+    if player and amount > 0 and player.Functions.AddMoney(account, amount, reason) then
+        return { gross = amount, net = amount, tax = 0, note = '' }
+    end
+end
+
 -- [OUR CHANGE] Uses IsShopSalesperson (server/utils.lua): at npcFallback shops the dealer must be clocked in.
 local function isAuthorizedSalesperson(source, shop)
     return IsShopSalesperson(source, shop)
@@ -211,8 +226,9 @@ function SellShowroomVehicleTransact(src, target, price, downPayment)
     end
 
     local commission = lib.math.round(price * config.commissionRate)
-    config.addPlayerFunds(player, 'bank', commission, 'vehicle-commission')
-    exports.qbx_core:Notify(src, locale('success.earned_commission', lib.math.groupdigits(commission)), 'success')
+    -- [OUR CHANGE] Commission is job income: paid through rp_economy, so income tax comes off
+    local paid = payIncome(src, commission, 'bank', 'vehicle-commission')
+    exports.qbx_core:Notify(src, locale('success.earned_commission', lib.math.groupdigits(paid and paid.net or 0)) .. (paid and paid.note or ''), 'success')
 
     config.addSocietyFunds(player.PlayerData.job.name, price)
     exports.qbx_core:Notify(target.PlayerData.source, locale('success.purchased'), 'success')
@@ -322,7 +338,8 @@ lib.addCommand('transfervehicle', {
     end
 
     local row = exports.qbx_vehicles:GetPlayerVehicle(vehicleId)
-    local isFinanced = sharedConfig.finance.enable and financeStorage.fetchIsFinanced(vehicleId)
+    -- [OUR CHANGE] Loans live in rp_economy now (server/finance.lua). A car with a loan can't be traded (preventSelling).
+    local isFinanced = sharedConfig.finance.enable and exports[cache.resource]:IsFinanced(vehicleId)
 
     -- [OUR CHANGE] Free starter vehicles (rp_starter) can't be sold or traded. See docs/core-changes.md
     if GetResourceState('rp_starter') == 'started' and exports.rp_starter:BlockStarterSale(source, nil, vehicleId) then return end

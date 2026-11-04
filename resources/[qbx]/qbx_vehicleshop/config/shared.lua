@@ -1,7 +1,8 @@
 return {
     finance = {
         minimumDown = 10, -- minimum percentage allowed down
-        maximumPayments = 24, -- maximum payments allowed
+        minimumPayments = 12, -- [OUR CHANGE] new: fewest weekly payments (rp_economy checks this too)
+        maximumPayments = 72, -- maximum payments allowed -- [OUR CHANGE] was 24. Weekly loan payments now (rp_economy), up to 72 weeks
         enable = true, -- Enables the financing system. Turning this off does not affect already financed vehicles
         zone = vec3(-29.53, -1103.67, 26.42), -- Where the finance menu is located
     },

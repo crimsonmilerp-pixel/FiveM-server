@@ -137,8 +137,19 @@ return {
     ---@param player Player Player object
     ---@param payment number Payment amount
     sendPaycheck = function (player, payment)
-        player.Functions.AddMoney('bank', payment)
-        Notify(player.PlayerData.source, locale('info.received_paycheck', payment))
+        -- [OUR CHANGE] Paid through rp_economy: income tax comes off, and police/EMS pay is counted in the treasury.
+        -- If rp_economy isn't running, the paycheck is paid in full like before. See docs/core-changes.md
+        local paid = false
+        if GetResourceState('rp_economy') == 'started' then
+            local ok, result = pcall(function()
+                return exports.rp_economy:PayPaycheck(player.PlayerData.source, payment)
+            end)
+            paid = ok and result == true
+        end
+        if not paid then
+            player.Functions.AddMoney('bank', payment)
+            Notify(player.PlayerData.source, locale('info.received_paycheck', payment))
+        end
         TriggerEvent('qbx_core:server:onPaycheck', player.PlayerData.source, payment)
     end,
 }

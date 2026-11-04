@@ -4,7 +4,7 @@ return {
         paymentWarning = 10, -- time in minutes that player has to make payment before repo
         paymentInterval = 24, -- time in hours between payment being due
         cronSchedule = '*/10 * * * *', -- cron schedule for finance payment checks ref: https://coxdocs.dev/ox_lib/Modules/Cron/Server#cron-expression
-        preventSelling = false, -- prevents players from using /transfervehicle if financed
+        preventSelling = true, -- prevents players from using /transfervehicle if financed -- [OUR CHANGE] was false. A car with a loan can't be traded until it's paid off (rp_economy)
     },
     saleTimeout = 60000, -- Delay between attempts to sell/gift a vehicle. Prevents abuse
     deleteUnpaidFinancedVehicle = false, -- true to delete unpaid vehicles from database, otherwise it will edit citizenid to hide from db select

@@ -8,6 +8,21 @@ local config = require 'config'
 
 local lastSale = {} -- [source] = time of last sale, stops spam-clicking
 
+---Legal work income goes through rp_economy, which takes income tax off and records it.
+---If rp_economy isn't running, the full amount is paid instead.
+local function payIncome(source, amount, account, reason)
+    if GetResourceState('rp_economy') == 'started' then
+        local ok, paid = pcall(function()
+            return exports.rp_economy:PayIncome(source, amount, { account = account, reason = reason })
+        end)
+        if ok then return paid end
+    end
+    local player = exports.qbx_core:GetPlayer(source)
+    if player and amount > 0 and player.Functions.AddMoney(account, amount, reason) then
+        return { gross = amount, net = amount, tax = 0, note = '' }
+    end
+end
+
 ---Price in whole cents, so 0.10 + 0.20 doesn't turn into 0.30000000004.
 local function toCents(price)
     return math.floor(price * 100 + 0.5)
@@ -91,9 +106,10 @@ lib.callback.register('rp_buyers:server:sell', function(source, buyerId, itemNam
     local pay = math.floor(paidCents / 100)
     if pay <= 0 then return false, 'nothing_to_sell' end
 
-    local player = exports.qbx_core:GetPlayer(source)
-    player.Functions.AddMoney(config.payAccount, pay, ('rp_buyers-%s'):format(buyerId))
-    return true, pay
+    -- Selling what you gathered is legal work income: income tax comes off (rp_economy).
+    local paid = payIncome(source, pay, config.payAccount, ('rp_buyers-%s'):format(buyerId))
+    if not paid then return false, 'nothing_to_sell' end
+    return true, paid.net, paid.tax
 end)
 
 AddEventHandler('playerDropped', function()

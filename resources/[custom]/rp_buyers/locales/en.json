@@ -20,6 +20,7 @@
     "desc": "You have %s. They pay %s each."
   },
   "sold": "You were paid %s.",
+  "sold_taxed": "You were paid %s (%s income tax taken off).",
   "error": {
     "slow_down": "Slow down a second.",
     "too_far": "You need to be standing with the buyer.",
