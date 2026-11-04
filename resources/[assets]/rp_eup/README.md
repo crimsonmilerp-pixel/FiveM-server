@@ -8,12 +8,12 @@ The **Emergency Uniforms Pack: Law & Order 8.3** by the EUP Team, converted into
 
 ## Testing it
 
-In game, type **`/eupcheck`**. A man's character should show **255 pieces**: masks 3, pants 14, belts and bags 34, shoes 3, accessories 18, undershirts 51, vests 34, badges and insignia 17, tops 53, hats 24, glasses 4. A woman's character shows **222**. If everything is **0**, the clothes didn't load: check the txAdmin console for `rp_eup` errors and tell Claude.
+In game, type **`/eupcheck`**. It counts the pieces, then really loads one shirt as a test. A man's character should show **255 pieces**: masks 3, pants 14, belts and bags 34, shoes 3, accessories 18, undershirts 51, vests 34, badges and insignia 17, tops 53, hats 24, glasses 4. A woman's character shows **222**. If everything is **0**, the list didn't load: check the txAdmin console for `rp_eup` errors and tell Claude. If the counts are right but the load test **fails**, the server has too many slots (see below).
 
-## Size and the 10 player rule
+## Size and the slot rule
 
 - Players download about **825 MB** the first time they join (after that it's cached).
-- Custom clothing only works on servers with **10 slots or fewer** unless the server owner has Cfx.re Element Club Argentum. Decide before launch (see the design bible).
+- Custom clothing only works on servers with **8 slots or fewer** (Max Players in Nodecraft) unless the server owner has Cfx.re Element Club Argentum. With more slots the clothing list still loads (so the counts look right) but the clothes themselves are blocked: putting on a uniform does nothing. Decide before launch (see the design bible).
 
 ## What's not included
 

@@ -1,15 +1,22 @@
 -- ============================================================
 --  rp_eup - /eupcheck
---  Shows how many uniform pieces the game loaded from this pack.
---  If every number is 0, the clothes did not load (see README).
+--  1. Shows how many uniform pieces the game knows about (from the .ymt list).
+--  2. Then tries to really load one piece (an LSPD shirt). If the list is
+--     known but the piece never loads, FiveM is blocking custom clothing,
+--     which happens when the server has too many slots (see README).
 -- ============================================================
 local COLLECTION = 'rp_eup'
 
 local COMPONENTS = {
-    { 1, 'masks' }, { 4, 'pants' }, { 5, 'belts and bags' }, { 6, 'shoes' }, { 7, 'accessories' },
-    { 8, 'undershirts' }, { 9, 'vests' }, { 10, 'badges and insignia' }, { 11, 'tops' },
+    { 1, 'masks' }, { 4, 'pants' }, { 5, 'badges' }, { 6, 'shoes' }, { 7, 'accessories' },
+    { 8, 'belts' }, { 9, 'radios and vests' }, { 10, 'insignia' }, { 11, 'tops' },
 }
 local PROPS = { { 0, 'hats' }, { 1, 'glasses' } }
+
+local function say(text)
+    print('[rp_eup] ' .. text)
+    TriggerEvent('chat:addMessage', { args = { 'Uniforms', text } })
+end
 
 RegisterCommand('eupcheck', function()
     local ped = PlayerPedId()
@@ -24,7 +31,28 @@ RegisterCommand('eupcheck', function()
         total = total + count
         parts[#parts + 1] = ('%s %d'):format(p[2], count)
     end
-    local text = ('%d pieces loaded: %s'):format(total, table.concat(parts, ', '))
-    print('[rp_eup] ' .. text)
-    TriggerEvent('chat:addMessage', { args = { 'Uniforms', text } })
+    say(('%d pieces in the list: %s'):format(total, table.concat(parts, ', ')))
+    if total == 0 then
+        say('The list did not load. Check the txAdmin console for rp_eup errors.')
+        return
+    end
+
+    -- Load test: ask the game to load one shirt without wearing it.
+    local global = GetPedDrawableGlobalIndexFromCollection(ped, 11, COLLECTION, 0)
+    if not global or global < 0 then
+        say('Load test skipped: could not find the first shirt.')
+        return
+    end
+    SetPedPreloadVariationData(ped, 11, global, 0)
+    local started = GetGameTimer()
+    while not HasPedPreloadVariationDataFinished(ped) and GetGameTimer() - started < 10000 do
+        Wait(100)
+    end
+    local loaded = HasPedPreloadVariationDataFinished(ped)
+    ReleasePedPreloadVariationData(ped)
+    if loaded then
+        say(('Load test passed: the clothes load (%.1f s).'):format((GetGameTimer() - started) / 1000))
+    else
+        say('Load test FAILED: the list is there but the clothes themselves never loaded. FiveM blocks custom clothing on servers with more than 8 slots (unless the owner has Element Club Argentum). Set Max Players to 8 and restart.')
+    end
 end, false)
