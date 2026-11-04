@@ -81,6 +81,10 @@ Everyone (police, criminals, lawyers) can type **`/penalcode`** to read it. It l
 
 **NPC cases rule:** a crime the server made up (an NPC shooting behind a found gun, a runaway fare) is never charged against a player. Charge only what the player actually did: possession, keeping found property, lying, planting evidence.
 
+## Police computer (ps-mdt)
+
+The MDT's charge list is **our penal code**: every time the server starts, rp_police copies `data/penalcode.lua` into ps-mdt (charges, fines, jail time, categories) and removes ps-mdt's sample charges. Edit charges in `data/penalcode.lua`, not inside the MDT (MDT edits are replaced at the next start). The txAdmin console shows `Penal code copied into the police computer: 71 charges.`
+
 ## Needs
 
 - **ox_lib**, **qbx_core**, **oxmysql** (the two tables `rp_police_training` and `rp_police_log` are created automatically)

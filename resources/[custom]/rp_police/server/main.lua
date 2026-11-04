@@ -10,6 +10,7 @@
 --  checked again here, so nobody can give themselves a cert.
 -- ============================================================
 local config = require 'config'
+local penalCode = require 'data.penalcode'
 
 local CERTS = {}     -- [certId] = { id, minGrade, icon }
 for _, cert in ipairs(config.certs) do CERTS[cert.id] = cert end
@@ -404,6 +405,84 @@ end)
 CreateThread(function()
     loadRanks()
     hookArmory()
+end)
+
+-- ------------------------------------------------------------
+-- Penal code -> the police computer (ps-mdt)
+-- data/penalcode.lua is the one true list. On every start it's copied
+-- into ps-mdt's charges table, replacing ps-mdt's sample charges.
+-- (Charges edited inside the MDT are replaced again at the next start.)
+-- ------------------------------------------------------------
+local CLASS_COLOUR = { infraction = 'green', misdemeanor = 'orange', felony = 'red' }
+
+local function mdtTableExists()
+    local count = MySQL.scalar.await([[
+        SELECT COUNT(*) FROM information_schema.tables
+        WHERE table_schema = DATABASE() AND table_name = 'mdt_penal_codes'
+    ]])
+    return tonumber(count or 0) > 0
+end
+
+local function syncPenalCode()
+    if not mdtTableExists() then return false end
+
+    -- ps-mdt groups charges by this column; it adds it itself too, a few seconds after starting.
+    MySQL.query.await([[ALTER TABLE `mdt_penal_codes` ADD COLUMN IF NOT EXISTS `category` varchar(100) NOT NULL DEFAULT '']])
+
+    local queries, ids, marks = {}, {}, {}
+    for _, category in ipairs(penalCode.categories) do
+        local categoryName = locale('penal.category_' .. category.id)
+        for _, charge in ipairs(category.charges) do
+            ids[#ids + 1] = charge.id
+            marks[#marks + 1] = '?'
+            queries[#queries + 1] = {
+                query = [[
+                    INSERT INTO `mdt_penal_codes` (`code`, `label`, `charge_class`, `months`, `fine`, `color`, `description`, `category`)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                    ON DUPLICATE KEY UPDATE `label` = VALUES(`label`), `charge_class` = VALUES(`charge_class`),
+                        `months` = VALUES(`months`), `fine` = VALUES(`fine`), `color` = VALUES(`color`),
+                        `description` = VALUES(`description`), `category` = VALUES(`category`)
+                ]],
+                values = {
+                    charge.id, charge.title:sub(1, 100), charge.class, charge.jail, charge.fine,
+                    CLASS_COLOUR[charge.class] or 'orange', charge.desc:sub(1, 255), categoryName:sub(1, 100),
+                },
+            }
+        end
+    end
+    -- Anything that isn't in our penal code (ps-mdt's samples) goes.
+    queries[#queries + 1] = {
+        query = ('DELETE FROM `mdt_penal_codes` WHERE `code` NOT IN (%s)'):format(table.concat(marks, ', ')),
+        values = ids,
+    }
+
+    if not MySQL.transaction.await(queries) then
+        print('^1[rp_police]^7 Could not copy the penal code into the police computer. See the error above.')
+        return true -- tried; don't keep retrying every few seconds
+    end
+    print(('^2[rp_police]^7 Penal code copied into the police computer: %d charges.'):format(#ids))
+    return true
+end
+
+local penalSynced = false
+local function trySyncPenalCode()
+    if penalSynced then return end
+    penalSynced = syncPenalCode()
+end
+
+-- rp_dbsetup tells us when it has just created ps-mdt's tables (first start).
+AddEventHandler('rp_dbsetup:applied', function()
+    penalSynced = false
+    trySyncPenalCode()
+end)
+
+CreateThread(function()
+    -- Try for up to 10 minutes after start (the tables may still be getting created).
+    for _ = 1, 40 do
+        trySyncPenalCode()
+        if penalSynced then return end
+        Wait(15000)
+    end
 end)
 
 -- ------------------------------------------------------------
