@@ -92,6 +92,7 @@ local function getNewCharacterConfig()
     config.components   = Config.NewCharacterSections.Components
     config.props        = Config.NewCharacterSections.Props
     config.tattoos      = not Config.RCoreTattoosCompatibility and Config.NewCharacterSections.Tattoos
+    config.rpCreator    = true -- [OUR CHANGE] Nov 4, 2026: show it as our step-by-step creator
 
     return config
 end

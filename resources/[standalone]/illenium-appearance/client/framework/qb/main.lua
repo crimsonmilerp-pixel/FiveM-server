@@ -87,6 +87,9 @@ RegisterNetEvent("QBCore:Client:OnPlayerLoaded", function()
 end)
 
 RegisterNetEvent("qb-clothes:client:CreateFirstCharacter", function()
+    -- [OUR CHANGE] Nov 4, 2026: our creator already ran before spawning (client/rp_creator.lua),
+    -- so don't open a second one. See docs/core-changes.md
+    if RpConsumeCreatorSkip and RpConsumeCreatorSkip() then return end
     QBCore.Functions.GetPlayerData(function(pd)
         PlayerData = pd
         setClientParams()

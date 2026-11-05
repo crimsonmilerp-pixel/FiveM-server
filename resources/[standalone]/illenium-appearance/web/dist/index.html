@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UI</title>
-  <script type="module" crossorigin src="./assets/index.b8e72b46.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- [OUR CHANGE] Nov 4, 2026: our own appearance menus (character creator, clothing, barber, surgeon, tattoo).
+       They replace illenium's React interface and talk to the same game code. See docs/core-changes.md -->
+  <title>Appearance</title>
+  <link rel="stylesheet" href="assets/app.css" />
 </head>
-
 <body>
-    <div id="root"></div>
-    
+  <div id="app" class="hidden"></div>
+  <script src="assets/app.js"></script>
 </body>
-
 </html>

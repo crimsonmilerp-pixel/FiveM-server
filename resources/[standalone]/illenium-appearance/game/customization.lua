@@ -208,6 +208,7 @@ local function getComponentSettings(ped, componentId)
     if client.isPedFreemodeModel(ped) then
         blacklistSettings = filterBlacklistSettings(componentBlacklistMap(gender, componentId), drawableId)
         blacklistSettings = addLockedCollections(ped, blacklistSettings, componentId, false) -- [OUR CHANGE] Nov 3
+        blacklistSettings = client.rpAddHidden(blacklistSettings, "c", componentId) -- [OUR CHANGE] Nov 4: hidden by staff
     end
 
     return {
@@ -237,6 +238,7 @@ local function getPropSettings(ped, propId)
     if client.isPedFreemodeModel(ped) then
         blacklistSettings = filterBlacklistSettings(propBlacklistMap(gender, propId), drawableId)
         blacklistSettings = addLockedCollections(ped, blacklistSettings, propId, true) -- [OUR CHANGE] Nov 3
+        blacklistSettings = client.rpAddHidden(blacklistSettings, "p", propId) -- [OUR CHANGE] Nov 4: hidden by staff
     end
 
     local settings = {

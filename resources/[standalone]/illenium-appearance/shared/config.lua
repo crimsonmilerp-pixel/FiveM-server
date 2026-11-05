@@ -50,14 +50,16 @@ Config.TrackerClothingOptions = {
     texture = 0
 }
 
+-- [OUR CHANGE] Nov 4, 2026: Ped and Tattoos off. New characters pick a man or woman body only (no other models),
+-- and get tattoos at a tattoo parlor. See docs/core-changes.md
 Config.NewCharacterSections = {
-    Ped = true,
+    Ped = false,
     HeadBlend = true,
     FaceFeatures = true,
     HeadOverlays = true,
     Components = true,
     Props = true,
-    Tattoos = true
+    Tattoos = false
 }
 
 Config.GenderBasedOnPed = true
@@ -80,9 +82,9 @@ Config.DisableComponents = {
     Bags = false,
     Shoes = false,
     ScarfAndChains = false,
-    BodyArmor = false,
+    BodyArmor = true, -- [OUR CHANGE] Nov 4: armor is an item, not clothing
     Shirts = false,
-    Decals = false,
+    Decals = true, -- [OUR CHANGE] Nov 4: badges and logos are for uniforms only
     Jackets = false
 }
 

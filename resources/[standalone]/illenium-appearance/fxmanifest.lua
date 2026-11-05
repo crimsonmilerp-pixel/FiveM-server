@@ -39,6 +39,7 @@ client_scripts {
   "client/blips.lua",
   "client/props.lua",
   "client/client.lua",
+  "client/rp_creator.lua", -- [OUR CHANGE] Nov 4, 2026: our character creator. See docs/core-changes.md
 }
 
 server_scripts {
@@ -60,7 +61,8 @@ server_scripts {
   "server/framework/ox/main.lua",
   "server/util.lua",
   "server/server.lua",
-  "server/permissions.lua"
+  "server/permissions.lua",
+  "server/rp_creator.lua" -- [OUR CHANGE] Nov 4, 2026: clothing hidden by staff
 }
 
 shared_scripts {
@@ -88,9 +90,13 @@ shared_scripts {
   "@ox_lib/init.lua"
 }
 
+-- [OUR CHANGE] Nov 4, 2026: our own menus (web/dist) instead of the original React screens.
+-- The old web/dist/assets/index.b8e72b46.js is no longer used and may be deleted.
 files {
   "web/dist/index.html",
-  "web/dist/assets/*.js"
+  "web/dist/text.json",
+  "web/dist/assets/app.js",
+  "web/dist/assets/app.css"
 }
 
 ui_page "web/dist/index.html"

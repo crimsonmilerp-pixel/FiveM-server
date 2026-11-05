@@ -47,7 +47,15 @@ end)
 
 RegisterNUICallback("appearance_change_component", function(component, cb)
     client.setPedComponent(cache.ped, component)
-    cb(client.getComponentSettings(cache.ped, component.component_id))
+    -- [OUR CHANGE] Nov 4, 2026: a new top gets the arms (and undershirt) the game says fit it,
+    -- so arms don't poke through sleeves. The menu shows the change. See client/rp_creator.lua
+    local forced
+    if component.component_id == 11 and not component.refresh then
+        forced = client.rpMatchTop(cache.ped)
+    end
+    local settings = client.getComponentSettings(cache.ped, component.component_id)
+    settings.forced = forced
+    cb(settings)
 end)
 
 RegisterNUICallback("appearance_change_prop", function(prop, cb)

@@ -105,9 +105,10 @@ local randomPeds = {
 NetworkStartSoloTutorialSession()
 
 local nationalities = {}
+local nationalityList = {} -- [OUR CHANGE] Nov 4, 2026: also used by our character creator (see createCharacterRp)
 
 if config.characters.limitNationalities then
-    local nationalityList = lib.load('data.nationalities')
+    nationalityList = lib.load('data.nationalities')
 
     CreateThread(function()
         for i = 1, #nationalityList do
@@ -296,9 +297,95 @@ local function spawnLastLocation()
     spawnAt(QBX.PlayerData.position)
 end
 
+-- ------------------------------------------------------------
+-- [OUR CHANGE] Nov 4, 2026: our own character creator (illenium-appearance/client/rp_creator.lua).
+-- One creator from start to finish: who you are, face, hair, clothes. It replaces the plain
+-- input box here and the second editor that used to open after spawning. See docs/core-changes.md
+-- ------------------------------------------------------------
+local allowedNationality = {}
+for i = 1, #nationalityList do allowedNationality[nationalityList[i]] = true end
+
+---A birthday in the middle of the allowed range, for the date box to start on.
+local function defaultBirthdate()
+    local year = tonumber(config.characters.dateMax:sub(1, 4)) or 2000
+    local date = ('%04d-06-15'):format(year - 6)
+    if date < config.characters.dateMin then return config.characters.dateMin end
+    return date
+end
+
+---Checks the identity form on our side too. Returns a text key for the error, or nil if fine.
+---@param data table
+---@return string?
+local function identityProblem(data)
+    for _, key in ipairs({ 'firstname', 'lastname', 'nationality' }) do
+        local value = data[key]
+        if type(value) ~= 'string' or #value < 2 or #value > 40 then return 'identity.error_name' end
+        if not checkStrings({ value }, 1) then return 'identity.error_words' end
+    end
+    if config.characters.limitNationalities and not allowedNationality[data.nationality] then return 'identity.error_nationality' end
+    local date = data.birthdate
+    if type(date) ~= 'string' or not date:match('^%d%d%d%d%-%d%d%-%d%d$')
+        or date < config.characters.dateMin or date > config.characters.dateMax then
+        return 'identity.error_date'
+    end
+    if data.gender ~= 0 and data.gender ~= 1 then return 'identity.error_gender' end
+end
+
+---@param cid integer
+---@return boolean
+local function createCharacterRp(cid)
+    local appearance = exports['illenium-appearance']
+    local prefill, problem, data, newData
+
+    while true do
+        data = appearance:AskIdentity({
+            nationalities = config.characters.limitNationalities and nationalityList or nil,
+            dateMin = config.characters.dateMin,
+            dateMax = config.characters.dateMax,
+            defaultDate = defaultBirthdate(),
+            prefill = prefill,
+            errorKey = problem,
+        })
+        if not data then return false end -- "Back to characters"
+
+        problem = identityProblem(data)
+        if not problem then
+            newData = lib.callback.await('qbx_core:server:createCharacter', false, {
+                firstname = capString(data.firstname),
+                lastname = capString(data.lastname),
+                nationality = capString(data.nationality),
+                gender = data.gender,
+                birthdate = data.birthdate,
+                cid = cid
+            })
+            if newData then break end
+            problem = 'identity.error_failed'
+        end
+        prefill = data
+    end
+
+    destroyPreviewCam()
+    appearance:CreateAppearance(data.gender) -- face, hair and clothes; waits until they press Finish
+
+    if GetResourceState('qbx_spawn') == 'missing' then
+        spawnDefault()
+    else
+        if config.characters.startingApartment then
+            TriggerEvent('apartments:client:setupSpawnUI', newData)
+        else
+            TriggerEvent('qbx_core:client:spawnNoApartments')
+        end
+    end
+    return true
+end
+
 ---@param cid integer
 ---@return boolean
 local function createCharacter(cid)
+    if GetResourceState('illenium-appearance') == 'started' then -- [OUR CHANGE] Nov 4, 2026
+        return createCharacterRp(cid)
+    end
+
     previewPed()
 
     :: noMatch ::
