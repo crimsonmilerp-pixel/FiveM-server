@@ -44,7 +44,6 @@ Photo tool lessons (Nov 5, four runs): a picture sheet must go to the server in 
 **Loose ends:**
 - After uploading the audit: delete the folder `resources/[ox]/ox_inventory/web/images/images` (the pictures were copied up one level, so it's now a duplicate). Locally and on the server.
 - Found in the audit, left for crime balancing (Phase 3): bank robberies pay **$10k-40k Dirty Money** per drawer/vault (far above our crime ≈ 2.5× legal rule); `police:server:RobPlayer` (rob someone with hands up) can't check hands-up on the server, so it relies on the game; `qbx_properties` tables: check the txAdmin console for SQL errors when we get to housing.
-- James's `fivem:` ID goes into `permissions.cfg`.
 - Optional: delete `resources/[standalone]/illenium-appearance/web/dist/assets/index.b8e72b46.js` (the old menus, no longer loaded), locally and on the server.
 - Set the server name in the Cfx.re Portal.
 - Liam rewrites `rp_goals`, `rp_welcome`, `rp_starter` (arrival story, volunteer, tour), and `rp_jobmoments` `locales/en.json`.
@@ -62,7 +61,7 @@ Photo tool lessons (Nov 5, four runs): a picture sheet must go to the server in 
 | Person | Role |
 |---|---|
 | **Vinny** | Project lead and vision. Builds the server together with Claude, and owns the GitHub repo. New to coding, so explanations are in plain English. |
-| **James** | **Co-owner** with full access to the server (Nodecraft, txAdmin, in-game admin). He isn't part of the Claude sessions. |
+| **James** | **Co-owner** with full access to the server (Nodecraft, txAdmin, in-game admin). Since Nov 5 he also builds, from his own PC with his own Claude account (see the setup guide). |
 | **Liam** | Writer and story designer. Owns lore, setting, NPC characters, and in-game text. |
 | **Claude** | Helps with design, code, explanations, and turning Liam's writing into in-game content. |
 
@@ -74,7 +73,7 @@ Photo tool lessons (Nov 5, four runs): a picture sheet must go to the server in 
 | 2026-10-26 | ~~Develop on Vinny's PC~~ → **Rent a shared dev server now** (see section 0.2) | James needs co-owner access at any time, without depending on whose PC is on. The server can grow into the live server later. |
 | 2026-10-26 | **Host: Nodecraft, Pro "Best Performance" plan (6 GB, 24/7, static IP), East Coast, monthly billing** ($20.99 the first month, then $29.98/mo) | Managed FiveM hosting with txAdmin built in, sub-users for James, MariaDB included, and DDoS protection. OVH's US VPS stock was sold out. Pro plans upgrade in place, with prorated billing. |
 | 2026-10-26 | **Scripts: mix of premium and our own code** | Buy the systems that are huge to build but not unique (phone, MDT, housing interiors). Custom-build everything that makes us different. |
-| 2026-10-26 | **Claude sessions are Vinny's only.** Vinny and Claude do the build together, with every step explained in plain English. | Claude accounts can't be shared. James keeps his co-owner server access. |
+| 2026-10-26 | ~~**Claude sessions are Vinny's only.**~~ → Nov 5: James builds too, with his own Claude account. Vinny and Claude do the build together, with every step explained in plain English. | Claude accounts can't be shared. James keeps his co-owner server access. |
 | 2026-10-26 | **Community Discord: discord.gg/ZjadxPYdYZ** (permanent invite). Used in the chat welcome and `qbx:discordLink`. | Qbox's built-in Discord status is off until we make our own Discord app with our art and a "Join our Discord" button. |
 | 2026-10-26 | **Goal system:** a required goal right after character creation, with no rewards or milestones, view-only for staff, changeable once every 7 days. Public server for now; a Discord-application whitelist comes later. | It gives every player a reason to move, and keeping it simple keeps it low-friction while we build a player base. |
 | 2026-10-26 | **Phone: LB Phone (lifetime license, official store lbscripts.com only)**, replacing the free npwd | The most widely recommended FiveM phone, with Qbox support (auto-detected), strong performance reports, and a custom-app API with a React/TS template for our goals, opportunities, and loan apps. Escrowed, so we can't edit its code, only its config, open files, and exports. Needs MariaDB 10.11+ (we have 12.3.3) and an upload service such as Fivemanage for photos. Bought on Vinny's Cfx.re account. |
@@ -98,6 +97,7 @@ Photo tool lessons (Nov 5, four runs): a picture sheet must go to the server in 
 | 2026-11-04 | **Police cars: every car seats 4 or more** (two officers plus two in the back; the 2-seat interceptors and the motorcycle are removed, and the garage hides anything smaller). **Sergeant and up get an SUV: the free ONX Vapid Scout** (official Cfx.re Marketplace, Vinny's account), fitted by the garage with LSPD livery, lightbar, a **Supervisor** (Sergeant, Lieutenant) or **Command** (Captain, Chief) door tag, and the officer's **callsign** | Vinny doesn't need a big fleet, just cars that can carry a suspect, and wanted an SUV for higher ranks. The Scout already has rank door tags and callsign numbers built in, so it covers the supervisor-car plan from Nov 3 for free. **Captain and Chief also get a Command Car only they can take: the ONX Presidente VSTR ($5.99)**, the command-car half of that plan. Both are escrowed (only run with our server key) and stay off GitHub |
 | 2026-11-04 | **Phase 2 (economy backbone) order: money engine first, then car loans, then housing.** **Income tax is taken off each paycheck and job payout** (no weekly tax bill). **The treasury is tracked but never blocks pay.** **Housing: NoLag Properties** (about €45-60 one-time, teamsgg.dev, bought with Vinny's own Cfx.re account when we get to housing), with our own rent, mortgages and foreclosure on top. **Weekly bills only charge while you're online and always from the bank, which can go below $0** (that's the debt) | Vinny's picks. The money engine is what rent, loans and upkeep all run on. Withholding means no surprise bills and nothing to dodge. Pay that stops when the treasury is empty could leave cops unpaid on a quiet week. NoLag is polished (keys, furniture, alarms, police breaches) but escrowed and has no mortgage API, so before buying, ask the seller about rent timing, turning off utility bills, and exports to give or take a property |
 | 2026-11-04 | **Character creator: one creator, our own menus.** Who you are → face → hair → clothes → done, then the normal arrival. Only a man or a woman body (other models stay staff-only). **Starting clothes: everything normal** (the blacklist still applies). **Clothing stores, barbers, surgeon and tattoo parlor get the same menus.** Pictures for every item come from our own photo tool on the dev server (no third-party images). Clipping: arms matched to tops automatically, invisible items folded into "None", armor and decals out of the menu, staff can hide items that clip | Vinny: there were two creators (a plain input box, then the editor after spawning), picking items by number without seeing them felt bad, and players could still pick other bodies. A picture for every item lets people preview before trying on. illenium-appearance stays underneath (saving, stores, outfits), so only its screens were replaced |
+| 2026-11-05 | **James builds too, from his own PC with his own Claude account.** GitHub stays the one master copy: pull first, say which resource you're on, commit and push before uploading, upload only the changed folders. `docs/design-bible.md` and `docs/core-changes.md` are the shared memory both Claudes read. Setup guide: [Setup guide for James](https://claude.ai/artifact/4JA9qquVf5dDXL9dbmBtCu) | Two people can build in parallel. Claude accounts can't be shared, so each has his own; the docs keep both Claudes on the same plan |
 | 2026-11-04 | **Car loans: a missed payment adds a late fee and lowers the credit score; 3 missed in a row and the bank takes the car back** (loan closed, big credit hit, rest of the debt written off). **How much the bank lends: anyone up to $400 a week in payments; more only with job income** (all loan payments within 35% of the last 4 weeks' average). Credit score 300-850, everyone starts at 650 | Vinny's picks. Real consequences without a repo job yet (Pillar D); a Repo Agent job can take over the taking-back later. The $400 starter line lets a new player finance a first car of about $20k, while a supercar needs real income, so nobody signs up for a $2M loan they can't pay |
 | 2026-10-26 | **All player-facing text lives in config or locale files, not hard-coded** | Liam can write and edit dialogue and UI text without touching code. |
 
@@ -123,7 +123,7 @@ Photo tool lessons (Nov 5, four runs): a picture sheet must go to the server in 
 2. **txAdmin:** Vinny is the master account. He adds James in **Admin Manager** with **all permissions**, so both can restart, view logs, ban, and edit `server.cfg` from the browser.
 3. **In-game admin:** both are in `group.admin` through ACE permissions in `server.cfg` (`add_principal identifier.fivem:<id> group.admin`). That gives Qbox admin commands, noclip, and the admin menu.
 4. **Database:** credentials come from the NodePanel Databases tab, which both owners can see.
-5. **GitHub:** Vinny owns the private repo. James can be added as a collaborator if he wants to see or contribute code.
+5. **GitHub:** Vinny owns the private repo. James is added as a collaborator (Nov 5) and works from his own clone.
 6. **Cfx.re:** the license key belongs to Vinny's Cfx.re account.
 
 **Status (Oct 26):** ✅ James is set up as co-owner (Nodecraft, txAdmin, `group.admin`).
@@ -213,7 +213,7 @@ Every feature we build has to support at least one of these.
 | Core libraries | ox_lib, ox_inventory, ox_target, oxmysql |
 | Database | MariaDB (Nodecraft-hosted). HeidiSQL on our PCs can connect if remote access is allowed. |
 | Code editor | VS Code + Lua and FiveM natives extensions |
-| Version control | Git + private GitHub repo (owned by James) |
+| Version control | Git + private GitHub repo (owned by Vinny) |
 | Our custom resources | Live in `resources/[custom]/` with a shared name prefix (TBD once we pick the server name) |
 | Text and dialogue | Locale or config files per resource (e.g. `locales/en.json`), editable by Liam |
 
