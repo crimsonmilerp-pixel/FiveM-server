@@ -172,6 +172,7 @@
     "cancel": "Cancel",
     "confirm_cancel": "Leave without saving? Your changes will be lost.",
     "confirm_finish": "Finish your character? You can change clothes and hair later in stores, but not your face.",
+    "load_failed": "This menu couldn't load. Press F8 and send a screenshot of the red lines to staff.",
     "yes": "Yes",
     "no": "No"
   },

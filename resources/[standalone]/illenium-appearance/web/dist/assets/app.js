@@ -19,11 +19,16 @@
   // ------------------------------------------------------------
   async function post(name, data) {
     try {
+      // if the game never answers (an error on its side), give up after 20 s instead of waiting forever
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 20000);
       const res = await fetch(`https://${RES}/${name}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json; charset=UTF-8' },
         body: JSON.stringify(data === undefined ? {} : data),
+        signal: ctrl.signal,
       });
+      clearTimeout(timer);
       const text = await res.text();
       return text ? JSON.parse(text) : null;
     } catch (e) {
@@ -180,6 +185,11 @@
     S.settings = settingsRes ? settingsRes.appearanceSettings : null;
     S.config = dataRes ? dataRes.config : {};
     S.data = dataRes ? dataRes.appearanceData : null;
+    if (!S.settings || !S.data) {
+      S.busy = t('buttons.load_failed');
+      render();
+      return;
+    }
     S.extras = extras || S.extras;
     S.mode = modeFromConfig(S.config || {});
     S.step = 1;

@@ -292,6 +292,14 @@ local function createAppearance(gender)
     DoScreenFadeOut(250)
     while not IsScreenFadedOut() do Wait(0) end
 
+    -- the character was just made: pick up its job, gang and citizen ID (the clothing locks need them)
+    local started = GetGameTimer()
+    repeat
+        Framework.UpdatePlayerData()
+        if client.job then break end
+        Wait(100)
+    until GetGameTimer() - started > 5000
+
     setPreviewGender(gender)
     previewGender = nil
     DisplayRadar(false)
