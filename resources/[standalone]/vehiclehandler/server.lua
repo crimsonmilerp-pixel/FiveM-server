@@ -3,36 +3,6 @@ lib.locale()
 
 lib.versionCheck("QuantumMalice/vehiclehandler")
 
-if GetResourceState('ox_inventory') == 'started' then
-    exports('cleaningkit', function(event, item, inventory)
-        if event == 'usingItem' then
-            local success = lib.callback.await('vehiclehandler:basicwash', inventory.id)
-            if success then return else return false end
-        end
-    end)
-
-    exports('tirekit', function(event, item, inventory)
-        if event == 'usingItem' then
-            local success = lib.callback.await('vehiclehandler:basicfix', inventory.id, 'tirekit')
-            if success then return else return false end
-        end
-    end)
-
-    exports('repairkit', function(event, item, inventory)
-        if event == 'usingItem' then
-            local success = lib.callback.await('vehiclehandler:basicfix', inventory.id, 'smallkit')
-            if success then return else return false end
-        end
-    end)
-
-    exports('advancedrepairkit', function(event, item, inventory)
-        if event == 'usingItem' then
-            local success = lib.callback.await('vehiclehandler:basicfix', inventory.id, 'bigkit')
-            if success then return else return false end
-        end
-    end)
-end
-
 lib.callback.register('vehiclehandler:sync', function()
     return true
 end)
@@ -99,6 +69,55 @@ local function setFuel(vehicle, level, fallback)
 
     return true
 end
+
+---Players can only use a kit on a vehicle right next to them
+local KIT_RANGE <const> = 12.0
+
+---ox_inventory item hooks (items.lua: server = { export = 'vehiclehandler.<item>' }).
+---The player's client plays the progress/animation; once it finishes, the repair is sent to the vehicle's
+---network owner so it syncs to everyone, even when the player using the kit does not own the vehicle.
+---Returning false cancels the item use, so the kit is only used up when the repair actually happened.
+---@param source number
+---@param netId number?
+---@param event string
+---@return boolean success
+local function applyKitResult(source, netId, event, ...)
+    if type(netId) ~= 'number' then return false end
+
+    local vehicle <const> = NetworkGetEntityFromNetworkId(netId)
+    if not isVehicle(vehicle) then return false end
+
+    local ped <const> = GetPlayerPed(source)
+    if #(GetEntityCoords(ped) - GetEntityCoords(vehicle)) > KIT_RANGE then return false end
+
+    sendToOwner(vehicle, source, event, ...)
+    return true
+end
+
+---@param fixtype string
+local function useFixKit(fixtype)
+    return function(event, item, inventory)
+        if event ~= 'usingItem' then return end
+
+        local success, netId = lib.callback.await('vehiclehandler:basicfix', inventory.id, fixtype)
+        if success and applyKitResult(inventory.id, netId, 'vehiclehandler:client:applyKit', fixtype) then return end
+
+        return false
+    end
+end
+
+exports('tirekit', useFixKit('tirekit'))
+exports('repairkit', useFixKit('smallkit'))
+exports('advancedrepairkit', useFixKit('bigkit'))
+
+exports('cleaningkit', function(event, item, inventory)
+    if event ~= 'usingItem' then return end
+
+    local success, netId = lib.callback.await('vehiclehandler:basicwash', inventory.id)
+    if success and applyKitResult(inventory.id, netId, 'vehiclehandler:client:applyWash') then return end
+
+    return false
+end)
 
 exports('fixVehicle', fixVehicle)
 exports('setFuel', setFuel)

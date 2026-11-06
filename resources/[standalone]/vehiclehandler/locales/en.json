@@ -12,6 +12,9 @@
     },
     "notify": {
         "cannotRepair": "Cannot repair vehicle any further",
-        "backEngine": "Engine bay is in back"
+        "backEngine": "Engine bay is in back",
+        "frontEngine": "Stand at the front of the vehicle, by the hood",
+        "noVehicle": "No vehicle nearby",
+        "leaveVehicle": "Get out of the vehicle first"
     }
 }
