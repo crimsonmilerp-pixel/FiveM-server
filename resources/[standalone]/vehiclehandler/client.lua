@@ -155,12 +155,14 @@ end)
 
 ---@param fixtype string
 ---@return boolean | nil success
+---@return number | nil netId
 lib.callback.register('vehiclehandler:basicfix', function(fixtype)
     if not Handler then return end
     return Handler:basicfix(fixtype)
 end)
 
 ---@return boolean | nil success
+---@return number | nil netId
 lib.callback.register('vehiclehandler:basicwash', function()
     if not Handler then return end
     return Handler:basicwash()
@@ -194,6 +196,11 @@ end
 RegisterNetEvent('vehiclehandler:client:applyFix', function(netId)
     local vehicle <const> = getOwnedVehicle(netId)
     if vehicle then Handler:applyFix(vehicle) end
+end)
+
+RegisterNetEvent('vehiclehandler:client:applyKit', function(netId, fixtype)
+    local vehicle <const> = getOwnedVehicle(netId)
+    if vehicle and type(fixtype) == 'string' then Handler:applyKit(vehicle, fixtype) end
 end)
 
 RegisterNetEvent('vehiclehandler:client:applyWash', function(netId)

@@ -252,16 +252,25 @@ return {
     ['cleaningkit'] = {
         label = 'Cleaning Kit',
         weight = 500,
+        close = true,
+        description = 'A microfiber cloth with some soap will let your car sparkle again!',
+        server = { export = 'vehiclehandler.cleaningkit' },
     },
 
     ['repairkit'] = {
         label = 'Repair Kit',
         weight = 2500,
+        close = true,
+        description = 'Basic tools to patch up a broken engine. Use it at the engine bay.',
+        server = { export = 'vehiclehandler.repairkit' },
     },
 
     ['advancedrepairkit'] = {
         label = 'Advanced Repair Kit',
         weight = 4000,
+        close = true,
+        description = 'A full toolbox that fully repairs a vehicle. Use it at the engine bay.',
+        server = { export = 'vehiclehandler.advancedrepairkit' },
     },
 
     ['diamond'] = {

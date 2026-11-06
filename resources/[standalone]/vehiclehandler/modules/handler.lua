@@ -150,9 +150,17 @@ function Handler:getFixData(vehicle)
     if not vehicle or vehicle == 0 then return end
 
     local backengine = Settings.backengine[GetEntityModel(vehicle)]
-    local distance = backengine and -2.5 or 2.5
+
+    -- Stand just past the front (or back) bumper. Using the model's real size makes this work for
+    -- every vehicle, from compacts to trucks, instead of a fixed distance from the vehicle's centre.
+    local min, max = GetModelDimensions(GetEntityModel(vehicle))
+    local distance = backengine and (min.y - 0.5) or (max.y + 0.5)
+    local offset = GetOffsetFromEntityInWorldCoords(vehicle, 0.0, distance, 0.0)
+
+    -- 4 = hood, 5 = trunk. Bikes and some vehicles have neither, so only use the door if it exists.
     local index = backengine and 5 or 4
-    local offset = GetOffsetFromEntityInWorldCoords(vehicle, 0, distance, 0)
+    if not GetIsDoorValid(vehicle, index) then index = nil end
+
     local engine = GetVehicleEngineHealth(vehicle)
 
     return backengine, offset, index, engine
@@ -183,20 +191,14 @@ function Handler:fixTire(vehicle, coords)
     local found = self:isTireBroken(vehicle, coords)
     if not found then return false end
 
-    local lastengine = GetVehicleEngineHealth(vehicle)
-    local lastbody = GetVehicleBodyHealth(vehicle)
-    local lastdirt = GetVehicleDirtLevel(vehicle)
     local success = false
+
+    TaskTurnPedToFaceEntity(cache.ped, vehicle, 1000)
+    Wait(1000)
 
     if lib.progressCircle(Progress['tirekit']) then
         success = true
-
-        lib.callback('vehiclehandler:sync', false, function()
-            SetVehicleFixed(vehicle)
-            SetVehicleEngineHealth(vehicle, lastengine)
-            SetVehicleBodyHealth(vehicle, lastbody)
-            SetVehicleDirtLevel(vehicle, lastdirt)
-        end)
+        self:applyKit(vehicle, 'tirekit')
     end
 
     return success
@@ -210,11 +212,8 @@ function Handler:fixVehicle(vehicle, coords, fixtype)
     local backengine, offset, hoodindex, engine = self:getFixData(vehicle)
     local success = false
 
-    if #(coords - offset) >= 2.0 then
-        if backengine then
-            lib.notify({ title = locale('notify.backEngine'), type = 'error' })
-        end
-
+    if #(coords.xy - offset.xy) >= 2.0 then
+        lib.notify({ title = locale(backengine and 'notify.backEngine' or 'notify.frontEngine'), type = 'error' })
         return success
     end
 
@@ -229,33 +228,28 @@ function Handler:fixVehicle(vehicle, coords, fixtype)
         end)
     end
 
+    -- Face the engine bay so the repair animation lines up with the vehicle
+    TaskTurnPedToFaceEntity(cache.ped, vehicle, 1000)
+    Wait(1000)
+
     if lib.progressCircle(Progress[fixtype]) then
         success = true
     end
+
+    ClearPedTasks(cache.ped)
 
     if hoodindex then
         lib.callback('vehiclehandler:sync', false, function()
             SetVehicleDoorShut(vehicle, hoodindex, false)
         end)
 
+        local timeout = GetGameTimer() + 3000
         repeat Wait(100)
-        until not IsVehicleDoorFullyOpen(vehicle, hoodindex)
+        until not IsVehicleDoorFullyOpen(vehicle, hoodindex) or GetGameTimer() > timeout
     end
 
     if success then
-        lib.callback('vehiclehandler:sync', false, function()
-            if fixtype == 'smallkit' then
-                SetVehicleEngineHealth(vehicle, 500.0)
-
-                if GetVehicleBodyHealth(vehicle) < 500 then
-                    SetVehicleBodyHealth(vehicle, 500.0)
-                end
-            elseif fixtype == 'bigkit' then
-                SetVehicleFixed(vehicle)
-            end
-
-            SetVehicleUndriveable(vehicle, false)
-        end)
+        self:applyKit(vehicle, fixtype)
     end
 
     return success
@@ -263,22 +257,75 @@ end
 
 ---@param fixtype string
 ---@return boolean | nil success
+---@return number | nil netId the repaired vehicle, so the server can sync the repair through its owner
 function Handler:basicfix(fixtype)
     if not cache.ped then return false end
     if not fixtype or type(fixtype) ~= 'string' then return false end
 
+    if cache.vehicle then
+        lib.notify({ title = locale('notify.leaveVehicle'), type = 'error' })
+        return false
+    end
+
+    -- Search wide enough to find long vehicles from their bumper; fixVehicle checks the exact spot
     local coords = GetEntityCoords(cache.ped)
-    local vehicle = lib.getClosestVehicle(coords, 3.0, false)
-	if vehicle == nil or vehicle == 0 then return false end
+    local vehicle = lib.getClosestVehicle(coords, 6.0, false)
+    if vehicle == nil or vehicle == 0 then
+        lib.notify({ title = locale('notify.noVehicle'), type = 'error' })
+        return false
+    end
+
+    local success = false
 
     if fixtype == 'tirekit' then
-        return self:fixTire(vehicle, coords)
+        success = self:fixTire(vehicle, coords)
     elseif fixtype == 'smallkit' or fixtype == 'bigkit' then
-        return self:fixVehicle(vehicle, coords, fixtype)
+        success = self:fixVehicle(vehicle, coords, fixtype)
     end
+
+    if success then return true, VehToNet(vehicle) end
+
+    return false
+end
+
+---Apply a repair kit's effect. Run on the player using the kit (instant feedback) and on the vehicle's
+---network owner (sent by the server), so the repair syncs to everyone.
+---@param vehicle number
+---@param fixtype string
+function Handler:applyKit(vehicle, fixtype)
+    lib.callback('vehiclehandler:sync', false, function()
+        if fixtype == 'tirekit' then
+            local lastengine = GetVehicleEngineHealth(vehicle)
+            local lastbody = GetVehicleBodyHealth(vehicle)
+            local lastdirt = GetVehicleDirtLevel(vehicle)
+
+            SetVehicleFixed(vehicle)
+            SetVehicleEngineHealth(vehicle, lastengine)
+            SetVehicleBodyHealth(vehicle, lastbody)
+            SetVehicleDirtLevel(vehicle, lastdirt)
+            return
+        end
+
+        if fixtype == 'smallkit' then
+            if GetVehicleEngineHealth(vehicle) < 500 then
+                SetVehicleEngineHealth(vehicle, 500.0)
+            end
+
+            if GetVehicleBodyHealth(vehicle) < 500 then
+                SetVehicleBodyHealth(vehicle, 500.0)
+            end
+        elseif fixtype == 'bigkit' then
+            SetVehicleFixed(vehicle)
+        else
+            return
+        end
+
+        SetVehicleUndriveable(vehicle, false)
+    end)
 end
 
 ---@return boolean success
+---@return number | nil netId
 function Handler:basicwash()
     if not cache.ped then return false end
 
@@ -293,17 +340,15 @@ function Handler:basicwash()
 
     if lib.progressCircle(Progress['cleankit']) then
         success = true
-
-        lib.callback('vehiclehandler:sync', false, function()
-            SetVehicleDirtLevel(vehicle, 0.0)
-            WashDecalsFromVehicle(vehicle, 1.0)
-        end)
+        self:applyWash(vehicle)
     end
 
     ClearAllPedProps(cache.ped)
     ClearPedTasks(cache.ped)
 
-    return success
+    if success then return true, VehToNet(vehicle) end
+
+    return false
 end
 
 ---Repair and refuel a vehicle. Only syncs to other players when run on the vehicle's owner.
